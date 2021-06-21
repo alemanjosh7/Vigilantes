@@ -32,12 +32,7 @@ public class MenuOscuro extends javax.swing.JFrame {
         jLabel3.setIcon(scaledIcon);
     }
     
-    public void paint(Graphics draw){
-      //Here you can perform any drawing like an oval...
-      draw.fillOval(40, 40, 60, 50);
-
-      getContentPane().setBackground(new Color(70,80,70));
-    }
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
