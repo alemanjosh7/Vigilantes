@@ -15,6 +15,7 @@ public class EntradaVisitantOscuro extends javax.swing.JFrame {
      * Creates new form EntradaVisitantOscuro
      */
     public EntradaVisitantOscuro() {
+        this.setUndecorated(true);
         initComponents();
     }
 
@@ -29,6 +30,7 @@ public class EntradaVisitantOscuro extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jlblTipoEntrada = new javax.swing.JLabel();
@@ -57,7 +59,8 @@ public class EntradaVisitantOscuro extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registro Ingreso");
-        setPreferredSize(new java.awt.Dimension(1367, 817));
+        setPreferredSize(new java.awt.Dimension(1367, 768));
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(57, 62, 70));
@@ -79,17 +82,12 @@ public class EntradaVisitantOscuro extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 211, 105));
         jPanel1.setForeground(new java.awt.Color(255, 211, 105));
+        jPanel1.setLayout(null);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1170, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 39, Short.MAX_VALUE)
-        );
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setText("x");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(1060, 0, 20, 30);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(266, 0, 1170, 39);
@@ -121,10 +119,10 @@ public class EntradaVisitantOscuro extends javax.swing.JFrame {
         jlblMotivoEntrada1.setText("Hora de la entrada:");
 
         jcmbTipoIS.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jcmbTipoIS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcmbTipoIS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Entrada Gate 12", "Entrada Peatonal Gate 12", "Entrada Gate 13", "Entrada Peatonal Gate 13" }));
 
         jcmbIdResidencia.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jcmbIdResidencia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcmbIdResidencia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casa 10 E", "Casa 11 E", "Casa 12 E", "Casa 13 E" }));
 
         jrdbTrue.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jrdbTrue.setForeground(new java.awt.Color(238, 238, 238));
@@ -227,42 +225,44 @@ public class EntradaVisitantOscuro extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(55, 55, 55)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlblMotivoEntrada)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                        .addGap(268, 268, 268)
-                                        .addComponent(jrdbTrueEntrada)
-                                        .addGap(31, 31, 31)
-                                        .addComponent(jrdbFalseEntrada))
-                                    .addComponent(jlblMotivoEntrada1, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel4Layout.createSequentialGroup()
                                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jlblEntrada)
-                                        .addGroup(jPanel4Layout.createSequentialGroup()
-                                            .addComponent(jlblEmergencia)
-                                            .addGap(42, 42, 42)
-                                            .addComponent(jrdbTrue)
+                                        .addComponent(jlblMotivoEntrada)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                            .addGap(268, 268, 268)
+                                            .addComponent(jrdbTrueEntrada)
                                             .addGap(31, 31, 31)
-                                            .addComponent(jrdbFalse)))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                            .addComponent(jrdbFalseEntrada))
+                                        .addComponent(jlblMotivoEntrada1, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jlblEntrada)
+                                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                                .addComponent(jlblEmergencia)
+                                                .addGap(42, 42, 42)
+                                                .addComponent(jrdbTrue)
+                                                .addGap(31, 31, 31)
+                                                .addComponent(jrdbFalse)))))
+                                .addComponent(jScrollPane2))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jlblTipoEntrada)
                                     .addComponent(jlblIdResidencia))
                                 .addGap(70, 70, 70)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jcmbTipoIS, 0, 500, Short.MAX_VALUE)
-                                    .addComponent(jcmbIdResidencia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addComponent(jScrollPane2)))
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jcmbTipoIS, 0, 297, Short.MAX_VALUE)
+                                    .addComponent(jcmbIdResidencia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(235, 235, 235))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(378, 378, 378)
                         .addComponent(jlblTipoEntrada1)))
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addGap(57, 57, 57))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,13 +272,15 @@ public class EntradaVisitantOscuro extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jcmbIdResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jlblTipoEntrada)
                             .addComponent(jcmbTipoIS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(30, 30, 30)
-                        .addComponent(jlblIdResidencia))
-                    .addComponent(jcmbIdResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                        .addComponent(jlblIdResidencia)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jlblMotivoEntrada)
@@ -302,7 +304,7 @@ public class EntradaVisitantOscuro extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jPanel3.add(jPanel4);
@@ -352,6 +354,7 @@ public class EntradaVisitantOscuro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
