@@ -47,19 +47,23 @@ public class Menu extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnSalida = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnZonas = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jPanel10 = new javax.swing.JPanel();
+        changeThemeBtn = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jButton13 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1366, 768));
@@ -69,20 +73,43 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(57, 62, 70));
 
         jPanel4.setBackground(new java.awt.Color(57, 62, 70));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Sistema Vigilantes");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 13, 239, 64));
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 94, 215, 248));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         jPanel5.setBackground(new java.awt.Color(57, 62, 70));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/cerrar-sesion-white.png"))); // NOI18N
-        jButton1.setContentAreaFilled(false);
+        btnSalida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/cerrar-sesion-white.png"))); // NOI18N
+        btnSalida.setContentAreaFilled(false);
+        btnSalida.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalidaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -90,14 +117,14 @@ public class Menu extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jButton1)
+                .addComponent(btnSalida)
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(117, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnSalida)
                 .addGap(22, 22, 22))
         );
 
@@ -128,107 +155,203 @@ public class Menu extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/visitante-128.png"))); // NOI18N
-        jButton4.setText("Registrar vigilantes");
+        jButton4.setText("Vigilantes");
         jButton4.setContentAreaFilled(false);
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 180, 270, 170));
 
-        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/visitor-128.png"))); // NOI18N
-        jButton5.setText("Visualizar vigilantes");
-        jButton5.setContentAreaFilled(false);
-        jButton5.setDefaultCapable(false);
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 470, 270, 170));
-
-        jButton6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/puntero-de-ubicacion-128.png"))); // NOI18N
-        jButton6.setText("Visualizar entradas");
-        jButton6.setContentAreaFilled(false);
-        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 480, 270, 170));
+        btnZonas.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnZonas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/puntero-de-ubicacion-128.png"))); // NOI18N
+        btnZonas.setText("Zonas");
+        btnZonas.setContentAreaFilled(false);
+        btnZonas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnZonas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnZonas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnZonas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZonasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnZonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 490, 270, 170));
 
         jButton9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/entrada-128.png"))); // NOI18N
-        jButton9.setText("Registrar entradas");
+        jButton9.setIcon(new javax.swing.ImageIcon("C:\\Users\\josue\\Desktop\\Vigilantes\\Vigilantes\\src\\vigilante\\Imagenes\\porton.png")); // NOI18N
+        jButton9.setText("Portones");
         jButton9.setContentAreaFilled(false);
+        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton9.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 270, 170));
 
         jButton11.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/apartment-128.png"))); // NOI18N
-        jButton11.setText("Registrar residencias");
+        jButton11.setText("Residencias");
         jButton11.setContentAreaFilled(false);
+        jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton11.setDefaultCapable(false);
         jButton11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton11.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 180, 270, 170));
 
         jButton12.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/residencia-128.png"))); // NOI18N
-        jButton12.setText("Visualizar residencias");
+        jButton12.setIcon(new javax.swing.ImageIcon("C:\\Users\\josue\\Desktop\\Vigilantes\\Vigilantes\\src\\vigilante\\Imagenes\\residente.png")); // NOI18N
+        jButton12.setText("Residentes");
         jButton12.setContentAreaFilled(false);
+        jButton12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton12.setDefaultCapable(false);
         jButton12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton12.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 480, 270, 170));
+        getContentPane().add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 490, 270, 170));
 
         jPanel2.setBackground(new java.awt.Color(255, 211, 105));
         jPanel2.setPreferredSize(new java.awt.Dimension(1490, 60));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 42)); // NOI18N
         jLabel1.setText("x");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+
+        jButton3.setAlignmentY(0.7F);
+        jButton3.setContentAreaFilled(false);
+
+        jPanel10.setBackground(new java.awt.Color(255, 211, 105));
+
+        changeThemeBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\josue\\Desktop\\Vigilantes\\Vigilantes\\src\\vigilante\\Imagenes\\light.png")); // NOI18N
+        changeThemeBtn.setAlignmentY(0.7F);
+        changeThemeBtn.setContentAreaFilled(false);
+        changeThemeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        changeThemeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changeThemeBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel7.setText("Administrador");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setText("Cargo:");
 
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel8.setText("Josué Alemán");
+
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("Usuario:");
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel6.setText("Josué Alemán");
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel7.setText("Administrador");
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel5)
+                .addGap(27, 27, 27)
+                .addComponent(jLabel8)
+                .addGap(60, 60, 60)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel7)
+                .addGap(227, 227, 227)
+                .addComponent(changeThemeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(changeThemeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(jLabel8)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel7)))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
-                .addGap(68, 68, 68)
-                .addComponent(jLabel4)
+                .addContainerGap()
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 597, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(401, 401, 401))
+                .addComponent(jButton3)
+                .addGap(256, 256, 256)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(400, 400, 400))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel7))
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 1490, 60));
 
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 10, -1, -1));
+
+        jButton13.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton13.setIcon(new javax.swing.ImageIcon("C:\\Users\\josue\\Desktop\\Vigilantes\\Vigilantes\\src\\vigilante\\Imagenes\\calendario.png")); // NOI18N
+        jButton13.setText("Horarios");
+        jButton13.setContentAreaFilled(false);
+        jButton13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton13.setDefaultCapable(false);
+        jButton13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton13.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 490, 270, 170));
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void changeThemeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeThemeBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_changeThemeBtnActionPerformed
+
+    private void btnSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalidaActionPerformed
+        Login login = new Login();
+        login.show();
+        dispose();
+    }//GEN-LAST:event_btnSalidaActionPerformed
+
+    private void btnZonasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZonasActionPerformed
+        MenuZonas zonas = new MenuZonas();
+        zonas.show();
+        dispose();
+    }//GEN-LAST:event_btnZonasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -266,22 +389,26 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnSalida;
+    private javax.swing.JButton btnZonas;
+    private javax.swing.JButton changeThemeBtn;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     // End of variables declaration//GEN-END:variables
