@@ -170,6 +170,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         jBtnClose.setText("Cerrar");
+        jBtnClose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBtnClose.setFocusable(false);
         jBtnClose.setPreferredSize(new java.awt.Dimension(232, 240));
         jBtnClose.setRequestFocusEnabled(false);
@@ -180,6 +181,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         jBtnMinimize.setText("Minimizar");
+        jBtnMinimize.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBtnMinimize.setFocusable(false);
         jBtnMinimize.setPreferredSize(new java.awt.Dimension(232, 240));
         jBtnMinimize.setRequestFocusEnabled(false);
