@@ -208,7 +208,7 @@ public class VisualizarPersonal extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel3);
-        jPanel3.setBounds(190, 0, 1177, 39);
+        jPanel3.setBounds(190, 0, 1171, 39);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

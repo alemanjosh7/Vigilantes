@@ -24,7 +24,7 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
     Color Light = new Color(254, 243, 243), Dark = new Color(57, 62, 70);
     
     private void SetBackgroundDark(){
-        
+        /*
         jPanelLogin.setBackground(Dark);
         jSliderMode.setBackground(Dark);
         
@@ -52,11 +52,12 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
         img2 = img1.getScaledInstance(jImgMode.getWidth(), jImgMode.getHeight(), Image.SCALE_SMOOTH);
         ImgIcon2 = new ImageIcon(img2);
         jImgMode.setIcon(ImgIcon2);
+        */
         
     }
     
     public void SetBackgroundLight(){
-        
+        /*
         jPanelLogin.setBackground(Light);
         jSliderMode.setBackground(Light);
         
@@ -83,11 +84,11 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
         img2 = img1.getScaledInstance(jImgMode.getWidth(), jImgMode.getHeight(), Image.SCALE_SMOOTH);
         ImgIcon2 = new ImageIcon(img2);
         jImgMode.setIcon(ImgIcon2);
-        initIcon();    
+        initIcon();  
+        */
     }
     
     private void initIcon(){
-        
         ImageIcon ImgIcon1, ImgIcon2;
         Image img1, img2;
         
@@ -107,7 +108,14 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
         img1 = ImgIcon1.getImage();
         img2 = img1.getScaledInstance(jBtnClose.getWidth(), jBtnClose.getHeight(), Image.SCALE_SMOOTH);
         ImgIcon2 = new ImageIcon(img2);
-        jBtnClose.setIcon(ImgIcon2);}
+        jBtnClose.setIcon(ImgIcon2);
+       
+        ImgIcon1 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../Imagenes/Moon.png")));
+        img1 = ImgIcon1.getImage();
+        img2 = img1.getScaledInstance(jImgMode.getWidth(), jImgMode.getHeight(), Image.SCALE_SMOOTH);
+        ImgIcon2 = new ImageIcon(img2);
+        jImgMode.setIcon(ImgIcon2);
+    }
     
     public ContraseñaOlvidada() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../Imagenes/RectangleLogo.png")) );
@@ -130,17 +138,13 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
         jBtnClose = new javax.swing.JLabel();
         jBtnMinimize = new javax.swing.JLabel();
         jIco = new javax.swing.JLabel();
-        jImgLogo = new javax.swing.JLabel();
         jLabelWelcome = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        Line1 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        Line2 = new javax.swing.JPanel();
-        jButtonLogin = new javax.swing.JButton();
         jSliderMode = new javax.swing.JSlider();
-        jLabelLostPassword = new javax.swing.JLabel();
         jImgMode = new javax.swing.JLabel();
+        jLabelWelcome1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
@@ -170,6 +174,7 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
         });
 
         jBtnClose.setText("Cerrar");
+        jBtnClose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBtnClose.setFocusable(false);
         jBtnClose.setPreferredSize(new java.awt.Dimension(232, 240));
         jBtnClose.setRequestFocusEnabled(false);
@@ -180,6 +185,7 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
         });
 
         jBtnMinimize.setText("Minimizar");
+        jBtnMinimize.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBtnMinimize.setFocusable(false);
         jBtnMinimize.setPreferredSize(new java.awt.Dimension(232, 240));
         jBtnMinimize.setRequestFocusEnabled(false);
@@ -206,7 +212,7 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTabLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jIco, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 396, Short.MAX_VALUE)
                 .addComponent(jBtnMinimize, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jBtnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -223,87 +229,9 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jImgLogo.setText("Imagen");
-        jImgLogo.setFocusable(false);
-        jImgLogo.setPreferredSize(new java.awt.Dimension(232, 240));
-        jImgLogo.setRequestFocusEnabled(false);
-
-        jLabelWelcome.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabelWelcome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabelWelcome.setForeground(new java.awt.Color(243, 243, 243));
-        jLabelWelcome.setText("Bienvenido");
-
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(243, 243, 243));
-        jLabel3.setText("Usuario");
-
-        Line1.setBackground(new java.awt.Color(243, 243, 243));
-        Line1.setPreferredSize(new java.awt.Dimension(160, 2));
-
-        jPanel3.setBackground(new java.awt.Color(255, 211, 105));
-        jPanel3.setPreferredSize(new java.awt.Dimension(160, 2));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 155, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout Line1Layout = new javax.swing.GroupLayout(Line1);
-        Line1.setLayout(Line1Layout);
-        Line1Layout.setHorizontalGroup(
-            Line1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
-            .addGroup(Line1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(Line1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-        Line1Layout.setVerticalGroup(
-            Line1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(Line1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(Line1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(243, 243, 243));
-        jLabel4.setText("Contraseña");
-
-        Line2.setBackground(new java.awt.Color(243, 243, 243));
-        Line2.setPreferredSize(new java.awt.Dimension(160, 2));
-
-        javax.swing.GroupLayout Line2Layout = new javax.swing.GroupLayout(Line2);
-        Line2.setLayout(Line2Layout);
-        Line2Layout.setHorizontalGroup(
-            Line2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
-        );
-        Line2Layout.setVerticalGroup(
-            Line2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 2, Short.MAX_VALUE)
-        );
-
-        jButtonLogin.setBackground(new java.awt.Color(243, 243, 243));
-        jButtonLogin.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButtonLogin.setText("Acceder");
-        jButtonLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonLogin.setFocusable(false);
-        jButtonLogin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonLoginMouseClicked(evt);
-            }
-        });
+        jLabelWelcome.setText("Por favor ingrese su correo electrónico para iniciar un proceso de cambio de contraseña ");
 
         jSliderMode.setBackground(new java.awt.Color(57, 62, 70));
         jSliderMode.setForeground(new java.awt.Color(255, 211, 105));
@@ -315,16 +243,31 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
             }
         });
 
-        jLabelLostPassword.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelLostPassword.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabelLostPassword.setForeground(new java.awt.Color(243, 243, 243));
-        jLabelLostPassword.setText("¿Contraseña olvidada?");
-        jLabelLostPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
         jImgMode.setText("Imagen");
         jImgMode.setFocusable(false);
         jImgMode.setPreferredSize(new java.awt.Dimension(232, 240));
         jImgMode.setRequestFocusEnabled(false);
+
+        jLabelWelcome1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabelWelcome1.setForeground(new java.awt.Color(243, 243, 243));
+        jLabelWelcome1.setText("¿Olvidó su contraseña?");
+
+        jTextField1.setBackground(new java.awt.Color(254, 243, 243));
+        jTextField1.setForeground(new java.awt.Color(52, 67, 70));
+        jTextField1.setText("Email");
+
+        jButton1.setForeground(new java.awt.Color(57, 62, 70));
+        jButton1.setText("Solicitar un cambio de contraseña");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jLabel1.setForeground(new java.awt.Color(254, 243, 243));
+        jLabel1.setText("Regresar al login");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelLoginLayout = new javax.swing.GroupLayout(jPanelLogin);
         jPanelLogin.setLayout(jPanelLoginLayout);
@@ -334,58 +277,46 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
             .addGroup(jPanelLoginLayout.createSequentialGroup()
                 .addGroup(jPanelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelLoginLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jImgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabelWelcome1)
+                            .addComponent(jLabelWelcome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanelLoginLayout.createSequentialGroup()
+                                .addComponent(jSliderMode, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jImgMode, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField1)))
                     .addGroup(jPanelLoginLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jSliderMode, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jImgMode, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-                .addGroup(jPanelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLoginLayout.createSequentialGroup()
-                        .addGroup(jPanelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(Line2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButtonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabelLostPassword))
-                            .addComponent(jLabel3)
-                            .addComponent(Line1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addGap(61, 61, 61))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLoginLayout.createSequentialGroup()
-                        .addComponent(jLabelWelcome)
-                        .addGap(103, 103, 103))))
+                        .addGap(221, 221, 221)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLoginLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(154, 154, 154))
         );
         jPanelLoginLayout.setVerticalGroup(
             jPanelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelLoginLayout.createSequentialGroup()
                 .addComponent(jTab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addGroup(jPanelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanelLoginLayout.createSequentialGroup()
-                        .addComponent(jLabelWelcome)
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Line1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Line2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(jButtonLogin))
-                    .addComponent(jImgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(39, 39, 39)
+                .addComponent(jLabelWelcome1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelWelcome)
+                .addGap(34, 34, 34)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
                 .addGroup(jPanelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelLoginLayout.createSequentialGroup()
-                        .addComponent(jLabelLostPassword)
-                        .addGap(24, 24, 24)
-                        .addComponent(jImgMode, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(79, 79, 79)
+                        .addComponent(jSliderMode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelLoginLayout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(jSliderMode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(187, 187, 187))
+                        .addGap(60, 60, 60)
+                        .addComponent(jImgMode, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -396,7 +327,7 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 426, Short.MAX_VALUE)
+            .addComponent(jPanelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 426, Short.MAX_VALUE)
         );
 
         pack();
@@ -421,6 +352,10 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
     
     }//GEN-LAST:event_jIcoMouseClicked
 
+    private void jBtnCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnCloseMouseClicked
+        dispose();
+    }//GEN-LAST:event_jBtnCloseMouseClicked
+
     private void jSliderModeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderModeStateChanged
         int val = jSliderMode.getValue();
 
@@ -432,15 +367,11 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jSliderModeStateChanged
 
-    private void jBtnCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnCloseMouseClicked
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        Login log = new Login();
+        log.show();
         dispose();
-    }//GEN-LAST:event_jBtnCloseMouseClicked
-
-    private void jButtonLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonLoginMouseClicked
-        Menu menu = new Menu();
-        menu.show();
-        dispose();
-    }//GEN-LAST:event_jButtonLoginMouseClicked
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -493,21 +424,17 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Line1;
-    private javax.swing.JPanel Line2;
     private javax.swing.JLabel jBtnClose;
     private javax.swing.JLabel jBtnMinimize;
-    private javax.swing.JButton jButtonLogin;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jIco;
-    private javax.swing.JLabel jImgLogo;
     private javax.swing.JLabel jImgMode;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabelLostPassword;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelWelcome;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel jLabelWelcome1;
     private javax.swing.JPanel jPanelLogin;
     private javax.swing.JSlider jSliderMode;
     private javax.swing.JPanel jTab;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

@@ -7,6 +7,7 @@ package vigilante;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import java.awt.Toolkit;
 
 /**
  *
@@ -26,11 +27,15 @@ public class Menu extends javax.swing.JFrame {
     }
     
     public void scaleImage(){
-        ImageIcon icon = new ImageIcon("C:\\Users\\josue\\Desktop\\Vigilantes\\Vigilantes\\src\\vigilante\\Imagenes\\logo-white.png");
-        Image img = icon.getImage();
-        Image imgScale = img.getScaledInstance(jLabel3.getWidth(), jLabel3.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon scaledIcon = new ImageIcon(imgScale);
-        jLabel3.setIcon(scaledIcon);
+   
+       ImageIcon ImgIcon1, ImgIcon2;
+       Image img1, img2;
+        
+        ImgIcon1 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../Imagenes/LogoDark.png")));
+        img1 = ImgIcon1.getImage();
+        img2 = img1.getScaledInstance(jImgLogo.getWidth(), jImgLogo.getHeight(), Image.SCALE_SMOOTH);
+        ImgIcon2 = new ImageIcon(img2);
+        jImgLogo.setIcon(ImgIcon2);
     }
 
     /**
@@ -46,6 +51,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jImgLogo = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         btnSalida = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -80,13 +86,20 @@ public class Menu extends javax.swing.JFrame {
         jLabel2.setText("Sistema Vigilantes");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        jImgLogo.setText("Imagen");
+        jImgLogo.setFocusable(false);
+        jImgLogo.setPreferredSize(new java.awt.Dimension(232, 240));
+        jImgLogo.setRequestFocusEnabled(false);
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(17, 17, 17)
+                .addComponent(jImgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -95,9 +108,15 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jImgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         jPanel5.setBackground(new java.awt.Color(57, 62, 70));
@@ -160,6 +179,11 @@ public class Menu extends javax.swing.JFrame {
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 180, 270, 170));
 
         btnZonas.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -177,11 +201,17 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().add(btnZonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 490, 270, 170));
 
         jButton9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/entrada-128.png"))); // NOI18N
         jButton9.setText("Portones");
         jButton9.setContentAreaFilled(false);
         jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton9.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
         getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 270, 170));
 
         jButton11.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -195,6 +225,7 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 180, 270, 170));
 
         jButton12.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/visitor-128.png"))); // NOI18N
         jButton12.setText("Residentes");
         jButton12.setContentAreaFilled(false);
         jButton12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -316,12 +347,18 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 10, -1, -1));
 
         jButton13.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton13.setText("Horarios");
+        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/visitante-128.png"))); // NOI18N
+        jButton13.setText("Pagos");
         jButton13.setContentAreaFilled(false);
         jButton13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton13.setDefaultCapable(false);
         jButton13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton13.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 490, 270, 170));
 
         pack();
@@ -348,6 +385,23 @@ public class Menu extends javax.swing.JFrame {
         zonas.show();
         dispose();
     }//GEN-LAST:event_btnZonasActionPerformed
+
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+        VisualizarPortones VP = new VisualizarPortones();
+        VP.show();
+    }//GEN-LAST:event_jButton9MouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        Personal P = new Personal();
+        P.show();
+        dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        PagoPersonal PagoP = new PagoPersonal();
+        PagoP.show();
+        dispose();
+    }//GEN-LAST:event_jButton13ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -394,6 +448,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton9;
+    private javax.swing.JLabel jImgLogo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

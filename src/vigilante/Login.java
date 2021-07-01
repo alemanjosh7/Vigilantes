@@ -87,7 +87,6 @@ public class Login extends javax.swing.JFrame {
     }
     
     private void initIcon(){
-        
         ImageIcon ImgIcon1, ImgIcon2;
         Image img1, img2;
         
@@ -107,7 +106,8 @@ public class Login extends javax.swing.JFrame {
         img1 = ImgIcon1.getImage();
         img2 = img1.getScaledInstance(jBtnClose.getWidth(), jBtnClose.getHeight(), Image.SCALE_SMOOTH);
         ImgIcon2 = new ImageIcon(img2);
-        jBtnClose.setIcon(ImgIcon2);}
+        jBtnClose.setIcon(ImgIcon2);
+    }
     
     public Login() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../Imagenes/RectangleLogo.png")) );
@@ -170,6 +170,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         jBtnClose.setText("Cerrar");
+        jBtnClose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBtnClose.setFocusable(false);
         jBtnClose.setPreferredSize(new java.awt.Dimension(232, 240));
         jBtnClose.setRequestFocusEnabled(false);
@@ -180,6 +181,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         jBtnMinimize.setText("Minimizar");
+        jBtnMinimize.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBtnMinimize.setFocusable(false);
         jBtnMinimize.setPreferredSize(new java.awt.Dimension(232, 240));
         jBtnMinimize.setRequestFocusEnabled(false);
@@ -320,6 +322,11 @@ public class Login extends javax.swing.JFrame {
         jLabelLostPassword.setForeground(new java.awt.Color(243, 243, 243));
         jLabelLostPassword.setText("¿Contraseña olvidada?");
         jLabelLostPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelLostPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelLostPasswordMouseClicked(evt);
+            }
+        });
 
         jImgMode.setText("Imagen");
         jImgMode.setFocusable(false);
@@ -441,6 +448,12 @@ public class Login extends javax.swing.JFrame {
         menu.show();
         dispose();
     }//GEN-LAST:event_jButtonLoginMouseClicked
+
+    private void jLabelLostPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLostPasswordMouseClicked
+        ContraseñaOlvidada contra = new ContraseñaOlvidada();
+        contra.show();
+        dispose();
+    }//GEN-LAST:event_jLabelLostPasswordMouseClicked
 
     /**
      * @param args the command line arguments

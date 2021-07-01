@@ -223,12 +223,12 @@ public class Personal extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 3, Short.MAX_VALUE))
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 33, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         getContentPane().add(jPanel3);
-        jPanel3.setBounds(190, 0, 1177, 39);
+        jPanel3.setBounds(190, 0, 1171, 39);
 
         jPanel4.setMinimumSize(new java.awt.Dimension(1366, 768));
         jPanel4.setLayout(null);
