@@ -174,6 +174,7 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
         });
 
         jBtnClose.setText("Cerrar");
+        jBtnClose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBtnClose.setFocusable(false);
         jBtnClose.setPreferredSize(new java.awt.Dimension(232, 240));
         jBtnClose.setRequestFocusEnabled(false);
@@ -184,6 +185,7 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
         });
 
         jBtnMinimize.setText("Minimizar");
+        jBtnMinimize.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBtnMinimize.setFocusable(false);
         jBtnMinimize.setPreferredSize(new java.awt.Dimension(232, 240));
         jBtnMinimize.setRequestFocusEnabled(false);
@@ -256,6 +258,7 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
 
         jButton1.setForeground(new java.awt.Color(57, 62, 70));
         jButton1.setText("Solicitar un cambio de contraseña");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel1.setForeground(new java.awt.Color(254, 243, 243));
         jLabel1.setText("Regresar al login");
