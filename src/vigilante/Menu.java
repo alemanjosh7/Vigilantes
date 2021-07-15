@@ -177,7 +177,6 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().add(btnZonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 490, 270, 170));
 
         jButton9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton9.setIcon(new javax.swing.ImageIcon("C:\\Users\\josue\\Desktop\\Vigilantes\\Vigilantes\\src\\vigilante\\Imagenes\\porton.png")); // NOI18N
         jButton9.setText("Portones");
         jButton9.setContentAreaFilled(false);
         jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -196,7 +195,6 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 180, 270, 170));
 
         jButton12.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton12.setIcon(new javax.swing.ImageIcon("C:\\Users\\josue\\Desktop\\Vigilantes\\Vigilantes\\src\\vigilante\\Imagenes\\residente.png")); // NOI18N
         jButton12.setText("Residentes");
         jButton12.setContentAreaFilled(false);
         jButton12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -222,7 +220,6 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel10.setBackground(new java.awt.Color(255, 211, 105));
 
-        changeThemeBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\josue\\Desktop\\Vigilantes\\Vigilantes\\src\\vigilante\\Imagenes\\light.png")); // NOI18N
         changeThemeBtn.setAlignmentY(0.7F);
         changeThemeBtn.setContentAreaFilled(false);
         changeThemeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -319,13 +316,17 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 10, -1, -1));
 
         jButton13.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton13.setIcon(new javax.swing.ImageIcon("C:\\Users\\josue\\Desktop\\Vigilantes\\Vigilantes\\src\\vigilante\\Imagenes\\calendario.png")); // NOI18N
         jButton13.setText("Horarios");
         jButton13.setContentAreaFilled(false);
         jButton13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton13.setDefaultCapable(false);
         jButton13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton13.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 490, 270, 170));
 
         pack();
@@ -352,6 +353,12 @@ public class Menu extends javax.swing.JFrame {
         zonas.show();
         dispose();
     }//GEN-LAST:event_btnZonasActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        MenuHorario horarios = new MenuHorario();
+        horarios.show();
+        dispose();
+    }//GEN-LAST:event_jButton13ActionPerformed
 
     /**
      * @param args the command line arguments

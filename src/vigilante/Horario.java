@@ -9,12 +9,12 @@ package vigilante;
  *
  * @author josue
  */
-public class Zonas extends javax.swing.JFrame {
+public class Horario extends javax.swing.JFrame {
 
     /**
      * Creates new form Zonas
      */
-    public Zonas() {
+    public Horario() {
         initComponents();
     }
 
@@ -47,7 +47,9 @@ public class Zonas extends javax.swing.JFrame {
         jlblTipoEntrada1 = new javax.swing.JLabel();
         jlblTipoEntrada3 = new javax.swing.JLabel();
         jlblTipoEntrada6 = new javax.swing.JLabel();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        jlblTipoEntrada7 = new javax.swing.JLabel();
+        jFormattedTextField3 = new javax.swing.JFormattedTextField();
+        jFormattedTextField4 = new javax.swing.JFormattedTextField();
         jPanel10 = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
@@ -59,7 +61,6 @@ public class Zonas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1366, 768));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1366, 768));
         setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(57, 62, 70));
@@ -259,19 +260,30 @@ public class Zonas extends javax.swing.JFrame {
 
         jlblTipoEntrada1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jlblTipoEntrada1.setForeground(new java.awt.Color(255, 211, 105));
-        jlblTipoEntrada1.setText("Ingreso de Zona");
+        jlblTipoEntrada1.setText("Ingreso de Horario");
 
         jlblTipoEntrada3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jlblTipoEntrada3.setText("Nombre de la Zona:");
+        jlblTipoEntrada3.setText("ID horario");
 
         jlblTipoEntrada6.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jlblTipoEntrada6.setText("Id de la zona:");
+        jlblTipoEntrada6.setText("Fecha Fin");
 
-        jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFormattedTextField2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jFormattedTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jlblTipoEntrada7.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jlblTipoEntrada7.setText("Fecha Inicio");
+
+        jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        jFormattedTextField3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFormattedTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField2ActionPerformed(evt);
+                jFormattedTextField3ActionPerformed(evt);
+            }
+        });
+
+        jFormattedTextField4.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        jFormattedTextField4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFormattedTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextField4ActionPerformed(evt);
             }
         });
 
@@ -290,15 +302,21 @@ public class Zonas extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlblTipoEntrada3)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(392, 392, 392)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlblTipoEntrada6))))
+                            .addComponent(jlblTipoEntrada3)
+                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(61, 61, 61)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlblTipoEntrada7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jFormattedTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlblTipoEntrada6))
+                        .addGap(32, 32, 32)))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -306,14 +324,16 @@ public class Zonas extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jlblTipoEntrada1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlblTipoEntrada3)
+                    .addComponent(jlblTipoEntrada7)
                     .addComponent(jlblTipoEntrada6))
-                .addGap(35, 35, 35)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFormattedTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -322,7 +342,7 @@ public class Zonas extends javax.swing.JFrame {
         );
 
         jPanel3.add(jPanel4);
-        jPanel4.setBounds(20, 100, 1040, 650);
+        jPanel4.setBounds(10, 100, 1040, 650);
 
         jPanel10.setBackground(new java.awt.Color(255, 211, 105));
 
@@ -426,15 +446,19 @@ public class Zonas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextField1ActionPerformed
 
-    private void jFormattedTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField2ActionPerformed
-
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         Menu menu = new Menu();
         menu.show();
         dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jFormattedTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextField3ActionPerformed
+
+    private void jFormattedTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextField4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -453,20 +477,21 @@ public class Zonas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Zonas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Horario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Zonas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Horario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Zonas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Horario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Zonas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Horario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Zonas().setVisible(true);
+                new Horario().setVisible(true);
             }
         });
     }
@@ -479,7 +504,8 @@ public class Zonas extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;
     private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
+    private javax.swing.JFormattedTextField jFormattedTextField3;
+    private javax.swing.JFormattedTextField jFormattedTextField4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -500,5 +526,6 @@ public class Zonas extends javax.swing.JFrame {
     private javax.swing.JLabel jlblTipoEntrada1;
     private javax.swing.JLabel jlblTipoEntrada3;
     private javax.swing.JLabel jlblTipoEntrada6;
+    private javax.swing.JLabel jlblTipoEntrada7;
     // End of variables declaration//GEN-END:variables
 }
