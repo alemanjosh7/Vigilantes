@@ -160,6 +160,11 @@ public class Menu extends javax.swing.JFrame {
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 180, 270, 170));
 
         btnZonas.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -177,11 +182,17 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().add(btnZonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 490, 270, 170));
 
         jButton9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/Imagenes/entrada-128.png"))); // NOI18N
         jButton9.setText("Portones");
         jButton9.setContentAreaFilled(false);
         jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton9.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 270, 170));
 
         jButton11.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -192,15 +203,26 @@ public class Menu extends javax.swing.JFrame {
         jButton11.setDefaultCapable(false);
         jButton11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton11.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 180, 270, 170));
 
         jButton12.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/casa-128.png"))); // NOI18N
         jButton12.setText("Residentes");
         jButton12.setContentAreaFilled(false);
         jButton12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton12.setDefaultCapable(false);
         jButton12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton12.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 490, 270, 170));
 
         jPanel2.setBackground(new java.awt.Color(255, 211, 105));
@@ -316,6 +338,7 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 10, -1, -1));
 
         jButton13.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/visitor-128.png"))); // NOI18N
         jButton13.setText("Horarios");
         jButton13.setContentAreaFilled(false);
         jButton13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -359,6 +382,30 @@ public class Menu extends javax.swing.JFrame {
         horarios.show();
         dispose();
     }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        MenuPorton MP = new MenuPorton();
+        MP.show();
+        dispose();
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        MenuResidencia MR = new MenuResidencia();
+        MR.show();
+        dispose();
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        MenuVigilantes MV = new MenuVigilantes();
+        MV.show();
+        dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        MenuResidentes MV = new MenuResidentes();
+        MV.show();
+        dispose();
+    }//GEN-LAST:event_jButton12ActionPerformed
 
     /**
      * @param args the command line arguments
