@@ -148,7 +148,6 @@ public class VisualizarZonas extends javax.swing.JFrame {
             }
         });
 
-        btnTheme.setIcon(new javax.swing.ImageIcon("C:\\Users\\josue\\Desktop\\Vigilantes\\Vigilantes\\src\\vigilante\\Imagenes\\light.png")); // NOI18N
         btnTheme.setAlignmentY(0.7F);
         btnTheme.setContentAreaFilled(false);
         btnTheme.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

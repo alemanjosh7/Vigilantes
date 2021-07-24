@@ -32,11 +32,10 @@ public class MenuVigilantes extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         changeThemeBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        btnVisVigilante = new javax.swing.JButton();
         btnGestionarVigilantes = new javax.swing.JButton();
+        btnGestionarVigilantes1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(757, 516));
 
         jPanel2.setBackground(new java.awt.Color(255, 211, 105));
 
@@ -79,22 +78,9 @@ public class MenuVigilantes extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        btnVisVigilante.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnVisVigilante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/lupa.png"))); // NOI18N
-        btnVisVigilante.setText("Visualizar vigilante");
-        btnVisVigilante.setContentAreaFilled(false);
-        btnVisVigilante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnVisVigilante.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnVisVigilante.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnVisVigilante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVisVigilanteActionPerformed(evt);
-            }
-        });
-
         btnGestionarVigilantes.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnGestionarVigilantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/editar.png"))); // NOI18N
-        btnGestionarVigilantes.setText("Gestionar vigilante");
+        btnGestionarVigilantes.setText("Gestionar Horarios");
         btnGestionarVigilantes.setContentAreaFilled(false);
         btnGestionarVigilantes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGestionarVigilantes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -105,31 +91,40 @@ public class MenuVigilantes extends javax.swing.JFrame {
             }
         });
 
+        btnGestionarVigilantes1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnGestionarVigilantes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/editar.png"))); // NOI18N
+        btnGestionarVigilantes1.setText("Gestionar vigilante");
+        btnGestionarVigilantes1.setContentAreaFilled(false);
+        btnGestionarVigilantes1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGestionarVigilantes1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnGestionarVigilantes1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnGestionarVigilantes1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGestionarVigilantes1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(91, 91, 91)
-                    .addComponent(btnGestionarVigilantes, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(35, 35, 35)
-                    .addComponent(btnVisVigilante, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(91, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(btnGestionarVigilantes1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(btnGestionarVigilantes, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(90, 90, 90))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 455, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(173, 173, 173)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnGestionarVigilantes, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnVisVigilante, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(173, Short.MAX_VALUE)))
+                .addGap(118, 118, 118)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnGestionarVigilantes, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGestionarVigilantes1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
 
         pack();
@@ -144,17 +139,17 @@ public class MenuVigilantes extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
 
-    private void btnVisVigilanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisVigilanteActionPerformed
-        VisualizarPersonal visP = new VisualizarPersonal();
-        visP.show();
-        dispose();
-    }//GEN-LAST:event_btnVisVigilanteActionPerformed
-
     private void btnGestionarVigilantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarVigilantesActionPerformed
-        Personal vigilante = new Personal();
-        vigilante.show();
+        MenuHorarios MH = new MenuHorarios();
+        MH.show();
         dispose();
     }//GEN-LAST:event_btnGestionarVigilantesActionPerformed
+
+    private void btnGestionarVigilantes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarVigilantes1ActionPerformed
+        MenuPersonal MP = new MenuPersonal();
+        MP.show();
+        dispose();
+    }//GEN-LAST:event_btnGestionarVigilantes1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,7 +188,7 @@ public class MenuVigilantes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGestionarVigilantes;
-    private javax.swing.JButton btnVisVigilante;
+    private javax.swing.JButton btnGestionarVigilantes1;
     private javax.swing.JButton changeThemeBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;

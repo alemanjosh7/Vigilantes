@@ -326,7 +326,6 @@ public class Zonas extends javax.swing.JFrame {
 
         jPanel10.setBackground(new java.awt.Color(255, 211, 105));
 
-        jButton7.setIcon(new javax.swing.ImageIcon("C:\\Users\\josue\\Desktop\\Vigilantes\\Vigilantes\\src\\vigilante\\Imagenes\\light.png")); // NOI18N
         jButton7.setAlignmentY(0.7F);
         jButton7.setContentAreaFilled(false);
         jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

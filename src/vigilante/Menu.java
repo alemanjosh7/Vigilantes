@@ -54,11 +54,12 @@ public class Menu extends javax.swing.JFrame {
         jImgLogo = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         btnSalida = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jbtnAdmin = new javax.swing.JButton();
+        jbtnVigilante = new javax.swing.JButton();
+        btnVigilantes = new javax.swing.JButton();
         btnZonas = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
+        btnPortones = new javax.swing.JButton();
+        btnResidencia = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
@@ -69,7 +70,8 @@ public class Menu extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jButton13 = new javax.swing.JButton();
+        btnPagos = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1366, 768));
@@ -86,7 +88,6 @@ public class Menu extends javax.swing.JFrame {
         jLabel2.setText("Sistema Vigilantes");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jImgLogo.setText("Imagen");
         jImgLogo.setFocusable(false);
         jImgLogo.setPreferredSize(new java.awt.Dimension(232, 240));
         jImgLogo.setRequestFocusEnabled(false);
@@ -147,44 +148,62 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(22, 22, 22))
         );
 
+        jbtnAdmin.setText("Administrador");
+        jbtnAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnAdminActionPerformed(evt);
+            }
+        });
+
+        jbtnVigilante.setText("Vigilante");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jbtnVigilante, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jbtnAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(155, 155, 155)
+                .addGap(57, 57, 57)
+                .addComponent(jbtnAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jbtnVigilante, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(284, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/visitante-128.png"))); // NOI18N
-        jButton4.setText("Vigilantes");
-        jButton4.setContentAreaFilled(false);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnVigilantes.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnVigilantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/visitante-128.png"))); // NOI18N
+        btnVigilantes.setText("Vigilantes");
+        btnVigilantes.setContentAreaFilled(false);
+        btnVigilantes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVigilantes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnVigilantes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnVigilantes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnVigilantesActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 180, 270, 170));
+        getContentPane().add(btnVigilantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 180, 270, 170));
 
         btnZonas.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnZonas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/puntero-de-ubicacion-128.png"))); // NOI18N
@@ -200,39 +219,39 @@ public class Menu extends javax.swing.JFrame {
         });
         getContentPane().add(btnZonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 490, 270, 170));
 
-        jButton9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/entrada-128.png"))); // NOI18N
-        jButton9.setText("Portones");
-        jButton9.setContentAreaFilled(false);
-        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton9.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnPortones.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnPortones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/entrada-128.png"))); // NOI18N
+        btnPortones.setText("Portones");
+        btnPortones.setContentAreaFilled(false);
+        btnPortones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPortones.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPortones.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnPortones.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton9MouseClicked(evt);
+                btnPortonesMouseClicked(evt);
             }
         });
-        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 270, 170));
+        btnPortones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPortonesActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnPortones, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 270, 170));
 
-        jButton11.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/apartment-128.png"))); // NOI18N
-        jButton11.setText("Residencias");
-        jButton11.setContentAreaFilled(false);
-        jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton11.setDefaultCapable(false);
-        jButton11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton11.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 180, 270, 170));
-
-        jButton12.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/visitor-128.png"))); // NOI18N
-        jButton12.setText("Residentes");
-        jButton12.setContentAreaFilled(false);
-        jButton12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton12.setDefaultCapable(false);
-        jButton12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton12.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 490, 270, 170));
+        btnResidencia.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnResidencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/apartment-128.png"))); // NOI18N
+        btnResidencia.setText("Residencias");
+        btnResidencia.setContentAreaFilled(false);
+        btnResidencia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnResidencia.setDefaultCapable(false);
+        btnResidencia.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnResidencia.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnResidencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResidenciaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnResidencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 180, 270, 170));
 
         jPanel2.setBackground(new java.awt.Color(255, 211, 105));
         jPanel2.setPreferredSize(new java.awt.Dimension(1490, 60));
@@ -346,20 +365,35 @@ public class Menu extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 10, -1, -1));
 
-        jButton13.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/visitante-128.png"))); // NOI18N
-        jButton13.setText("Pagos");
-        jButton13.setContentAreaFilled(false);
-        jButton13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton13.setDefaultCapable(false);
-        jButton13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton13.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
+        btnPagos.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnPagos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/visitante-128.png"))); // NOI18N
+        btnPagos.setText("Pagos");
+        btnPagos.setContentAreaFilled(false);
+        btnPagos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPagos.setDefaultCapable(false);
+        btnPagos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPagos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnPagos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
+                btnPagosActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 490, 270, 170));
+        getContentPane().add(btnPagos, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 490, 270, 170));
+
+        jButton12.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/casa-128.png"))); // NOI18N
+        jButton12.setText("Residentes");
+        jButton12.setContentAreaFilled(false);
+        jButton12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton12.setDefaultCapable(false);
+        jButton12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton12.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 490, 270, 170));
 
         pack();
         setLocationRelativeTo(null);
@@ -386,22 +420,44 @@ public class Menu extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnZonasActionPerformed
 
-    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+    private void btnPortonesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPortonesMouseClicked
         VisualizarPortones VP = new VisualizarPortones();
         VP.show();
-    }//GEN-LAST:event_jButton9MouseClicked
+    }//GEN-LAST:event_btnPortonesMouseClicked
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        Personal P = new Personal();
+    private void btnVigilantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVigilantesActionPerformed
+        MenuVigilantes P = new MenuVigilantes();
         P.show();
         dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnVigilantesActionPerformed
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+    private void btnPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosActionPerformed
         PagoPersonal PagoP = new PagoPersonal();
         PagoP.show();
         dispose();
-    }//GEN-LAST:event_jButton13ActionPerformed
+    }//GEN-LAST:event_btnPagosActionPerformed
+
+    private void btnPortonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPortonesActionPerformed
+        MenuPorton MPort = new MenuPorton();
+        MPort.show();
+        dispose();
+    }//GEN-LAST:event_btnPortonesActionPerformed
+
+    private void btnResidenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResidenciaActionPerformed
+        MenuResidencia MRes = new MenuResidencia();
+        MRes.show();
+        dispose();
+    }//GEN-LAST:event_btnResidenciaActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        MenuResidentes MV = new MenuResidentes();
+        MV.show();
+        dispose();
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jbtnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAdminActionPerformed
+        
+    }//GEN-LAST:event_jbtnAdminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -439,15 +495,15 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnPagos;
+    private javax.swing.JButton btnPortones;
+    private javax.swing.JButton btnResidencia;
     private javax.swing.JButton btnSalida;
+    private javax.swing.JButton btnVigilantes;
     private javax.swing.JButton btnZonas;
     private javax.swing.JButton changeThemeBtn;
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jImgLogo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -462,5 +518,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JButton jbtnAdmin;
+    private javax.swing.JButton jbtnVigilante;
     // End of variables declaration//GEN-END:variables
 }

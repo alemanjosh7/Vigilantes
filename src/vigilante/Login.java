@@ -20,7 +20,16 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     
-    int mousepX, mousepY;
+    int mousepX,
+
+    /**
+     * Creates new form Login1
+     */
+
+    /**
+     * Creates new form Login
+     */
+    mousepY;
     Color Light = new Color(254, 243, 243), Dark = new Color(57, 62, 70);
     
     private void SetBackgroundDark(){
@@ -87,6 +96,7 @@ public class Login extends javax.swing.JFrame {
     }
     
     private void initIcon(){
+        
         ImageIcon ImgIcon1, ImgIcon2;
         Image img1, img2;
         
@@ -106,8 +116,7 @@ public class Login extends javax.swing.JFrame {
         img1 = ImgIcon1.getImage();
         img2 = img1.getScaledInstance(jBtnClose.getWidth(), jBtnClose.getHeight(), Image.SCALE_SMOOTH);
         ImgIcon2 = new ImageIcon(img2);
-        jBtnClose.setIcon(ImgIcon2);
-    }
+        jBtnClose.setIcon(ImgIcon2);}
     
     public Login() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../Imagenes/RectangleLogo.png")) );
@@ -260,7 +269,7 @@ public class Login extends javax.swing.JFrame {
         Line1.setLayout(Line1Layout);
         Line1Layout.setHorizontalGroup(
             Line1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(Line1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(Line1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -480,6 +489,62 @@ public class Login extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
