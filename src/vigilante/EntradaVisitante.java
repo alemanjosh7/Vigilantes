@@ -61,15 +61,8 @@ public class EntradaVisitante extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jlblTipoEntrada = new javax.swing.JLabel();
-        jlblIdResidencia = new javax.swing.JLabel();
         jlblMotivoEntrada = new javax.swing.JLabel();
-        jlblMotivoEntrada1 = new javax.swing.JLabel();
         jcmbTipoIS = new javax.swing.JComboBox<>();
-        jcmbIdResidencia = new javax.swing.JComboBox<>();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jrdbTrueEntrada = new javax.swing.JRadioButton();
         jrdbFalseEntrada = new javax.swing.JRadioButton();
         jlblEntrada = new javax.swing.JLabel();
@@ -81,14 +74,18 @@ public class EntradaVisitante extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jlblTipoEntrada1 = new javax.swing.JLabel();
-        jlblTipoEntrada2 = new javax.swing.JLabel();
-        jlblTipoEntrada3 = new javax.swing.JLabel();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
-        jFormattedTextField3 = new javax.swing.JFormattedTextField();
-        jlblTipoEntrada4 = new javax.swing.JLabel();
-        jFormattedTextField4 = new javax.swing.JFormattedTextField();
         jlblTipoEntrada5 = new javax.swing.JLabel();
+        jlblTipoEntrada2 = new javax.swing.JLabel();
+        jlblIdResidencia29 = new javax.swing.JLabel();
+        jlblMotivoEntrada59 = new javax.swing.JLabel();
         jcmbTipoIS1 = new javax.swing.JComboBox<>();
+        jcmbIdResidencia29 = new javax.swing.JComboBox<>();
+        jcmbIdResidencia30 = new javax.swing.JComboBox<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jrdbTrueEntrada1 = new javax.swing.JRadioButton();
+        jrdbFalseEntrada1 = new javax.swing.JRadioButton();
+        jlblEntrada1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registro Ingreso");
@@ -344,38 +341,10 @@ public class EntradaVisitante extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jlblTipoEntrada.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jlblTipoEntrada.setText("Apellido:");
-
-        jlblIdResidencia.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jlblIdResidencia.setText("Residencia a visitar:");
-
         jlblMotivoEntrada.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jlblMotivoEntrada.setText("Motivo de visita:");
 
-        jlblMotivoEntrada1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jlblMotivoEntrada1.setText("Hora de la entrada:");
-
         jcmbTipoIS.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-
-        jcmbIdResidencia.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jcmbIdResidencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcmbIdResidenciaActionPerformed(evt);
-            }
-        });
-
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFormattedTextField1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField1ActionPerformed(evt);
-            }
-        });
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
 
         buttonGroup1.add(jrdbTrueEntrada);
         jrdbTrueEntrada.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -468,26 +437,17 @@ public class EntradaVisitante extends javax.swing.JFrame {
         jlblTipoEntrada1.setForeground(new java.awt.Color(255, 211, 105));
         jlblTipoEntrada1.setText("Ingreso de Visitantes");
 
-        jlblTipoEntrada2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jlblTipoEntrada2.setText("Lugar donde ingreso el visitante: ");
-
-        jlblTipoEntrada3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jlblTipoEntrada3.setText("Nombre:");
-
-        jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFormattedTextField2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-
-        jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFormattedTextField3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-
-        jlblTipoEntrada4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jlblTipoEntrada4.setText("DUI:");
-
-        jFormattedTextField4.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFormattedTextField4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-
         jlblTipoEntrada5.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jlblTipoEntrada5.setText("Tipo de entrada:");
+
+        jlblTipoEntrada2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jlblTipoEntrada2.setText("Porton de Entrada:");
+
+        jlblIdResidencia29.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jlblIdResidencia29.setText("Visitante:");
+
+        jlblMotivoEntrada59.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jlblMotivoEntrada59.setText("Tipo de Porton:");
 
         jcmbTipoIS1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jcmbTipoIS1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
@@ -496,6 +456,35 @@ public class EntradaVisitante extends javax.swing.JFrame {
                 jcmbTipoIS1ActionPerformed(evt);
             }
         });
+
+        jcmbIdResidencia29.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jcmbIdResidencia29.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcmbIdResidencia29jcmbIdResidenciaActionPerformed(evt);
+            }
+        });
+
+        jcmbIdResidencia30.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jcmbIdResidencia30.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcmbIdResidencia30jcmbIdResidenciaActionPerformed(evt);
+            }
+        });
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane3.setViewportView(jTextArea2);
+
+        buttonGroup1.add(jrdbTrueEntrada1);
+        jrdbTrueEntrada1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jrdbTrueEntrada1.setText("SI");
+
+        buttonGroup1.add(jrdbFalseEntrada1);
+        jrdbFalseEntrada1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jrdbFalseEntrada1.setText("NO");
+
+        jlblEntrada1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jlblEntrada1.setText("¿Emergencia?");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -513,90 +502,91 @@ public class EntradaVisitante extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jlblMotivoEntrada)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(91, 91, 91)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlblTipoEntrada2)
+                            .addComponent(jcmbTipoIS1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(43, 43, 43)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlblIdResidencia29)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jcmbIdResidencia29, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jlblMotivoEntrada59)
+                                    .addComponent(jcmbIdResidencia30, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlblTipoEntrada5)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jcmbTipoIS, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(46, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlblEntrada1)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jrdbTrueEntrada1)
+                                .addGap(36, 36, 36)
+                                .addComponent(jrdbFalseEntrada1)))
+                        .addGap(87, 87, 87)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jlblEntrada)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jrdbTrueEntrada)
                                 .addGap(36, 36, 36)
-                                .addComponent(jrdbFalseEntrada))
-                            .addComponent(jcmbTipoIS, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlblTipoEntrada5)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlblTipoEntrada3)
-                            .addComponent(jlblTipoEntrada2)
-                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jcmbTipoIS1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(37, 37, 37)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jlblTipoEntrada)
-                            .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlblIdResidencia)
-                            .addComponent(jcmbIdResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(43, 43, 43)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jlblTipoEntrada4)
-                            .addComponent(jFormattedTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
-                            .addComponent(jlblMotivoEntrada1)
-                            .addComponent(jFormattedTextField2))))
-                .addContainerGap(25, Short.MAX_VALUE))
+                                .addComponent(jrdbFalseEntrada)))
+                        .addGap(68, 68, 68))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jlblTipoEntrada1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jlblTipoEntrada4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jlblMotivoEntrada1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jlblTipoEntrada)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jlblIdResidencia)
-                        .addGap(18, 18, 18)
-                        .addComponent(jcmbIdResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jlblTipoEntrada3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jlblTipoEntrada2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jcmbTipoIS1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(45, 45, 45)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlblTipoEntrada5, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jlblMotivoEntrada))
+                .addGap(38, 38, 38)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlblTipoEntrada2)
+                    .addComponent(jlblIdResidencia29)
+                    .addComponent(jlblMotivoEntrada59)
+                    .addComponent(jlblTipoEntrada5))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jcmbTipoIS1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcmbIdResidencia29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcmbIdResidencia30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcmbTipoIS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jlblMotivoEntrada)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jcmbTipoIS, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                        .addComponent(jlblEntrada)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jrdbTrueEntrada)
-                            .addComponent(jrdbFalseEntrada)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jlblEntrada)
+                                .addGap(21, 21, 21)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jrdbTrueEntrada)
+                                    .addComponent(jrdbFalseEntrada)))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jlblEntrada1)
+                                .addGap(21, 21, 21)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jrdbTrueEntrada1)
+                                    .addComponent(jrdbFalseEntrada1))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -610,18 +600,6 @@ public class EntradaVisitante extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
-
-    private void jcmbIdResidenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcmbIdResidenciaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcmbIdResidenciaActionPerformed
-
-    private void jcmbTipoIS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcmbTipoIS1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcmbTipoIS1ActionPerformed
-
     private void btnSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalidaActionPerformed
         Login login = new Login();
         login.show();
@@ -629,9 +607,22 @@ public class EntradaVisitante extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalidaActionPerformed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        // TODO add your handling code here:
+        MenuV menu = new MenuV();
+        menu.show();
         dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jcmbTipoIS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcmbTipoIS1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcmbTipoIS1ActionPerformed
+
+    private void jcmbIdResidencia29jcmbIdResidenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcmbIdResidencia29jcmbIdResidenciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcmbIdResidencia29jcmbIdResidenciaActionPerformed
+
+    private void jcmbIdResidencia30jcmbIdResidenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcmbIdResidencia30jcmbIdResidenciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcmbIdResidencia30jcmbIdResidenciaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -677,10 +668,6 @@ public class EntradaVisitante extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JFormattedTextField jFormattedTextField3;
-    private javax.swing.JFormattedTextField jFormattedTextField4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -699,24 +686,25 @@ public class EntradaVisitante extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JComboBox<String> jcmbIdResidencia;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JComboBox<String> jcmbIdResidencia29;
+    private javax.swing.JComboBox<String> jcmbIdResidencia30;
     private javax.swing.JComboBox<String> jcmbTipoIS;
     private javax.swing.JComboBox<String> jcmbTipoIS1;
     private javax.swing.JLabel jlblEntrada;
-    private javax.swing.JLabel jlblIdResidencia;
+    private javax.swing.JLabel jlblEntrada1;
+    private javax.swing.JLabel jlblIdResidencia29;
     private javax.swing.JLabel jlblMotivoEntrada;
-    private javax.swing.JLabel jlblMotivoEntrada1;
-    private javax.swing.JLabel jlblTipoEntrada;
+    private javax.swing.JLabel jlblMotivoEntrada59;
     private javax.swing.JLabel jlblTipoEntrada1;
     private javax.swing.JLabel jlblTipoEntrada2;
-    private javax.swing.JLabel jlblTipoEntrada3;
-    private javax.swing.JLabel jlblTipoEntrada4;
     private javax.swing.JLabel jlblTipoEntrada5;
     private javax.swing.JRadioButton jrdbFalseEntrada;
+    private javax.swing.JRadioButton jrdbFalseEntrada1;
     private javax.swing.JRadioButton jrdbTrueEntrada;
+    private javax.swing.JRadioButton jrdbTrueEntrada1;
     // End of variables declaration//GEN-END:variables
 }

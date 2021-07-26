@@ -156,6 +156,11 @@ public class Menu extends javax.swing.JFrame {
         });
 
         jbtnVigilante.setText("Vigilante");
+        jbtnVigilante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnVigilanteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -432,8 +437,8 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVigilantesActionPerformed
 
     private void btnPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosActionPerformed
-        PagoPersonal PagoP = new PagoPersonal();
-        PagoP.show();
+        MenuPago MP = new MenuPago();
+        MP.show();
         dispose();
     }//GEN-LAST:event_btnPagosActionPerformed
 
@@ -456,8 +461,14 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jbtnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAdminActionPerformed
-        
+        //Ya esta en Menu Administrador
     }//GEN-LAST:event_jbtnAdminActionPerformed
+
+    private void jbtnVigilanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnVigilanteActionPerformed
+       MenuV MV = new MenuV();
+       MV.show();
+       dispose();
+    }//GEN-LAST:event_jbtnVigilanteActionPerformed
 
     /**
      * @param args the command line arguments

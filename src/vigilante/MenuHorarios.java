@@ -141,7 +141,8 @@ public class MenuHorarios extends javax.swing.JFrame {
     }//GEN-LAST:event_changeThemeBtnActionPerformed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        // TODO add your handling code here:
+        Menu menu = new Menu();
+        menu.show();
         dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
 
