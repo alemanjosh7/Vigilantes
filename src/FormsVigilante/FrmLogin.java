@@ -10,13 +10,16 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
+import Modelo.Conexion;
+import java.sql.Connection;
 
 /**
  *
  * @author Usuario
  */
 public class FrmLogin extends javax.swing.JFrame {
-
+    Conexion enlace = new Conexion();
+    Connection conect = enlace.conectar();
     /**
      * Creates new form Login
      */

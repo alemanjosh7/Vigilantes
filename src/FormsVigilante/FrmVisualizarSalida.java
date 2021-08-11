@@ -5,12 +5,19 @@
  */
 package FormsVigilante;
 
+import Modelo.Conexion;
+import ControladorVigilante.SalidaController;
+import java.sql.Connection;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author CRISTIAN
  */
 public class FrmVisualizarSalida extends javax.swing.JFrame {
-
+    private Conexion enlace = new Conexion();
+    private Connection conect = enlace.conectar();
+    private SalidaController SC = new SalidaController();
     /**
      * Creates new form VisualizarSalida
      */
@@ -18,6 +25,7 @@ public class FrmVisualizarSalida extends javax.swing.JFrame {
         this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
+        this.jTRegistroSalida.setModel(SC.consultarDatosTabla());
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,8 +55,9 @@ public class FrmVisualizarSalida extends javax.swing.JFrame {
         jFTBusqueda = new javax.swing.JFormattedTextField();
         lblVisitante = new javax.swing.JLabel();
         lblImgBusqueda4 = new javax.swing.JLabel();
+        btnConsultar = new javax.swing.JButton();
         jPSSalida = new javax.swing.JScrollPane();
-        jTSalida = new javax.swing.JTable();
+        jTRegistroSalida = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1366, 768));
@@ -229,6 +238,11 @@ public class FrmVisualizarSalida extends javax.swing.JFrame {
 
         jFTBusqueda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
         jFTBusqueda.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFTBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFTBusquedaKeyTyped(evt);
+            }
+        });
 
         lblVisitante.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblVisitante.setText("Busqueda de Visitante:");
@@ -236,6 +250,18 @@ public class FrmVisualizarSalida extends javax.swing.JFrame {
         lblImgBusqueda4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblImgBusqueda4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgBuscar.png"))); // NOI18N
         lblImgBusqueda4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        btnConsultar.setBackground(new java.awt.Color(255, 211, 105));
+        btnConsultar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnConsultar.setText("Consultar");
+        btnConsultar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnConsultar.setContentAreaFilled(false);
+        btnConsultar.setFocusable(false);
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPBusquedaContainerLayout = new javax.swing.GroupLayout(jPBusquedaContainer);
         jPBusquedaContainer.setLayout(jPBusquedaContainerLayout);
@@ -248,13 +274,16 @@ public class FrmVisualizarSalida extends javax.swing.JFrame {
                 .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblVisitante)
                     .addComponent(jFTBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(401, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(262, Short.MAX_VALUE))
         );
         jPBusquedaContainerLayout.setVerticalGroup(
             jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBusquedaContainerLayout.createSequentialGroup()
                 .addContainerGap(36, Short.MAX_VALUE)
                 .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblImgBusqueda4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
                         .addComponent(lblVisitante)
@@ -263,7 +292,7 @@ public class FrmVisualizarSalida extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTSalida.setModel(new javax.swing.table.DefaultTableModel(
+        jTRegistroSalida.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -273,7 +302,7 @@ public class FrmVisualizarSalida extends javax.swing.JFrame {
                 "Estado del Ingreso", "Tipo de entrada", "Zona"
             }
         ));
-        jPSSalida.setViewportView(jTSalida);
+        jPSSalida.setViewportView(jTRegistroSalida);
 
         javax.swing.GroupLayout jPMainContainerLayout = new javax.swing.GroupLayout(jPMainContainer);
         jPMainContainer.setLayout(jPMainContainerLayout);
@@ -283,23 +312,19 @@ public class FrmVisualizarSalida extends javax.swing.JFrame {
                 .addContainerGap(40, Short.MAX_VALUE)
                 .addComponent(jPBusquedaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(222, 222, 222))
-            .addGroup(jPMainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPMainContainerLayout.createSequentialGroup()
-                    .addGap(55, 55, 55)
-                    .addComponent(jPSSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(55, Short.MAX_VALUE)))
+            .addGroup(jPMainContainerLayout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(jPSSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPMainContainerLayout.setVerticalGroup(
             jPMainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPMainContainerLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jPBusquedaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(542, Short.MAX_VALUE))
-            .addGroup(jPMainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPMainContainerLayout.createSequentialGroup()
-                    .addGap(164, 164, 164)
-                    .addComponent(jPSSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(35, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(jPSSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
         );
 
         getContentPane().add(jPMainContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, -1, -1));
@@ -325,6 +350,35 @@ public class FrmVisualizarSalida extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnGoLogInActionPerformed
 
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnConsultarActionPerformed
+
+    private void jFTBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaKeyTyped
+        //Solo permitir paso de numeros
+        if(SoloNumero(evt.getKeyChar())){
+           //no deja que se escriba un letra
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Ingresar números");
+            }
+        }//GEN-LAST:event_jFTBusquedaKeyTyped
+
+    //Metodos
+    //Para validar que solo permitan pasar Numeros
+    public boolean SoloNumero(char numero){
+        if(Character.isDigit(numero) || Character.isISOControl(numero)){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    //Limpiar campos
+    public void LimpiarCampos(){
+        jFTBusqueda.setText("");
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -364,6 +418,7 @@ public class FrmVisualizarSalida extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnGoLogIn;
     private javax.swing.JButton btnTheme26;
     private javax.swing.JFormattedTextField jFTBusqueda;
@@ -375,7 +430,7 @@ public class FrmVisualizarSalida extends javax.swing.JFrame {
     private javax.swing.JPanel jPSideBar;
     private javax.swing.JPanel jPToolStrip26;
     private javax.swing.JPanel jPbtnSBContainer;
-    private javax.swing.JTable jTSalida;
+    private javax.swing.JTable jTRegistroSalida;
     private javax.swing.JLabel lblCargo26;
     private javax.swing.JLabel lblCargoUsuario26;
     private javax.swing.JLabel lblExitButton26;

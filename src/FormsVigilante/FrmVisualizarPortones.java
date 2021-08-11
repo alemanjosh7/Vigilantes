@@ -5,16 +5,23 @@
  */
 package FormsVigilante;
 
+import Modelo.Conexion;
+import ControladorVigilante.PortonesController;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.sql.Connection;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author josue
  */
 public class FrmVisualizarPortones extends javax.swing.JFrame {
-
+    private Conexion enlace = new Conexion();
+    private PortonesController PC = new PortonesController();
+    private Connection conect = enlace.conectar();
+     
     /**
      * Creates new form VisualizarZonas
      */
@@ -22,7 +29,9 @@ public class FrmVisualizarPortones extends javax.swing.JFrame {
        this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
-        
+        this.cmbZonas.setModel(PC.consultarZona());
+        this.cmbTipoPorton.setModel(PC.consultarTipoPorton());
+        this.jTPortones.setModel(PC.consultarDatosTabla());
     }
     
 
@@ -52,20 +61,20 @@ public class FrmVisualizarPortones extends javax.swing.JFrame {
         jPContainer = new javax.swing.JPanel();
         jPBusquedaContainer = new javax.swing.JPanel();
         lblIdResidencia = new javax.swing.JLabel();
-        cmbIdResidencia = new javax.swing.JComboBox<>();
-        jPButtons = new javax.swing.JPanel();
-        btnRegistrar = new javax.swing.JButton();
-        btnFiltrar = new javax.swing.JButton();
-        btnModificar = new javax.swing.JButton();
-        btnLimpiar = new javax.swing.JButton();
         lblRegistroPortones = new javax.swing.JLabel();
         lblZonas = new javax.swing.JLabel();
-        cmbZonas = new javax.swing.JComboBox<>();
         jSPPortones = new javax.swing.JScrollPane();
         jTPortones = new javax.swing.JTable();
-        jlblMotivoEntrada2 = new javax.swing.JLabel();
+        lblBuscarPorton = new javax.swing.JLabel();
+        lblImgBusqueda = new javax.swing.JLabel();
+        jPBotones = new javax.swing.JPanel();
+        btnConsultar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+        btnRegistrar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
         jFTBusqueda = new javax.swing.JFormattedTextField();
-        lblImgBusqueda3 = new javax.swing.JLabel();
+        cmbZonas = new javax.swing.JComboBox<>();
+        cmbTipoPorton = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1366, 768));
@@ -235,92 +244,12 @@ public class FrmVisualizarPortones extends javax.swing.JFrame {
         lblIdResidencia.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblIdResidencia.setText("Tipo de Porton:");
 
-        cmbIdResidencia.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        cmbIdResidencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbIdResidenciaActionPerformed(evt);
-            }
-        });
-
-        jPButtons.setBackground(new java.awt.Color(255, 255, 255));
-        jPButtons.setPreferredSize(new java.awt.Dimension(895, 60));
-
-        btnRegistrar.setBackground(new java.awt.Color(255, 211, 105));
-        btnRegistrar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnRegistrar.setText("Registrar");
-        btnRegistrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnRegistrar.setContentAreaFilled(false);
-        btnRegistrar.setFocusable(false);
-
-        btnFiltrar.setBackground(new java.awt.Color(255, 211, 105));
-        btnFiltrar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnFiltrar.setText("Filtrar");
-        btnFiltrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnFiltrar.setContentAreaFilled(false);
-        btnFiltrar.setFocusable(false);
-
-        btnModificar.setBackground(new java.awt.Color(255, 211, 105));
-        btnModificar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnModificar.setText("Modificar");
-        btnModificar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnModificar.setContentAreaFilled(false);
-        btnModificar.setFocusable(false);
-
-        btnLimpiar.setBackground(new java.awt.Color(255, 211, 105));
-        btnLimpiar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnLimpiar.setText("Limpiar");
-        btnLimpiar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnLimpiar.setContentAreaFilled(false);
-        btnLimpiar.setFocusable(false);
-
-        javax.swing.GroupLayout jPButtonsLayout = new javax.swing.GroupLayout(jPButtons);
-        jPButtons.setLayout(jPButtonsLayout);
-        jPButtonsLayout.setHorizontalGroup(
-            jPButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPButtonsLayout.createSequentialGroup()
-                .addGap(281, 281, 281)
-                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
-                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(119, 119, 119)
-                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
-            .addGroup(jPButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPButtonsLayout.createSequentialGroup()
-                    .addGap(82, 82, 82)
-                    .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(708, Short.MAX_VALUE)))
-        );
-        jPButtonsLayout.setVerticalGroup(
-            jPButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPButtonsLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32))
-            .addGroup(jPButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPButtonsLayout.createSequentialGroup()
-                    .addContainerGap(16, Short.MAX_VALUE)
-                    .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(29, 29, 29)))
-        );
-
         lblRegistroPortones.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblRegistroPortones.setForeground(new java.awt.Color(255, 211, 105));
         lblRegistroPortones.setText("Registrar Portones");
 
         lblZonas.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblZonas.setText("Zonas:");
-
-        cmbZonas.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        cmbZonas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
-        cmbZonas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbZonasActionPerformed(evt);
-            }
-        });
 
         jTPortones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -334,20 +263,113 @@ public class FrmVisualizarPortones extends javax.swing.JFrame {
         ));
         jSPPortones.setViewportView(jTPortones);
 
-        jlblMotivoEntrada2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jlblMotivoEntrada2.setText("Buscar Porton:");
+        lblBuscarPorton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblBuscarPorton.setText("identificador de Porton:");
 
-        jFTBusqueda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFTBusqueda.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jFTBusqueda.addActionListener(new java.awt.event.ActionListener() {
+        lblImgBusqueda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblImgBusqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgBuscar.png"))); // NOI18N
+        lblImgBusqueda.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jPBotones.setBackground(new java.awt.Color(255, 255, 255));
+        jPBotones.setPreferredSize(new java.awt.Dimension(895, 60));
+
+        btnConsultar.setBackground(new java.awt.Color(255, 211, 105));
+        btnConsultar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnConsultar.setText("Consultar");
+        btnConsultar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnConsultar.setContentAreaFilled(false);
+        btnConsultar.setFocusable(false);
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFTBusquedaActionPerformed(evt);
+                btnConsultarActionPerformed(evt);
             }
         });
 
-        lblImgBusqueda3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblImgBusqueda3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgBuscar.png"))); // NOI18N
-        lblImgBusqueda3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnLimpiar.setBackground(new java.awt.Color(255, 211, 105));
+        btnLimpiar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnLimpiar.setContentAreaFilled(false);
+        btnLimpiar.setFocusable(false);
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+
+        btnRegistrar.setBackground(new java.awt.Color(255, 211, 105));
+        btnRegistrar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnRegistrar.setText("Registrar");
+        btnRegistrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnRegistrar.setContentAreaFilled(false);
+        btnRegistrar.setFocusable(false);
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
+
+        btnModificar.setBackground(new java.awt.Color(255, 211, 105));
+        btnModificar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnModificar.setText("Modificar");
+        btnModificar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnModificar.setContentAreaFilled(false);
+        btnModificar.setFocusable(false);
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPBotonesLayout = new javax.swing.GroupLayout(jPBotones);
+        jPBotones.setLayout(jPBotonesLayout);
+        jPBotonesLayout.setHorizontalGroup(
+            jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(113, 113, 113)
+                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(113, 113, 113)
+                .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66))
+        );
+        jPBotonesLayout.setVerticalGroup(
+            jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32))
+        );
+
+        jFTBusqueda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        jFTBusqueda.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFTBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFTBusquedaKeyTyped(evt);
+            }
+        });
+
+        cmbZonas.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        cmbZonas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        cmbZonas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbZonasActionPerformed(evt);
+            }
+        });
+
+        cmbTipoPorton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        cmbTipoPorton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTipoPortonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPBusquedaContainerLayout = new javax.swing.GroupLayout(jPBusquedaContainer);
         jPBusquedaContainer.setLayout(jPBusquedaContainerLayout);
@@ -366,21 +388,21 @@ public class FrmVisualizarPortones extends javax.swing.JFrame {
                         .addGap(0, 25, Short.MAX_VALUE))
                     .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
                         .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
-                                .addComponent(lblImgBusqueda3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblImgBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlblMotivoEntrada2)
-                                    .addComponent(jFTBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(59, 59, 59)
+                                    .addComponent(lblBuscarPorton)
+                                    .addComponent(jFTBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(78, 78, 78)
                                 .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmbZonas, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblZonas))
+                                    .addComponent(lblZonas)
+                                    .addComponent(cmbZonas, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(43, 43, 43)
                                 .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmbIdResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblIdResidencia))))
+                                    .addComponent(lblIdResidencia)
+                                    .addComponent(cmbTipoPorton, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPBusquedaContainerLayout.setVerticalGroup(
@@ -396,15 +418,17 @@ public class FrmVisualizarPortones extends javax.swing.JFrame {
                             .addComponent(lblZonas))
                         .addGap(18, 18, 18)
                         .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbIdResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cmbZonas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFTBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cmbTipoPorton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblImgBusqueda3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jlblMotivoEntrada2)))
-                .addGap(29, 29, 29)
-                .addComponent(jPButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
+                        .addComponent(lblImgBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
+                            .addComponent(lblBuscarPorton)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jFTBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(41, 41, 41)
+                .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
                 .addComponent(jSPPortones, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(37, Short.MAX_VALUE))
         );
@@ -464,18 +488,6 @@ public class FrmVisualizarPortones extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_lblExitButtonMouseClicked
 
-    private void cmbIdResidenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbIdResidenciaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbIdResidenciaActionPerformed
-
-    private void cmbZonasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbZonasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbZonasActionPerformed
-
-    private void jFTBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFTBusquedaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFTBusquedaActionPerformed
-
     private void btnGoLogInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGoLogInMouseClicked
         FrmLogin login = new FrmLogin();
         login.show();
@@ -488,6 +500,59 @@ public class FrmVisualizarPortones extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnGoLogInActionPerformed
 
+    //Botones del CRUD
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        LimpiarCampos();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnConsultarActionPerformed
+
+    //Validacion de campos
+    private void jFTBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaKeyTyped
+        //Solo permitir paso de numeros
+        if(SoloNumero(evt.getKeyChar())){
+           //no deja que se escriba un letra
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Ingresar números");
+        }
+    }//GEN-LAST:event_jFTBusquedaKeyTyped
+
+    private void cmbZonasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbZonasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbZonasActionPerformed
+
+    private void cmbTipoPortonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoPortonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbTipoPortonActionPerformed
+    
+    //Metodos
+    //Para validar que solo permitan pasar Numeros
+    public boolean SoloNumero(char numero){
+        if(Character.isDigit(numero) || Character.isISOControl(numero)){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    //Limpiar campos
+    public void LimpiarCampos(){
+        jFTBusqueda.setText("");
+        cmbZonas.setSelectedIndex(1);
+        cmbTipoPorton.setSelectedIndex(1);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -531,17 +596,17 @@ public class FrmVisualizarPortones extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnFiltrar;
+    private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnGoLogIn;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnTheme;
-    private javax.swing.JComboBox<String> cmbIdResidencia;
+    private javax.swing.JComboBox<String> cmbTipoPorton;
     private javax.swing.JComboBox<String> cmbZonas;
     private javax.swing.JFormattedTextField jFTBusqueda;
+    private javax.swing.JPanel jPBotones;
     private javax.swing.JPanel jPBusquedaContainer;
-    private javax.swing.JPanel jPButtons;
     private javax.swing.JPanel jPContainer;
     private javax.swing.JPanel jPImageContainer;
     private javax.swing.JPanel jPSideBar;
@@ -549,13 +614,13 @@ public class FrmVisualizarPortones extends javax.swing.JFrame {
     private javax.swing.JPanel jPbtnSBContainer;
     private javax.swing.JScrollPane jSPPortones;
     private javax.swing.JTable jTPortones;
-    private javax.swing.JLabel jlblMotivoEntrada2;
+    private javax.swing.JLabel lblBuscarPorton;
     private javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblCargoUsuario;
     private javax.swing.JLabel lblExitButton;
     private javax.swing.JLabel lblIdResidencia;
     private javax.swing.JLabel lblImagen;
-    private javax.swing.JLabel lblImgBusqueda3;
+    private javax.swing.JLabel lblImgBusqueda;
     private javax.swing.JLabel lblNombreUsuario;
     private javax.swing.JLabel lblRegistroPortones;
     private javax.swing.JLabel lblSistemaVigilantes;

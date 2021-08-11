@@ -5,17 +5,25 @@
  */
 package FormsVigilante;
 
+import Modelo.Conexion;
+import ControladorVigilante.ZonasController;
+import java.sql.Connection;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author josue
  */
 public class FrmZonas extends javax.swing.JFrame {
-
+    private Conexion enlace = new Conexion();
+    private Connection conect = enlace.conectar();
+    private ZonasController ZC = new ZonasController();
     /**
      * Creates new form Zonas
      */
     public FrmZonas() {
         initComponents();
+        CargarDatosTabla();
     }
 
     /**
@@ -29,21 +37,20 @@ public class FrmZonas extends javax.swing.JFrame {
 
         jPColorSistemaVigilancia = new javax.swing.JPanel();
         jPRegistroZonas = new javax.swing.JPanel();
-        jFTNombreZona = new javax.swing.JFormattedTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jPBotones = new javax.swing.JPanel();
-        btnRegistrar = new javax.swing.JButton();
-        btnAgregar = new javax.swing.JButton();
-        btnModificar = new javax.swing.JButton();
-        btnLimpiar = new javax.swing.JButton();
-        jlblTipoEntrada1 = new javax.swing.JLabel();
+        jlblZonas = new javax.swing.JLabel();
+        jlblIdZona = new javax.swing.JLabel();
+        jPBotonesCRUD = new javax.swing.JPanel();
+        btnConsultar3 = new javax.swing.JButton();
+        btnLimpiar3 = new javax.swing.JButton();
+        btnRegistrar3 = new javax.swing.JButton();
+        btnModificar3 = new javax.swing.JButton();
         jlblNombreZona = new javax.swing.JLabel();
-        jlblZona = new javax.swing.JLabel();
-        jFTZona = new javax.swing.JFormattedTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTZonas = new javax.swing.JTable();
+        jFTidZona = new javax.swing.JTextField();
+        jFTNombreZona = new javax.swing.JTextField();
         jPToolStrip = new javax.swing.JPanel();
         lblExitButton = new javax.swing.JLabel();
-        btnTheme = new javax.swing.JButton();
         lblCargoUsuario = new javax.swing.JLabel();
         lblCargo = new javax.swing.JLabel();
         lblNombreUsuario = new javax.swing.JLabel();
@@ -58,6 +65,7 @@ public class FrmZonas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1366, 768));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1366, 768));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -67,105 +75,125 @@ public class FrmZonas extends javax.swing.JFrame {
         jPRegistroZonas.setBackground(new java.awt.Color(255, 255, 255));
         jPRegistroZonas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jFTNombreZona.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        jlblZonas.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jlblZonas.setForeground(new java.awt.Color(255, 211, 105));
+        jlblZonas.setText("Ingreso de Zona");
+
+        jlblIdZona.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jlblIdZona.setText("Id de la zona:");
+
+        jPBotonesCRUD.setBackground(new java.awt.Color(255, 255, 255));
+        jPBotonesCRUD.setPreferredSize(new java.awt.Dimension(895, 60));
+
+        btnConsultar3.setBackground(new java.awt.Color(255, 211, 105));
+        btnConsultar3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnConsultar3.setText("Consultar");
+        btnConsultar3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnConsultar3.setContentAreaFilled(false);
+        btnConsultar3.setFocusable(false);
+        btnConsultar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultar3ActionPerformed(evt);
+            }
+        });
+
+        btnLimpiar3.setBackground(new java.awt.Color(255, 211, 105));
+        btnLimpiar3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnLimpiar3.setText("Limpiar");
+        btnLimpiar3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnLimpiar3.setContentAreaFilled(false);
+        btnLimpiar3.setFocusable(false);
+        btnLimpiar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiar3ActionPerformed(evt);
+            }
+        });
+
+        btnRegistrar3.setBackground(new java.awt.Color(255, 211, 105));
+        btnRegistrar3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnRegistrar3.setText("Registrar");
+        btnRegistrar3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnRegistrar3.setContentAreaFilled(false);
+        btnRegistrar3.setFocusable(false);
+        btnRegistrar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrar3ActionPerformed(evt);
+            }
+        });
+
+        btnModificar3.setBackground(new java.awt.Color(255, 211, 105));
+        btnModificar3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnModificar3.setText("Modificar");
+        btnModificar3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnModificar3.setContentAreaFilled(false);
+        btnModificar3.setFocusable(false);
+        btnModificar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificar3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPBotonesCRUDLayout = new javax.swing.GroupLayout(jPBotonesCRUD);
+        jPBotonesCRUD.setLayout(jPBotonesCRUDLayout);
+        jPBotonesCRUDLayout.setHorizontalGroup(
+            jPBotonesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesCRUDLayout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addComponent(btnLimpiar3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(113, 113, 113)
+                .addComponent(btnRegistrar3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                .addComponent(btnModificar3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(113, 113, 113)
+                .addComponent(btnConsultar3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66))
+        );
+        jPBotonesCRUDLayout.setVerticalGroup(
+            jPBotonesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesCRUDLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPBotonesCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnConsultar3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRegistrar3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModificar3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLimpiar3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32))
+        );
+
+        jlblNombreZona.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jlblNombreZona.setText("Nombre de la Zona");
+
+        jTZonas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Identificación", "Nombre Zona"
+            }
+        ));
+        jScrollPane1.setViewportView(jTZonas);
+
+        jFTidZona.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFTidZona.setPreferredSize(new java.awt.Dimension(6, 30));
+        jFTidZona.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFTidZonaKeyTyped(evt);
+            }
+        });
+
         jFTNombreZona.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFTNombreZona.setPreferredSize(new java.awt.Dimension(6, 30));
         jFTNombreZona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jFTNombreZonaActionPerformed(evt);
             }
         });
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane2.setViewportView(jTable1);
-
-        jPBotones.setBackground(new java.awt.Color(255, 255, 255));
-
-        btnRegistrar.setBackground(new java.awt.Color(255, 211, 105));
-        btnRegistrar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnRegistrar.setText("Registrar");
-        btnRegistrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnRegistrar.setContentAreaFilled(false);
-        btnRegistrar.setFocusable(false);
-
-        btnAgregar.setBackground(new java.awt.Color(255, 211, 105));
-        btnAgregar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnAgregar.setText("Agregar");
-        btnAgregar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnAgregar.setContentAreaFilled(false);
-        btnAgregar.setFocusable(false);
-
-        btnModificar.setBackground(new java.awt.Color(255, 211, 105));
-        btnModificar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnModificar.setText("Modificar");
-        btnModificar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnModificar.setContentAreaFilled(false);
-        btnModificar.setFocusable(false);
-
-        btnLimpiar.setBackground(new java.awt.Color(255, 211, 105));
-        btnLimpiar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnLimpiar.setText("Limpiar");
-        btnLimpiar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnLimpiar.setContentAreaFilled(false);
-        btnLimpiar.setFocusable(false);
-
-        javax.swing.GroupLayout jPBotonesLayout = new javax.swing.GroupLayout(jPBotones);
-        jPBotones.setLayout(jPBotonesLayout);
-        jPBotonesLayout.setHorizontalGroup(
-            jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
-                .addGap(281, 281, 281)
-                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
-                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(119, 119, 119)
-                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
-            .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPBotonesLayout.createSequentialGroup()
-                    .addGap(82, 82, 82)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(708, Short.MAX_VALUE)))
-        );
-        jPBotonesLayout.setVerticalGroup(
-            jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
-                .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32))
-            .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
-                    .addContainerGap(31, Short.MAX_VALUE)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(29, 29, 29)))
-        );
-
-        jlblTipoEntrada1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jlblTipoEntrada1.setForeground(new java.awt.Color(255, 211, 105));
-        jlblTipoEntrada1.setText("Ingreso de Zona");
-
-        jlblNombreZona.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jlblNombreZona.setText("Nombre de la Zona:");
-
-        jlblZona.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jlblZona.setText("Id de la zona:");
-
-        jFTZona.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFTZona.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jFTZona.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFTZonaActionPerformed(evt);
+        jFTNombreZona.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFTNombreZonaKeyTyped(evt);
             }
         });
 
@@ -176,47 +204,48 @@ public class FrmZonas extends javax.swing.JFrame {
             .addGroup(jPRegistroZonasLayout.createSequentialGroup()
                 .addGroup(jPRegistroZonasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPRegistroZonasLayout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPRegistroZonasLayout.createSequentialGroup()
                         .addGap(378, 378, 378)
-                        .addComponent(jlblTipoEntrada1)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPRegistroZonasLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(jPRegistroZonasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlblNombreZona)
-                    .addComponent(jFTNombreZona, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlblZonas))
                     .addGroup(jPRegistroZonasLayout.createSequentialGroup()
-                        .addGap(392, 392, 392)
+                        .addGap(70, 70, 70)
                         .addGroup(jPRegistroZonasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jFTZona, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlblZona))))
-                .addContainerGap(25, Short.MAX_VALUE))
+                            .addComponent(jlblIdZona)
+                            .addGroup(jPRegistroZonasLayout.createSequentialGroup()
+                                .addComponent(jFTidZona, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(72, 72, 72)
+                                .addGroup(jPRegistroZonasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jlblNombreZona)
+                                    .addComponent(jFTNombreZona, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(0, 116, Short.MAX_VALUE))
+            .addGroup(jPRegistroZonasLayout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addGroup(jPRegistroZonasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPBotonesCRUD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPRegistroZonasLayout.setVerticalGroup(
             jPRegistroZonasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPRegistroZonasLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jlblTipoEntrada1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(jlblZonas)
+                .addGap(67, 67, 67)
                 .addGroup(jPRegistroZonasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlblNombreZona)
-                    .addComponent(jlblZona))
+                    .addComponent(jlblIdZona)
+                    .addComponent(jlblNombreZona))
                 .addGap(35, 35, 35)
                 .addGroup(jPRegistroZonasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFTNombreZona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFTZona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                    .addComponent(jFTidZona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFTNombreZona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addComponent(jPBotonesCRUD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPColorSistemaVigilancia.add(jPRegistroZonas);
-        jPRegistroZonas.setBounds(20, 100, 1040, 650);
+        jPRegistroZonas.setBounds(20, 70, 1040, 680);
 
         jPToolStrip.setBackground(new java.awt.Color(255, 211, 105));
         jPToolStrip.setMinimumSize(new java.awt.Dimension(1082, 61));
@@ -227,15 +256,6 @@ public class FrmZonas extends javax.swing.JFrame {
         lblExitButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblExitButtonMouseClicked(evt);
-            }
-        });
-
-        btnTheme.setAlignmentY(0.7F);
-        btnTheme.setContentAreaFilled(false);
-        btnTheme.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnTheme.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemeActionPerformed(evt);
             }
         });
 
@@ -264,9 +284,7 @@ public class FrmZonas extends javax.swing.JFrame {
                 .addComponent(lblCargo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblCargoUsuario)
-                .addGap(219, 219, 219)
-                .addComponent(btnTheme, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 297, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 560, Short.MAX_VALUE)
                 .addComponent(lblExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -277,14 +295,12 @@ public class FrmZonas extends javax.swing.JFrame {
                 .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPToolStripLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnTheme, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblUsuario)
-                                .addComponent(lblNombreUsuario)
-                                .addComponent(lblCargo)
-                                .addComponent(lblCargoUsuario)))))
+                        .addGap(0, 10, Short.MAX_VALUE)
+                        .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblUsuario)
+                            .addComponent(lblNombreUsuario)
+                            .addComponent(lblCargo)
+                            .addComponent(lblCargoUsuario))))
                 .addContainerGap())
         );
 
@@ -292,7 +308,7 @@ public class FrmZonas extends javax.swing.JFrame {
         jPToolStrip.setBounds(0, 0, 1080, 61);
 
         getContentPane().add(jPColorSistemaVigilancia);
-        jPColorSistemaVigilancia.setBounds(290, 0, 1080, 768);
+        jPColorSistemaVigilancia.setBounds(290, 0, 1080, 780);
 
         jPSideBar.setBackground(new java.awt.Color(57, 62, 70));
         jPSideBar.setPreferredSize(new java.awt.Dimension(287, 811));
@@ -393,24 +409,6 @@ public class FrmZonas extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jFTNombreZonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFTNombreZonaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFTNombreZonaActionPerformed
-
-    private void jFTZonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFTZonaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFTZonaActionPerformed
-
-    private void lblExitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitButtonMouseClicked
-        FrmMenuAdministrador menu = new FrmMenuAdministrador();
-        menu.show();
-        dispose();
-    }//GEN-LAST:event_lblExitButtonMouseClicked
-
-    private void btnThemeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnThemeActionPerformed
-
     private void btnGoLogInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGoLogInMouseClicked
         FrmLogin login = new FrmLogin();
         login.show();
@@ -423,6 +421,111 @@ public class FrmZonas extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnGoLogInActionPerformed
 
+    //CRUD
+    
+    private void btnConsultar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultar3ActionPerformed
+        //Realizar Consulta
+        ZC.setIdZona(Integer.parseInt(jFTidZona.getText()));
+        if (ZC.consultarZonas()) {
+            jFTidZona.getText();
+            jFTNombreZona.getText();
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Error al consultar");
+        }
+    }//GEN-LAST:event_btnConsultar3ActionPerformed
+
+    private void btnLimpiar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiar3ActionPerformed
+        LimpiarCampos();
+    }//GEN-LAST:event_btnLimpiar3ActionPerformed
+
+    private void btnRegistrar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar3ActionPerformed
+        //Registrar contenido a la Tabla Zonas
+        //Envamos los datos a la clase
+        ZC.setNombreZona(jFTNombreZona.getText());
+        //Enviando los datos a SQL
+        if (ZC.guardarZona()) {
+            JOptionPane.showMessageDialog(this,"Datos guardados exitosamente");
+            CargarDatosTabla();
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Datos no guardados");
+        }
+    }//GEN-LAST:event_btnRegistrar3ActionPerformed
+
+    private void btnModificar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificar3ActionPerformed
+        //Modificar contenido a la Tabla Zonas
+        //Enviamos los datos a la clase
+        ZC.setNombreZona(jFTNombreZona.getText());
+        ZC.setIdZona(Integer.parseInt(jFTidZona.getText()));
+        //enviando a modificar en  SQLServer
+        if(ZC.modificarZona()){
+            JOptionPane.showMessageDialog(this, "Datos actualizados exitosamente");
+            CargarDatosTabla();
+        }else{
+            JOptionPane.showMessageDialog(this, "Error al actualizar");
+        }
+    }//GEN-LAST:event_btnModificar3ActionPerformed
+
+    private void lblExitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitButtonMouseClicked
+        FrmMenuAdministrador menu = new FrmMenuAdministrador();
+        menu.show();
+        dispose();
+    }//GEN-LAST:event_lblExitButtonMouseClicked
+
+    private void jFTidZonaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTidZonaKeyTyped
+        //Solo permitir paso de números
+        if(SoloNumero(evt.getKeyChar())){
+           //no deja que se escriba un letras
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Ingresar números");
+        }
+    }//GEN-LAST:event_jFTidZonaKeyTyped
+
+    private void jFTNombreZonaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTNombreZonaKeyTyped
+//        //Permitir que hayan numeros y letras
+//        if(NumyLetras(evt.getKeyChar())){
+//           //no deja que se escriba un numero
+//            evt.consume();
+//            JOptionPane.showMessageDialog(rootPane, "Ingresar letras o números");
+//        }
+    }//GEN-LAST:event_jFTNombreZonaKeyTyped
+
+    private void jFTNombreZonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFTNombreZonaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFTNombreZonaActionPerformed
+
+    //Metodos 
+    //Para validar que solo permitan pasar Numeros
+    public boolean SoloNumero(char numero){
+        if(Character.isDigit(numero) || Character.isISOControl(numero)){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    
+    //Permitir solo numeros y letras
+    public boolean NumyLetras(char caracter){
+        if (Character.isLetterOrDigit(caracter) || Character.isISOControl(caracter)|| Character.isSpaceChar(caracter)) {
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    
+    //Limpiar campos
+    public void LimpiarCampos(){
+        jFTNombreZona.setText("");
+        jFTidZona.setText("");
+    }
+    
+    public void CargarDatosTabla(){
+        this.jTZonas.setModel(ZC.consultarDatosTabla());
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -460,26 +563,25 @@ public class FrmZonas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnConsultar3;
     private javax.swing.JButton btnGoLogIn;
-    private javax.swing.JButton btnLimpiar;
-    private javax.swing.JButton btnModificar;
-    private javax.swing.JButton btnRegistrar;
-    private javax.swing.JButton btnTheme;
-    private javax.swing.JFormattedTextField jFTNombreZona;
-    private javax.swing.JFormattedTextField jFTZona;
-    private javax.swing.JPanel jPBotones;
+    private javax.swing.JButton btnLimpiar3;
+    private javax.swing.JButton btnModificar3;
+    private javax.swing.JButton btnRegistrar3;
+    private javax.swing.JTextField jFTNombreZona;
+    private javax.swing.JTextField jFTidZona;
+    private javax.swing.JPanel jPBotonesCRUD;
     private javax.swing.JPanel jPColorSistemaVigilancia;
     private javax.swing.JPanel jPImageContainer;
     private javax.swing.JPanel jPRegistroZonas;
     private javax.swing.JPanel jPSideBar;
     private javax.swing.JPanel jPToolStrip;
     private javax.swing.JPanel jPbtnSBContainer;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTZonas;
+    private javax.swing.JLabel jlblIdZona;
     private javax.swing.JLabel jlblNombreZona;
-    private javax.swing.JLabel jlblTipoEntrada1;
-    private javax.swing.JLabel jlblZona;
+    private javax.swing.JLabel jlblZonas;
     private javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblCargoUsuario;
     private javax.swing.JLabel lblExitButton;

@@ -5,12 +5,20 @@
  */
 package FormsVigilante;
 
+import Modelo.Conexion;
+import ControladorVigilante.EntradaController;
+import java.sql.Connection;
+import javax.swing.JOptionPane;
+
+
 /**
  *
  * @author CRISTIAN
  */
 public class FrmVisualizarEntrada extends javax.swing.JFrame {
-
+    private Conexion enlace = new Conexion();
+    private Connection conect = enlace.conectar();
+    private EntradaController EC = new EntradaController();
     /**
      * Creates new form VisualizarEntrada
      */
@@ -18,6 +26,7 @@ public class FrmVisualizarEntrada extends javax.swing.JFrame {
         this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
+        jTRegistroEntrada.setModel(EC.consultarDatosTabla());
     }
 
     /**
@@ -49,7 +58,7 @@ public class FrmVisualizarEntrada extends javax.swing.JFrame {
         LblBusquedaVisitante = new javax.swing.JLabel();
         lblImgBusqueda = new javax.swing.JLabel();
         jSPVisitante = new javax.swing.JScrollPane();
-        jTVisitante = new javax.swing.JTable();
+        jTRegistroEntrada = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1366, 768));
@@ -232,6 +241,11 @@ public class FrmVisualizarEntrada extends javax.swing.JFrame {
 
         jFTBusquedaVisitante.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
         jFTBusquedaVisitante.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFTBusquedaVisitante.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFTBusquedaVisitanteKeyTyped(evt);
+            }
+        });
 
         LblBusquedaVisitante.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         LblBusquedaVisitante.setText("Busqueda de Visitante:");
@@ -268,7 +282,7 @@ public class FrmVisualizarEntrada extends javax.swing.JFrame {
 
         jSPVisitante.setPreferredSize(new java.awt.Dimension(600, 402));
 
-        jTVisitante.setModel(new javax.swing.table.DefaultTableModel(
+        jTRegistroEntrada.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
@@ -278,8 +292,8 @@ public class FrmVisualizarEntrada extends javax.swing.JFrame {
                 "Identificación", "Nombre", "Apellido", "Motivo", "Hora de entrada", "Estado del Ingreso", "Tipo de entrada", "Zona", "Residencia"
             }
         ));
-        jTVisitante.setPreferredSize(new java.awt.Dimension(970, 455));
-        jSPVisitante.setViewportView(jTVisitante);
+        jTRegistroEntrada.setPreferredSize(new java.awt.Dimension(970, 455));
+        jSPVisitante.setViewportView(jTRegistroEntrada);
 
         javax.swing.GroupLayout jPMainContainerLayout = new javax.swing.GroupLayout(jPMainContainer);
         jPMainContainer.setLayout(jPMainContainerLayout);
@@ -332,6 +346,32 @@ public class FrmVisualizarEntrada extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnGoLogInActionPerformed
 
+    private void jFTBusquedaVisitanteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaVisitanteKeyTyped
+        //Solo permitir paso de numeros
+        if(SoloNumero(evt.getKeyChar())){
+           //no deja que se escriba un letra
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Ingresar números");
+            }
+    }//GEN-LAST:event_jFTBusquedaVisitanteKeyTyped
+
+    //Metodos
+    //Para validar que solo permitan pasar Numeros
+    public boolean SoloNumero(char numero){
+        if(Character.isDigit(numero) || Character.isISOControl(numero)){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    //Limpiar campos
+    public void LimpiarCampos(){
+        jFTBusquedaVisitante.setText("");
+
+    }    
+    
     /**
      * @param args the command line arguments
      */
@@ -383,7 +423,7 @@ public class FrmVisualizarEntrada extends javax.swing.JFrame {
     private javax.swing.JPanel jPToolStrip;
     private javax.swing.JPanel jPbtnSBContainer;
     private javax.swing.JScrollPane jSPVisitante;
-    private javax.swing.JTable jTVisitante;
+    private javax.swing.JTable jTRegistroEntrada;
     private javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblCargoUsuario;
     private javax.swing.JLabel lblExitButton;

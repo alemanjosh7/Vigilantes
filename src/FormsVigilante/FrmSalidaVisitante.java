@@ -5,12 +5,19 @@
  */
 package FormsVigilante;
 
+import Modelo.Conexion;
+import java.sql.Connection;
+import ControladorVigilante.SalidaController;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author josue
  */
 public class FrmSalidaVisitante extends javax.swing.JFrame {
-
+    private Conexion enlace = new Conexion();
+    private Connection conect = enlace.conectar();
+    private SalidaController SC = new SalidaController();
     /**
      * Creates new form SalidaVisitante
      */
@@ -18,6 +25,11 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
         this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
+        this.cmbPortonSalida.setModel(SC.consultarPorton());
+        this.cmbVisitante.setModel(SC.consultarVisitante());
+        this.cmbTipoES.setModel(SC.consultarTipoPorton());
+        CargarDatosTabla();
+
     }
 
     /**
@@ -35,16 +47,16 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
         lblTipoPorton = new javax.swing.JLabel();
         cmbVisitante = new javax.swing.JComboBox<>();
         jSTablaDatos = new javax.swing.JScrollPane();
-        jTable30 = new javax.swing.JTable();
+        jTRegistroSalida = new javax.swing.JTable();
         jPBotones = new javax.swing.JPanel();
-        btnRegistrar = new javax.swing.JButton();
-        btnAgregar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
+        btnRegistrar = new javax.swing.JButton();
+        btnConsultar = new javax.swing.JButton();
         lblPortonSalida = new javax.swing.JLabel();
         cmbPortonSalida = new javax.swing.JComboBox<>();
         lblSalidaVisitante = new javax.swing.JLabel();
-        cmbTipoPorton = new javax.swing.JComboBox<>();
+        cmbTipoES = new javax.swing.JComboBox<>();
         jPToolStrip = new javax.swing.JPanel();
         lblExitButton = new javax.swing.JLabel();
         btnTheme = new javax.swing.JButton();
@@ -84,7 +96,7 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
             }
         });
 
-        jTable30.setModel(new javax.swing.table.DefaultTableModel(
+        jTRegistroSalida.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -94,23 +106,9 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
                 "Estado del Ingreso", "Tipo de entrada", "Zona"
             }
         ));
-        jSTablaDatos.setViewportView(jTable30);
+        jSTablaDatos.setViewportView(jTRegistroSalida);
 
         jPBotones.setBackground(new java.awt.Color(255, 255, 255));
-
-        btnRegistrar.setBackground(new java.awt.Color(255, 211, 105));
-        btnRegistrar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnRegistrar.setText("Registrar");
-        btnRegistrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnRegistrar.setContentAreaFilled(false);
-        btnRegistrar.setFocusable(false);
-
-        btnAgregar.setBackground(new java.awt.Color(255, 211, 105));
-        btnAgregar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnAgregar.setText("Agregar");
-        btnAgregar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnAgregar.setContentAreaFilled(false);
-        btnAgregar.setFocusable(false);
 
         btnModificar.setBackground(new java.awt.Color(255, 211, 105));
         btnModificar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -118,6 +116,11 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
         btnModificar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
         btnModificar.setContentAreaFilled(false);
         btnModificar.setFocusable(false);
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         btnLimpiar.setBackground(new java.awt.Color(255, 211, 105));
         btnLimpiar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -125,39 +128,56 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
         btnLimpiar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
         btnLimpiar.setContentAreaFilled(false);
         btnLimpiar.setFocusable(false);
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+
+        btnRegistrar.setBackground(new java.awt.Color(255, 211, 105));
+        btnRegistrar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnRegistrar.setText("Registrar");
+        btnRegistrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnRegistrar.setContentAreaFilled(false);
+        btnRegistrar.setFocusable(false);
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
+
+        btnConsultar.setBackground(new java.awt.Color(255, 211, 105));
+        btnConsultar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnConsultar.setText("Consultar");
+        btnConsultar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnConsultar.setContentAreaFilled(false);
+        btnConsultar.setFocusable(false);
 
         javax.swing.GroupLayout jPBotonesLayout = new javax.swing.GroupLayout(jPBotones);
         jPBotones.setLayout(jPBotonesLayout);
         jPBotonesLayout.setHorizontalGroup(
             jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
-                .addGap(281, 281, 281)
-                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                .addGap(41, 41, 41)
                 .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(119, 119, 119)
+                .addGap(124, 124, 124)
                 .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(118, 118, 118)
+                .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67))
-            .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPBotonesLayout.createSequentialGroup()
-                    .addGap(82, 82, 82)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(708, Short.MAX_VALUE)))
         );
         jPBotonesLayout.setVerticalGroup(
             jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
                 .addContainerGap(28, Short.MAX_VALUE)
                 .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32))
-            .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
-                    .addContainerGap(31, Short.MAX_VALUE)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(29, 29, 29)))
         );
 
         lblPortonSalida.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -175,10 +195,10 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
         lblSalidaVisitante.setForeground(new java.awt.Color(255, 211, 105));
         lblSalidaVisitante.setText("Salida de Visitantes");
 
-        cmbTipoPorton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        cmbTipoPorton.addActionListener(new java.awt.event.ActionListener() {
+        cmbTipoES.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        cmbTipoES.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbTipoPortonjcmbIdResidenciaActionPerformed(evt);
+                cmbTipoESjcmbIdResidenciaActionPerformed(evt);
             }
         });
 
@@ -202,15 +222,15 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
                                         .addGap(46, 46, 46)
                                         .addGroup(jPSalidaVisitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lblTipoPorton)
-                                            .addComponent(cmbTipoPorton, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(cmbTipoES, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addComponent(lblVisitante)))
                             .addComponent(jSTablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPSalidaVisitanteLayout.createSequentialGroup()
-                        .addGap(384, 384, 384)
-                        .addComponent(lblSalidaVisitante))
-                    .addGroup(jPSalidaVisitanteLayout.createSequentialGroup()
                         .addGap(71, 71, 71)
-                        .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPSalidaVisitanteLayout.createSequentialGroup()
+                        .addGap(384, 384, 384)
+                        .addComponent(lblSalidaVisitante)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPSalidaVisitanteLayout.setVerticalGroup(
@@ -218,7 +238,7 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
             .addGroup(jPSalidaVisitanteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblSalidaVisitante)
-                .addGap(25, 25, 25)
+                .addGap(27, 27, 27)
                 .addGroup(jPSalidaVisitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPortonSalida)
                     .addComponent(lblVisitante)
@@ -227,12 +247,12 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
                 .addGroup(jPSalidaVisitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbPortonSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbTipoPorton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbTipoES, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(49, 49, 49)
                 .addComponent(jSTablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         jPContainer.add(jPSalidaVisitante);
@@ -420,9 +440,9 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jcmbIdResidenciaActionPerformed
 
-    private void cmbTipoPortonjcmbIdResidenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoPortonjcmbIdResidenciaActionPerformed
+    private void cmbTipoESjcmbIdResidenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoESjcmbIdResidenciaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmbTipoPortonjcmbIdResidenciaActionPerformed
+    }//GEN-LAST:event_cmbTipoESjcmbIdResidenciaActionPerformed
 
     private void lblExitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitButtonMouseClicked
         FrmMenuPrincipal menu = new FrmMenuPrincipal();
@@ -446,6 +466,53 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnGoLogInActionPerformed
 
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // Limpiar y resetear los campos
+        LimpiarCampos();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        // Registrar los datos a la Tabla registro Salida
+        SC.setIdPorton(Integer.parseInt(cmbPortonSalida.getSelectedItem().toString()));
+        SC.convertirVisitante(cmbVisitante.getSelectedItem().toString());
+        SC.convertirTipoES(cmbTipoES.getSelectedItem().toString());
+        //Enviando los datos a SQL
+        if (SC.guardarSalida()) {
+            JOptionPane.showMessageDialog(this,"Datos guardados exitosamente");
+            CargarDatosTabla();
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Datos no guardados");
+        }
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        SC.setIdPorton(Integer.parseInt(cmbPortonSalida.getSelectedItem().toString()));
+        SC.convertirVisitante(cmbVisitante.getSelectedItem().toString());
+        SC.convertirTipoES(cmbTipoES.getSelectedItem().toString());
+        
+        //Enviando los datos a SQL
+        if (SC.modificarSalida()) {
+            JOptionPane.showMessageDialog(this,"Datos guardados exitosamente");
+            CargarDatosTabla();
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Datos no guardados");
+        }
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    //Metodos     
+    //Limpiar campos
+    public void LimpiarCampos(){
+        cmbPortonSalida.setSelectedIndex(1);
+        cmbVisitante.setSelectedIndex(1);
+        cmbTipoES.setSelectedIndex(1);
+    }
+    
+    public void CargarDatosTabla(){
+        this.jTRegistroSalida.setModel(SC.consultarDatosTabla());
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -483,14 +550,14 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnGoLogIn;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnTheme;
     private javax.swing.JComboBox<String> cmbPortonSalida;
-    private javax.swing.JComboBox<String> cmbTipoPorton;
+    private javax.swing.JComboBox<String> cmbTipoES;
     private javax.swing.JComboBox<String> cmbVisitante;
     private javax.swing.JPanel jPBotones;
     private javax.swing.JPanel jPContainer;
@@ -500,7 +567,7 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
     private javax.swing.JPanel jPToolStrip;
     private javax.swing.JPanel jPbtnSBContainer;
     private javax.swing.JScrollPane jSTablaDatos;
-    private javax.swing.JTable jTable30;
+    private javax.swing.JTable jTRegistroSalida;
     private javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblCargoUsuario;
     private javax.swing.JLabel lblExitButton;

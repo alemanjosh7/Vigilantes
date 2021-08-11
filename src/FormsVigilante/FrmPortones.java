@@ -5,20 +5,24 @@
  */
 package FormsVigilante;
 
+import Modelo.Conexion;
+import java.sql.Connection;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author CRISTIAN
  */
 public class FrmPortones extends javax.swing.JFrame {
-
+    Conexion enlace = new Conexion();
+    Connection conect = enlace.conectar();
     /**
      * Creates new form MenuPortones
      */
     public FrmPortones() {
         this.setUndecorated(true);
         initComponents();
-        this.setLocationRelativeTo(null);
-        
+        this.setLocationRelativeTo(null); 
     }
 
     /**
@@ -41,10 +45,10 @@ public class FrmPortones extends javax.swing.JFrame {
         lblTipoPortones = new javax.swing.JLabel();
         cmbTipoPortones = new javax.swing.JComboBox<>();
         jPBotones = new javax.swing.JPanel();
-        btnRegistrar = new javax.swing.JButton();
-        btnFiltrar = new javax.swing.JButton();
-        btnModificar = new javax.swing.JButton();
+        btnConsultar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
+        btnRegistrar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
         lblRegistrarPortones = new javax.swing.JLabel();
         lblZonas = new javax.swing.JLabel();
         cmbZonas = new javax.swing.JComboBox<>();
@@ -178,19 +182,31 @@ public class FrmPortones extends javax.swing.JFrame {
         jPBotones.setBackground(new java.awt.Color(255, 255, 255));
         jPBotones.setPreferredSize(new java.awt.Dimension(895, 60));
 
+        btnConsultar.setBackground(new java.awt.Color(255, 211, 105));
+        btnConsultar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnConsultar.setText("Consultar");
+        btnConsultar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnConsultar.setContentAreaFilled(false);
+        btnConsultar.setFocusable(false);
+
+        btnLimpiar.setBackground(new java.awt.Color(255, 211, 105));
+        btnLimpiar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnLimpiar.setContentAreaFilled(false);
+        btnLimpiar.setFocusable(false);
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+
         btnRegistrar.setBackground(new java.awt.Color(255, 211, 105));
         btnRegistrar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btnRegistrar.setText("Registrar");
         btnRegistrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
         btnRegistrar.setContentAreaFilled(false);
         btnRegistrar.setFocusable(false);
-
-        btnFiltrar.setBackground(new java.awt.Color(255, 211, 105));
-        btnFiltrar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnFiltrar.setText("Filtrar");
-        btnFiltrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnFiltrar.setContentAreaFilled(false);
-        btnFiltrar.setFocusable(false);
 
         btnModificar.setBackground(new java.awt.Color(255, 211, 105));
         btnModificar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -199,45 +215,31 @@ public class FrmPortones extends javax.swing.JFrame {
         btnModificar.setContentAreaFilled(false);
         btnModificar.setFocusable(false);
 
-        btnLimpiar.setBackground(new java.awt.Color(255, 211, 105));
-        btnLimpiar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnLimpiar.setText("Limpiar");
-        btnLimpiar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnLimpiar.setContentAreaFilled(false);
-        btnLimpiar.setFocusable(false);
-
         javax.swing.GroupLayout jPBotonesLayout = new javax.swing.GroupLayout(jPBotones);
         jPBotones.setLayout(jPBotonesLayout);
         jPBotonesLayout.setHorizontalGroup(
             jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
-                .addGap(281, 281, 281)
-                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                .addGap(66, 66, 66)
                 .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(119, 119, 119)
+                .addGap(113, 113, 113)
                 .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
-            .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPBotonesLayout.createSequentialGroup()
-                    .addGap(82, 82, 82)
-                    .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(708, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(113, 113, 113)
+                .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66))
         );
         jPBotonesLayout.setVerticalGroup(
             jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32))
-            .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
-                    .addContainerGap(16, Short.MAX_VALUE)
-                    .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(29, 29, 29)))
         );
 
         lblRegistrarPortones.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
@@ -268,7 +270,7 @@ public class FrmPortones extends javax.swing.JFrame {
         jSTablaDatos.setViewportView(jTable1);
 
         lblBuscarPorton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblBuscarPorton.setText("Buscar Porton:");
+        lblBuscarPorton.setText("identificador de Porton:");
 
         lblImageBuscar.setBackground(new java.awt.Color(255, 255, 255));
         lblImageBuscar.setForeground(new java.awt.Color(255, 255, 255));
@@ -282,6 +284,11 @@ public class FrmPortones extends javax.swing.JFrame {
         jFBuscarPorton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jFBuscarPortonActionPerformed(evt);
+            }
+        });
+        jFBuscarPorton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFBuscarPortonKeyTyped(evt);
             }
         });
 
@@ -460,6 +467,29 @@ public class FrmPortones extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnGoLogInActionPerformed
 
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void jFBuscarPortonKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFBuscarPortonKeyTyped
+        //Solo permitir paso de numeros
+        if(SoloNumero(evt.getKeyChar())){
+           //no deja que se escriba un letra
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Ingresar números");
+        }
+    }//GEN-LAST:event_jFBuscarPortonKeyTyped
+    
+    //Para validar que solo permitan pasar Numeros
+    public boolean SoloNumero(char numero){
+        if(Character.isDigit(numero) || Character.isISOControl(numero)){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -499,7 +529,7 @@ public class FrmPortones extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnFiltrar;
+    private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnGoLogIn;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
