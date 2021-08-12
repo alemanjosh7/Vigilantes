@@ -32,8 +32,7 @@ public class FrmEntradaVisitante extends javax.swing.JFrame {
         this.cmbPortonEntrada.setModel(EC.consultarPorton());
         this.cmbVisitantes.setModel(EC.consultarVisitante());
         this.cmbTipoEntrada.setModel(EC.consultarTipoEntrada());
-        this.jTDatosIngreso.setModel(EC.consultarDatosTabla());
-
+        CargarDatosTabla();
     }
 
 
@@ -82,6 +81,8 @@ public class FrmEntradaVisitante extends javax.swing.JFrame {
         jPEntradaPermitida = new javax.swing.JPanel();
         rbtTrueEntrada = new javax.swing.JRadioButton();
         rbtFalseEntrada = new javax.swing.JRadioButton();
+        lblIdRegistroEntrada = new javax.swing.JLabel();
+        jFTidEntrada = new javax.swing.JTextField();
         jPSideBar = new javax.swing.JPanel();
         jPImageContainer = new javax.swing.JPanel();
         lblSistemaVigilantes = new javax.swing.JLabel();
@@ -373,13 +374,38 @@ public class FrmEntradaVisitante extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        lblIdRegistroEntrada.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblIdRegistroEntrada.setText("N° Registro de Salida:");
+
+        jFTidEntrada.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFTidEntrada.setPreferredSize(new java.awt.Dimension(6, 30));
+        jFTidEntrada.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFTidEntradaKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPContenedorLayout = new javax.swing.GroupLayout(jPContenedor);
         jPContenedor.setLayout(jPContenedorLayout);
         jPContenedorLayout.setHorizontalGroup(
             jPContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPContenedorLayout.createSequentialGroup()
+                .addGroup(jPContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPContenedorLayout.createSequentialGroup()
+                        .addGap(378, 378, 378)
+                        .addComponent(lblIngresoVisitantes))
+                    .addGroup(jPContenedorLayout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(jPBotonesCRUD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPContenedorLayout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addGroup(jPContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPContenedorLayout.createSequentialGroup()
+                        .addGroup(jPContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblIdRegistroEntrada)
+                            .addComponent(jFTidEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPContenedorLayout.createSequentialGroup()
                         .addGroup(jPContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblMotivoEntrada)
@@ -408,15 +434,6 @@ public class FrmEntradaVisitante extends javax.swing.JFrame {
                             .addComponent(lblTipoEntrada)
                             .addComponent(cmbTipoEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(150, 150, 150))))
-            .addGroup(jPContenedorLayout.createSequentialGroup()
-                .addGroup(jPContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPContenedorLayout.createSequentialGroup()
-                        .addGap(378, 378, 378)
-                        .addComponent(lblIngresoVisitantes))
-                    .addGroup(jPContenedorLayout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(jPBotonesCRUD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPContenedorLayout.setVerticalGroup(
             jPContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -447,14 +464,18 @@ public class FrmEntradaVisitante extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPEntradaPermitida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPContenedorLayout.createSequentialGroup()
-                        .addComponent(jSMotivoVisita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(jSTablaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPContenedorLayout.createSequentialGroup()
                         .addComponent(lblEmergencia)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPEmergencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPEmergencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPContenedorLayout.createSequentialGroup()
+                        .addComponent(jSMotivoVisita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblIdRegistroEntrada)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jFTidEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jSTablaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPBotonesCRUD, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34))
         );
@@ -593,7 +614,17 @@ public class FrmEntradaVisitante extends javax.swing.JFrame {
         dispose();    }//GEN-LAST:event_btnGoLogInMouseClicked
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        // TODO add your handling code here:
+        //Consular
+        //Realizar Consulta
+        EC.setIdRegistroEntrada(Integer.parseInt(jFTidEntrada.getText()));
+        if (EC.consultarEntrada()) {
+            jFTidEntrada.getText();
+            
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Error al consultar");
+        }
+        
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
@@ -601,11 +632,52 @@ public class FrmEntradaVisitante extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        // TODO add your handling code here:
+        // Registrar los datos a la Tabla registro Salida
+        int emergencia = 0, entrada = 0;
+        if (rbtTrueEmergencia.isSelected()) {
+            emergencia = 1;
+        }
+        if (rbtTrueEntrada.isSelected()) {
+            entrada = 1;
+        }
+        EC.setMotivoEntrada(TMotivoVisita.getText());
+        EC.setEmergencia(emergencia);
+        EC.setPermisoEntrada(entrada);
+        EC.convertirVisitante(cmbVisitantes.getSelectedItem().toString());
+        EC.convertirTipoES(cmbTipoEntrada.getSelectedItem().toString());
+        //Enviando los datos a SQL
+        if (EC.guardarEntradas()) {
+            JOptionPane.showMessageDialog(this,"Datos guardados exitosamente");
+            CargarDatosTabla();
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Datos no guardados");
+        }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        // TODO add your handling code here:
+        // Registrar los datos a la Tabla registro Salida
+        int emergencia = 0, entrada = 0;
+        if (rbtTrueEmergencia.isSelected()) {
+            emergencia = 1;
+        }
+        if (rbtTrueEntrada.isSelected()) {
+            entrada = 1;
+        }
+        EC.setMotivoEntrada(TMotivoVisita.getText());
+        EC.setEmergencia(emergencia);
+        EC.setPermisoEntrada(entrada);
+        EC.convertirVisitante(cmbVisitantes.getSelectedItem().toString());
+        EC.convertirTipoES(cmbTipoEntrada.getSelectedItem().toString());
+        EC.setIdRegistroEntrada(Integer.parseInt(jFTidEntrada.toString()));
+        //Enviando los datos a SQL
+        if (EC.guardarEntradas()) {
+            JOptionPane.showMessageDialog(this,"Datos guardados exitosamente");
+            CargarDatosTabla();
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Datos no guardados");
+        }
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void TMotivoVisitaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TMotivoVisitaKeyTyped
@@ -617,7 +689,26 @@ public class FrmEntradaVisitante extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_TMotivoVisitaKeyTyped
 
+    private void jFTidEntradaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTidEntradaKeyTyped
+        //Solo permitir paso de números
+        if(SoloNumero(evt.getKeyChar())){
+            //no deja que se escriba un letras
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Ingresar números");
+        }
+    }//GEN-LAST:event_jFTidEntradaKeyTyped
+
     //Metodos 
+    //Para validar que solo permitan pasar Numeros
+    public boolean SoloNumero(char numero){
+        if(Character.isDigit(numero) || Character.isISOControl(numero)){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    
     //Permitir solo numeros y letras
     public boolean NumyLetras(char caracter){
         if (Character.isLetterOrDigit(caracter) || Character.isISOControl(caracter)|| Character.isSpaceChar(caracter)) {
@@ -628,6 +719,12 @@ public class FrmEntradaVisitante extends javax.swing.JFrame {
         }
     }
 
+    //Mostrar los datos de la tabla
+    public void CargarDatosTabla(){
+        this.jTDatosIngreso.setModel(EC.consultarDatosTabla());
+    }
+    
+    
     //Limpiar campos
     public void LimpiarCampos(){
         cmbPortonEntrada.setSelectedIndex(1);
@@ -638,6 +735,7 @@ public class FrmEntradaVisitante extends javax.swing.JFrame {
         rbtFalseEmergencia.setSelected(false);
         rbtTrueEntrada.setSelected(true);
         rbtFalseEntrada.setSelected(false);
+        jFTidEntrada.setText("");
     }
     
     
@@ -690,6 +788,7 @@ public class FrmEntradaVisitante extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbPortonEntrada;
     private javax.swing.JComboBox<String> cmbTipoEntrada;
     private javax.swing.JComboBox<String> cmbVisitantes;
+    private javax.swing.JTextField jFTidEntrada;
     private javax.swing.JPanel jPBotonesCRUD;
     private javax.swing.JPanel jPContenedor;
     private javax.swing.JPanel jPEmergencia;
@@ -706,6 +805,7 @@ public class FrmEntradaVisitante extends javax.swing.JFrame {
     private javax.swing.JLabel lblCargoUsuario;
     private javax.swing.JLabel lblEmergencia;
     private javax.swing.JLabel lblExitButton;
+    private javax.swing.JLabel lblIdRegistroEntrada;
     private javax.swing.JLabel lblImgBusqueda;
     private javax.swing.JLabel lblIngresoVisitantes;
     private javax.swing.JLabel lblMotivoEntrada;

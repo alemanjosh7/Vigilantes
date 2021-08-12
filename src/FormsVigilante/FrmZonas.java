@@ -483,12 +483,12 @@ public class FrmZonas extends javax.swing.JFrame {
     }//GEN-LAST:event_jFTidZonaKeyTyped
 
     private void jFTNombreZonaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTNombreZonaKeyTyped
-//        //Permitir que hayan numeros y letras
-//        if(NumyLetras(evt.getKeyChar())){
-//           //no deja que se escriba un numero
-//            evt.consume();
-//            JOptionPane.showMessageDialog(rootPane, "Ingresar letras o números");
-//        }
+        //Permitir que hayan numeros y letras
+        if(NumyLetras(evt.getKeyChar())){
+           //no deja que se escriba un numero
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Ingresar letras o números");
+        }
     }//GEN-LAST:event_jFTNombreZonaKeyTyped
 
     private void jFTNombreZonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFTNombreZonaActionPerformed

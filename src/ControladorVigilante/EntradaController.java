@@ -255,4 +255,82 @@ public class EntradaController {
         }
         return tEntrada;
     }
+       
+    //Convirtiendo el valor del combobox a Id: Visitante
+    public boolean convertirVisitante(String visitante){
+        boolean res = false;
+        try{
+            String sql = ("SELECT idVisitante FROM Visitante WHERE nombres =?");
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            cmd.setString(1, visitante);
+            //Ejecutar la consulta
+            ResultSet rs = cmd.executeQuery();
+            //recorrer la lista de registros
+            if(rs.next()){
+              res=true;
+              //asignándole a los atributos de la clase
+              setIdVisitante(rs.getInt(1));
+            }
+            //cerrando conexion
+            cmd.close();
+            cn.close();
+        }
+        catch(Exception ex){
+            
+        }   
+        return res;
+    }
+    
+    //Convirtiendo el valor del combobox a Id: TipoES
+    public boolean convertirTipoES(String TipoES){
+        boolean res = false;
+        try{
+            String sql = ("SELECT idTipoES FROM TipoEntradaSalida WHERE descripcion =?");
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            cmd.setString(1, TipoES);
+            //Ejecutar la consulta
+            ResultSet rs = cmd.executeQuery();
+            //recorrer la lista de registros
+            if(rs.next()){
+              res=true;
+              //asignándole a los atributos de la clase
+              setIdIdTipoES(rs.getInt(1));
+            }
+            //cerrando conexion
+            cmd.close();
+            cn.close();
+        }
+        catch(Exception ex){
+            
+        }   
+        return res;
+    }
+    
+    public boolean consultarEntrada(){
+        boolean bres = false;     
+        try{
+            //Realizar consulta
+            String sql = "SELECT * FROM RegistroEntrada WHERE idRegistroIngreso =?";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            //Lenar los parámetros de la clase, se coloca en el orden de la consulta
+            cmd.setInt(1, idRegistroEntrada);
+            ResultSet res = cmd.executeQuery();
+            if (res.next()) {
+                bres=true;
+                idRegistroEntrada = res.getInt(1);
+                idTipoES = res.getInt(2);
+                idVisitante = res.getInt(3);
+                motivoIngreso = res.getString(4);
+                permisoEntrada = res.getInt(5);
+                emergencia = res.getInt(6);
+            }
+            //cerrando conexion
+            cmd.close();
+            cn.close();
+        }
+        catch(Exception ex){
+            System.out.println(ex.toString());
+        }
+        return bres;
+    }
 }

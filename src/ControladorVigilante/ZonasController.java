@@ -117,7 +117,9 @@ public class ZonasController {
         try{
             PreparedStatement cmd = cn.prepareStatement(sql);
             res = cmd.executeQuery();
-            //cerrando conexion
+//            //cerrando conexion
+//            cmd.close();
+//            cn.close();
         }
         catch(SQLException ex){
             System.out.println("Error de consulta: "+ex.toString());
