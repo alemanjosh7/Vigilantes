@@ -5,6 +5,8 @@
  */
 package FormsVigilante;
 
+import ControladorVigilante.*;
+import javax.swing.JOptionPane;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
@@ -65,16 +67,21 @@ public class FrmVisualizarResidencias extends javax.swing.JFrame {
         jTResidencias5 = new javax.swing.JTable();
         jLabel25 = new javax.swing.JLabel();
         jlblTipoEntrada16 = new javax.swing.JLabel();
-        jFormattedTextField19 = new javax.swing.JFormattedTextField();
-        jFormattedTextField20 = new javax.swing.JFormattedTextField();
+        jFIdResidencia = new javax.swing.JFormattedTextField();
+        jFZona = new javax.swing.JFormattedTextField();
         jlblTipoEntrada17 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
-        jFormattedTextField21 = new javax.swing.JFormattedTextField();
+        jFPropietario = new javax.swing.JFormattedTextField();
         jlblTipoEntrada18 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jFormattedTextField22 = new javax.swing.JFormattedTextField();
         jLabel28 = new javax.swing.JLabel();
         jlblTipoEntrada19 = new javax.swing.JLabel();
+        jPBotones2 = new javax.swing.JPanel();
+        btnRegistrar2 = new javax.swing.JButton();
+        btnAgregar2 = new javax.swing.JButton();
+        btnModificar2 = new javax.swing.JButton();
+        btnLimpiar2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1366, 768));
@@ -271,11 +278,16 @@ public class FrmVisualizarResidencias extends javax.swing.JFrame {
         jlblTipoEntrada16.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jlblTipoEntrada16.setText("Id de Residencia");
 
-        jFormattedTextField19.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFormattedTextField19.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFIdResidencia.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        jFIdResidencia.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
-        jFormattedTextField20.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFormattedTextField20.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFZona.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        jFZona.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFZona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFZonaActionPerformed(evt);
+            }
+        });
 
         jlblTipoEntrada17.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jlblTipoEntrada17.setText("Zona");
@@ -285,8 +297,13 @@ public class FrmVisualizarResidencias extends javax.swing.JFrame {
         jLabel26.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/vigilante/Imagenes/buscar.png"))); // NOI18N
         jLabel26.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jFormattedTextField21.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFormattedTextField21.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFPropietario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        jFPropietario.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFPropietario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFPropietarioActionPerformed(evt);
+            }
+        });
 
         jlblTipoEntrada18.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jlblTipoEntrada18.setText("Propietario");
@@ -307,6 +324,86 @@ public class FrmVisualizarResidencias extends javax.swing.JFrame {
         jlblTipoEntrada19.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jlblTipoEntrada19.setText("Número de Casa");
 
+        jPBotones2.setBackground(new java.awt.Color(255, 255, 255));
+        jPBotones2.setPreferredSize(new java.awt.Dimension(895, 60));
+
+        btnRegistrar2.setBackground(new java.awt.Color(255, 211, 105));
+        btnRegistrar2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnRegistrar2.setText("Registrar");
+        btnRegistrar2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnRegistrar2.setContentAreaFilled(false);
+        btnRegistrar2.setFocusable(false);
+        btnRegistrar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrar2ActionPerformed(evt);
+            }
+        });
+
+        btnAgregar2.setBackground(new java.awt.Color(255, 211, 105));
+        btnAgregar2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnAgregar2.setText("Agregar");
+        btnAgregar2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnAgregar2.setContentAreaFilled(false);
+        btnAgregar2.setFocusable(false);
+
+        btnModificar2.setBackground(new java.awt.Color(255, 211, 105));
+        btnModificar2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnModificar2.setText("Modificar");
+        btnModificar2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnModificar2.setContentAreaFilled(false);
+        btnModificar2.setFocusable(false);
+        btnModificar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificar2ActionPerformed(evt);
+            }
+        });
+
+        btnLimpiar2.setBackground(new java.awt.Color(255, 211, 105));
+        btnLimpiar2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnLimpiar2.setText("Limpiar");
+        btnLimpiar2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnLimpiar2.setContentAreaFilled(false);
+        btnLimpiar2.setFocusable(false);
+        btnLimpiar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiar2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPBotones2Layout = new javax.swing.GroupLayout(jPBotones2);
+        jPBotones2.setLayout(jPBotones2Layout);
+        jPBotones2Layout.setHorizontalGroup(
+            jPBotones2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotones2Layout.createSequentialGroup()
+                .addGap(281, 281, 281)
+                .addComponent(btnModificar2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                .addComponent(btnLimpiar2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(119, 119, 119)
+                .addComponent(btnRegistrar2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67))
+            .addGroup(jPBotones2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPBotones2Layout.createSequentialGroup()
+                    .addGap(82, 82, 82)
+                    .addComponent(btnAgregar2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(708, Short.MAX_VALUE)))
+        );
+        jPBotones2Layout.setVerticalGroup(
+            jPBotones2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotones2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPBotones2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegistrar2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModificar2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLimpiar2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32))
+            .addGroup(jPBotones2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotones2Layout.createSequentialGroup()
+                    .addContainerGap(16, Short.MAX_VALUE)
+                    .addComponent(btnAgregar2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(29, 29, 29)))
+        );
+
         javax.swing.GroupLayout jPContainer5Layout = new javax.swing.GroupLayout(jPContainer5);
         jPContainer5.setLayout(jPContainer5Layout);
         jPContainer5Layout.setHorizontalGroup(
@@ -318,7 +415,7 @@ public class FrmVisualizarResidencias extends javax.swing.JFrame {
                         .addGap(5, 5, 5)
                         .addGroup(jPContainer5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jlblTipoEntrada16)
-                            .addComponent(jFormattedTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jFIdResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(22, 22, 22)
                         .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
@@ -327,13 +424,13 @@ public class FrmVisualizarResidencias extends javax.swing.JFrame {
                                 .addComponent(jlblTipoEntrada17)
                                 .addGap(190, 190, 190))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPContainer5Layout.createSequentialGroup()
-                                .addComponent(jFormattedTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jFZona, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
                         .addGroup(jPContainer5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jlblTipoEntrada18)
-                            .addComponent(jFormattedTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jFPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
@@ -342,8 +439,11 @@ public class FrmVisualizarResidencias extends javax.swing.JFrame {
                             .addComponent(jlblTipoEntrada19)))
                     .addGroup(jPContainer5Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jSPResidencias5, javax.swing.GroupLayout.PREFERRED_SIZE, 1078, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                        .addComponent(jSPResidencias5, javax.swing.GroupLayout.PREFERRED_SIZE, 1078, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPContainer5Layout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addComponent(jPBotones2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPContainer5Layout.setVerticalGroup(
             jPContainer5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -353,26 +453,28 @@ public class FrmVisualizarResidencias extends javax.swing.JFrame {
                     .addGroup(jPContainer5Layout.createSequentialGroup()
                         .addComponent(jlblTipoEntrada16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jFIdResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPContainer5Layout.createSequentialGroup()
                         .addComponent(jlblTipoEntrada17, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jFZona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPContainer5Layout.createSequentialGroup()
                         .addComponent(jlblTipoEntrada18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jFPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPContainer5Layout.createSequentialGroup()
                         .addComponent(jlblTipoEntrada19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jFormattedTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(jSPResidencias5, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(jPBotones2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(jSPResidencias5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
         );
 
         getContentPane().add(jPContainer5);
@@ -403,6 +505,45 @@ public class FrmVisualizarResidencias extends javax.swing.JFrame {
         login.show();
         dispose();
     }//GEN-LAST:event_btnGoLogInActionPerformed
+
+    private void btnRegistrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar2ActionPerformed
+        VisualizarResidenciasController obj = new VisualizarResidenciasController();
+        obj.setResidencia(jFIdResidencia.getText());
+        obj.setNumeroRe(jFormattedTextField22.getText());
+        obj.setZona(jFZona.getText());
+        obj.setResidente(jFPropietario.getText());
+
+        //enviando guardar a  SQLServer
+        if(obj.guardarProyecto()){
+            JOptionPane.showMessageDialog(this, "Datos guardados");
+        }else{
+            JOptionPane.showMessageDialog(this, "Datos no guardados");
+        }
+    }//GEN-LAST:event_btnRegistrar2ActionPerformed
+
+    private void btnModificar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificar2ActionPerformed
+        VisualizarResidenciasController obj = new VisualizarResidenciasController();
+        obj.setResidencia(jFIdResidencia.getText());
+        obj.setNumeroRe(jFormattedTextField22.getText());
+        obj.setZona(jFZona.getText());
+        obj.setResidente(jFPropietario.getText());
+    }//GEN-LAST:event_btnModificar2ActionPerformed
+
+    private void btnLimpiar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiar2ActionPerformed
+         VisualizarResidenciasController obj = new VisualizarResidenciasController();
+        obj.setResidencia(jFIdResidencia.getText());
+        obj.setNumeroRe(jFormattedTextField22.getText());
+        obj.setZona(jFZona.getText());
+        obj.setResidente(jFPropietario.getText());
+    }//GEN-LAST:event_btnLimpiar2ActionPerformed
+
+    private void jFZonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFZonaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFZonaActionPerformed
+
+    private void jFPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFPropietarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFPropietarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -455,16 +596,31 @@ public class FrmVisualizarResidencias extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnAgregar1;
+    private javax.swing.JButton btnAgregar2;
     private javax.swing.JButton btnGoLogIn;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnLimpiar1;
+    private javax.swing.JButton btnLimpiar2;
+    private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnModificar1;
+    private javax.swing.JButton btnModificar2;
+    private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnRegistrar1;
+    private javax.swing.JButton btnRegistrar2;
     private javax.swing.JButton btnTheme;
-    private javax.swing.JFormattedTextField jFormattedTextField19;
-    private javax.swing.JFormattedTextField jFormattedTextField20;
-    private javax.swing.JFormattedTextField jFormattedTextField21;
+    private javax.swing.JFormattedTextField jFIdResidencia;
+    private javax.swing.JFormattedTextField jFPropietario;
+    private javax.swing.JFormattedTextField jFZona;
     private javax.swing.JFormattedTextField jFormattedTextField22;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JPanel jPBotones;
+    private javax.swing.JPanel jPBotones1;
+    private javax.swing.JPanel jPBotones2;
     private javax.swing.JPanel jPContainer5;
     private javax.swing.JPanel jPImageContainer;
     private javax.swing.JPanel jPSideBar;
