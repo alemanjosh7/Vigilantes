@@ -5,6 +5,13 @@
  */
 package FormsVigilante;
 
+import ControladorVigilante.PersonalController;
+import java.sql.ResultSet;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+
 /**
  *
  * @author CRISTIAN
@@ -18,8 +25,33 @@ public class FrmVisualizarPersonal extends javax.swing.JFrame {
         this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
+        mostrarDatos();
     }
-
+    
+    private void mostrarDatos(){
+        
+        PersonalController obj = new PersonalController();
+        
+        // capturar datos 
+        obj.setBusquedaNombrePersonal(jFTBusqueda.getText());
+        
+        try {
+            DefaultTableModel modelo = obj.generarTablaFiltrada();
+      
+            jTVigilante.setModel(modelo);
+            modelo.fireTableDataChanged();
+            jTVigilante.getTableHeader().setReorderingAllowed(false);
+            TableCellRenderer rendererFromHeader = jTVigilante.getTableHeader().getDefaultRenderer();
+            JLabel headerLabel = (JLabel) rendererFromHeader;
+            headerLabel.setHorizontalAlignment(JLabel.CENTER);
+            
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "No se pudo recibir datos");
+        }
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -177,6 +209,11 @@ public class FrmVisualizarPersonal extends javax.swing.JFrame {
 
         jFTBusqueda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
         jFTBusqueda.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFTBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jFTBusquedaKeyReleased(evt);
+            }
+        });
 
         jlblTipoEntrada.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jlblTipoEntrada.setText("Nombre del Vigilante:");
@@ -213,13 +250,13 @@ public class FrmVisualizarPersonal extends javax.swing.JFrame {
 
         jTVigilante.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Identificación", "Nombre", "Apellido", "Correo Electronico", "DUI", "Tipo Personal", "Estado de Vigilante", "Salario"
+                "ID", "Nombres", "Apellidos", "Cargo", "Telefono", "DUI", "Correo", "Estado", "Salario"
             }
         ));
         jSPVigilante.setViewportView(jTVigilante);
@@ -347,6 +384,10 @@ public class FrmVisualizarPersonal extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnGoLogInActionPerformed
 
+    private void jFTBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaKeyReleased
+        mostrarDatos();
+    }//GEN-LAST:event_jFTBusquedaKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -372,6 +413,18 @@ public class FrmVisualizarPersonal extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FrmVisualizarPersonal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

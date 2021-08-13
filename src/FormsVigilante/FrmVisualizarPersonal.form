@@ -293,6 +293,9 @@
                   <Font name="Arial" size="18" style="0"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jFTBusquedaKeyReleased"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jlblTipoEntrada">
               <Properties>
@@ -323,19 +326,25 @@
             <Component class="javax.swing.JTable" name="jTVigilante">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="8" rowCount="4">
-                    <Column editable="true" title="Identificaci&#xf3;n" type="java.lang.Object"/>
-                    <Column editable="true" title="Nombre" type="java.lang.Object"/>
-                    <Column editable="true" title="Apellido" type="java.lang.Object"/>
-                    <Column editable="true" title="Correo Electronico" type="java.lang.Object"/>
+                  <Table columnCount="9" rowCount="4">
+                    <Column editable="true" title="ID" type="java.lang.Object"/>
+                    <Column editable="true" title="Nombres" type="java.lang.Object"/>
+                    <Column editable="true" title="Apellidos" type="java.lang.Object"/>
+                    <Column editable="true" title="Cargo" type="java.lang.Object"/>
+                    <Column editable="true" title="Telefono" type="java.lang.Object"/>
                     <Column editable="true" title="DUI" type="java.lang.Object"/>
-                    <Column editable="true" title="Tipo Personal" type="java.lang.Object"/>
-                    <Column editable="true" title="Estado de Vigilante" type="java.lang.Object"/>
+                    <Column editable="true" title="Correo" type="java.lang.Object"/>
+                    <Column editable="true" title="Estado" type="java.lang.Object"/>
                     <Column editable="true" title="Salario" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>

@@ -5,6 +5,13 @@
  */
 package FormsVigilante;
 
+import ControladorVigilante.TurnoController;
+import ControladorVigilante.ZonasController;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+
 /**
  *
  * @author josue
@@ -16,6 +23,28 @@ public class FrmVisualizarHorario extends javax.swing.JFrame {
      */
     public FrmVisualizarHorario() {
         initComponents();
+        mostrarDatos();
+    }
+    
+    private void mostrarDatos(){
+        //LimpiarCampos();
+        TurnoController obj = new TurnoController();
+        try {
+            
+            DefaultTableModel modelo = obj.generarTabla();
+            
+            jTHorario.setModel(modelo);
+            modelo.fireTableDataChanged();
+            jTHorario.getTableHeader().setReorderingAllowed(false);
+            TableCellRenderer rendererFromHeader = jTHorario.getTableHeader().getDefaultRenderer();
+            JLabel headerLabel = (JLabel) rendererFromHeader;
+            headerLabel.setHorizontalAlignment(JLabel.CENTER);
+            
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "No se pudo recibir datos");
+        }
+        
     }
 
     /**
@@ -202,7 +231,7 @@ public class FrmVisualizarHorario extends javax.swing.JFrame {
                 .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPToolStripLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 14, Short.MAX_VALUE)
                         .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnTheme, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -388,6 +417,54 @@ public class FrmVisualizarHorario extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FrmVisualizarHorario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

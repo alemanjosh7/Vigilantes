@@ -5,6 +5,17 @@
  */
 package FormsVigilante;
 
+import ControladorVigilante.PersonalController;
+import Modelo.ComboItems;
+import java.sql.ResultSet;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableModel;
+
 /**
  *
  * @author CRISTIAN
@@ -18,6 +29,72 @@ public class FrmPersonal extends javax.swing.JFrame {
         this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
+        mostrarDatos();
+        
+    }
+    
+    private void limpiarDatos(){
+        jTxtNombre.setText("");
+        jTxtApellido.setText("");
+        jTxtCorreo.setText("");
+        jTxtDUI.setText("");
+        jTxtID.setText("");
+        jTxtSalario.setText("");
+        jTxtTelefono.setText("");
+        
+        try{
+            cmbTipoPersonal.setSelectedIndex(0);
+            cmbIdEstadoPersonal.setSelectedIndex(0);
+            cmbUsuario.setSelectedIndex(0);
+        }
+        catch(Exception e){
+            
+        }
+        
+    }
+    
+    private void mostrarDatos(){
+        
+        PersonalController obj = new PersonalController();
+        
+        try {
+            
+            //Tabla jTVigilantes
+            DefaultTableModel modelo = obj.generarTabla();
+                  
+            jTVigilantes.setModel(modelo);
+            modelo.fireTableDataChanged();
+            jTVigilantes.getTableHeader().setReorderingAllowed(false);
+            TableCellRenderer rendererFromHeader = jTVigilantes.getTableHeader().getDefaultRenderer();
+            JLabel headerLabel = (JLabel) rendererFromHeader;
+            headerLabel.setHorizontalAlignment(JLabel.CENTER);
+            
+            //Combobox cmbTipoPersonal
+            
+            DefaultComboBoxModel cmbmodelo = obj.generarComboBoxCargo();
+            cmbTipoPersonal.setModel(cmbmodelo);
+            
+            //Combobox cmbIdEstadoPersonal
+            cmbmodelo = obj.generarComboBoxEstadoPersonal();
+            cmbIdEstadoPersonal.setModel(cmbmodelo);
+            
+            //Combobox cmbIdEstadoPersonal
+            cmbmodelo = obj.generarComboBoxUsuario();
+            cmbUsuario.setModel(cmbmodelo);
+            
+            try{
+                cmbTipoPersonal.setSelectedIndex(0);
+                cmbIdEstadoPersonal.setSelectedIndex(0);
+                cmbUsuario.setSelectedIndex(0);
+            }
+            catch(Exception e){
+
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "No se pudo recibir datos");
+        }
+        
     }
 
     /**
@@ -40,26 +117,32 @@ public class FrmPersonal extends javax.swing.JFrame {
         jPGestionVigilante = new javax.swing.JPanel();
         lblApellido = new javax.swing.JLabel();
         lblEstadoPersonal = new javax.swing.JLabel();
-        lblCorreoElectronico = new javax.swing.JLabel();
+        lblTelefono = new javax.swing.JLabel();
         lblSalarioMensual = new javax.swing.JLabel();
         cmbIdEstadoPersonal = new javax.swing.JComboBox<>();
-        jFNombre = new javax.swing.JFormattedTextField();
         jPBotones = new javax.swing.JPanel();
-        btnRegistrar = new javax.swing.JButton();
+        btnConsultar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         lblGestionVigilante = new javax.swing.JLabel();
         lblTipoPersonal = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
-        jFSalarioMensual = new javax.swing.JFormattedTextField();
-        jFApellido = new javax.swing.JFormattedTextField();
         lblDUI = new javax.swing.JLabel();
-        jFDUI = new javax.swing.JFormattedTextField();
-        cmbTipoPersonal = new javax.swing.JComboBox<>();
-        jFCorreoElectronico = new javax.swing.JFormattedTextField();
+        cmbUsuario = new javax.swing.JComboBox<>();
         jSTablaGestionVigilantes = new javax.swing.JScrollPane();
         jTVigilantes = new javax.swing.JTable();
+        lbID = new javax.swing.JLabel();
+        cmbTipoPersonal = new javax.swing.JComboBox<>();
+        jTxtNombre = new javax.swing.JTextField();
+        jTxtApellido = new javax.swing.JTextField();
+        jTxtDUI = new javax.swing.JTextField();
+        jTxtCorreo = new javax.swing.JTextField();
+        jTxtTelefono = new javax.swing.JTextField();
+        lblTipoPersonal2 = new javax.swing.JLabel();
+        jTxtID = new javax.swing.JTextField();
+        lblCorreoElectronico1 = new javax.swing.JLabel();
+        jTxtSalario = new javax.swing.JTextField();
         jPToolStrip = new javax.swing.JPanel();
         lblExitButton = new javax.swing.JLabel();
         btnTheme = new javax.swing.JButton();
@@ -174,43 +257,51 @@ public class FrmPersonal extends javax.swing.JFrame {
 
         jPGestionVigilante.setBackground(new java.awt.Color(255, 255, 255));
         jPGestionVigilante.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPGestionVigilante.setLayout(null);
 
         lblApellido.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblApellido.setText("Apellido:");
+        lblApellido.setText("Apellidos:");
+        jPGestionVigilante.add(lblApellido);
+        lblApellido.setBounds(380, 70, 89, 22);
 
         lblEstadoPersonal.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblEstadoPersonal.setText("Estado del Personal: ");
+        jPGestionVigilante.add(lblEstadoPersonal);
+        lblEstadoPersonal.setBounds(800, 160, 186, 22);
 
-        lblCorreoElectronico.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblCorreoElectronico.setText("Correo Electronico:");
+        lblTelefono.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblTelefono.setText("Teléfono:");
+        jPGestionVigilante.add(lblTelefono);
+        lblTelefono.setBounds(340, 160, 84, 22);
 
         lblSalarioMensual.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblSalarioMensual.setText("Salario Mensual");
+        lblSalarioMensual.setText("Salario Mensual:");
+        jPGestionVigilante.add(lblSalarioMensual);
+        lblSalarioMensual.setBounds(44, 270, 160, 22);
 
-        cmbIdEstadoPersonal.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        cmbIdEstadoPersonal.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         cmbIdEstadoPersonal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbIdEstadoPersonalActionPerformed(evt);
             }
         });
-
-        jFNombre.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFNombre.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jFNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFNombreActionPerformed(evt);
-            }
-        });
+        jPGestionVigilante.add(cmbIdEstadoPersonal);
+        cmbIdEstadoPersonal.setBounds(800, 190, 200, 26);
 
         jPBotones.setBackground(new java.awt.Color(255, 255, 255));
         jPBotones.setPreferredSize(new java.awt.Dimension(895, 60));
 
-        btnRegistrar.setBackground(new java.awt.Color(255, 211, 105));
-        btnRegistrar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnRegistrar.setText("Registrar");
-        btnRegistrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnRegistrar.setContentAreaFilled(false);
-        btnRegistrar.setFocusable(false);
+        btnConsultar.setBackground(new java.awt.Color(255, 211, 105));
+        btnConsultar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnConsultar.setText("Consultar");
+        btnConsultar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnConsultar.setContentAreaFilled(false);
+        btnConsultar.setFocusable(false);
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
 
         btnAgregar.setBackground(new java.awt.Color(255, 211, 105));
         btnAgregar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -218,6 +309,11 @@ public class FrmPersonal extends javax.swing.JFrame {
         btnAgregar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
         btnAgregar.setContentAreaFilled(false);
         btnAgregar.setFocusable(false);
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         btnModificar.setBackground(new java.awt.Color(255, 211, 105));
         btnModificar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -225,6 +321,11 @@ public class FrmPersonal extends javax.swing.JFrame {
         btnModificar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
         btnModificar.setContentAreaFilled(false);
         btnModificar.setFocusable(false);
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         btnLimpiar.setBackground(new java.awt.Color(255, 211, 105));
         btnLimpiar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -232,6 +333,11 @@ public class FrmPersonal extends javax.swing.JFrame {
         btnLimpiar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
         btnLimpiar.setContentAreaFilled(false);
         btnLimpiar.setFocusable(false);
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPBotonesLayout = new javax.swing.GroupLayout(jPBotones);
         jPBotones.setLayout(jPBotonesLayout);
@@ -243,7 +349,7 @@ public class FrmPersonal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
                 .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(119, 119, 119)
-                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67))
             .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPBotonesLayout.createSequentialGroup()
@@ -256,7 +362,7 @@ public class FrmPersonal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32))
@@ -267,44 +373,39 @@ public class FrmPersonal extends javax.swing.JFrame {
                     .addGap(29, 29, 29)))
         );
 
+        jPGestionVigilante.add(jPBotones);
+        jPBotones.setBounds(71, 585, 895, 60);
+
         lblGestionVigilante.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblGestionVigilante.setForeground(new java.awt.Color(255, 211, 105));
         lblGestionVigilante.setText("Gestión de Vigilantes");
+        jPGestionVigilante.add(lblGestionVigilante);
+        lblGestionVigilante.setBounds(379, 24, 246, 29);
 
         lblTipoPersonal.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblTipoPersonal.setText("Tipo de Personal:");
+        lblTipoPersonal.setText("Cargo de Personal:");
+        jPGestionVigilante.add(lblTipoPersonal);
+        lblTipoPersonal.setBounds(570, 160, 168, 22);
 
         lblNombre.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblNombre.setText("Nombre:");
-
-        jFSalarioMensual.setEditable(false);
-        jFSalarioMensual.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFSalarioMensual.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-
-        jFApellido.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFApellido.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblNombre.setText("Nombres:");
+        jPGestionVigilante.add(lblNombre);
+        lblNombre.setBounds(40, 70, 87, 22);
 
         lblDUI.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblDUI.setText("DUI:");
+        jPGestionVigilante.add(lblDUI);
+        lblDUI.setBounds(720, 70, 38, 22);
 
-        jFDUI.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFDUI.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-
-        cmbTipoPersonal.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        cmbTipoPersonal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
-        cmbTipoPersonal.addActionListener(new java.awt.event.ActionListener() {
+        cmbUsuario.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        cmbUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        cmbUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbTipoPersonalActionPerformed(evt);
+                cmbUsuarioActionPerformed(evt);
             }
         });
-
-        jFCorreoElectronico.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFCorreoElectronico.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jFCorreoElectronico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFCorreoElectronicoActionPerformed(evt);
-            }
-        });
+        jPGestionVigilante.add(cmbUsuario);
+        cmbUsuario.setBounds(440, 270, 190, 26);
 
         jTVigilantes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -313,108 +414,55 @@ public class FrmPersonal extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Identificación", "Nombre", "Apellido", "Motivo", "Hora de entrada", "Estado del Ingreso", "Tipo de entrada", "Zona", "Residencia"
+                "ID", "Nombres", "Apellidos", "Cargo", "Telefono", "DUI", "Correo", "Estado", "Salario"
             }
         ));
+        jTVigilantes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTVigilantesMouseClicked(evt);
+            }
+        });
         jSTablaGestionVigilantes.setViewportView(jTVigilantes);
 
-        javax.swing.GroupLayout jPGestionVigilanteLayout = new javax.swing.GroupLayout(jPGestionVigilante);
-        jPGestionVigilante.setLayout(jPGestionVigilanteLayout);
-        jPGestionVigilanteLayout.setHorizontalGroup(
-            jPGestionVigilanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPGestionVigilanteLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(jPGestionVigilanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPGestionVigilanteLayout.createSequentialGroup()
-                        .addComponent(jSTablaGestionVigilantes, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPGestionVigilanteLayout.createSequentialGroup()
-                        .addGroup(jPGestionVigilanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblSalarioMensual)
-                            .addGroup(jPGestionVigilanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPGestionVigilanteLayout.createSequentialGroup()
-                                    .addGroup(jPGestionVigilanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblCorreoElectronico)
-                                        .addComponent(jFCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(42, 42, 42)
-                                    .addGroup(jPGestionVigilanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(cmbTipoPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblTipoPersonal))
-                                    .addGap(72, 72, 72)
-                                    .addGroup(jPGestionVigilanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblEstadoPersonal)
-                                        .addComponent(cmbIdEstadoPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(jPGestionVigilanteLayout.createSequentialGroup()
-                                    .addGroup(jPGestionVigilanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblNombre)
-                                        .addComponent(jFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(42, 42, 42)
-                                    .addGroup(jPGestionVigilanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(lblApellido)
-                                        .addComponent(jFApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(43, 43, 43)
-                                    .addGroup(jPGestionVigilanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblDUI)
-                                        .addComponent(jFDUI, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(52, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPGestionVigilanteLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jFSalarioMensual, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(664, 664, 664))))
-            .addGroup(jPGestionVigilanteLayout.createSequentialGroup()
-                .addGroup(jPGestionVigilanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPGestionVigilanteLayout.createSequentialGroup()
-                        .addGap(378, 378, 378)
-                        .addComponent(lblGestionVigilante))
-                    .addGroup(jPGestionVigilanteLayout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPGestionVigilanteLayout.setVerticalGroup(
-            jPGestionVigilanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPGestionVigilanteLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(lblGestionVigilante)
-                .addGroup(jPGestionVigilanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPGestionVigilanteLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                        .addGroup(jPGestionVigilanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPGestionVigilanteLayout.createSequentialGroup()
-                                .addComponent(lblDUI)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jFDUI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPGestionVigilanteLayout.createSequentialGroup()
-                                .addComponent(lblApellido)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jFApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPGestionVigilanteLayout.createSequentialGroup()
-                                .addComponent(lblNombre)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                        .addGroup(jPGestionVigilanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCorreoElectronico, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblTipoPersonal, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPGestionVigilanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbTipoPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPGestionVigilanteLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblEstadoPersonal)
-                        .addGap(18, 18, 18)
-                        .addComponent(cmbIdEstadoPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(50, 50, 50)
-                .addGroup(jPGestionVigilanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSalarioMensual)
-                    .addComponent(jFSalarioMensual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(jSTablaGestionVigilantes, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
-        );
+        jPGestionVigilante.add(jSTablaGestionVigilantes);
+        jSTablaGestionVigilantes.setBounds(44, 320, 970, 247);
+
+        lbID.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lbID.setText("ID:");
+        jPGestionVigilante.add(lbID);
+        lbID.setBounds(680, 240, 40, 22);
+        lbID.getAccessibleContext().setAccessibleName("ID");
+
+        cmbTipoPersonal.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        cmbTipoPersonal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        jPGestionVigilante.add(cmbTipoPersonal);
+        cmbTipoPersonal.setBounds(570, 190, 200, 26);
+        jPGestionVigilante.add(jTxtNombre);
+        jTxtNombre.setBounds(40, 100, 300, 24);
+        jPGestionVigilante.add(jTxtApellido);
+        jTxtApellido.setBounds(380, 100, 300, 24);
+        jPGestionVigilante.add(jTxtDUI);
+        jTxtDUI.setBounds(720, 100, 180, 24);
+        jPGestionVigilante.add(jTxtCorreo);
+        jTxtCorreo.setBounds(50, 190, 270, 24);
+        jPGestionVigilante.add(jTxtTelefono);
+        jTxtTelefono.setBounds(340, 190, 200, 24);
+
+        lblTipoPersonal2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblTipoPersonal2.setText("Usuario:");
+        jPGestionVigilante.add(lblTipoPersonal2);
+        lblTipoPersonal2.setBounds(440, 240, 80, 22);
+
+        jTxtID.setEditable(false);
+        jPGestionVigilante.add(jTxtID);
+        jTxtID.setBounds(680, 270, 120, 24);
+
+        lblCorreoElectronico1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblCorreoElectronico1.setText("Correo Electronico:");
+        jPGestionVigilante.add(lblCorreoElectronico1);
+        lblCorreoElectronico1.setBounds(50, 160, 171, 22);
+        jPGestionVigilante.add(jTxtSalario);
+        jTxtSalario.setBounds(215, 270, 178, 24);
 
         jPColorGestionLLamada.add(jPGestionVigilante);
         jPGestionVigilante.setBounds(30, 20, 1040, 670);
@@ -498,17 +546,9 @@ public class FrmPersonal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jFCorreoElectronicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFCorreoElectronicoActionPerformed
+    private void cmbUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFCorreoElectronicoActionPerformed
-
-    private void cmbTipoPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoPersonalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbTipoPersonalActionPerformed
-
-    private void jFNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFNombreActionPerformed
+    }//GEN-LAST:event_cmbUsuarioActionPerformed
 
     private void cmbIdEstadoPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbIdEstadoPersonalActionPerformed
         // TODO add your handling code here:
@@ -535,6 +575,107 @@ public class FrmPersonal extends javax.swing.JFrame {
         login.show();
         dispose();
     }//GEN-LAST:event_btnGoLogInActionPerformed
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        limpiarDatos();
+        mostrarDatos();
+    }//GEN-LAST:event_btnConsultarActionPerformed
+
+    private void jTVigilantesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTVigilantesMouseClicked
+        int index = jTVigilantes.getSelectedRow();
+        TableModel model = jTVigilantes.getModel();
+        
+        jTxtID.setText( model.getValueAt(index, 0).toString() );
+        jTxtNombre.setText( model.getValueAt(index, 1).toString() );
+        jTxtApellido.setText( model.getValueAt(index, 2).toString() );
+        jTxtTelefono.setText( model.getValueAt(index, 4).toString() );
+        jTxtDUI.setText( model.getValueAt(index, 5).toString() );
+        jTxtCorreo.setText( model.getValueAt(index, 6).toString() );
+        jTxtSalario.setText( model.getValueAt(index, 8).toString() );
+    }//GEN-LAST:event_jTVigilantesMouseClicked
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        limpiarDatos();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        PersonalController obj = new PersonalController();
+        obj.setNombres(jTxtNombre.getText());
+        obj.setApellidos(jTxtApellido.getText());
+        obj.setCorreo(jTxtCorreo.getText());
+        obj.setDui(jTxtDUI.getText());
+        obj.setSalarioMensual( Float.parseFloat(jTxtSalario.getText()));
+        obj.setTelefono(jTxtTelefono.getText());
+        
+        if(!jTxtID.getText().equals("")) obj.setIdPersonal(Integer.parseInt(jTxtID.getText()));
+
+        int index = 0;
+        
+        index = cmbIdEstadoPersonal.getSelectedIndex();
+        ComboBoxModel model = cmbIdEstadoPersonal.getModel();
+        ComboItems me = (ComboItems) model.getElementAt(index);
+        obj.setIdEstadoPersonal(me.getKey());
+        
+        index = cmbTipoPersonal.getSelectedIndex();
+        model = cmbTipoPersonal.getModel();
+        me = (ComboItems) model.getElementAt(index);
+        obj.setIdTipoPersonal(me.getKey());
+
+        index = cmbUsuario.getSelectedIndex();
+        model = cmbUsuario.getModel();
+        me = (ComboItems) model.getElementAt(index);
+        obj.setIdUsuario(me.getKey());
+        
+        //inserta datos en la base, o mensaje de lo contrario
+        if(obj.insertarPersonal()){
+            JOptionPane.showMessageDialog(this, "Datos guardados");
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Datos no guardados");
+        }
+        
+        mostrarDatos();
+
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        PersonalController obj = new PersonalController();
+        obj.setNombres(jTxtNombre.getText());
+        obj.setApellidos(jTxtApellido.getText());
+        obj.setCorreo(jTxtCorreo.getText());
+        obj.setDui(jTxtDUI.getText());
+        obj.setSalarioMensual( Float.parseFloat(jTxtSalario.getText()));
+        obj.setTelefono(jTxtTelefono.getText());
+        
+        if(!jTxtID.getText().equals("")) obj.setIdPersonal(Integer.parseInt(jTxtID.getText()));
+
+        int index = 0;
+        
+        index = cmbIdEstadoPersonal.getSelectedIndex();
+        ComboBoxModel model = cmbIdEstadoPersonal.getModel();
+        ComboItems me = (ComboItems) model.getElementAt(index);
+        obj.setIdEstadoPersonal(me.getKey());
+        
+        index = cmbTipoPersonal.getSelectedIndex();
+        model = cmbTipoPersonal.getModel();
+        me = (ComboItems) model.getElementAt(index);
+        obj.setIdTipoPersonal(me.getKey());
+
+        index = cmbUsuario.getSelectedIndex();
+        model = cmbUsuario.getModel();
+        me = (ComboItems) model.getElementAt(index);
+        obj.setIdUsuario(me.getKey());
+        
+        //modifica datos en la base, o mensaje de lo contrario
+        if(obj.modificarPersonal()){
+            JOptionPane.showMessageDialog(this, "Datos modificados");
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Datos no modificados");
+        }
+        
+        mostrarDatos();
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -563,6 +704,12 @@ public class FrmPersonal extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -574,18 +721,14 @@ public class FrmPersonal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnGoLogIn;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
-    private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnTheme;
     private javax.swing.JComboBox<String> cmbIdEstadoPersonal;
     private javax.swing.JComboBox<String> cmbTipoPersonal;
-    private javax.swing.JFormattedTextField jFApellido;
-    private javax.swing.JFormattedTextField jFCorreoElectronico;
-    private javax.swing.JFormattedTextField jFDUI;
-    private javax.swing.JFormattedTextField jFNombre;
-    private javax.swing.JFormattedTextField jFSalarioMensual;
+    private javax.swing.JComboBox<String> cmbUsuario;
     private javax.swing.JPanel jPBotones;
     private javax.swing.JPanel jPColorGestionLLamada;
     private javax.swing.JPanel jPGestionVigilante;
@@ -595,10 +738,18 @@ public class FrmPersonal extends javax.swing.JFrame {
     private javax.swing.JPanel jPbtnSBContainer;
     private javax.swing.JScrollPane jSTablaGestionVigilantes;
     private javax.swing.JTable jTVigilantes;
+    private javax.swing.JTextField jTxtApellido;
+    private javax.swing.JTextField jTxtCorreo;
+    private javax.swing.JTextField jTxtDUI;
+    private javax.swing.JTextField jTxtID;
+    private javax.swing.JTextField jTxtNombre;
+    private javax.swing.JTextField jTxtSalario;
+    private javax.swing.JTextField jTxtTelefono;
+    private javax.swing.JLabel lbID;
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblCargoUsuario;
-    private javax.swing.JLabel lblCorreoElectronico;
+    private javax.swing.JLabel lblCorreoElectronico1;
     private javax.swing.JLabel lblDUI;
     private javax.swing.JLabel lblEstadoPersonal;
     private javax.swing.JLabel lblExitButton;
@@ -609,7 +760,9 @@ public class FrmPersonal extends javax.swing.JFrame {
     private javax.swing.JLabel lblNombreUsuario;
     private javax.swing.JLabel lblSalarioMensual;
     private javax.swing.JLabel lblSistemaVigilantes;
+    private javax.swing.JLabel lblTelefono;
     private javax.swing.JLabel lblTipoPersonal;
+    private javax.swing.JLabel lblTipoPersonal2;
     private javax.swing.JLabel lblUsuario;
     // End of variables declaration//GEN-END:variables
 }
