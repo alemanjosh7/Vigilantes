@@ -11,6 +11,8 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
+import javax.mail.Session;
+import java.util.*;
 
 /**
  *
@@ -94,25 +96,25 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
         ImageIcon ImgIcon1, ImgIcon2;
         Image img1, img2;
         
-        ImgIcon1 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../Imagenes/RectangleLogo.png")));
+        ImgIcon1 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../Vigilante_Imagenes/imgRectangleLogo.png")));
         img1 = ImgIcon1.getImage();
         img2 = img1.getScaledInstance(jIco.getWidth(), jIco.getHeight(), Image.SCALE_SMOOTH);
         ImgIcon2 = new ImageIcon(img2);
         jIco.setIcon(ImgIcon2);
         
-        ImgIcon1 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../Imagenes/Minus.png")));
+        ImgIcon1 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../Vigilante_Imagenes/imgMinus.png")));
         img1 = ImgIcon1.getImage();
         img2 = img1.getScaledInstance(jBtnMinimize.getWidth(), jBtnMinimize.getHeight(), Image.SCALE_SMOOTH);
         ImgIcon2 = new ImageIcon(img2);
         jBtnMinimize.setIcon(ImgIcon2);
         
-        ImgIcon1 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../Imagenes/Close.png")));
+        ImgIcon1 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../Vigilante_Imagenes/imgClose.png")));
         img1 = ImgIcon1.getImage();
         img2 = img1.getScaledInstance(jBtnClose.getWidth(), jBtnClose.getHeight(), Image.SCALE_SMOOTH);
         ImgIcon2 = new ImageIcon(img2);
         jBtnClose.setIcon(ImgIcon2);
        
-        ImgIcon1 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../Imagenes/Moon.png")));
+        ImgIcon1 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../Vigilante_Imagenes/imgMoon.png")));
         img1 = ImgIcon1.getImage();
         img2 = img1.getScaledInstance(jImgMode.getWidth(), jImgMode.getHeight(), Image.SCALE_SMOOTH);
         ImgIcon2 = new ImageIcon(img2);
@@ -120,7 +122,7 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
     }
     
     public ContraseñaOlvidada() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../Imagenes/RectangleLogo.png")) );
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../Vigilante_Imagenes/imgRectangleLogo.png")) );
         initComponents();
         SetBackgroundDark();
         initIcon();
@@ -256,7 +258,7 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
 
         jTextField1.setBackground(new java.awt.Color(254, 243, 243));
         jTextField1.setForeground(new java.awt.Color(52, 67, 70));
-        jTextField1.setText("Email");
+        jTextField1.setText("");
 
         jButton1.setForeground(new java.awt.Color(57, 62, 70));
         jButton1.setText("Solicitar un cambio de contraseña");
@@ -352,6 +354,24 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
         this.setState(this.ICONIFIED);
     }//GEN-LAST:event_jBtnMinimizeMouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMinimizeMouseClicked
+        Properties props = new Properties();
+        props.setProperty("mail.smtp.host", "smtp.gmail.com");
+        props.setProperty("mail.smtp.starttls", "true");
+        props.setProperty("mail.smtp.port", "587");
+        props.setProperty("mail.smtp.auth", "true");
+        Session session = Session.getDefaultInstance(props);
+        String correoRemitente = "josuealeman2003@gmail.com";
+        String passwordRemitente = "";
+        String correoReceptor = jTextField1.getText();
+        String asunto = "Ha recibido el correo satisfactoriamente";
+        String mensaje = "Mensaje: Prueba";
+//        MimeMessage message = new MimeMessage(session);
+//        message.setFrom(new InternetAddress(correoRemitente));
+        this.setState(this.ICONIFIED);
+    }//GEN-LAST:event_jBtnMinimizeMouseClicked
+
+    
     private void jIcoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jIcoMouseClicked
     
     }//GEN-LAST:event_jIcoMouseClicked
