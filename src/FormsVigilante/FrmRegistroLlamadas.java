@@ -5,6 +5,8 @@
  */
 package FormsVigilante;
 
+import ControladorVigilante.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author CRISTIAN
@@ -47,6 +49,8 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
         lblMotivoLlamada = new javax.swing.JLabel();
         jSMotivoLlamada = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        lblVigilante1 = new javax.swing.JLabel();
+        jFFechaLla = new javax.swing.JFormattedTextField();
         jPSideBar = new javax.swing.JPanel();
         jPImageContainer = new javax.swing.JPanel();
         lblSistemaVigilantes = new javax.swing.JLabel();
@@ -87,6 +91,11 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
         btnRegistrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
         btnRegistrar.setContentAreaFilled(false);
         btnRegistrar.setFocusable(false);
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
 
         btnAgregar.setBackground(new java.awt.Color(255, 211, 105));
         btnAgregar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -101,6 +110,11 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
         btnModificar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
         btnModificar.setContentAreaFilled(false);
         btnModificar.setFocusable(false);
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         btnLimpiar.setBackground(new java.awt.Color(255, 211, 105));
         btnLimpiar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -108,6 +122,11 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
         btnLimpiar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
         btnLimpiar.setContentAreaFilled(false);
         btnLimpiar.setFocusable(false);
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPBotonesLayout = new javax.swing.GroupLayout(jPBotones);
         jPBotones.setLayout(jPBotonesLayout);
@@ -187,6 +206,12 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jSMotivoLlamada.setViewportView(jTextArea1);
 
+        lblVigilante1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblVigilante1.setText("Fecha");
+
+        jFFechaLla.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        jFFechaLla.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+
         javax.swing.GroupLayout jPRegistroLlamadaLayout = new javax.swing.GroupLayout(jPRegistroLlamada);
         jPRegistroLlamada.setLayout(jPRegistroLlamadaLayout);
         jPRegistroLlamadaLayout.setHorizontalGroup(
@@ -207,20 +232,22 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
                     .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbVigilante, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblVigilante)
+                            .addComponent(lblResidencia)
+                            .addComponent(cmbResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(42, 42, 42)
+                        .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jFFechaLla, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblVigilante1)
                             .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
-                                .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmbVigilante, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblVigilante))
-                                .addGap(42, 42, 42)
                                 .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblPorton)
                                     .addComponent(cmbPorton, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(38, 38, 38)
                                 .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblMotivoLlamada)
-                                    .addComponent(jSMotivoLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(cmbResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblResidencia))
+                                    .addComponent(jSMotivoLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPRegistroLlamadaLayout.setVerticalGroup(
@@ -239,13 +266,21 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
                         .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cmbVigilante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cmbPorton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblResidencia)
+                        .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblResidencia))
+                            .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(lblVigilante1)))
                         .addGap(18, 18, 18)
-                        .addComponent(cmbResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 7, Short.MAX_VALUE))
-                    .addComponent(jSMotivoLlamada))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cmbResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jFFechaLla, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(22, 22, 22))
+                    .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
+                        .addComponent(jSMotivoLlamada)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jSTablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -421,7 +456,7 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPToolStrip);
-        jPToolStrip.setBounds(270, 0, 1100, 61);
+        jPToolStrip.setBounds(270, 0, 1100, 57);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -459,6 +494,40 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
         login.show();
         dispose();
     }//GEN-LAST:event_btnGoLogInActionPerformed
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        RegistroLlamadasController obj = new RegistroLlamadasController();
+        obj.setPersonal(Integer.parseInt(cmbVigilante.getSelectedItem().toString()));
+        obj.setPorton(Integer.parseInt(cmbPorton.getSelectedItem().toString())); 
+        obj.setResidencia(Integer.parseInt(cmbResidencia.getSelectedItem().toString())); 
+        obj.setFecha(jFFechaLla.getText());
+        obj.setMotivo(jTextArea1.getText());
+        
+        //enviando guardar a  SQLServer
+        if(obj.guardarProyecto()){
+            JOptionPane.showMessageDialog(this, "Datos guardados");
+        }else{
+            JOptionPane.showMessageDialog(this, "Datos no guardados");
+        }
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        RegistroLlamadasController obj = new RegistroLlamadasController();
+        obj.setPersonal(Integer.parseInt(cmbVigilante.getSelectedItem().toString()));
+        obj.setPorton(Integer.parseInt(cmbPorton.getSelectedItem().toString())); 
+        obj.setResidencia(Integer.parseInt(cmbResidencia.getSelectedItem().toString())); 
+        obj.setFecha(jFFechaLla.getText());
+        obj.setMotivo(jTextArea1.getText());
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        RegistroLlamadasController obj = new RegistroLlamadasController();
+        obj.setPersonal(Integer.parseInt(cmbVigilante.getSelectedItem().toString()));
+        obj.setPorton(Integer.parseInt(cmbPorton.getSelectedItem().toString())); 
+        obj.setResidencia(Integer.parseInt(cmbResidencia.getSelectedItem().toString())); 
+        obj.setFecha(jFFechaLla.getText());
+        obj.setMotivo(jTextArea1.getText());
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -506,6 +575,7 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbPorton;
     private javax.swing.JComboBox<String> cmbResidencia;
     private javax.swing.JComboBox<String> cmbVigilante;
+    private javax.swing.JFormattedTextField jFFechaLla;
     private javax.swing.JPanel jPBotones;
     private javax.swing.JPanel jPImageContainer;
     private javax.swing.JPanel jPRegistroLlamada;
@@ -528,5 +598,6 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
     private javax.swing.JLabel lblSistemaVigilantes;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JLabel lblVigilante;
+    private javax.swing.JLabel lblVigilante1;
     // End of variables declaration//GEN-END:variables
 }
