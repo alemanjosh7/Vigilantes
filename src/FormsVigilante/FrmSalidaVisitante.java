@@ -27,9 +27,8 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.cmbPortonSalida.setModel(SC.consultarPorton());
         this.cmbVisitante.setModel(SC.consultarVisitante());
-        this.cmbTipoES.setModel(SC.consultarTipoPorton());
+        this.cmbTipoES.setModel(SC.consultarTipoES());
         CargarDatosTabla();
-
     }
 
     /**
@@ -499,6 +498,7 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
         else{
             JOptionPane.showMessageDialog(this,"Datos no guardados");
         }
+        LimpiarCampos();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
@@ -513,8 +513,9 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
             CargarDatosTabla();
         }
         else{
-            JOptionPane.showMessageDialog(this,"Datos no guardados");
+            JOptionPane.showMessageDialog(this,"Datos no actualizados");
         }
+        LimpiarCampos();
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void jFTidZonaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTidZonaKeyTyped
@@ -540,7 +541,11 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
         //Realizar Consulta
         SC.setIdRegistroSalida(Integer.parseInt(jFTidSalida.getText()));
         if (SC.consultarSalida()) {
-            jFTidZona.getText();
+            jFTidZona.setText(String.valueOf(SC.getIdRegistroSalida()));
+            cmbPortonSalida.setSelectedIndex(SC.getIdPorton());
+            cmbVisitante.setSelectedIndex(SC.getIdVisitante());
+            cmbTipoES.setSelectedIndex(SC.getIdTipoES());
+            this.jTRegistroSalida.setModel(SC.filtrarDatosTabla());
         }
         else{
             JOptionPane.showMessageDialog(this, "Error al consultar");

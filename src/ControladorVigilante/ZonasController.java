@@ -62,7 +62,6 @@ public class ZonasController {
             }
             //cerrando conexión
             cmd.close();
-            cn.close();
         }
         catch(Exception ex){
             System.out.println(ex.toString());
@@ -83,7 +82,6 @@ public class ZonasController {
             }
             //cerrando conexión
             cmd.close();
-            cn.close();
         }
         catch(Exception ex){
             System.out.println(ex.toString());
@@ -103,7 +101,6 @@ public class ZonasController {
             }
             //cerrando conexión
             cmd.close();
-            cn.close();
         }
         catch(Exception ex){
             System.out.println(ex.toString());
@@ -117,9 +114,6 @@ public class ZonasController {
         try{
             PreparedStatement cmd = cn.prepareStatement(sql);
             res = cmd.executeQuery();
-//            //cerrando conexion
-//            cmd.close();
-//            cn.close();
         }
         catch(SQLException ex){
             System.out.println("Error de consulta: "+ex.toString());
@@ -164,13 +158,40 @@ public class ZonasController {
                 idZona = res.getInt(1);
                 nombreZona = res.getString(2);
             }
+            
              //cerrando conexion
             cmd.close();
-            cn.close();
         }
         catch(Exception ex){
             System.out.println(ex.toString());
         }
         return bres;
+    }
+    
+    //Mostrar en la tabla los datos consultados
+    public DefaultTableModel filtrarDatosTabla(){
+        DefaultTableModel tZonasFiltradas = new DefaultTableModel();
+        tZonasFiltradas.addColumn("Identificación");
+        tZonasFiltradas.addColumn("Zona");
+
+        String[] datos =  new String[2];
+        try{            
+            //Realizar consulta
+            String sql = "SELECT * FROM Zonas WHERE idZona =?";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            //Enviando el dato solicitado
+            cmd.setInt(1, idZona);
+            ResultSet res = cmd.executeQuery();
+            while(res.next()){
+                datos[0] = res.getString(1);    
+                datos[1] = res.getString(2);
+                tZonasFiltradas.addRow(datos);                      
+            }
+            
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return tZonasFiltradas;
     }
 }

@@ -11,7 +11,6 @@ import java.awt.Image;
 import java.sql.Connection;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -614,12 +613,35 @@ public class FrmEntradaVisitante extends javax.swing.JFrame {
         dispose();    }//GEN-LAST:event_btnGoLogInMouseClicked
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        //Consular
+        //Consultar
+        int emergencia = 0, entrada = 0;
         //Realizar Consulta
         EC.setIdRegistroEntrada(Integer.parseInt(jFTidEntrada.getText()));
         if (EC.consultarEntrada()) {
-            jFTidEntrada.getText();
-            
+            jFTidEntrada.setText(String.valueOf(EC.getIdRegistroEntrada()));
+            cmbPortonEntrada.setSelectedIndex(EC.getIdTipoES());
+            cmbVisitantes.setSelectedIndex(EC.getIdVisitante());
+            cmbTipoEntrada.setSelectedIndex(EC.getIdTipoES());
+            TMotivoVisita.setText(EC.getMotivoEntrada());
+            emergencia = EC.getEmergencia();
+            entrada = EC.getPermisoEntrada();
+            if (emergencia == 1) {
+                rbtTrueEmergencia.setSelected(true);
+                rbtFalseEmergencia.setSelected(false);
+            }
+            else{
+                rbtTrueEmergencia.setSelected(false);
+                rbtFalseEmergencia.setSelected(true);
+            }
+            if (entrada == 1) {
+                rbtTrueEntrada.setSelected(true);
+                rbtFalseEntrada.setSelected(false);
+            }
+            else{
+                rbtTrueEntrada.setSelected(false);
+                rbtFalseEntrada.setSelected(true);   
+            }
+            jTDatosIngreso.setModel(EC.filtrarDatosTabla());
         }
         else{
             JOptionPane.showMessageDialog(this, "Error al consultar");
@@ -669,14 +691,14 @@ public class FrmEntradaVisitante extends javax.swing.JFrame {
         EC.setPermisoEntrada(entrada);
         EC.convertirVisitante(cmbVisitantes.getSelectedItem().toString());
         EC.convertirTipoES(cmbTipoEntrada.getSelectedItem().toString());
-        EC.setIdRegistroEntrada(Integer.parseInt(jFTidEntrada.toString()));
+        EC.setIdRegistroEntrada(Integer.parseInt(jFTidEntrada.getText()));
         //Enviando los datos a SQL
-        if (EC.guardarEntradas()) {
-            JOptionPane.showMessageDialog(this,"Datos guardados exitosamente");
+        if (EC.modificarZona()) {
+            JOptionPane.showMessageDialog(this,"Datos actualizados exitosamente");
             CargarDatosTabla();
         }
         else{
-            JOptionPane.showMessageDialog(this,"Datos no guardados");
+            JOptionPane.showMessageDialog(this,"Datos no actualizados");
         }
     }//GEN-LAST:event_btnModificarActionPerformed
 

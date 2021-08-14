@@ -106,7 +106,6 @@ public class EntradaController {
             }
             //cerrando conexión
             cmd.close();
-            cn.close();
         }
         catch(Exception ex){
             System.out.println(ex.toString());
@@ -118,7 +117,7 @@ public class EntradaController {
     public boolean modificarZona(){
         boolean res = false;
         try{
-            String sql = "UPDATE RegistroEntrada SET idTipoES =?, idVisitante =?, motivoIngreso =?, permisoEntrada =?, emergencia =? WHERE idRegistroIngreso =?";//se pasan por referencia por seguridad
+            String sql = "UPDATE RegistroEntrada SET idTipoES =?, idVisitante =?, motivoIngreso =?, permisoIngreso =?, emergencia =? WHERE idRegistroIngreso =?";//se pasan por referencia por seguridad
             PreparedStatement cmd = cn.prepareStatement(sql);
             cmd.setInt(1,idTipoES);
             cmd.setInt(2, idVisitante);
@@ -131,7 +130,6 @@ public class EntradaController {
             }
             //cerrando conexión
             cmd.close();
-            cn.close();
         }
         catch(Exception ex){
             System.out.println(ex.toString());
@@ -151,7 +149,6 @@ public class EntradaController {
             }
             //cerrando conexión
             cmd.close();
-            cn.close();
         }
         catch(Exception ex){
             System.out.println(ex.toString());
@@ -193,7 +190,7 @@ public class EntradaController {
     public DefaultComboBoxModel consultarVisitante(){
         DefaultComboBoxModel VisitanteList = new DefaultComboBoxModel();
         VisitanteList.addElement("Seleccione visitante");
-        ResultSet res = this.consultaDatos("SELECT * FROM Visitante order by apellidos");
+        ResultSet res = this.consultaDatos("SELECT * FROM Visitante");
         try{
             while (res.next()) {
                 VisitanteList.addElement(res.getString("nombres"));
@@ -273,7 +270,6 @@ public class EntradaController {
             }
             //cerrando conexion
             cmd.close();
-            cn.close();
         }
         catch(Exception ex){
             
@@ -298,7 +294,6 @@ public class EntradaController {
             }
             //cerrando conexion
             cmd.close();
-            cn.close();
         }
         catch(Exception ex){
             
@@ -326,11 +321,45 @@ public class EntradaController {
             }
             //cerrando conexion
             cmd.close();
-            cn.close();
         }
         catch(Exception ex){
             System.out.println(ex.toString());
         }
         return bres;
+    }
+    
+    public DefaultTableModel filtrarDatosTabla(){
+        DefaultTableModel tEntradaFiltrada = new DefaultTableModel();
+        tEntradaFiltrada.addColumn("Indentificación");
+        tEntradaFiltrada.addColumn("Nombre");
+        tEntradaFiltrada.addColumn("Apellido");
+        tEntradaFiltrada.addColumn("Motivo");
+        tEntradaFiltrada.addColumn("Tipo Entrada");
+        tEntradaFiltrada.addColumn("Emergencia");
+        tEntradaFiltrada.addColumn("Permitio Entrada");
+        
+        String[] datos =  new String[7];
+        try{
+            //Realizar consulta
+            String sql = "SELECT RE.idRegistroIngreso, V.nombres, V.apellidos, RE.motivoIngreso, TES.descripcion,RE.emergencia, RE.permisoIngreso FROM RegistroEntrada RE JOIN Visitante V  ON RE.idVisitante = V.idVisitante JOIN TipoEntradaSalida TES ON RE.idTipoES = TES.idTipoES WHERE idRegistroIngreso =?";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            //Lenar los parámetros de la clase, se coloca en el orden de la consulta
+            cmd.setInt(1, idRegistroEntrada);
+            ResultSet res = cmd.executeQuery();
+            while(res.next()){
+                datos[0] = res.getString(1);    
+                datos[1] = res.getString(2);
+                datos[2] = res.getString(3);
+                datos[3] = res.getString(4);
+                datos[4] = res.getString(5);
+                datos[5] = res.getString(6);
+                datos[6] = res.getString(7);
+                tEntradaFiltrada.addRow(datos);                      
+            }        
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());            
+        }
+        return tEntradaFiltrada; 
     }
 }

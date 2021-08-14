@@ -427,8 +427,9 @@ public class FrmZonas extends javax.swing.JFrame {
         //Realizar Consulta
         ZC.setIdZona(Integer.parseInt(jFTidZona.getText()));
         if (ZC.consultarZonas()) {
-            jFTidZona.getText();
-            jFTNombreZona.getText();
+            jFTidZona.setText(String.valueOf(ZC.getIdZona()));
+            jFTNombreZona.setText(ZC.getNombreZona());
+            this.jTZonas.setModel(ZC.filtrarDatosTabla());
         }
         else{
             JOptionPane.showMessageDialog(this, "Error al consultar");
@@ -451,6 +452,7 @@ public class FrmZonas extends javax.swing.JFrame {
         else{
             JOptionPane.showMessageDialog(this,"Datos no guardados");
         }
+        LimpiarCampos();
     }//GEN-LAST:event_btnRegistrar3ActionPerformed
 
     private void btnModificar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificar3ActionPerformed
@@ -465,6 +467,7 @@ public class FrmZonas extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(this, "Error al actualizar");
         }
+        LimpiarCampos();
     }//GEN-LAST:event_btnModificar3ActionPerformed
 
     private void lblExitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitButtonMouseClicked
@@ -525,6 +528,7 @@ public class FrmZonas extends javax.swing.JFrame {
     public void CargarDatosTabla(){
         this.jTZonas.setModel(ZC.consultarDatosTabla());
     }
+    
     
     /**
      * @param args the command line arguments
