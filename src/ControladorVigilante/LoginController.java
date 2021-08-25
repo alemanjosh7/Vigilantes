@@ -9,12 +9,12 @@ import Modelo.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
+
 /**
  *
- * @author Josue Aleman
+ * @author josue
  */
-public class UsuarioController {
+public class LoginController {
     private Connection cn;
     private int id_usuario;
     private String nombre_usuario;
@@ -22,6 +22,35 @@ public class UsuarioController {
     private int id_tipo_usuario;
     private int id_estado_usuario;
     private String correo;
+    private String nombres;
+    private String apellidos;
+    private String nombreTipo;
+
+    public String getNombres() {
+        return nombres;
+    }
+
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public String getNombreTipo() {
+        return nombreTipo;
+    }
+
+    public void setNombreTipo(String nombreTipo) {
+        this.nombreTipo = nombreTipo;
+    }
+    
+    
 
     public String getCorreo() {
         return correo;
@@ -31,7 +60,7 @@ public class UsuarioController {
         this.correo = correo;
     }
 
-    public UsuarioController() {
+    public LoginController() {
        Conexion con = new Conexion();
        cn = con.conectar();
 //       cn = Conexion.conectar();
@@ -85,21 +114,55 @@ public class UsuarioController {
         this.id_estado_usuario = id_estado_usuario;
     }
     
-    public boolean cambiarContrasena(){
-        boolean res = false;
+    public int existenciaUsuario(String nombre, String contrasena){
         try{ //Realizar consulta UPDATE
-           String sql = "UPDATE Usuario SET contrasena = ? from Usuario Inner Join Personal on Usuario.idUsuario = Personal.idUsuario where Personal.correo = ?";
-       //pide importar clase Prepared Statement
+           String sql = "SELECT idUsuario, idTipoUsuario, idEstadoUsuario, count(idUsuario) FROM Usuario where nombreUsuario = ? and contrasena = ? GROUP BY idUsuario, idTipoUsuario, idEstadoUsuario";
+           //pide importar clase Prepared Statement
            PreparedStatement cmd = cn.prepareStatement(sql);
            //Lenar los parámetros de la clase, se coloca en el orden de la consulta
-           cmd.setString(1, contrasena);
-           cmd.setString(2, correo);
+           cmd.setString(1, nombre);
+           cmd.setString(2, contrasena);
+           
+           //Ejecutar la consulta
+            //pedirá importar la clase ResultSet
+            ResultSet rs = cmd.executeQuery();
+            //recorrer la lista de registros
+            if(rs.next()){
+                id_usuario = rs.getInt(1);
+                id_tipo_usuario = rs.getInt(2);
+                id_estado_usuario = rs.getInt(3);
+                
+                return rs.getInt(4);
+              //asignándole a los atributos de la clase
+            }
+            //cerrando conexion
+            cmd.close();
+            cn.close();
+        }catch(Exception e ){
+            System.out.println(e.toString());
+        }
+        return 0;
+    }
+    
+    public boolean consultarRolYDatos(int idUsuario){
+        boolean res = false;
+        try{ //Realizar consulta UPDATE
+           String sql = "SELECT nombres, apellidos, nombreTipo from TipoPersonal, Personal Inner Join Usuario on Personal.idPersonal = Usuario.idPersonal where Usuario.idUsuario = ? and Personal.idTipoPersonal = TipoPersonal.idTipoPersonal";
+           //pide importar clase Prepared Statement
+           PreparedStatement cmd = cn.prepareStatement(sql);
+           //Lenar los parámetros de la clase, se coloca en el orden de la consulta
+           cmd.setInt(1, idUsuario);
+           
            //Ejecutar la consulta
             //pedirá importar la clase ResultSet
             ResultSet rs = cmd.executeQuery();
             //recorrer la lista de registros
             if(rs.next()){
               res=true;
+              //asignándole a los atributos de la clase
+              nombres = rs.getString(1);
+              apellidos = rs.getString(2);
+              nombreTipo = rs.getString(3);
             }
             //cerrando conexion
             cmd.close();
@@ -110,5 +173,5 @@ public class UsuarioController {
         return res;
     }
     
-//
+    
 }

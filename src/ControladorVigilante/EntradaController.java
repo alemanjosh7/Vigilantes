@@ -22,7 +22,10 @@ public class EntradaController {
     private int idRegistroEntrada;
     private int idTipoES;
     private int idVisitante;
+    private int idPorton;
+    private int idResidencia;
     private String motivoIngreso;
+    private String fechaHora;
     private int permisoEntrada;
     private int emergencia;
     
@@ -45,7 +48,7 @@ public class EntradaController {
         return idTipoES;
     }
     
-    public void setIdIdTipoES(int idTipoES){
+    public void setIdTipoES(int idTipoES){
         this.idTipoES = idTipoES;
     }
     //id de el visitante
@@ -56,6 +59,22 @@ public class EntradaController {
     public void setIdVisitante(int idVisitante){
         this.idVisitante = idVisitante;
     }
+    //id de Porton
+    public Integer getIdPorton(){
+        return idPorton;
+    }
+    
+    public void setIdPorton(int idPorton){
+        this.idPorton = idPorton;
+    }
+    //id de Residencia
+    public Integer getIdResidencia(){
+        return idResidencia;
+    }
+    
+    public void setIdResidencia(int idResidencia){
+        this.idResidencia = idResidencia;
+    }    
     //motivo de Entrada
     public String getMotivoEntrada(){
         return motivoIngreso;
@@ -64,7 +83,14 @@ public class EntradaController {
     public void setMotivoEntrada(String motivoIngreso){
         this.motivoIngreso = motivoIngreso;
     }
+    //fecha y hora de la entrada
+    public String getFechaHora(){
+        return fechaHora;
+    }
     
+    public void setFechaHora(String fechaHora){
+        this.fechaHora = fechaHora;
+    }    
     //¿Se le accedio permiso para entrar?
     public Integer getPermisoEntrada(){
         return permisoEntrada;
@@ -94,13 +120,16 @@ public class EntradaController {
     public boolean guardarEntradas(){
         boolean res = false;
         try{
-            String sql = "INSERT INTO RegistroEntrada(idTipoES, idVisitante, motivoIngreso, permisoIngreso, emergencia) values (?,?,?,?,?) ";//se pasan por referencia por seguridad
+            String sql = "INSERT INTO RegistroEntrada(idTipoES, idVisitante, idPorton, residenciaVisita, motivoIngreso, fechaHora, permisoIngreso, emergencia) values (?,?,?,?,?,?,?,?) ";//se pasan por referencia por seguridad
             PreparedStatement cmd = cn.prepareStatement(sql);
             cmd.setInt(1,idTipoES);
             cmd.setInt(2, idVisitante);
-            cmd.setString(3, motivoIngreso);
-            cmd.setInt(4,permisoEntrada);
-            cmd.setInt(5, emergencia);
+            cmd.setInt(3, idPorton);
+            cmd.setInt(4, idResidencia);
+            cmd.setString(5, motivoIngreso);
+            cmd.setString(6, fechaHora);
+            cmd.setInt(7,permisoEntrada);
+            cmd.setInt(8, emergencia);
             if (!cmd.execute()) {
                 res=true;
             }
@@ -117,14 +146,17 @@ public class EntradaController {
     public boolean modificarZona(){
         boolean res = false;
         try{
-            String sql = "UPDATE RegistroEntrada SET idTipoES =?, idVisitante =?, motivoIngreso =?, permisoIngreso =?, emergencia =? WHERE idRegistroIngreso =?";//se pasan por referencia por seguridad
+            String sql = "UPDATE RegistroEntrada SET idTipoES =?, idVisitante =?, idPorton =?, residenciaVisita =?, motivoIngreso =?, fechaHora =?, permisoIngreso =?, emergencia =? WHERE idRegistroIngreso =?";//se pasan por referencia por seguridad
             PreparedStatement cmd = cn.prepareStatement(sql);
             cmd.setInt(1,idTipoES);
             cmd.setInt(2, idVisitante);
-            cmd.setString(3, motivoIngreso);
-            cmd.setInt(4,permisoEntrada);
-            cmd.setInt(5, emergencia);
-            cmd.setInt(6, idRegistroEntrada);
+            cmd.setInt(3, idPorton);
+            cmd.setInt(4, idResidencia);
+            cmd.setString(5, motivoIngreso);
+            cmd.setString(6, fechaHora);
+            cmd.setInt(7,permisoEntrada);
+            cmd.setInt(8, emergencia);
+            cmd.setInt(9, idRegistroEntrada);
             if (!cmd.execute()) {
                 res=true;
             }
@@ -203,6 +235,23 @@ public class EntradaController {
         return VisitanteList;
     }
     
+    //Obtener los datos para el combobox de Porton de Salida
+    public DefaultComboBoxModel consultarResidencia(){
+        DefaultComboBoxModel ResidenciaList = new DefaultComboBoxModel();
+        ResidenciaList.addElement("Porton de Salida");
+        ResultSet res = this.consultaDatos("SELECT * FROM Residencia");
+        try{
+            while (res.next()) {
+                ResidenciaList.addElement(res.getString("numeroResidencia"));
+            }
+            res.close();
+        }
+        catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }
+        return ResidenciaList;
+    }    
+    
     //Obtener los datos para el combobox de Tipo de Entrada/Salida
     public DefaultComboBoxModel consultarTipoEntrada(){
         DefaultComboBoxModel TipoEntradaList = new DefaultComboBoxModel();
@@ -232,6 +281,7 @@ public class EntradaController {
         tEntrada.addColumn("Permitio Entrada");
                 
         String[] datos =  new String[7];
+        int emergencia, entrada;
         ResultSet res = this.consultaDatos("SELECT RE.idRegistroIngreso, V.nombres, V.apellidos, RE.motivoIngreso, TES.descripcion,RE.emergencia, RE.permisoIngreso FROM RegistroEntrada RE JOIN Visitante V  ON RE.idVisitante = V.idVisitante JOIN TipoEntradaSalida TES ON RE.idTipoES = TES.idTipoES");
 
         try{            
@@ -241,8 +291,20 @@ public class EntradaController {
                 datos[2] = res.getString(3);
                 datos[3] = res.getString(4);
                 datos[4] = res.getString(5);
-                datos[5] = res.getString(6);
-                datos[6] = res.getString(7);
+                emergencia = res.getInt(6);
+                if (emergencia == 1) {
+                    datos[5] = "SI";
+                }
+                else{
+                    datos[5] = "NO";
+                }
+                entrada = res.getInt(7);
+                if (entrada == 1) {
+                    datos[6] = "SI";
+                }
+                else{
+                    datos[6] = "NO";
+                }
                 tEntrada.addRow(datos);                      
             }
             
@@ -290,7 +352,31 @@ public class EntradaController {
             if(rs.next()){
               res=true;
               //asignándole a los atributos de la clase
-              setIdIdTipoES(rs.getInt(1));
+              setIdTipoES(rs.getInt(1));
+            }
+            //cerrando conexion
+            cmd.close();
+        }
+        catch(Exception ex){
+            
+        }   
+        return res;
+    }    
+    
+    //Convirtiendo el valor del combobox a Id: TipoES
+    public boolean convertirResidencia(String residencia){
+        boolean res = false;
+        try{
+            String sql = ("SELECT idResidencia FROM Residencia WHERE numeroResidencia =?");
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            cmd.setString(1, residencia);
+            //Ejecutar la consulta
+            ResultSet rs = cmd.executeQuery();
+            //recorrer la lista de registros
+            if(rs.next()){
+              res=true;
+              //asignándole a los atributos de la clase
+              setIdResidencia(rs.getInt(1));
             }
             //cerrando conexion
             cmd.close();
@@ -315,9 +401,12 @@ public class EntradaController {
                 idRegistroEntrada = res.getInt(1);
                 idTipoES = res.getInt(2);
                 idVisitante = res.getInt(3);
-                motivoIngreso = res.getString(4);
-                permisoEntrada = res.getInt(5);
-                emergencia = res.getInt(6);
+                idPorton = res.getInt(4);
+                idResidencia = res.getInt(5);
+                motivoIngreso = res.getString(6);
+                fechaHora = res.getString(7);
+                permisoEntrada = res.getInt(8);
+                emergencia = res.getInt(9);
             }
             //cerrando conexion
             cmd.close();
@@ -338,6 +427,7 @@ public class EntradaController {
         tEntradaFiltrada.addColumn("Emergencia");
         tEntradaFiltrada.addColumn("Permitio Entrada");
         
+        int emergencia, entrada;
         String[] datos =  new String[7];
         try{
             //Realizar consulta
@@ -352,8 +442,20 @@ public class EntradaController {
                 datos[2] = res.getString(3);
                 datos[3] = res.getString(4);
                 datos[4] = res.getString(5);
-                datos[5] = res.getString(6);
-                datos[6] = res.getString(7);
+                emergencia = res.getInt(6);
+                if (emergencia == 1) {
+                    datos[5] = "SI";
+                }
+                else{
+                    datos[5] = "NO";
+                }
+                entrada = res.getInt(7);
+                if (entrada == 1) {
+                    datos[6] = "SI";
+                }
+                else{
+                    datos[6] = "NO";
+                }
                 tEntradaFiltrada.addRow(datos);                      
             }        
         }
@@ -362,4 +464,53 @@ public class EntradaController {
         }
         return tEntradaFiltrada; 
     }
+    
+    
+    public DefaultTableModel DatosTablaTecleado(){
+        DefaultTableModel tEntradaFiltrada = new DefaultTableModel();
+        tEntradaFiltrada.addColumn("Indentificación");
+        tEntradaFiltrada.addColumn("Nombre");
+        tEntradaFiltrada.addColumn("Apellido");
+        tEntradaFiltrada.addColumn("Motivo");
+        tEntradaFiltrada.addColumn("Tipo Entrada");
+        tEntradaFiltrada.addColumn("Emergencia");
+        tEntradaFiltrada.addColumn("Permitio Entrada");
+
+        int emergencia, entrada;        
+        String[] datos =  new String[7];
+        try{
+            //Realizar consulta
+            String sql = "SELECT RE.idRegistroIngreso, V.nombres, V.apellidos, RE.motivoIngreso, TES.descripcion,RE.emergencia, RE.permisoIngreso FROM RegistroEntrada RE JOIN Visitante V  ON RE.idVisitante = V.idVisitante JOIN TipoEntradaSalida TES ON RE.idTipoES = TES.idTipoES WHERE idRegistroIngreso LIKE CONCAT('%',?,'%')";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            //Lenar los parámetros de la clase, se coloca en el orden de la consulta
+            cmd.setInt(1, idRegistroEntrada);
+            ResultSet res = cmd.executeQuery();
+            while(res.next()){
+                datos[0] = res.getString(1);    
+                datos[1] = res.getString(2);
+                datos[2] = res.getString(3);
+                datos[3] = res.getString(4);
+                datos[4] = res.getString(5);
+                emergencia = res.getInt(6);
+                if (emergencia == 1) {
+                    datos[5] = "SI";
+                }
+                else{
+                    datos[5] = "NO";
+                }
+                entrada = res.getInt(7);
+                if (entrada == 1) {
+                    datos[6] = "SI";
+                }
+                else{
+                    datos[6] = "NO";
+                }
+                tEntradaFiltrada.addRow(datos);                      
+            }        
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());            
+        }
+        return tEntradaFiltrada; 
+    }    
 }

@@ -424,15 +424,20 @@ public class FrmZonas extends javax.swing.JFrame {
     //CRUD
     
     private void btnConsultar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultar3ActionPerformed
-        //Realizar Consulta
-        ZC.setIdZona(Integer.parseInt(jFTidZona.getText()));
-        if (ZC.consultarZonas()) {
-            jFTidZona.setText(String.valueOf(ZC.getIdZona()));
-            jFTNombreZona.setText(ZC.getNombreZona());
-            this.jTZonas.setModel(ZC.filtrarDatosTabla());
-        }
+        if (jFTidZona.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");   
+        } 
         else{
-            JOptionPane.showMessageDialog(this, "Error al consultar");
+            //Realizar Consulta
+            ZC.setIdZona(Integer.parseInt(jFTidZona.getText()));
+            if (ZC.consultarZonas()) {
+                jFTidZona.setText(String.valueOf(ZC.getIdZona()));
+                jFTNombreZona.setText(ZC.getNombreZona());
+                this.jTZonas.setModel(ZC.filtrarDatosTabla());
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Error al consultar");
+            }
         }
     }//GEN-LAST:event_btnConsultar3ActionPerformed
 
@@ -441,33 +446,43 @@ public class FrmZonas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimpiar3ActionPerformed
 
     private void btnRegistrar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar3ActionPerformed
-        //Registrar contenido a la Tabla Zonas
-        //Envamos los datos a la clase
-        ZC.setNombreZona(jFTNombreZona.getText());
-        //Enviando los datos a SQL
-        if (ZC.guardarZona()) {
-            JOptionPane.showMessageDialog(this,"Datos guardados exitosamente");
-            CargarDatosTabla();
-        }
+        if (jFTNombreZona.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");   
+        } 
         else{
-            JOptionPane.showMessageDialog(this,"Datos no guardados");
-        }
-        LimpiarCampos();
+            //Registrar contenido a la Tabla Zonas
+            //Envamos los datos a la clase
+            ZC.setNombreZona(jFTNombreZona.getText());
+            //Enviando los datos a SQL
+            if (ZC.guardarZona()) {
+                JOptionPane.showMessageDialog(this,"Datos guardados exitosamente");
+                CargarDatosTabla();
+            }
+            else{
+                JOptionPane.showMessageDialog(this,"Datos no guardados");
+            }
+            LimpiarCampos();            
+        }        
     }//GEN-LAST:event_btnRegistrar3ActionPerformed
 
     private void btnModificar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificar3ActionPerformed
-        //Modificar contenido a la Tabla Zonas
-        //Enviamos los datos a la clase
-        ZC.setNombreZona(jFTNombreZona.getText());
-        ZC.setIdZona(Integer.parseInt(jFTidZona.getText()));
-        //enviando a modificar en  SQLServer
-        if(ZC.modificarZona()){
-            JOptionPane.showMessageDialog(this, "Datos actualizados exitosamente");
-            CargarDatosTabla();
-        }else{
-            JOptionPane.showMessageDialog(this, "Error al actualizar");
+        if (jFTNombreZona.getText().isEmpty() || jFTidZona.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");   
+        }         
+        else{
+            //Modificar contenido a la Tabla Zonas
+            //Enviamos los datos a la clase
+            ZC.setNombreZona(jFTNombreZona.getText());
+            ZC.setIdZona(Integer.parseInt(jFTidZona.getText()));
+            //enviando a modificar en  SQLServer
+            if(ZC.modificarZona()){
+                JOptionPane.showMessageDialog(this, "Datos actualizados exitosamente");
+                CargarDatosTabla();
+            }else{
+                JOptionPane.showMessageDialog(this, "Error al actualizar");
+            }
+            LimpiarCampos();            
         }
-        LimpiarCampos();
     }//GEN-LAST:event_btnModificar3ActionPerformed
 
     private void lblExitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitButtonMouseClicked

@@ -9,6 +9,8 @@ import Modelo.Conexion;
 import java.sql.Connection;
 import ControladorVigilante.SalidaController;
 import javax.swing.JOptionPane;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -25,10 +27,14 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
         this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
+        //Cargando los difentes combobox a utilizar        
         this.cmbPortonSalida.setModel(SC.consultarPorton());
         this.cmbVisitante.setModel(SC.consultarVisitante());
         this.cmbTipoES.setModel(SC.consultarTipoES());
-        CargarDatosTabla();
+        //Cargar tablas        
+        CargarDatosTabla();        
+        //Llenar hora y fehca de Ingreso         
+        jFTfechaHora.setText(fechaActual());
     }
 
     /**
@@ -59,6 +65,8 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
         cmbTipoES = new javax.swing.JComboBox<>();
         lblIdRegistroSalida = new javax.swing.JLabel();
         jFTidSalida = new javax.swing.JTextField();
+        lblHoraFecha = new javax.swing.JLabel();
+        jFTfechaHora = new javax.swing.JTextField();
         jPToolStrip = new javax.swing.JPanel();
         lblExitButton = new javax.swing.JLabel();
         lblCargoUsuario = new javax.swing.JLabel();
@@ -227,6 +235,18 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
             }
         });
 
+        lblHoraFecha.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblHoraFecha.setText("Hora de Salida:");
+
+        jFTfechaHora.setEditable(false);
+        jFTfechaHora.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFTfechaHora.setPreferredSize(new java.awt.Dimension(6, 30));
+        jFTfechaHora.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFTfechaHoraKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPSalidaVisitanteLayout = new javax.swing.GroupLayout(jPSalidaVisitante);
         jPSalidaVisitante.setLayout(jPSalidaVisitanteLayout);
         jPSalidaVisitanteLayout.setHorizontalGroup(
@@ -239,19 +259,28 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
                             .addGroup(jPSalidaVisitanteLayout.createSequentialGroup()
                                 .addGroup(jPSalidaVisitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblPortonSalida)
-                                    .addComponent(cmbPortonSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblIdRegistroSalida))
-                                .addGap(46, 46, 46)
+                                    .addComponent(cmbPortonSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(59, 59, 59)
                                 .addGroup(jPSalidaVisitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblVisitante)
+                                    .addComponent(cmbVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPSalidaVisitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblTipoPorton)
+                                    .addComponent(cmbTipoES, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(27, 27, 27))
+                            .addGroup(jPSalidaVisitanteLayout.createSequentialGroup()
+                                .addGroup(jPSalidaVisitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jSTablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPSalidaVisitanteLayout.createSequentialGroup()
-                                        .addComponent(cmbVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(46, 46, 46)
                                         .addGroup(jPSalidaVisitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblTipoPorton)
-                                            .addComponent(cmbTipoES, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(lblVisitante)))
-                            .addComponent(jSTablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFTidSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(jFTidSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lblIdRegistroSalida))
+                                        .addGap(45, 45, 45)
+                                        .addGroup(jPSalidaVisitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jFTfechaHora, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lblHoraFecha))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPSalidaVisitanteLayout.createSequentialGroup()
                         .addGap(71, 71, 71)
                         .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -276,9 +305,15 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
                     .addComponent(cmbVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbTipoES, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
-                .addComponent(lblIdRegistroSalida)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jFTidSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPSalidaVisitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPSalidaVisitanteLayout.createSequentialGroup()
+                        .addComponent(lblIdRegistroSalida)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jFTidSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPSalidaVisitanteLayout.createSequentialGroup()
+                        .addComponent(lblHoraFecha)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jFTfechaHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(32, 32, 32)
                 .addComponent(jSTablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -486,36 +521,51 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        // Registrar los datos a la Tabla registro Salida
-        SC.setIdPorton(Integer.parseInt(cmbPortonSalida.getSelectedItem().toString()));
-        SC.convertirVisitante(cmbVisitante.getSelectedItem().toString());
-        SC.convertirTipoES(cmbTipoES.getSelectedItem().toString());
-        //Enviando los datos a SQL
-        if (SC.guardarSalida()) {
-            JOptionPane.showMessageDialog(this,"Datos guardados exitosamente");
-            CargarDatosTabla();
-        }
+        //Verificar que no se manden datos vacios o invalidos.
+        if (cmbPortonSalida.getSelectedIndex() == 0 || cmbVisitante.getSelectedIndex() == 0 || cmbTipoES.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");  
+        } 
         else{
-            JOptionPane.showMessageDialog(this,"Datos no guardados");
+            // Registrar los datos a la Tabla registro Salida
+            SC.setIdPorton(Integer.parseInt(cmbPortonSalida.getSelectedItem().toString()));
+            SC.convertirVisitante(cmbVisitante.getSelectedItem().toString());
+            SC.convertirTipoES(cmbTipoES.getSelectedItem().toString());
+            SC.setFechaHora(jFTfechaHora.getText());
+            //Enviando los datos a SQL
+            if (SC.guardarSalida()) {
+                JOptionPane.showMessageDialog(this,"Datos guardados exitosamente");
+                CargarDatosTabla();
+            }
+            else{
+                JOptionPane.showMessageDialog(this,"Datos no guardados");
+            }
+            LimpiarCampos();
         }
-        LimpiarCampos();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        // Actualizar los datos a la Tabla registro Salida
-        SC.setIdRegistroSalida(Integer.parseInt(jFTidSalida.getText()));
-        SC.setIdPorton(Integer.parseInt(cmbPortonSalida.getSelectedItem().toString()));
-        SC.convertirVisitante(cmbVisitante.getSelectedItem().toString());
-        SC.convertirTipoES(cmbTipoES.getSelectedItem().toString()); 
-        //Enviando los datos a SQL
-        if (SC.modificarSalida()) {
-            JOptionPane.showMessageDialog(this,"Datos actualizados exitosamente");
-            CargarDatosTabla();
-        }
+        //Verificar que no se manden datos vacios o invalidos.
+        if (cmbPortonSalida.getSelectedIndex() == 0 || cmbVisitante.getSelectedIndex() == 0 || cmbTipoES.getSelectedIndex() == 0 || jFTidSalida.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");  
+        } 
         else{
-            JOptionPane.showMessageDialog(this,"Datos no actualizados");
+            // Actualizar los datos a la Tabla registro Salida
+            SC.setIdRegistroSalida(Integer.parseInt(jFTidSalida.getText()));
+            SC.setIdPorton(Integer.parseInt(cmbPortonSalida.getSelectedItem().toString()));
+            SC.convertirVisitante(cmbVisitante.getSelectedItem().toString());
+            SC.convertirTipoES(cmbTipoES.getSelectedItem().toString()); 
+            SC.setFechaHora(jFTfechaHora.getText());
+            //Enviando los datos a SQL
+            if (SC.modificarSalida()) {
+                JOptionPane.showMessageDialog(this,"Datos actualizados exitosamente");
+                CargarDatosTabla();
+            }
+            else{
+                JOptionPane.showMessageDialog(this,"Datos no actualizados");
+            }
+            LimpiarCampos();
         }
-        LimpiarCampos();
+
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void jFTidZonaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTidZonaKeyTyped
@@ -537,20 +587,30 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
     }//GEN-LAST:event_jFTidSalidaKeyTyped
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        //Consular
-        //Realizar Consulta
-        SC.setIdRegistroSalida(Integer.parseInt(jFTidSalida.getText()));
-        if (SC.consultarSalida()) {
-            jFTidZona.setText(String.valueOf(SC.getIdRegistroSalida()));
-            cmbPortonSalida.setSelectedIndex(SC.getIdPorton());
-            cmbVisitante.setSelectedIndex(SC.getIdVisitante());
-            cmbTipoES.setSelectedIndex(SC.getIdTipoES());
-            this.jTRegistroSalida.setModel(SC.filtrarDatosTabla());
+        if (jFTidSalida.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");   
         }
         else{
-            JOptionPane.showMessageDialog(this, "Error al consultar");
+            //Consular
+            //Realizar Consulta
+            SC.setIdRegistroSalida(Integer.parseInt(jFTidSalida.getText()));
+            if (SC.consultarSalida()) {
+                jFTidZona.setText(String.valueOf(SC.getIdRegistroSalida()));
+                cmbPortonSalida.setSelectedIndex(SC.getIdPorton());
+                cmbVisitante.setSelectedIndex(SC.getIdVisitante());
+                cmbTipoES.setSelectedIndex(SC.getIdTipoES());
+                jFTfechaHora.setText(SC.getFechaHora());
+                this.jTRegistroSalida.setModel(SC.filtrarDatosTabla());
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Error al consultar");
+            }
         }
     }//GEN-LAST:event_btnConsultarActionPerformed
+
+    private void jFTfechaHoraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTfechaHoraKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFTfechaHoraKeyTyped
     
 
     //Metodos
@@ -576,6 +636,14 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
     public void CargarDatosTabla(){
         this.jTRegistroSalida.setModel(SC.consultarDatosTabla());
     }
+    
+    //Obtener la hora actual
+    private String fechaActual() {
+        Date fecha = new Date();
+        SimpleDateFormat formatoFecha= new SimpleDateFormat("YYYY-MM-dd hh:mm:ss");
+        return formatoFecha.format(fecha);
+    }
+    
     
     /**
      * @param args the command line arguments
@@ -622,6 +690,7 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbPortonSalida;
     private javax.swing.JComboBox<String> cmbTipoES;
     private javax.swing.JComboBox<String> cmbVisitante;
+    private javax.swing.JTextField jFTfechaHora;
     private javax.swing.JTextField jFTidSalida;
     private javax.swing.JTextField jFTidZona;
     private javax.swing.JPanel jPBotones;
@@ -636,6 +705,7 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
     private javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblCargoUsuario;
     private javax.swing.JLabel lblExitButton;
+    private javax.swing.JLabel lblHoraFecha;
     private javax.swing.JLabel lblIdRegistroSalida;
     private javax.swing.JLabel lblImgBusqueda;
     private javax.swing.JLabel lblNombreUsuario;

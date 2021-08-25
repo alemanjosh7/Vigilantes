@@ -22,6 +22,8 @@ public class SalidaController {
     private int idTipoES;
     private int idPorton;
     private int idVisitante;
+    private String fechaHora;
+
 
     
      //get -- set
@@ -65,7 +67,14 @@ public class SalidaController {
     public void setIdVisitante(int idVisitante){
         this.idVisitante = idVisitante;
     }
+    //fecha y hora de la entrada
+    public String getFechaHora(){
+        return fechaHora;
+    }
     
+    public void setFechaHora(String fechaHora){
+        this.fechaHora = fechaHora;
+    }       
     //Estableciendo la conexión en el constructor
     public SalidaController(){
     //Establecemos la conexion
@@ -78,11 +87,12 @@ public class SalidaController {
     public boolean guardarSalida(){
         boolean res = false;
         try{
-            String sql = "INSERT INTO RegistroSalida(idTipoES, idPorton, idVisitante) values (?,?,?) ";//se pasan por referencia por seguridad
+            String sql = "INSERT INTO RegistroSalida(idTipoES, idPorton, idVisitante, fechaHora) values (?,?,?,?) ";//se pasan por referencia por seguridad
             PreparedStatement cmd = cn.prepareStatement(sql);
             cmd.setInt(1,idTipoES);
             cmd.setInt(2, idPorton);
             cmd.setInt(3, idVisitante);
+            cmd.setString(4, fechaHora);            
             if (!cmd.execute()) {
                 res=true;
             }
@@ -99,12 +109,13 @@ public class SalidaController {
     public boolean modificarSalida(){
         boolean res = false;
         try{
-            String sql = "UPDATE RegistroSalida SET idTipoES =?, idPorton =?, idVisitante =? WHERE idRegistroSalida =?";//se pasan por referencia por seguridad
+            String sql = "UPDATE RegistroSalida SET idTipoES =?, idPorton =?, idVisitante =?, fechaHora =? WHERE idRegistroSalida =?";//se pasan por referencia por seguridad
             PreparedStatement cmd = cn.prepareStatement(sql);
             cmd.setInt(1,idTipoES);
             cmd.setInt(2, idPorton);
             cmd.setInt(3, idVisitante);
-            cmd.setInt(4, idRegistroSalida);
+            cmd.setString(4, fechaHora);
+            cmd.setInt(5, idRegistroSalida);
             if (!cmd.execute()) {
                 res=true;
             }
@@ -292,6 +303,7 @@ public class SalidaController {
                 idTipoES = res.getInt(2);
                 idPorton = res.getInt(3);
                 idVisitante = res.getInt(4);
+                fechaHora = res.getString(5);
             }
             //cerrando conexion
             cmd.close();
@@ -314,6 +326,37 @@ public class SalidaController {
         try{
             //Realizar consulta
             String sql = "SELECT RS.idRegistroSalida, P.idPorton, TES.descripcion, V.nombres, V.apellidos FROM RegistroSalida RS JOIN Porton P ON RS.idPorton = P.idPorton JOIN TipoEntradaSalida TES ON RS.idTipoES = TES.idTipoES JOIN Visitante v ON RS.idVisitante = V.idVisitante WHERE idRegistroSalida =?";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            //Lenar los parámetros de la clase, se coloca en el orden de la consulta
+            cmd.setInt(1, idRegistroSalida);
+            ResultSet res = cmd.executeQuery();
+            while(res.next()){
+                datos[0] = res.getString(1);    
+                datos[1] = res.getString(2);
+                datos[2] = res.getString(3);
+                datos[3] = res.getString(4);
+                datos[4] = res.getString(5);
+                tSalidaFiltrada.addRow(datos);                      
+            }            
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());            
+        }
+        return tSalidaFiltrada;
+    }
+    
+    public DefaultTableModel DatosTablaTecleado(){
+        DefaultTableModel tSalidaFiltrada = new DefaultTableModel();
+        tSalidaFiltrada.addColumn("Indentificación");
+        tSalidaFiltrada.addColumn("Porton");
+        tSalidaFiltrada.addColumn("Tipo Salida");
+        tSalidaFiltrada.addColumn("Nombre");
+        tSalidaFiltrada.addColumn("Apellido");
+                
+        String[] datos =  new String[5];
+        try{
+            //Realizar consulta
+            String sql = "SELECT RS.idRegistroSalida, P.idPorton, TES.descripcion, V.nombres, V.apellidos FROM RegistroSalida RS JOIN Porton P ON RS.idPorton = P.idPorton JOIN TipoEntradaSalida TES ON RS.idTipoES = TES.idTipoES JOIN Visitante v ON RS.idVisitante = V.idVisitante WHERE idRegistroSalida LIKE CONCAT('%',?,'%')";
             PreparedStatement cmd = cn.prepareStatement(sql);
             //Lenar los parámetros de la clase, se coloca en el orden de la consulta
             cmd.setInt(1, idRegistroSalida);

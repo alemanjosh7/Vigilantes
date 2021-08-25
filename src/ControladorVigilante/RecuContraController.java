@@ -9,12 +9,12 @@ import Modelo.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
+
 /**
  *
- * @author Josue Aleman
+ * @author josue
  */
-public class UsuarioController {
+public class RecuContraController {
     private Connection cn;
     private int id_usuario;
     private String nombre_usuario;
@@ -31,7 +31,7 @@ public class UsuarioController {
         this.correo = correo;
     }
 
-    public UsuarioController() {
+    public RecuContraController() {
        Conexion con = new Conexion();
        cn = con.conectar();
 //       cn = Conexion.conectar();
@@ -85,20 +85,21 @@ public class UsuarioController {
         this.id_estado_usuario = id_estado_usuario;
     }
     
-    public boolean cambiarContrasena(){
+    public boolean existenciaCuentaC(String correo){
         boolean res = false;
         try{ //Realizar consulta UPDATE
-           String sql = "UPDATE Usuario SET contrasena = ? from Usuario Inner Join Personal on Usuario.idUsuario = Personal.idUsuario where Personal.correo = ?";
+           String sql = "SELECT contrasena from Personal Inner Join Usuario on Personal.idPersonal = Usuario.idPersonal where Personal.correo = ?";
        //pide importar clase Prepared Statement
            PreparedStatement cmd = cn.prepareStatement(sql);
+           
            //Lenar los parámetros de la clase, se coloca en el orden de la consulta
-           cmd.setString(1, contrasena);
-           cmd.setString(2, correo);
+           cmd.setString(1, correo);
            //Ejecutar la consulta
             //pedirá importar la clase ResultSet
             ResultSet rs = cmd.executeQuery();
             //recorrer la lista de registros
             if(rs.next()){
+              contrasena = rs.getString(1);   
               res=true;
             }
             //cerrando conexion
@@ -109,6 +110,5 @@ public class UsuarioController {
         }
         return res;
     }
-    
-//
 }
+

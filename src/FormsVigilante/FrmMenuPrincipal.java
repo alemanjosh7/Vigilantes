@@ -23,6 +23,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         scaleImage();
+        FrmLogin log = new FrmLogin();
+//        lblCargoSeleccioado.setText(log.cargo);
+//        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);
         }
     
         public void scaleImage(){
@@ -52,8 +55,6 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         lblImgLogo = new javax.swing.JLabel();
         jPBotonAtras = new javax.swing.JPanel();
         btnSalida = new javax.swing.JButton();
-        btnAdmin = new javax.swing.JButton();
-        btnVigilante = new javax.swing.JButton();
         jPBarraSuperior = new javax.swing.JPanel();
         lblCerrrar = new javax.swing.JLabel();
         btnAmarillo = new javax.swing.JButton();
@@ -141,20 +142,6 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        btnAdmin.setText("Administrador");
-        btnAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdminActionPerformed(evt);
-            }
-        });
-
-        btnVigilante.setText("Vigilante");
-        btnVigilante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVigilanteActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPSistemaVigilantesLayout = new javax.swing.GroupLayout(jPSistemaVigilantes);
         jPSistemaVigilantes.setLayout(jPSistemaVigilantesLayout);
         jPSistemaVigilantesLayout.setHorizontalGroup(
@@ -167,10 +154,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
                         .addComponent(jPBotonAtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46))
                     .addGroup(jPSistemaVigilantesLayout.createSequentialGroup()
-                        .addGroup(jPSistemaVigilantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnVigilante, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPNombreSistema, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPNombreSistema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPSistemaVigilantesLayout.setVerticalGroup(
@@ -178,11 +162,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             .addGroup(jPSistemaVigilantesLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jPNombreSistema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
-                .addComponent(btnAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnVigilante, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addGap(155, 155, 155)
                 .addComponent(jPBotonAtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(199, Short.MAX_VALUE))
         );
@@ -371,16 +351,6 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnSalidasActionPerformed
 
-    private void btnVigilanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVigilanteActionPerformed
-        //Ya esta en Menu Vigilante
-    }//GEN-LAST:event_btnVigilanteActionPerformed
-
-    private void btnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminActionPerformed
-        FrmMenuAdministrador M = new FrmMenuAdministrador();
-        M.show();
-        dispose();
-    }//GEN-LAST:event_btnAdminActionPerformed
-
     private void btnSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalidaActionPerformed
         FrmLogin login = new FrmLogin();
         login.show();
@@ -430,12 +400,10 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdmin;
     private javax.swing.JButton btnAmarillo;
     private javax.swing.JButton btnEntrada;
     private javax.swing.JButton btnSalida;
     private javax.swing.JButton btnSalidas;
-    private javax.swing.JButton btnVigilante;
     private javax.swing.JButton btnVisitantes;
     private javax.swing.JButton changeThemeBtn;
     private javax.swing.JPanel jPBarraSuperior;

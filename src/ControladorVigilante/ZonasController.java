@@ -20,6 +20,7 @@ public class ZonasController {
     private Connection cn;
     private int idZona;
     private String nombreZona;
+    private String busquedaNombreZona;
     
     //get -- set
     public Connection getCn(){
@@ -193,5 +194,63 @@ public class ZonasController {
             System.out.println(ex.getMessage());
         }
         return tZonasFiltradas;
+    }
+    
+    private ResultSet consultarTablaFiltrada(){
+        
+        boolean res = false;
+        PreparedStatement st;
+        ResultSet datos = null;
+        try{
+            String sql = "Select * From Zonas WHERE nombreZona LIKE CONCAT( '%',?,'%')"; //se pasan por referencia por seguridad
+            st=cn.prepareStatement(sql);
+            st.setString(1, getBusquedaNombreZona());
+            datos=st.executeQuery();
+        }catch(Exception e){
+            System.out.println(e.toString());
+        }
+        return datos;
+    }
+    
+    public DefaultTableModel generarTablaFiltrada(){
+        
+        DefaultTableModel modelo = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+               //all cells false
+               return false;
+            }
+        };
+        modelo.addColumn("idZona");
+        modelo.addColumn("nombreZona");
+        
+        try {
+            ResultSet rs = consultarTablaFiltrada();
+            
+            while(rs.next()){
+                Object [] fila = new Object[2];
+                for (int i=0;i<2;i++) fila[i] = rs.getObject(i+1);
+                modelo.addRow(fila);
+            }
+            
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        
+        return modelo;
+    }        
+
+    /**
+     * @return the busquedaNombreZona
+     */
+    public String getBusquedaNombreZona() {
+        return busquedaNombreZona;
+    }
+
+    /**
+     * @param busquedaNombreZona the busquedaNombreZona to set
+     */
+    public void setBusquedaNombreZona(String busquedaNombreZona) {
+        this.busquedaNombreZona = busquedaNombreZona;
     }
 }

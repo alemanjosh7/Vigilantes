@@ -5,17 +5,52 @@
  */
 package FormsVigilante;
 
+import ControladorVigilante.ZonasController;
+import java.sql.ResultSet;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+
 /**
  *
  * @author josue
  */
 public class FrmVisualizarZonas extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form VisualizarZonas
      */
     public FrmVisualizarZonas() {
         initComponents();
+        LimpiarCampos();
+        mostrarDatos();
+    }
+    
+    private void LimpiarCampos() {
+////////        jFTBusqueda.setText("");
+    }
+    
+    private void mostrarDatos(){
+        
+        ZonasController obj = new ZonasController();
+        obj.setBusquedaNombreZona(jFTBusqueda.getText());
+         try {
+            
+            DefaultTableModel modelo = obj.generarTablaFiltrada();
+            
+            jTZona.setModel(modelo);
+            modelo.fireTableDataChanged();
+            jTZona.getTableHeader().setReorderingAllowed(false);
+            TableCellRenderer rendererFromHeader = jTZona.getTableHeader().getDefaultRenderer();
+            JLabel headerLabel = (JLabel) rendererFromHeader;
+            headerLabel.setHorizontalAlignment(JLabel.CENTER);
+            
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "No se pudo recibir datos");
+        }
+        
     }
 
     /**
@@ -166,19 +201,24 @@ public class FrmVisualizarZonas extends javax.swing.JFrame {
 
         jTZona.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "idZona", "NombreZona"
             }
         ));
         jSPZona.setViewportView(jTZona);
 
         jFTBusqueda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
         jFTBusqueda.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFTBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jFTBusquedaKeyReleased(evt);
+            }
+        });
 
         lblZona.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblZona.setText("Nombre de Zona:");
@@ -237,7 +277,7 @@ public class FrmVisualizarZonas extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPMainContainer);
-        jPMainContainer.setBounds(290, 80, 1082, 658);
+        jPMainContainer.setBounds(290, 80, 1082, 651);
 
         jPToolStrip.setBackground(new java.awt.Color(255, 211, 105));
 
@@ -302,7 +342,7 @@ public class FrmVisualizarZonas extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPToolStrip);
-        jPToolStrip.setBounds(290, 0, 1090, 61);
+        jPToolStrip.setBounds(290, 0, 1090, 47);
 
         pack();
         setLocationRelativeTo(null);
@@ -325,6 +365,10 @@ public class FrmVisualizarZonas extends javax.swing.JFrame {
         login.show();
         dispose();
     }//GEN-LAST:event_btnGoLogInActionPerformed
+
+    private void jFTBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaKeyReleased
+        mostrarDatos();
+    }//GEN-LAST:event_jFTBusquedaKeyReleased
 
     /**
      * @param args the command line arguments

@@ -5,21 +5,33 @@
  */
 package FormsVigilante;
 
+import Modelo.Conexion;
+import ControladorVigilante.ResidenciaController;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.sql.Connection;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 /**
  *
- * @author CRISTIAN
+ * @author josue
  */
-public class FrmResidencias extends javax.swing.JFrame {
-
+public class FrmResidencias extends javax.swing.JFrame {   
+    private Conexion enlace = new Conexion();
+    private Connection conect = enlace.conectar();
+    ResidenciaController RC = new ResidenciaController();
     /**
-     * Creates new form Residencias
+     * Creates new form VisualizarZonas
      */
     public FrmResidencias() {
-        this.setUndecorated(true);
-        initComponents();
-        this.setLocationRelativeTo(null);
+       this.setUndecorated(true);
+        initComponents(); 
+         this.cmbZona.setModel(RC.consultarZona());
+         this.cmbResidente.setModel(RC.consultarResidente());
+         CargarDatosTabla();
+        
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,46 +41,6 @@ public class FrmResidencias extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel5 = new javax.swing.JPanel();
-        jlblTipoEntrada = new javax.swing.JLabel();
-        jlblIdResidencia = new javax.swing.JLabel();
-        jlblMotivoEntrada = new javax.swing.JLabel();
-        jlblMotivoEntrada1 = new javax.swing.JLabel();
-        jcmbIdResidencia = new javax.swing.JComboBox<>();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jPanel9 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jlblTipoEntrada1 = new javax.swing.JLabel();
-        jlblTipoEntrada2 = new javax.swing.JLabel();
-        jlblTipoEntrada3 = new javax.swing.JLabel();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
-        jFormattedTextField3 = new javax.swing.JFormattedTextField();
-        jlblTipoEntrada4 = new javax.swing.JLabel();
-        jFormattedTextField4 = new javax.swing.JFormattedTextField();
-        jcmbTipoIS1 = new javax.swing.JComboBox<>();
-        jFormattedTextField5 = new javax.swing.JFormattedTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jPGestionResidencia = new javax.swing.JPanel();
-        lblEstadoResidencia = new javax.swing.JLabel();
-        lblDireccion = new javax.swing.JLabel();
-        lblNumCasa = new javax.swing.JLabel();
-        jcmbEstadoResidencia = new javax.swing.JComboBox<>();
-        jPBotones = new javax.swing.JPanel();
-        btnRegistrar = new javax.swing.JButton();
-        btnAgregar = new javax.swing.JButton();
-        btnModificar = new javax.swing.JButton();
-        btnLimpiar = new javax.swing.JButton();
-        lblGestionResidencia = new javax.swing.JLabel();
-        lblZona = new javax.swing.JLabel();
-        cmbZona = new javax.swing.JComboBox<>();
-        jFDireccion = new javax.swing.JFormattedTextField();
-        jSTablaDatos = new javax.swing.JScrollPane();
-        jTResidencia = new javax.swing.JTable();
-        jFNumCasa = new javax.swing.JFormattedTextField();
         jPSideBar = new javax.swing.JPanel();
         jPImageContainer = new javax.swing.JPanel();
         lblSistemaVigilantes = new javax.swing.JLabel();
@@ -77,455 +49,32 @@ public class FrmResidencias extends javax.swing.JFrame {
         btnGoLogIn = new javax.swing.JButton();
         jPToolStrip = new javax.swing.JPanel();
         lblExitButton = new javax.swing.JLabel();
-        btnTheme = new javax.swing.JButton();
         lblCargoUsuario = new javax.swing.JLabel();
         lblCargo = new javax.swing.JLabel();
         lblNombreUsuario = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
-
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jlblTipoEntrada.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jlblTipoEntrada.setText("Apellido:");
-
-        jlblIdResidencia.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jlblIdResidencia.setText("Estado del Personal: ");
-
-        jlblMotivoEntrada.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jlblMotivoEntrada.setText("Correo Electronico:");
-
-        jlblMotivoEntrada1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jlblMotivoEntrada1.setText("Salario Mensual");
-
-        jcmbIdResidencia.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jcmbIdResidencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcmbIdResidenciaActionPerformed(evt);
-            }
-        });
-
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFormattedTextField1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField1ActionPerformed(evt);
-            }
-        });
-
-        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setPreferredSize(new java.awt.Dimension(895, 60));
-
-        jButton2.setBackground(new java.awt.Color(255, 211, 105));
-        jButton2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton2.setText("Registrar");
-        jButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        jButton2.setContentAreaFilled(false);
-        jButton2.setFocusable(false);
-
-        jButton3.setBackground(new java.awt.Color(255, 211, 105));
-        jButton3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton3.setText("Agregar");
-        jButton3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        jButton3.setContentAreaFilled(false);
-        jButton3.setFocusable(false);
-
-        jButton4.setBackground(new java.awt.Color(255, 211, 105));
-        jButton4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton4.setText("Modificar");
-        jButton4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        jButton4.setContentAreaFilled(false);
-        jButton4.setFocusable(false);
-
-        jButton5.setBackground(new java.awt.Color(255, 211, 105));
-        jButton5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton5.setText("Limpiar");
-        jButton5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        jButton5.setContentAreaFilled(false);
-        jButton5.setFocusable(false);
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                .addGap(281, 281, 281)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(119, 119, 119)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
-            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel9Layout.createSequentialGroup()
-                    .addGap(82, 82, 82)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(708, Short.MAX_VALUE)))
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32))
-            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                    .addContainerGap(16, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(29, 29, 29)))
-        );
-
-        jlblTipoEntrada1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jlblTipoEntrada1.setForeground(new java.awt.Color(255, 211, 105));
-        jlblTipoEntrada1.setText("Gestión de Vigilantes");
-
-        jlblTipoEntrada2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jlblTipoEntrada2.setText("Tipo de Personal:");
-
-        jlblTipoEntrada3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jlblTipoEntrada3.setText("Nombre:");
-
-        jFormattedTextField2.setEditable(false);
-        jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFormattedTextField2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-
-        jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFormattedTextField3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-
-        jlblTipoEntrada4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jlblTipoEntrada4.setText("DUI:");
-
-        jFormattedTextField4.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFormattedTextField4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-
-        jcmbTipoIS1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jcmbTipoIS1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
-        jcmbTipoIS1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcmbTipoIS1ActionPerformed(evt);
-            }
-        });
-
-        jFormattedTextField5.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFormattedTextField5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jFormattedTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField5ActionPerformed(evt);
-            }
-        });
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Identificación", "Nombre", "Apellido", "Motivo", "Hora de entrada", "Estado del Ingreso", "Tipo de entrada", "Zona", "Residencia"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable1);
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlblMotivoEntrada1)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel5Layout.createSequentialGroup()
-                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jlblMotivoEntrada)
-                                        .addComponent(jFormattedTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(42, 42, 42)
-                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jcmbTipoIS1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jlblTipoEntrada2))
-                                    .addGap(72, 72, 72)
-                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jlblIdResidencia)
-                                        .addComponent(jcmbIdResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(jPanel5Layout.createSequentialGroup()
-                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jlblTipoEntrada3)
-                                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(42, 42, 42)
-                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jlblTipoEntrada)
-                                        .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(43, 43, 43)
-                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jlblTipoEntrada4)
-                                        .addComponent(jFormattedTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(52, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(664, 664, 664))))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(378, 378, 378)
-                        .addComponent(jlblTipoEntrada1))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jlblTipoEntrada1)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jlblTipoEntrada4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jFormattedTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jlblTipoEntrada)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jlblTipoEntrada3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlblMotivoEntrada, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jlblTipoEntrada2, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jcmbTipoIS1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFormattedTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jlblIdResidencia)
-                        .addGap(18, 18, 18)
-                        .addComponent(jcmbIdResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(50, 50, 50)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlblMotivoEntrada1)
-                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
-        );
+        jPContainer5 = new javax.swing.JPanel();
+        jSPResidencias5 = new javax.swing.JScrollPane();
+        jTResidencias5 = new javax.swing.JTable();
+        jlblIdZona = new javax.swing.JLabel();
+        jlblTipoEntrada18 = new javax.swing.JLabel();
+        jlblDireccion = new javax.swing.JLabel();
+        jPBotones2 = new javax.swing.JPanel();
+        btnRegistrar = new javax.swing.JButton();
+        btnConsultar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+        jlblNumeroResidencia = new javax.swing.JLabel();
+        jFNumeroResidencia = new javax.swing.JTextField();
+        jFDireccion = new javax.swing.JTextField();
+        cmbZona = new javax.swing.JComboBox<>();
+        cmbResidente = new javax.swing.JComboBox<>();
+        jFResidencia = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1366, 768));
+        setUndecorated(true);
         getContentPane().setLayout(null);
-
-        jPGestionResidencia.setBackground(new java.awt.Color(255, 255, 255));
-        jPGestionResidencia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        lblEstadoResidencia.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblEstadoResidencia.setText("Estado Residencia:");
-
-        lblDireccion.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblDireccion.setText("Dirección:");
-
-        lblNumCasa.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblNumCasa.setText("N° de Casa");
-
-        jcmbEstadoResidencia.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jcmbEstadoResidencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcmbEstadoResidenciaActionPerformed(evt);
-            }
-        });
-
-        jPBotones.setBackground(new java.awt.Color(255, 255, 255));
-        jPBotones.setPreferredSize(new java.awt.Dimension(895, 60));
-
-        btnRegistrar.setBackground(new java.awt.Color(255, 211, 105));
-        btnRegistrar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnRegistrar.setText("Registrar");
-        btnRegistrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnRegistrar.setContentAreaFilled(false);
-        btnRegistrar.setFocusable(false);
-
-        btnAgregar.setBackground(new java.awt.Color(255, 211, 105));
-        btnAgregar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnAgregar.setText("Agregar");
-        btnAgregar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnAgregar.setContentAreaFilled(false);
-        btnAgregar.setFocusable(false);
-
-        btnModificar.setBackground(new java.awt.Color(255, 211, 105));
-        btnModificar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnModificar.setText("Modificar");
-        btnModificar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnModificar.setContentAreaFilled(false);
-        btnModificar.setFocusable(false);
-
-        btnLimpiar.setBackground(new java.awt.Color(255, 211, 105));
-        btnLimpiar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnLimpiar.setText("Limpiar");
-        btnLimpiar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnLimpiar.setContentAreaFilled(false);
-        btnLimpiar.setFocusable(false);
-
-        javax.swing.GroupLayout jPBotonesLayout = new javax.swing.GroupLayout(jPBotones);
-        jPBotones.setLayout(jPBotonesLayout);
-        jPBotonesLayout.setHorizontalGroup(
-            jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
-                .addGap(281, 281, 281)
-                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
-                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(119, 119, 119)
-                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
-            .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPBotonesLayout.createSequentialGroup()
-                    .addGap(82, 82, 82)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(708, Short.MAX_VALUE)))
-        );
-        jPBotonesLayout.setVerticalGroup(
-            jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32))
-            .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
-                    .addContainerGap(16, Short.MAX_VALUE)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(29, 29, 29)))
-        );
-
-        lblGestionResidencia.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        lblGestionResidencia.setForeground(new java.awt.Color(255, 211, 105));
-        lblGestionResidencia.setText("Gestión de Residencia");
-
-        lblZona.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblZona.setText("Zona (Poligono/Pasaje):");
-
-        cmbZona.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        cmbZona.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
-        cmbZona.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbZonaActionPerformed(evt);
-            }
-        });
-
-        jFDireccion.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFDireccion.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jFDireccion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFDireccionActionPerformed(evt);
-            }
-        });
-
-        jTResidencia.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Identificación", "Dirección", "N° de Casa", "Zona", "Estado de Vigilantes"
-            }
-        ));
-        jSTablaDatos.setViewportView(jTResidencia);
-
-        jFNumCasa.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFNumCasa.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jFNumCasa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFNumCasaActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPGestionResidenciaLayout = new javax.swing.GroupLayout(jPGestionResidencia);
-        jPGestionResidencia.setLayout(jPGestionResidenciaLayout);
-        jPGestionResidenciaLayout.setHorizontalGroup(
-            jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
-                .addGap(378, 378, 378)
-                .addComponent(lblGestionResidencia)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPGestionResidenciaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPGestionResidenciaLayout.createSequentialGroup()
-                .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSTablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 951, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblDireccion)
-                            .addComponent(jFDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNumCasa)
-                            .addComponent(jFNumCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(51, 51, 51)
-                        .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbZona, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblZona))
-                        .addGap(57, 57, 57)
-                        .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblEstadoResidencia)
-                            .addComponent(jcmbEstadoResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(42, 42, 42))
-        );
-        jPGestionResidenciaLayout.setVerticalGroup(
-            jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(lblGestionResidencia)
-                .addGap(32, 32, 32)
-                .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
-                        .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblDireccion)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblZona)
-                                .addComponent(lblNumCasa)))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbZona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jFDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jFNumCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
-                        .addComponent(lblEstadoResidencia)
-                        .addGap(18, 18, 18)
-                        .addComponent(jcmbEstadoResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(31, 31, 31)
-                .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSTablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
-        );
-
-        getContentPane().add(jPGestionResidencia);
-        jPGestionResidencia.setBounds(320, 80, 1030, 660);
 
         jPSideBar.setBackground(new java.awt.Color(57, 62, 70));
         jPSideBar.setPreferredSize(new java.awt.Dimension(287, 811));
@@ -616,14 +165,15 @@ public class FrmResidencias extends javax.swing.JFrame {
                 .addComponent(jPImageContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(155, 155, 155)
                 .addComponent(jPbtnSBContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 3, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPSideBar);
-        jPSideBar.setBounds(0, 0, 287, 811);
+        jPSideBar.setBounds(0, 0, 287, 768);
 
         jPToolStrip.setBackground(new java.awt.Color(255, 211, 105));
         jPToolStrip.setMinimumSize(new java.awt.Dimension(1082, 61));
+        jPToolStrip.setPreferredSize(new java.awt.Dimension(1082, 61));
 
         lblExitButton.setFont(new java.awt.Font("Segoe UI", 0, 42)); // NOI18N
         lblExitButton.setText("x");
@@ -631,15 +181,6 @@ public class FrmResidencias extends javax.swing.JFrame {
         lblExitButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblExitButtonMouseClicked(evt);
-            }
-        });
-
-        btnTheme.setAlignmentY(0.7F);
-        btnTheme.setContentAreaFilled(false);
-        btnTheme.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnTheme.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemeActionPerformed(evt);
             }
         });
 
@@ -668,9 +209,7 @@ public class FrmResidencias extends javax.swing.JFrame {
                 .addComponent(lblCargo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblCargoUsuario)
-                .addGap(219, 219, 219)
-                .addComponent(btnTheme, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 588, Short.MAX_VALUE)
                 .addComponent(lblExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -681,64 +220,205 @@ public class FrmResidencias extends javax.swing.JFrame {
                 .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPToolStripLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnTheme, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblUsuario)
-                                .addComponent(lblNombreUsuario)
-                                .addComponent(lblCargo)
-                                .addComponent(lblCargoUsuario)))))
+                        .addGap(0, 14, Short.MAX_VALUE)
+                        .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblUsuario)
+                            .addComponent(lblNombreUsuario)
+                            .addComponent(lblCargo)
+                            .addComponent(lblCargoUsuario))))
                 .addContainerGap())
         );
 
         getContentPane().add(jPToolStrip);
-        jPToolStrip.setBounds(280, 0, 1090, 61);
+        jPToolStrip.setBounds(287, 0, 1106, 61);
+
+        jPContainer5.setBackground(new java.awt.Color(255, 255, 255));
+
+        jTResidencias5.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID Residente", "Número de Casa", "Direccion", "Zona", "Residente"
+            }
+        ));
+        jSPResidencias5.setViewportView(jTResidencias5);
+
+        jlblIdZona.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jlblIdZona.setText("Zona");
+
+        jlblTipoEntrada18.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jlblTipoEntrada18.setText("Residente");
+
+        jlblDireccion.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jlblDireccion.setText("Direccion");
+
+        jPBotones2.setBackground(new java.awt.Color(255, 255, 255));
+        jPBotones2.setPreferredSize(new java.awt.Dimension(895, 60));
+
+        btnRegistrar.setBackground(new java.awt.Color(255, 211, 105));
+        btnRegistrar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnRegistrar.setText("Registrar");
+        btnRegistrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnRegistrar.setContentAreaFilled(false);
+        btnRegistrar.setFocusable(false);
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
+
+        btnConsultar.setBackground(new java.awt.Color(255, 211, 105));
+        btnConsultar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnConsultar.setText("Consultar");
+        btnConsultar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnConsultar.setContentAreaFilled(false);
+        btnConsultar.setFocusable(false);
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
+
+        btnModificar.setBackground(new java.awt.Color(255, 211, 105));
+        btnModificar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnModificar.setText("Modificar");
+        btnModificar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnModificar.setContentAreaFilled(false);
+        btnModificar.setFocusable(false);
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+
+        btnLimpiar.setBackground(new java.awt.Color(255, 211, 105));
+        btnLimpiar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnLimpiar.setText("Eliminar");
+        btnLimpiar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnLimpiar.setContentAreaFilled(false);
+        btnLimpiar.setFocusable(false);
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPBotones2Layout = new javax.swing.GroupLayout(jPBotones2);
+        jPBotones2.setLayout(jPBotones2Layout);
+        jPBotones2Layout.setHorizontalGroup(
+            jPBotones2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotones2Layout.createSequentialGroup()
+                .addGap(281, 281, 281)
+                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(119, 119, 119)
+                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67))
+            .addGroup(jPBotones2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPBotones2Layout.createSequentialGroup()
+                    .addGap(82, 82, 82)
+                    .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(708, Short.MAX_VALUE)))
+        );
+        jPBotones2Layout.setVerticalGroup(
+            jPBotones2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotones2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPBotones2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32))
+            .addGroup(jPBotones2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotones2Layout.createSequentialGroup()
+                    .addContainerGap(16, Short.MAX_VALUE)
+                    .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(29, 29, 29)))
+        );
+
+        jlblNumeroResidencia.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jlblNumeroResidencia.setText("Número de Casa");
+
+        javax.swing.GroupLayout jPContainer5Layout = new javax.swing.GroupLayout(jPContainer5);
+        jPContainer5.setLayout(jPContainer5Layout);
+        jPContainer5Layout.setHorizontalGroup(
+            jPContainer5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPContainer5Layout.createSequentialGroup()
+                .addGroup(jPContainer5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPContainer5Layout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addGroup(jPContainer5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPBotones2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPContainer5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cmbResidente, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jlblTipoEntrada18))))
+                    .addGroup(jPContainer5Layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addGroup(jPContainer5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSPResidencias5, javax.swing.GroupLayout.PREFERRED_SIZE, 971, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPContainer5Layout.createSequentialGroup()
+                                .addGroup(jPContainer5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jlblNumeroResidencia)
+                                    .addComponent(jFNumeroResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jlblDireccion)
+                                    .addComponent(jFDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(103, 103, 103)
+                                .addGroup(jPContainer5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cmbZona, 0, 235, Short.MAX_VALUE)
+                                    .addComponent(jlblIdZona)
+                                    .addComponent(jFResidencia))))))
+                .addContainerGap(61, Short.MAX_VALUE))
+        );
+        jPContainer5Layout.setVerticalGroup(
+            jPContainer5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPContainer5Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(jPContainer5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPContainer5Layout.createSequentialGroup()
+                        .addComponent(jlblTipoEntrada18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbResidente, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPContainer5Layout.createSequentialGroup()
+                        .addComponent(jlblIdZona, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbZona, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPContainer5Layout.createSequentialGroup()
+                        .addComponent(jlblNumeroResidencia)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jFNumeroResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(32, 32, 32)
+                .addComponent(jlblDireccion)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPContainer5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jFDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(63, 63, 63)
+                .addComponent(jPBotones2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addComponent(jSPResidencias5, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70))
+        );
+
+        getContentPane().add(jPContainer5);
+        jPContainer5.setBounds(290, 60, 1100, 690);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jcmbIdResidenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcmbIdResidenciaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcmbIdResidenciaActionPerformed
-
-    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
-
-    private void jcmbTipoIS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcmbTipoIS1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcmbTipoIS1ActionPerformed
-
-    private void jFormattedTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField5ActionPerformed
-
-    private void jcmbEstadoResidenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcmbEstadoResidenciaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcmbEstadoResidenciaActionPerformed
-
-    private void cmbZonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbZonaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbZonaActionPerformed
-
-    private void jFDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFDireccionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFDireccionActionPerformed
-
-    private void jFNumCasaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFNumCasaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFNumCasaActionPerformed
 
     private void lblExitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitButtonMouseClicked
         FrmMenuAdministrador menu = new FrmMenuAdministrador();
         menu.show();
         dispose();
     }//GEN-LAST:event_lblExitButtonMouseClicked
-
-    private void btnThemeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnThemeActionPerformed
 
     private void btnGoLogInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGoLogInMouseClicked
         FrmLogin login = new FrmLogin();
@@ -752,6 +432,91 @@ public class FrmResidencias extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnGoLogInActionPerformed
 
+    
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+       LimpiarCampos();
+        
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        
+        if (jFNumeroResidencia.getText().isEmpty() || jFDireccion.getText().isEmpty() || cmbZona.getSelectedIndex() == 0 || cmbResidente.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");  
+        } 
+        else{
+            //Modificar 
+            RC.setNumeroResidencia(Integer.parseInt(jFNumeroResidencia.getText()));
+            RC.setDireccionResidencia(jFDireccion.getText());
+            RC.convertirZona(cmbZona.getSelectedItem().toString());
+            RC.convertirResidente(cmbResidente.getSelectedItem().toString());
+            RC.setIdResidencia(Integer.parseInt(jFResidencia.getText()));
+            //Enviando los datos a SQL
+            if (RC.modificarResidencia()) {
+                JOptionPane.showMessageDialog(this,"Datos actualizados exitosamente");
+                CargarDatosTabla();
+            }
+            else{
+                JOptionPane.showMessageDialog(this,"Datos no actualizados");
+            }            
+        }
+        CargarDatosTabla();
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+         if (jFResidencia.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");              
+        }
+        else{
+            //Consultar
+                RC.setIdResidencia(Integer.parseInt(jFResidencia.getText()));
+            if (RC.consultarResidencia()) {                             
+                jFNumeroResidencia.setText(String.valueOf(RC.getNumeroResidencia()));
+                jFDireccion.setText(String.valueOf(RC.getDireccionResidencia()));
+                cmbZona.setSelectedIndex(RC.getIdZona());
+                cmbResidente.setSelectedIndex(RC.getIdResidente());
+                this.jTResidencias5.setModel(RC.consultarDatosTabla());             
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Error al consultar");
+            }             
+        }
+        CargarDatosTabla();
+    }//GEN-LAST:event_btnConsultarActionPerformed
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        if (jFNumeroResidencia.getText().isEmpty() || jFDireccion.getText().isEmpty() || cmbResidente.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");  
+        }
+        else{
+            // Registrar los datos a la Tabla Residencia         
+        RC.setNumeroResidencia(Integer.parseInt(jFNumeroResidencia.getText()));
+        RC.setDireccionResidencia(jFDireccion.getText());
+        RC.convertirZona(cmbZona.getSelectedItem().toString());
+        RC.convertirResidente(cmbResidente.getSelectedItem().toString());       
+            //Enviando los datos a SQL
+            if (RC.guardarResidencia()) {
+                JOptionPane.showMessageDialog(this,"Datos guardados exitosamente");
+                
+            }
+            else{
+                JOptionPane.showMessageDialog(this,"Datos no guardados");
+            }
+        }
+        CargarDatosTabla();
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+        private void LimpiarCampos() {
+         jFResidencia.setText("");
+         jFNumeroResidencia.setText("");
+         jFDireccion.setText(""); 
+         cmbZona.setSelectedIndex(0);
+         cmbResidente.setSelectedIndex(0);
+    }
+        
+        private void CargarDatosTabla(){
+             this.jTResidencias5.setModel(RC.consultarDatosTabla());
+        }
+        
+    
     /**
      * @param args the command line arguments
      */
@@ -759,7 +524,7 @@ public class FrmResidencias extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javjlblDireccioning/lookandfeel/plaf.html 
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -779,6 +544,68 @@ public class FrmResidencias extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -789,58 +616,40 @@ public class FrmResidencias extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnGoLogIn;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
-    private javax.swing.JButton btnTheme;
+    private javax.swing.JComboBox<String> cmbResidente;
     private javax.swing.JComboBox<String> cmbZona;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JFormattedTextField jFDireccion;
-    private javax.swing.JFormattedTextField jFNumCasa;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JFormattedTextField jFormattedTextField3;
-    private javax.swing.JFormattedTextField jFormattedTextField4;
-    private javax.swing.JFormattedTextField jFormattedTextField5;
-    private javax.swing.JPanel jPBotones;
-    private javax.swing.JPanel jPGestionResidencia;
+    private javax.swing.JTextField jFDireccion;
+    private javax.swing.JTextField jFNumeroResidencia;
+    private javax.swing.JTextField jFResidencia;
+    private javax.swing.JPanel jPBotones2;
+    private javax.swing.JPanel jPContainer5;
     private javax.swing.JPanel jPImageContainer;
     private javax.swing.JPanel jPSideBar;
     private javax.swing.JPanel jPToolStrip;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JPanel jPbtnSBContainer;
-    private javax.swing.JScrollPane jSTablaDatos;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTResidencia;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JComboBox<String> jcmbEstadoResidencia;
-    private javax.swing.JComboBox<String> jcmbIdResidencia;
-    private javax.swing.JComboBox<String> jcmbTipoIS1;
-    private javax.swing.JLabel jlblIdResidencia;
-    private javax.swing.JLabel jlblMotivoEntrada;
-    private javax.swing.JLabel jlblMotivoEntrada1;
-    private javax.swing.JLabel jlblTipoEntrada;
-    private javax.swing.JLabel jlblTipoEntrada1;
-    private javax.swing.JLabel jlblTipoEntrada2;
-    private javax.swing.JLabel jlblTipoEntrada3;
-    private javax.swing.JLabel jlblTipoEntrada4;
+    private javax.swing.JScrollPane jSPResidencias5;
+    private javax.swing.JTable jTResidencias5;
+    private javax.swing.JLabel jlblDireccion;
+    private javax.swing.JLabel jlblIdZona;
+    private javax.swing.JLabel jlblNumeroResidencia;
+    private javax.swing.JLabel jlblTipoEntrada18;
     private javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblCargoUsuario;
-    private javax.swing.JLabel lblDireccion;
-    private javax.swing.JLabel lblEstadoResidencia;
     private javax.swing.JLabel lblExitButton;
-    private javax.swing.JLabel lblGestionResidencia;
     private javax.swing.JLabel lblImgBusqueda;
     private javax.swing.JLabel lblNombreUsuario;
-    private javax.swing.JLabel lblNumCasa;
     private javax.swing.JLabel lblSistemaVigilantes;
     private javax.swing.JLabel lblUsuario;
-    private javax.swing.JLabel lblZona;
     // End of variables declaration//GEN-END:variables
+
+    
+
+    
+    
+   
 }

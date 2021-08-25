@@ -31,7 +31,7 @@ public class FrmVisualizarPortones extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.cmbZonas.setModel(PC.consultarZona());
         this.cmbTipoPorton.setModel(PC.consultarTipoPorton());
-        this.jTPortones.setModel(PC.consultarDatosTabla());
+        CargarDatosTabla();
     }
     
 
@@ -502,19 +502,69 @@ public class FrmVisualizarPortones extends javax.swing.JFrame {
 
     //Botones del CRUD
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        //Limpiar Campos
         LimpiarCampos();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        // TODO add your handling code here:
+        //Verificar que no se manden datos vacios o invalidos.
+        if (cmbZonas.getSelectedIndex() == 0 || cmbTipoPorton.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");  
+        }    
+        else{
+            //Registrar 
+            PC.convertirZonas(cmbZonas.getSelectedItem().toString());
+            PC.convertirTipoPorton(cmbTipoPorton.getSelectedItem().toString());
+            //Enviando los datos a SQL
+            if (PC.guardarPorton()) {
+                JOptionPane.showMessageDialog(this,"Datos guardados exitosamente");
+                CargarDatosTabla();
+            }
+            else{
+                JOptionPane.showMessageDialog(this,"Datos no guardados");
+            }           
+        }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        // TODO add your handling code here:
+        //Verificar que no se manden datos vacios o invalidos.
+        if (cmbZonas.getSelectedIndex() == 0 || cmbTipoPorton.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");  
+        } 
+        else{
+            //Modificar 
+            PC.convertirZonas(cmbZonas.getSelectedItem().toString());
+            PC.convertirTipoPorton(cmbTipoPorton.getSelectedItem().toString());
+            PC.setIdPorton(Integer.parseInt(jFTBusqueda.getText()));
+            //Enviando los datos a SQL
+            if (PC.modificarPorton()) {
+                JOptionPane.showMessageDialog(this,"Datos actualizados exitosamente");
+                CargarDatosTabla();
+            }
+            else{
+                JOptionPane.showMessageDialog(this,"Datos no actualizados");
+            }            
+        }
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        // TODO add your handling code here:
+        if (jFTBusqueda.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");              
+        }
+        else{
+            //Consultar
+            PC.setIdPorton(Integer.parseInt(jFTBusqueda.getText()));
+            if (PC.consultarPortones()) {
+               jFTBusqueda.setText(String.valueOf(PC.getIdPorton()));
+               cmbZonas.setSelectedIndex(PC.getIdZona());
+               cmbTipoPorton.setSelectedIndex(PC.getIdTipoPorton());
+               this.jTPortones.setModel(PC.filtrarDatosTabla());
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Error al consultar");
+            }             
+        }
+       
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     //Validacion de campos
@@ -549,10 +599,13 @@ public class FrmVisualizarPortones extends javax.swing.JFrame {
     //Limpiar campos
     public void LimpiarCampos(){
         jFTBusqueda.setText("");
-        cmbZonas.setSelectedIndex(1);
-        cmbTipoPorton.setSelectedIndex(1);
+        cmbZonas.setSelectedIndex(0);
+        cmbTipoPorton.setSelectedIndex(0);
     }
-    
+
+    public void CargarDatosTabla(){
+        this.jTPortones.setModel(PC.consultarDatosTabla());
+    }
     /**
      * @param args the command line arguments
      */

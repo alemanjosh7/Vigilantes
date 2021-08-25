@@ -5,28 +5,17 @@
  */
 package FormsVigilante;
 
-import Modelo.Conexion;
-import ControladorVigilante.EntradaController;
-import java.sql.Connection;
-import javax.swing.JOptionPane;
-
-
 /**
  *
  * @author CRISTIAN
  */
-public class FrmVisualizarEntrada extends javax.swing.JFrame {
-    private Conexion enlace = new Conexion();
-    private Connection conect = enlace.conectar();
-    private EntradaController EC = new EntradaController();
+public class FrmVisualizarUsuario extends javax.swing.JFrame {
+
     /**
-     * Creates new form VisualizarEntrada
+     * Creates new form FrmVisualizarUsuario
      */
-    public FrmVisualizarEntrada() {
-        this.setUndecorated(true);
+    public FrmVisualizarUsuario() {
         initComponents();
-        this.setLocationRelativeTo(null);
-        jTRegistroEntrada.setModel(EC.consultarDatosTabla());
     }
 
     /**
@@ -45,24 +34,22 @@ public class FrmVisualizarEntrada extends javax.swing.JFrame {
         lblImagen = new javax.swing.JLabel();
         jPbtnSBContainer = new javax.swing.JPanel();
         btnGoLogIn = new javax.swing.JButton();
-        jPToolStrip = new javax.swing.JPanel();
-        btnTheme = new javax.swing.JButton();
-        lblCargoUsuario = new javax.swing.JLabel();
-        lblCargo = new javax.swing.JLabel();
-        lblNombreUsuario = new javax.swing.JLabel();
-        lblUsuario = new javax.swing.JLabel();
-        lblExitButton = new javax.swing.JLabel();
-        jPMainContainer = new javax.swing.JPanel();
+        jPToolStrip26 = new javax.swing.JPanel();
+        btnTheme26 = new javax.swing.JButton();
+        lblCargoUsuario26 = new javax.swing.JLabel();
+        lblCargo26 = new javax.swing.JLabel();
+        lblNombreUsuario26 = new javax.swing.JLabel();
+        lblUsuario26 = new javax.swing.JLabel();
+        lblExitButton26 = new javax.swing.JLabel();
         jPBusquedaContainer = new javax.swing.JPanel();
-        jFTBusquedaVisitante = new javax.swing.JFormattedTextField();
-        LblBusquedaVisitante = new javax.swing.JLabel();
-        lblImgBusqueda = new javax.swing.JLabel();
-        jSPVisitante = new javax.swing.JScrollPane();
-        jTRegistroEntrada = new javax.swing.JTable();
+        jFTBusqueda = new javax.swing.JFormattedTextField();
+        lblVisitante = new javax.swing.JLabel();
+        lblImgBusqueda4 = new javax.swing.JLabel();
+        jPSSalida = new javax.swing.JScrollPane();
+        jTUsuario = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1366, 768));
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPSideBar.setBackground(new java.awt.Color(57, 62, 70));
         jPSideBar.setForeground(new java.awt.Color(57, 62, 70));
@@ -119,9 +106,9 @@ public class FrmVisualizarEntrada extends javax.swing.JFrame {
         jPbtnSBContainerLayout.setHorizontalGroup(
             jPbtnSBContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPbtnSBContainerLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(28, 28, 28)
                 .addComponent(btnGoLogIn)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jPbtnSBContainerLayout.setVerticalGroup(
             jPbtnSBContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,7 +127,7 @@ public class FrmVisualizarEntrada extends javax.swing.JFrame {
                 .addComponent(jPImageContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPContainerLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(47, 47, 47)
                 .addComponent(jPbtnSBContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -149,9 +136,9 @@ public class FrmVisualizarEntrada extends javax.swing.JFrame {
             .addGroup(jPContainerLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jPImageContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
                 .addComponent(jPbtnSBContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60))
+                .addGap(57, 57, 57))
         );
 
         javax.swing.GroupLayout jPSideBarLayout = new javax.swing.GroupLayout(jPSideBar);
@@ -171,103 +158,101 @@ public class FrmVisualizarEntrada extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPSideBar);
-        jPSideBar.setBounds(0, 0, 290, 770);
+        getContentPane().add(jPSideBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 770));
 
-        jPToolStrip.setBackground(new java.awt.Color(255, 211, 105));
+        jPToolStrip26.setBackground(new java.awt.Color(255, 211, 105));
 
-        btnTheme.setAlignmentY(0.7F);
-        btnTheme.setContentAreaFilled(false);
+        btnTheme26.setAlignmentY(0.7F);
+        btnTheme26.setContentAreaFilled(false);
 
-        lblCargoUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblCargoUsuario.setText("Administrador");
+        lblCargoUsuario26.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblCargoUsuario26.setText("Administrador");
 
-        lblCargo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblCargo.setText("Cargo:");
+        lblCargo26.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblCargo26.setText("Cargo:");
 
-        lblNombreUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblNombreUsuario.setText("Josué Alemán");
+        lblNombreUsuario26.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNombreUsuario26.setText("Josué Alemán");
 
-        lblUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblUsuario.setText("Usuario:");
+        lblUsuario26.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblUsuario26.setText("Usuario:");
 
-        lblExitButton.setFont(new java.awt.Font("Segoe UI", 0, 42)); // NOI18N
-        lblExitButton.setText("x");
-        lblExitButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblExitButton26.setFont(new java.awt.Font("Segoe UI", 0, 42)); // NOI18N
+        lblExitButton26.setText("x");
+        lblExitButton26.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblExitButtonMouseClicked(evt);
+                lblExitButton26lblExitButtonMouseClicked(evt);
             }
         });
 
-        javax.swing.GroupLayout jPToolStripLayout = new javax.swing.GroupLayout(jPToolStrip);
-        jPToolStrip.setLayout(jPToolStripLayout);
-        jPToolStripLayout.setHorizontalGroup(
-            jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPToolStripLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPToolStrip26Layout = new javax.swing.GroupLayout(jPToolStrip26);
+        jPToolStrip26.setLayout(jPToolStrip26Layout);
+        jPToolStrip26Layout.setHorizontalGroup(
+            jPToolStrip26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPToolStrip26Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(lblUsuario)
+                .addComponent(lblUsuario26)
                 .addGap(27, 27, 27)
-                .addComponent(lblNombreUsuario)
+                .addComponent(lblNombreUsuario26)
                 .addGap(60, 60, 60)
-                .addComponent(lblCargo)
+                .addComponent(lblCargo26)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblCargoUsuario)
+                .addComponent(lblCargoUsuario26)
                 .addGap(219, 219, 219)
-                .addComponent(btnTheme, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnTheme26, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 299, Short.MAX_VALUE)
-                .addComponent(lblExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblExitButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
-        jPToolStripLayout.setVerticalGroup(
-            jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPToolStripLayout.createSequentialGroup()
+        jPToolStrip26Layout.setVerticalGroup(
+            jPToolStrip26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPToolStrip26Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(jPToolStripLayout.createSequentialGroup()
+                .addGroup(jPToolStrip26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblExitButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(jPToolStrip26Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnTheme, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblUsuario)
-                                .addComponent(lblNombreUsuario)
-                                .addComponent(lblCargo)
-                                .addComponent(lblCargoUsuario)))))
+                        .addGroup(jPToolStrip26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnTheme26, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPToolStrip26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblUsuario26)
+                                .addComponent(lblNombreUsuario26)
+                                .addComponent(lblCargo26)
+                                .addComponent(lblCargoUsuario26)))))
                 .addContainerGap())
         );
 
-        getContentPane().add(jPToolStrip);
-        jPToolStrip.setBounds(290, 0, 1082, 61);
+        getContentPane().add(jPToolStrip26, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, -1, -1));
 
-        jFTBusquedaVisitante.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFTBusquedaVisitante.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jFTBusquedaVisitante.addKeyListener(new java.awt.event.KeyAdapter() {
+        jFTBusqueda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        jFTBusqueda.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFTBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jFTBusquedaVisitanteKeyReleased(evt);
+                jFTBusquedaKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jFTBusquedaVisitanteKeyTyped(evt);
+                jFTBusquedaKeyTyped(evt);
             }
         });
 
-        LblBusquedaVisitante.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        LblBusquedaVisitante.setText("Busqueda de Visitante:");
+        lblVisitante.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblVisitante.setText("Busqueda de Visitante:");
 
-        lblImgBusqueda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblImgBusqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgBuscar.png"))); // NOI18N
-        lblImgBusqueda.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblImgBusqueda4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblImgBusqueda4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgBuscar.png"))); // NOI18N
+        lblImgBusqueda4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPBusquedaContainerLayout = new javax.swing.GroupLayout(jPBusquedaContainer);
         jPBusquedaContainer.setLayout(jPBusquedaContainerLayout);
         jPBusquedaContainerLayout.setHorizontalGroup(
             jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblImgBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addGap(10, 10, 10)
+                .addComponent(lblImgBusqueda4, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LblBusquedaVisitante)
-                    .addComponent(jFTBusquedaVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblVisitante)
+                    .addComponent(jFTBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(401, Short.MAX_VALUE))
         );
         jPBusquedaContainerLayout.setVerticalGroup(
@@ -275,67 +260,32 @@ public class FrmVisualizarEntrada extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBusquedaContainerLayout.createSequentialGroup()
                 .addContainerGap(36, Short.MAX_VALUE)
                 .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblImgBusqueda4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
-                        .addComponent(LblBusquedaVisitante)
+                        .addComponent(lblVisitante)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFTBusquedaVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblImgBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jFTBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
-        jSPVisitante.setPreferredSize(new java.awt.Dimension(600, 402));
+        getContentPane().add(jPBusquedaContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, -1, -1));
 
-        jTRegistroEntrada.setModel(new javax.swing.table.DefaultTableModel(
+        jTUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Identificación", "Nombre", "Apellido", "Motivo", "Hora de entrada", "Estado del Ingreso", "Tipo de entrada", "Zona", "Residencia"
+                "Estado del Ingreso", "Tipo de entrada", "Zona"
             }
         ));
-        jTRegistroEntrada.setPreferredSize(new java.awt.Dimension(970, 455));
-        jSPVisitante.setViewportView(jTRegistroEntrada);
+        jPSSalida.setViewportView(jTUsuario);
 
-        javax.swing.GroupLayout jPMainContainerLayout = new javax.swing.GroupLayout(jPMainContainer);
-        jPMainContainer.setLayout(jPMainContainerLayout);
-        jPMainContainerLayout.setHorizontalGroup(
-            jPMainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPMainContainerLayout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
-                .addComponent(jPBusquedaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(222, 222, 222))
-            .addGroup(jPMainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPMainContainerLayout.createSequentialGroup()
-                    .addGap(55, 55, 55)
-                    .addComponent(jSPVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(55, Short.MAX_VALUE)))
-        );
-        jPMainContainerLayout.setVerticalGroup(
-            jPMainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPMainContainerLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jPBusquedaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(542, Short.MAX_VALUE))
-            .addGroup(jPMainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPMainContainerLayout.createSequentialGroup()
-                    .addGap(180, 180, 180)
-                    .addComponent(jSPVisitante, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
-                    .addContainerGap()))
-        );
-
-        getContentPane().add(jPMainContainer);
-        jPMainContainer.setBounds(290, 60, 1080, 680);
+        getContentPane().add(jPSSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 260, 970, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void lblExitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitButtonMouseClicked
-        FrmMenuPrincipal menu = new FrmMenuPrincipal();
-        menu.show();
-        dispose();
-    }//GEN-LAST:event_lblExitButtonMouseClicked
 
     private void btnGoLogInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGoLogInMouseClicked
         FrmLogin login = new FrmLogin();
@@ -349,45 +299,22 @@ public class FrmVisualizarEntrada extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnGoLogInActionPerformed
 
-    private void jFTBusquedaVisitanteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaVisitanteKeyTyped
+    private void lblExitButton26lblExitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitButton26lblExitButtonMouseClicked
+        FrmMenuPrincipal menu = new FrmMenuPrincipal();
+        menu.show();
+        dispose();
+    }//GEN-LAST:event_lblExitButton26lblExitButtonMouseClicked
+
+    private void jFTBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaKeyReleased
+        //Consultar al soltar el teclado
+
+    }//GEN-LAST:event_jFTBusquedaKeyReleased
+
+    private void jFTBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaKeyTyped
         //Solo permitir paso de numeros
-        if(SoloNumero(evt.getKeyChar())){
-           //no deja que se escriba un letra
-            evt.consume();
-            JOptionPane.showMessageDialog(rootPane, "Ingresar números");
-        }
-    }//GEN-LAST:event_jFTBusquedaVisitanteKeyTyped
 
-    private void jFTBusquedaVisitanteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaVisitanteKeyReleased
-        //Consultar        
-        if (jFTBusquedaVisitante.getText().isEmpty()) {
-            this.jTRegistroEntrada.setModel(EC.consultarDatosTabla());
-        }
-        else{
-            EC.setIdRegistroEntrada(Integer.parseInt(jFTBusquedaVisitante.getText()));
-            if (EC.consultarEntrada()) {
-               this.jTRegistroEntrada.setModel(EC.DatosTablaTecleado());
-           }           
-        }
-    }//GEN-LAST:event_jFTBusquedaVisitanteKeyReleased
+    }//GEN-LAST:event_jFTBusquedaKeyTyped
 
-    //Metodos
-    //Para validar que solo permitan pasar Numeros
-    public boolean SoloNumero(char numero){
-        if(Character.isDigit(numero) || Character.isISOControl(numero)){
-            return false;
-        }
-        else{
-            return true;
-        }
-    }
-
-    //Limpiar campos
-    public void LimpiarCampos(){
-        jFTBusquedaVisitante.setText("");
-
-    }    
-    
     /**
      * @param args the command line arguments
      */
@@ -405,48 +332,44 @@ public class FrmVisualizarEntrada extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmVisualizarEntrada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmVisualizarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmVisualizarEntrada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmVisualizarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmVisualizarEntrada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmVisualizarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmVisualizarEntrada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmVisualizarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmVisualizarEntrada().setVisible(true);
+                new FrmVisualizarUsuario().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel LblBusquedaVisitante;
     private javax.swing.JButton btnGoLogIn;
-    private javax.swing.JButton btnTheme;
-    private javax.swing.JFormattedTextField jFTBusquedaVisitante;
+    private javax.swing.JButton btnTheme26;
+    private javax.swing.JFormattedTextField jFTBusqueda;
     private javax.swing.JPanel jPBusquedaContainer;
     private javax.swing.JPanel jPContainer;
     private javax.swing.JPanel jPImageContainer;
-    private javax.swing.JPanel jPMainContainer;
+    private javax.swing.JScrollPane jPSSalida;
     private javax.swing.JPanel jPSideBar;
-    private javax.swing.JPanel jPToolStrip;
+    private javax.swing.JPanel jPToolStrip26;
     private javax.swing.JPanel jPbtnSBContainer;
-    private javax.swing.JScrollPane jSPVisitante;
-    private javax.swing.JTable jTRegistroEntrada;
-    private javax.swing.JLabel lblCargo;
-    private javax.swing.JLabel lblCargoUsuario;
-    private javax.swing.JLabel lblExitButton;
+    private javax.swing.JTable jTUsuario;
+    private javax.swing.JLabel lblCargo26;
+    private javax.swing.JLabel lblCargoUsuario26;
+    private javax.swing.JLabel lblExitButton26;
     private javax.swing.JLabel lblImagen;
-    private javax.swing.JLabel lblImgBusqueda;
-    private javax.swing.JLabel lblNombreUsuario;
+    private javax.swing.JLabel lblImgBusqueda4;
+    private javax.swing.JLabel lblNombreUsuario26;
     private javax.swing.JLabel lblSistemaVigilantes;
-    private javax.swing.JLabel lblUsuario;
+    private javax.swing.JLabel lblUsuario26;
+    private javax.swing.JLabel lblVisitante;
     // End of variables declaration//GEN-END:variables
 }

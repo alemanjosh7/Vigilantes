@@ -5,12 +5,18 @@
  */
 package FormsVigilante;
 
+import ControladorVigilante.ResidenteController;
+import Modelo.Conexion;
+import java.sql.Connection;
+
 /**
  *
  * @author CRISTIAN
  */
 public class FrmVisualizarResidente extends javax.swing.JFrame {
-
+    private Conexion enlace = new Conexion();
+    private Connection conect = enlace.conectar();
+    private ResidenteController RC = new ResidenteController();
     /**
      * Creates new form VisualizarResidente
      */
@@ -18,6 +24,8 @@ public class FrmVisualizarResidente extends javax.swing.JFrame {
         this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
+        this.jTResidente.setModel(RC.consultarDatosTabla());
+
     }
 
 
@@ -48,7 +56,7 @@ public class FrmVisualizarResidente extends javax.swing.JFrame {
         jSPResidente = new javax.swing.JScrollPane();
         jTResidente = new javax.swing.JTable();
         jPBusquedaContainer = new javax.swing.JPanel();
-        jFTBusqueda1 = new javax.swing.JFormattedTextField();
+        jFTBusquedaNombre = new javax.swing.JFormattedTextField();
         lblIDResidente = new javax.swing.JLabel();
         jFTBusqueda = new javax.swing.JFormattedTextField();
         lblResidente = new javax.swing.JLabel();
@@ -247,14 +255,24 @@ public class FrmVisualizarResidente extends javax.swing.JFrame {
         ));
         jSPResidente.setViewportView(jTResidente);
 
-        jFTBusqueda1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFTBusqueda1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFTBusquedaNombre.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        jFTBusquedaNombre.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFTBusquedaNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jFTBusquedaNombreKeyReleased(evt);
+            }
+        });
 
         lblIDResidente.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblIDResidente.setText("ID Residente");
 
         jFTBusqueda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
         jFTBusqueda.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFTBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jFTBusquedaKeyReleased(evt);
+            }
+        });
 
         lblResidente.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblResidente.setText("Nombre Residente");
@@ -282,7 +300,7 @@ public class FrmVisualizarResidente extends javax.swing.JFrame {
                 .addComponent(lblImgBusqueda4, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jFTBusqueda1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFTBusquedaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblResidente))
                 .addContainerGap(203, Short.MAX_VALUE))
         );
@@ -297,7 +315,7 @@ public class FrmVisualizarResidente extends javax.swing.JFrame {
                         .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
                             .addComponent(lblResidente)
                             .addGap(18, 18, 18)
-                            .addComponent(jFTBusqueda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jFTBusquedaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
                             .addComponent(lblIDResidente)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -351,6 +369,23 @@ public class FrmVisualizarResidente extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnGoLogInActionPerformed
 
+    private void jFTBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaKeyReleased
+    //Consultar al soltar el teclado
+        if (jFTBusqueda.getText().isEmpty()) {
+            this.jTResidente.setModel(RC.consultarDatosTabla());
+        }
+        else{
+            RC.setidResidente(Integer.parseInt(jFTBusqueda.getText()));
+            if (RC.consultarResidente()) {
+                this.jTResidente.setModel(RC.DatosTablaTecleado());
+            }   
+        }
+    }//GEN-LAST:event_jFTBusquedaKeyReleased
+
+    private void jFTBusquedaNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaNombreKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFTBusquedaNombreKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -393,7 +428,7 @@ public class FrmVisualizarResidente extends javax.swing.JFrame {
     private javax.swing.JButton btnGoLogIn;
     private javax.swing.JButton btnTheme;
     private javax.swing.JFormattedTextField jFTBusqueda;
-    private javax.swing.JFormattedTextField jFTBusqueda1;
+    private javax.swing.JFormattedTextField jFTBusquedaNombre;
     private javax.swing.JPanel jPBusquedaContainer;
     private javax.swing.JPanel jPContainer;
     private javax.swing.JPanel jPContainerB;

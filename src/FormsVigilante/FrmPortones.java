@@ -207,6 +207,11 @@ public class FrmPortones extends javax.swing.JFrame {
         btnRegistrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
         btnRegistrar.setContentAreaFilled(false);
         btnRegistrar.setFocusable(false);
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
 
         btnModificar.setBackground(new java.awt.Color(255, 211, 105));
         btnModificar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -275,8 +280,7 @@ public class FrmPortones extends javax.swing.JFrame {
         lblImageBuscar.setBackground(new java.awt.Color(255, 255, 255));
         lblImageBuscar.setForeground(new java.awt.Color(255, 255, 255));
         lblImageBuscar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblImageBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FormsVigilante/Imagenes/buscar.png"))); // NOI18N
-        lblImageBuscar.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/FormsVigilante/Imagenes/buscar.png"))); // NOI18N
+        lblImageBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgBuscar.png"))); // NOI18N
         lblImageBuscar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jFBuscarPorton.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
@@ -479,6 +483,10 @@ public class FrmPortones extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Ingresar números");
         }
     }//GEN-LAST:event_jFBuscarPortonKeyTyped
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        //Registrar
+    }//GEN-LAST:event_btnRegistrarActionPerformed
     
     //Para validar que solo permitan pasar Numeros
     public boolean SoloNumero(char numero){
