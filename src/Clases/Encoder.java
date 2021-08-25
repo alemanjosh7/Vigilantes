@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Clases;
 
 import java.security.MessageDigest;
@@ -15,11 +10,20 @@ import org.apache.commons.codec.binary.Base64;
 
 /**
  *
- * @author josue
+ * @author Somos programadores https://web.facebook.com/developers08062019
  */
 public class Encoder {
-    String secretKey = "SomosProgramadores";
-   
+
+    public static void main(String[] args) {
+        String secretKey = "SomosProgramadores";
+        Encoder mMain = new Encoder();
+        String cadenaAEncriptar = JOptionPane.showInputDialog("Ingresa la cadena a encriptar");
+        String cadenaEncriptada = mMain.ecnode(secretKey, cadenaAEncriptar);
+        JOptionPane.showMessageDialog(null, "Cadena encriptada: " + cadenaEncriptada);
+        String cadenaDesencriptada = mMain.deecnode(secretKey, cadenaEncriptada);
+        JOptionPane.showMessageDialog(null, "Cadena desencriptada: " + cadenaDesencriptada);
+
+    }
 
     public String ecnode(String secretKey, String cadena) {
         String encriptacion = "";

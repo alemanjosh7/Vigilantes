@@ -242,6 +242,9 @@ public class FrmVisualizarEntrada extends javax.swing.JFrame {
         jFTBusquedaVisitante.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
         jFTBusquedaVisitante.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jFTBusquedaVisitante.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jFTBusquedaVisitanteKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jFTBusquedaVisitanteKeyTyped(evt);
             }
@@ -269,14 +272,14 @@ public class FrmVisualizarEntrada extends javax.swing.JFrame {
         );
         jPBusquedaContainerLayout.setVerticalGroup(
             jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBusquedaContainerLayout.createSequentialGroup()
                 .addContainerGap(36, Short.MAX_VALUE)
-                .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBusquedaContainerLayout.createSequentialGroup()
+                .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
                         .addComponent(LblBusquedaVisitante)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jFTBusquedaVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblImgBusqueda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblImgBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -352,8 +355,21 @@ public class FrmVisualizarEntrada extends javax.swing.JFrame {
            //no deja que se escriba un letra
             evt.consume();
             JOptionPane.showMessageDialog(rootPane, "Ingresar números");
-            }
+        }
     }//GEN-LAST:event_jFTBusquedaVisitanteKeyTyped
+
+    private void jFTBusquedaVisitanteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaVisitanteKeyReleased
+        //Consultar        
+        if (jFTBusquedaVisitante.getText().isEmpty()) {
+            this.jTRegistroEntrada.setModel(EC.consultarDatosTabla());
+        }
+        else{
+            EC.setIdRegistroEntrada(Integer.parseInt(jFTBusquedaVisitante.getText()));
+            if (EC.consultarEntrada()) {
+               this.jTRegistroEntrada.setModel(EC.DatosTablaTecleado());
+           }           
+        }
+    }//GEN-LAST:event_jFTBusquedaVisitanteKeyReleased
 
     //Metodos
     //Para validar que solo permitan pasar Numeros

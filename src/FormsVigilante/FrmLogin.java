@@ -10,16 +10,14 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
-import Modelo.Conexion;
-import java.sql.Connection;
+import javax.swing.JOptionPane;
+import ControladorVigilante.*;
 
 /**
  *
  * @author Usuario
  */
 public class FrmLogin extends javax.swing.JFrame {
-    Conexion enlace = new Conexion();
-    Connection conect = enlace.conectar();
     /**
      * Creates new form Login
      */
@@ -46,8 +44,8 @@ public class FrmLogin extends javax.swing.JFrame {
         Line2.setBackground(Light);
         lblBienvenido.setForeground(Light);
         lblContraseñaOlvidada.setForeground(Light);
-        lblUsuario.setForeground(Light);
-        lblContraseña.setForeground(Light);
+//        lblUsuario.setForeground(Light);
+//        lblContraseña.setForeground(Light);
         btnAcceder.setBackground(Light);
         btnAcceder.setForeground(Dark);
         
@@ -77,8 +75,8 @@ public class FrmLogin extends javax.swing.JFrame {
         Line2.setBackground(Dark);
         lblBienvenido.setForeground(Dark);
         lblContraseñaOlvidada.setForeground(Dark);
-        lblUsuario.setForeground(Dark);
-        lblContraseña.setForeground(Dark);
+//        lblUsuario.setForeground(Dark);
+//        lblContraseña.setForeground(Dark);
         btnAcceder.setBackground(Dark);
         btnAcceder.setForeground(Light);
 
@@ -145,15 +143,15 @@ public class FrmLogin extends javax.swing.JFrame {
         lblIco = new javax.swing.JLabel();
         lblImagen = new javax.swing.JLabel();
         lblBienvenido = new javax.swing.JLabel();
-        lblUsuario = new javax.swing.JLabel();
         Line1 = new javax.swing.JPanel();
         jPAcceder = new javax.swing.JPanel();
-        lblContraseña = new javax.swing.JLabel();
         Line2 = new javax.swing.JPanel();
         btnAcceder = new javax.swing.JButton();
         jSliderMode = new javax.swing.JSlider();
         lblContraseñaOlvidada = new javax.swing.JLabel();
         lblImgMode = new javax.swing.JLabel();
+        jTNombreUsuario = new javax.swing.JTextField();
+        jPFContrasena = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
@@ -247,11 +245,6 @@ public class FrmLogin extends javax.swing.JFrame {
         lblBienvenido.setForeground(new java.awt.Color(243, 243, 243));
         lblBienvenido.setText("Bienvenido");
 
-        lblUsuario.setBackground(new java.awt.Color(255, 255, 255));
-        lblUsuario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        lblUsuario.setForeground(new java.awt.Color(243, 243, 243));
-        lblUsuario.setText("Usuario");
-
         Line1.setBackground(new java.awt.Color(243, 243, 243));
         Line1.setPreferredSize(new java.awt.Dimension(160, 2));
 
@@ -290,11 +283,6 @@ public class FrmLogin extends javax.swing.JFrame {
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        lblContraseña.setBackground(new java.awt.Color(255, 255, 255));
-        lblContraseña.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        lblContraseña.setForeground(new java.awt.Color(243, 243, 243));
-        lblContraseña.setText("Contraseña");
-
         Line2.setBackground(new java.awt.Color(243, 243, 243));
         Line2.setPreferredSize(new java.awt.Dimension(160, 2));
 
@@ -302,7 +290,7 @@ public class FrmLogin extends javax.swing.JFrame {
         Line2.setLayout(Line2Layout);
         Line2Layout.setHorizontalGroup(
             Line2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         Line2Layout.setVerticalGroup(
             Line2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -364,18 +352,20 @@ public class FrmLogin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addGroup(jPanelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLoginLayout.createSequentialGroup()
-                        .addGroup(jPanelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(Line2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnAcceder, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblContraseñaOlvidada))
-                            .addComponent(lblUsuario)
-                            .addComponent(Line1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblContraseña))
-                        .addGap(61, 61, 61))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLoginLayout.createSequentialGroup()
                         .addComponent(lblBienvenido)
-                        .addGap(103, 103, 103))))
+                        .addGap(103, 103, 103))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLoginLayout.createSequentialGroup()
+                        .addGroup(jPanelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jPFContrasena)
+                            .addComponent(jTNombreUsuario)
+                            .addComponent(Line2, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                            .addGroup(jPanelLoginLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(jPanelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnAcceder, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblContraseñaOlvidada)))
+                            .addComponent(Line1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(61, 61, 61))))
         );
         jPanelLoginLayout.setVerticalGroup(
             jPanelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -385,13 +375,13 @@ public class FrmLogin extends javax.swing.JFrame {
                 .addGroup(jPanelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelLoginLayout.createSequentialGroup()
                         .addComponent(lblBienvenido)
-                        .addGap(36, 36, 36)
-                        .addComponent(lblUsuario)
+                        .addGap(29, 29, 29)
+                        .addComponent(jTNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Line1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)
-                        .addComponent(lblContraseña)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(34, 34, 34)
+                        .addComponent(jPFContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Line2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
                         .addComponent(btnAcceder))
@@ -456,10 +446,58 @@ public class FrmLogin extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_lblCerrarMouseClicked
 
+    static public int idUsuario = -1;
+    static public int tipoUsuario = -1;
+    static public int estadoUsuario = -1;
+    static public String nombres;
+    static public String apellidos;
+    static public String cargo;
+    static public String contra;
+    
     private void btnAccederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAccederMouseClicked
-        FrmMenuAdministrador menu = new FrmMenuAdministrador();
-        menu.show();
-        dispose();
+        LoginController obj = new LoginController();
+        String nombre = jTNombreUsuario.getText();
+        obj.setNombre_usuario(nombre);
+        contra = jPFContrasena.getText();
+        obj.setContrasena(contra);
+        
+        
+        //enviando guardar a  SQLServer
+        if(obj.existenciaUsuario(nombre, jPFContrasena.getText()) == 1){
+            
+            estadoUsuario = obj.getId_estado_usuario();
+            idUsuario = obj.getId_usuario();
+            tipoUsuario = obj.getId_tipo_usuario();
+            
+            if(estadoUsuario == 1 && tipoUsuario == 1){
+                
+                System.out.println(obj.consultarRolYDatos(idUsuario));
+                nombres = obj.getNombres();
+                
+                apellidos = obj.getApellidos();
+                cargo = obj.getNombreTipo();
+                JOptionPane.showMessageDialog(this, "Bienvenido " + nombres + " " + apellidos);
+                
+                if("Vigilante".equals(cargo)){
+                    FrmMenuPrincipal menu = new FrmMenuPrincipal();
+                    menu.show();
+                    dispose();
+                }
+                else{
+                    FrmMenuAdministrador menu = new FrmMenuAdministrador();
+                    menu.show();
+                    dispose();
+                }
+                
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Los usuarios inactivos no se les permite entrar");
+            }
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "Su usuario no está registrado en el sistema");
+        }
+        
     }//GEN-LAST:event_btnAccederMouseClicked
 
     private void lblContraseñaOlvidadaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblContraseñaOlvidadaMouseClicked
@@ -635,17 +673,17 @@ public class FrmLogin extends javax.swing.JFrame {
     private javax.swing.JPanel Line2;
     private javax.swing.JButton btnAcceder;
     private javax.swing.JPanel jPAcceder;
+    private javax.swing.JPasswordField jPFContrasena;
     private javax.swing.JPanel jPanelLogin;
     private javax.swing.JSlider jSliderMode;
     private javax.swing.JPanel jTBarraSuperior;
+    private javax.swing.JTextField jTNombreUsuario;
     private javax.swing.JLabel lblBienvenido;
     private javax.swing.JLabel lblCerrar;
-    private javax.swing.JLabel lblContraseña;
     private javax.swing.JLabel lblContraseñaOlvidada;
     private javax.swing.JLabel lblIco;
     private javax.swing.JLabel lblImagen;
     private javax.swing.JLabel lblImgMode;
     private javax.swing.JLabel lblMinimizar;
-    private javax.swing.JLabel lblUsuario;
     // End of variables declaration//GEN-END:variables
 }

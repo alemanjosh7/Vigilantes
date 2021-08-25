@@ -277,7 +277,7 @@ public class FrmVisualizarZonas extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPMainContainer);
-        jPMainContainer.setBounds(290, 80, 0, 0);
+        jPMainContainer.setBounds(290, 80, 1082, 651);
 
         jPToolStrip.setBackground(new java.awt.Color(255, 211, 105));
 
@@ -342,7 +342,7 @@ public class FrmVisualizarZonas extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPToolStrip);
-        jPToolStrip.setBounds(290, 0, 1090, 0);
+        jPToolStrip.setBounds(290, 0, 1090, 47);
 
         pack();
         setLocationRelativeTo(null);
@@ -395,18 +395,6 @@ public class FrmVisualizarZonas extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FrmVisualizarZonas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

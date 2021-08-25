@@ -7,10 +7,10 @@ package Modelo;
 
 /**
  *
- * @author César
+ * @author CRISTIAN
  */
 public class ComboItems {
-    
+
     private Integer key;
     private String value;
     
@@ -51,6 +51,5 @@ public class ComboItems {
     public void setValue(String value) {
         this.value = value;
     }
-    
-    
+        
 }

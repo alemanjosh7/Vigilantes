@@ -6,14 +6,28 @@
 package Clases;
 
 import FormsVigilante.FrmLogin;
+
+import Modelo.Conexion;
+import ControladorVigilante.RecuContraController;
 import FormsVigilante.FrmLogin;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.mail.Session;
-import java.util.*;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.mail.Message;
 
+import javax.mail.Message.RecipientType;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Usuario
@@ -260,10 +274,16 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
         jTextField1.setForeground(new java.awt.Color(52, 67, 70));
         jTextField1.setText("");
 
+        
         jButton1.setForeground(new java.awt.Color(57, 62, 70));
         jButton1.setText("Solicitar un cambio de contraseña");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        
         jLabel1.setForeground(new java.awt.Color(254, 243, 243));
         jLabel1.setText("Regresar al login");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -354,22 +374,52 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
         this.setState(this.ICONIFIED);
     }//GEN-LAST:event_jBtnMinimizeMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMinimizeMouseClicked
-        Properties props = new Properties();
-        props.setProperty("mail.smtp.host", "smtp.gmail.com");
-        props.setProperty("mail.smtp.starttls", "true");
-        props.setProperty("mail.smtp.port", "587");
-        props.setProperty("mail.smtp.auth", "true");
-        Session session = Session.getDefaultInstance(props);
-        String correoRemitente = "josuealeman2003@gmail.com";
-        String passwordRemitente = "";
-        String correoReceptor = jTextField1.getText();
-        String asunto = "Ha recibido el correo satisfactoriamente";
-        String mensaje = "Mensaje: Prueba";
-//        MimeMessage message = new MimeMessage(session);
-//        message.setFrom(new InternetAddress(correoRemitente));
-        this.setState(this.ICONIFIED);
-    }//GEN-LAST:event_jBtnMinimizeMouseClicked
+    
+    
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        String correo = jTextField1.getText();
+        RecuContraController j =  new RecuContraController();
+        j.existenciaCuentaC(correo);
+        String contra = j.getContrasena();
+        if("".equals(correo) || "".equals(contra) || contra == null){
+            JOptionPane.showMessageDialog(this, "Asegurese de introducir un correo electrónico válido");
+        }
+        else{
+            Properties props = new Properties();
+            props.setProperty("mail.smtp.host", "smtp.gmail.com");
+            props.setProperty("mail.smtp.starttls.enable", "true");
+            props.setProperty("mail.smtp.port", "587");
+            props.setProperty("mail.smtp.auth", "true");
+            Session session = Session.getDefaultInstance(props);
+            String correoRemitente = ""; //pongan un correo aqui
+            String passwordRemitente = ""; //pongan una contra aqui
+            String correoReceptor = jTextField1.getText();
+            String asunto = "Mensaje enviado exitosamente: Recuperación de Contraseña";
+            String mensaje = "Su contraseña es: " + j.getContrasena();
+            MimeMessage mail = new MimeMessage(session);
+            try {
+                mail.setFrom(new InternetAddress(correoRemitente));
+                mail.addRecipient(Message.RecipientType.TO, new InternetAddress(correoReceptor));
+    //            mail.addRecipient(Message RecipientType.TO, new InternetAddress(correoReceptor));
+                mail.setSubject(asunto);
+                mail.setText(mensaje);
+
+                Transport transporte = session.getTransport("smtp");
+                transporte.connect(correoRemitente, passwordRemitente);
+                transporte.sendMessage(mail, mail.getRecipients(Message.RecipientType.TO));
+                transporte.close();
+                JOptionPane.showMessageDialog(null, "Correo enviado");
+    //            mail.addRecipient(Message RecipientType TO, new InternetAddress(correoReceptor)); 
+            } catch (AddressException ex) {
+                Logger.getLogger(ContraseñaOlvidada.class.getName()).log(Level.SEVERE, null, ex);
+    //            JOptionPane.showMessageDialog(null, "Hubo un problema para enviar el correo, por favor verifique que el correo se haya escrito bien");
+            } catch (MessagingException ex) {
+                Logger.getLogger(ContraseñaOlvidada.class.getName()).log(Level.SEVERE, null, ex);
+    //            JOptionPane.showMessageDialog(null, "Hubo un problema para enviar el correo, por favor verifique que el correo se haya escrito bien");
+            }
+            this.setState(this.ICONIFIED);
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
 
     
     private void jIcoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jIcoMouseClicked

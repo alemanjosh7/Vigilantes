@@ -5,7 +5,7 @@
  */
 package FormsVigilante;
 
-import ControladorVigilante.TurnoController;
+import ControladorVigilante.HorarioController;
 import ControladorVigilante.ZonasController;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -28,10 +28,17 @@ public class FrmVisualizarHorario extends javax.swing.JFrame {
     
     private void mostrarDatos(){
         //LimpiarCampos();
-        TurnoController obj = new TurnoController();
+        HorarioController obj = new HorarioController();
         try {
             
-            DefaultTableModel modelo = obj.generarTabla();
+            DefaultTableModel modelo;
+            if(jFTBusquedaHorario.getText().trim().length() != 0){
+                obj.setBusquedaIDTurno( Integer.parseInt(jFTBusquedaHorario.getText().trim())  );
+                modelo = obj.generarTablaFiltrada();
+            }
+            else{
+                modelo = obj.generarTabla();
+            }
             
             jTHorario.setModel(modelo);
             modelo.fireTableDataChanged();
@@ -73,12 +80,9 @@ public class FrmVisualizarHorario extends javax.swing.JFrame {
         jSPHorario = new javax.swing.JScrollPane();
         jTHorario = new javax.swing.JTable();
         jPBusquedaContainer = new javax.swing.JPanel();
-        jFTBusquedaHorario1 = new javax.swing.JFormattedTextField();
         jlblTipoEntrada = new javax.swing.JLabel();
         jFTBusquedaHorario = new javax.swing.JFormattedTextField();
-        jlblTipoEntrada1 = new javax.swing.JLabel();
         lblImgBusqueda2 = new javax.swing.JLabel();
-        lblImgBusqueda3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1366, 768));
@@ -263,25 +267,20 @@ public class FrmVisualizarHorario extends javax.swing.JFrame {
         });
         jSPHorario.setViewportView(jTHorario);
 
-        jFTBusquedaHorario1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFTBusquedaHorario1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-
         jlblTipoEntrada.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jlblTipoEntrada.setText("ID Horario");
 
         jFTBusquedaHorario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
         jFTBusquedaHorario.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-
-        jlblTipoEntrada1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jlblTipoEntrada1.setText("Fecha de Inicio");
+        jFTBusquedaHorario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jFTBusquedaHorarioKeyReleased(evt);
+            }
+        });
 
         lblImgBusqueda2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblImgBusqueda2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgBuscar.png"))); // NOI18N
         lblImgBusqueda2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        lblImgBusqueda3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblImgBusqueda3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgBuscar.png"))); // NOI18N
-        lblImgBusqueda3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPBusquedaContainerLayout = new javax.swing.GroupLayout(jPBusquedaContainer);
         jPBusquedaContainer.setLayout(jPBusquedaContainerLayout);
@@ -294,30 +293,18 @@ public class FrmVisualizarHorario extends javax.swing.JFrame {
                 .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jFTBusquedaHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlblTipoEntrada))
-                .addGap(58, 58, 58)
-                .addComponent(lblImgBusqueda3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jFTBusquedaHorario1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlblTipoEntrada1))
-                .addContainerGap(203, Short.MAX_VALUE))
+                .addContainerGap(537, Short.MAX_VALUE))
         );
         jPBusquedaContainerLayout.setVerticalGroup(
             jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBusquedaContainerLayout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
-                .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblImgBusqueda3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE)
+                .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblImgBusqueda2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
-                        .addComponent(jlblTipoEntrada1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jFTBusquedaHorario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblImgBusqueda2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
-                            .addComponent(jlblTipoEntrada)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jFTBusquedaHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jlblTipoEntrada)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jFTBusquedaHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(15, 15, 15))
         );
 
@@ -392,6 +379,10 @@ public class FrmVisualizarHorario extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnGoLogInActionPerformed
 
+    private void jFTBusquedaHorarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaHorarioKeyReleased
+        mostrarDatos();
+    }//GEN-LAST:event_jFTBusquedaHorarioKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -433,54 +424,6 @@ public class FrmVisualizarHorario extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -494,7 +437,6 @@ public class FrmVisualizarHorario extends javax.swing.JFrame {
     private javax.swing.JButton btnGoLogIn;
     private javax.swing.JButton btnTheme;
     private javax.swing.JFormattedTextField jFTBusquedaHorario;
-    private javax.swing.JFormattedTextField jFTBusquedaHorario1;
     private javax.swing.JPanel jPBusquedaContainer;
     private javax.swing.JPanel jPContainer;
     private javax.swing.JPanel jPImageContainer;
@@ -504,13 +446,11 @@ public class FrmVisualizarHorario extends javax.swing.JFrame {
     private javax.swing.JScrollPane jSPHorario;
     private javax.swing.JTable jTHorario;
     private javax.swing.JLabel jlblTipoEntrada;
-    private javax.swing.JLabel jlblTipoEntrada1;
     private javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblCargoUsuario;
     private javax.swing.JLabel lblExitButton;
     private javax.swing.JLabel lblImagen;
     private javax.swing.JLabel lblImgBusqueda2;
-    private javax.swing.JLabel lblImgBusqueda3;
     private javax.swing.JLabel lblNombreUsuario;
     private javax.swing.JLabel lblSistemaVigilantes;
     private javax.swing.JLabel lblUsuario;

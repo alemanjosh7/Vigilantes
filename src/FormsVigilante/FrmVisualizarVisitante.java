@@ -5,12 +5,18 @@
  */
 package FormsVigilante;
 
+import Modelo.Conexion;
+import ControladorVigilante.VisitanteController;
+import java.sql.Connection;
+import javax.swing.JOptionPane;
 /**
  *
- * @author CRISTIAN
+ * @author ALFARO
  */
 public class FrmVisualizarVisitante extends javax.swing.JFrame {
-
+    private Conexion enlace = new Conexion();
+    private Connection conect = enlace.conectar();
+    private VisitanteController VV = new VisitanteController();
     /**
      * Creates new form VisualizarVisitante
      */
@@ -18,6 +24,7 @@ public class FrmVisualizarVisitante extends javax.swing.JFrame {
         this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
+        this.jTVisitante.setModel(VV.consultarDatosTabla());
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,6 +63,16 @@ public class FrmVisualizarVisitante extends javax.swing.JFrame {
 
         jFTBusqueda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
         jFTBusqueda.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFTBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFTBusquedaActionPerformed(evt);
+            }
+        });
+        jFTBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jFTBusquedaKeyReleased(evt);
+            }
+        });
 
         lblVisitante.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblVisitante.setText("Busqueda de Visitante:");
@@ -92,12 +109,12 @@ public class FrmVisualizarVisitante extends javax.swing.JFrame {
 
         jTVisitante.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Identificación", "Nombre", "Apellido", "Estado del Ingreso", "DUI"
+                "Identificación", "Nombre", "Apellido", "DUI", "NIT", "Mayor de Edad"
             }
         ));
         jSPVistiante.setViewportView(jTVisitante);
@@ -325,6 +342,50 @@ public class FrmVisualizarVisitante extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnGoLogInActionPerformed
 
+    
+    private void jFTBusquedaKeyTyped(java.awt.event.KeyEvent evt) {                                     
+        //Solo permitir paso de numeros
+        if(SoloNumero(evt.getKeyChar())){
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Solo numeros");
+            }
+        }                                  
+    private void jFTBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFTBusquedaActionPerformed
+       
+    }//GEN-LAST:event_jFTBusquedaActionPerformed
+
+    private void jFTBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaKeyReleased
+        if (jFTBusqueda.getText().isEmpty()) {
+            this.jTVisitante.setModel(VV.consultarDatosTabla());
+        }
+        else{
+            VV.setIdVisitante(Integer.parseInt(jFTBusqueda.getText()));
+           if (VV.consultarVisitante()) {
+               this.jTVisitante.setModel(VV.DatosTablaTecleado());
+           }           
+        }
+    }//GEN-LAST:event_jFTBusquedaKeyReleased
+
+    public boolean SoloNumero(char numero){
+        if(Character.isDigit(numero) || Character.isISOControl(numero)){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    //Limpiar campos
+    public void LimpiarCampos(){
+        jFTBusqueda.setText("");
+
+    }    
+     
+    private void CargarDatosTabla() {
+            this.jTVisitante.setModel(VV.consultarDatosTabla());
+    }
+      
+        
     /**
      * @param args the command line arguments
      */
@@ -386,4 +447,5 @@ public class FrmVisualizarVisitante extends javax.swing.JFrame {
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JLabel lblVisitante;
     // End of variables declaration//GEN-END:variables
+
 }

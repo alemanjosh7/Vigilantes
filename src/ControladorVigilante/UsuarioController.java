@@ -4,14 +4,15 @@
  * and open the template in the editor.
  */
 package ControladorVigilante;
-import Clases.Conexion;
+
+import Modelo.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 /**
  *
- * @author CRISTIAN
+ * @author Josue Aleman
  */
 public class UsuarioController {
     private Connection cn;
@@ -87,7 +88,6 @@ public class UsuarioController {
     public boolean cambiarContrasena(){
         boolean res = false;
         try{ //Realizar consulta UPDATE
-           String correo = "asdmasdm";
            String sql = "UPDATE Usuario SET contrasena = ? from Usuario Inner Join Personal on Usuario.idUsuario = Personal.idUsuario where Personal.correo = ?";
        //pide importar clase Prepared Statement
            PreparedStatement cmd = cn.prepareStatement(sql);

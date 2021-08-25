@@ -17,14 +17,16 @@ import javax.swing.table.DefaultTableModel;
  * @author Miguel
  */
 public class PagoController {
-  //Atributos de los portones
+  //Atributos de los Pagos
     private Connection cn;
-      private int idPago;
+    private int idPago;
     private int idPersonalEmisor;
     private int idPersonalReceptor;
     private int cantidadPago;
     private String fechaPago;
+    private String busquedaPersonal;
      //get -- set
+    public boolean consultaDato;
     
     public Connection getCn(){
         return cn;
@@ -42,7 +44,7 @@ public class PagoController {
         return idPersonalEmisor;
     }
 
-    public void setIdRegistroEntrada(int idPersonalEmisor){
+    public void setIdPersonalEmisor(int idPersonalEmisor){
         this.idPersonalEmisor = idPersonalEmisor;
     }
     //id de el Personal Receptor
@@ -54,7 +56,7 @@ public class PagoController {
         this.idPersonalReceptor = idPersonalReceptor;
     }
     //Cantidad de Pago
-   public Integer getCantidadPago(){
+   public int getCantidadPago(){
         return cantidadPago;
     }
 
@@ -70,6 +72,14 @@ public class PagoController {
         this.fechaPago = fechaPago;
     }
     
+    //personal
+    public String getPersonal(){
+        return busquedaPersonal;
+    }
+
+    public void setPersonal(String busquedaPersonal){
+        this.busquedaPersonal = busquedaPersonal;
+    }
     
      //Estableciendo la conexión en el constructor
     public PagoController(){
@@ -86,7 +96,7 @@ public class PagoController {
             PreparedStatement cmd = cn.prepareStatement(sql);
             cmd.setInt(1,idPersonalEmisor);
             cmd.setInt(2, idPersonalReceptor);
-            cmd.setInt(3, cantidadPago);
+            cmd.setInt(3, (int) cantidadPago);
             cmd.setString(4,fechaPago);
             if (!cmd.execute()) {
                 res=true;
@@ -109,7 +119,7 @@ public class PagoController {
             PreparedStatement cmd = cn.prepareStatement(sql);
             cmd.setInt(1,idPersonalEmisor);
             cmd.setInt(2, idPersonalReceptor);
-            cmd.setInt(3, cantidadPago);
+            cmd.setInt(3, (int) cantidadPago);
             cmd.setString(4,fechaPago);
             cmd.setInt(5, idPago);
             if (!cmd.execute()) {
@@ -146,7 +156,7 @@ public class PagoController {
     }
     
     //Consultar los datos
-    public ResultSet consultaDatosPago(String sql){
+    public ResultSet consultaDatos(String sql){
         ResultSet res = null;
         try{
             PreparedStatement cmd = cn.prepareStatement(sql);
@@ -158,14 +168,14 @@ public class PagoController {
         return res;
     }
     
-    //Obtener los datos para el combobox de el personal
+    //Obtener los datos para el combobox del personal
     public DefaultComboBoxModel consultarPersonal(){
         DefaultComboBoxModel PersonalList = new DefaultComboBoxModel();
         PersonalList.addElement("Nombre del personal");
-        ResultSet res = this.consultaDatosPago("SELECT * FROM Personal");
+        ResultSet res = this.consultaDatos("SELECT * FROM Personal where idTipoPersonal = 2;");
         try{
             while (res.next()) {
-                PersonalList.addElement(res.getString("idPersonal"));
+                PersonalList.addElement(res.getString("nombres"));
             }
             res.close();
         }
@@ -174,31 +184,155 @@ public class PagoController {
         }
         return PersonalList;
     }
-     //Generar la tabla de Pago
-    public DefaultTableModel consultarDatosTabla() throws SQLException{
-        DefaultTableModel tPago = new DefaultTableModel();
-        tPago.addColumn("Encragado del pago");
-        tPago.addColumn("Recivir el pago");
-        tPago.addColumn("Cantidad a Pagar");
-        tPago.addColumn("Fecha de pago");
-        String[] datos =  new String[5];
-         ResultSet res = this.consultaDatosPago("SELECT RE.idPago, FROM PagoRealizado RE JOIN idPersonalEmisor V  ON RE.idPersonalReceptor = V.cantidadPago JOIN fechaPago");
+    //Obtener los datos para el combobox el encargado
+    public DefaultComboBoxModel consultarEncargado(){
+        DefaultComboBoxModel PersonalList = new DefaultComboBoxModel();
+        PersonalList.addElement("Nombre del personal");
+        ResultSet res = this.consultaDatos("SELECT * FROM Personal where idTipoPersonal = 1;");
+        try{
+            while (res.next()) {
+                PersonalList.addElement(res.getString("nombres"));
+            }
+            res.close();
+        }
+        catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }
+        return PersonalList;
+    }
+    //Convirtiendo el valor del combobox a Id: Emisor
+    public boolean convertirEmisor(String visitante){
+        boolean res = false;
+        try{
+            String sql = ("SELECT idPersonal FROM Personal WHERE nombres = ?");
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            cmd.setString(1, visitante);
+            //Ejecutar la consulta
+            ResultSet rs = cmd.executeQuery();
+            //recorrer la lista de registros
+            if(rs.next()){
+                res=true;
+                //asignándole a los atributos de la clase
+                setIdPersonalEmisor(rs.getInt(1));
+            }
+            //cerrando conexion
+            cmd.close();
+        }
+        catch(Exception ex){
+
+        }
+            return res;
+        }
          
+    //Convirtiendo el valor del combobox a Id: Receptor
+    public boolean convertirReceptor(String visitante){
+        boolean res = false;
+            try{
+                String sql = ("SELECT idPersonal FROM Personal WHERE nombres = ?");
+                PreparedStatement cmd = cn.prepareStatement(sql);
+                cmd.setString(1, visitante);
+                //Ejecutar la consulta
+                ResultSet rs = cmd.executeQuery();
+                //recorrer la lista de registros
+                if(rs.next()){
+                    res=true;
+                    //asignándole a los atributos de la clase
+                    setIdPersonalReceptor(rs.getInt(1));
+                }
+            //cerrando conexion
+            cmd.close();
+            }
+            catch(Exception ex){
+            }
+        return res;
+    }
+    
+    //Generar la tabla de Pago
+    public DefaultTableModel consultarDatosTablaPago(){
+        DefaultTableModel TPago = new DefaultTableModel();
+        TPago.addColumn("Encragado");
+        TPago.addColumn("Receptor");
+        TPago.addColumn("Cantidad a Pagar");
+        TPago.addColumn("Fecha de pago");
+        String[] datos =  new String[4];
+         ResultSet res = this.consultaDatos("SELECT PS.nombres, PR.idPersonalReceptor, PS.salarioMensual, PR.fechaPago FROM PagoRealizado PR JOIN Personal PS ON PR.idPersonalReceptor = PS.idPersonal and PR.idPersonalReceptor = PS.idPersonal");        
             try{            
             while(res.next()){
                 datos[0] = res.getString(1);    
                 datos[1] = res.getString(2);
                 datos[2] = res.getString(3);
                 datos[3] = res.getString(4);
-                datos[4] = res.getString(5);
-                tPago.addRow(datos);                      
+                TPago.addRow(datos);                      
             }
 
         }
             catch(SQLException ex){
             System.out.println(ex.getMessage());
         }
-        return tPago;
+        return TPago;
     }
+
+
+    
+     public DefaultTableModel consultarTablaFiltrada(){
+        DefaultTableModel TPago = new DefaultTableModel();
+        TPago.addColumn("Encragado");
+        TPago.addColumn("Receptor");
+        TPago.addColumn("Cantidad a Pagar");
+        TPago.addColumn("Fecha de pago");
+
+        String[] datos =  new String[4];
+        try{
+            //Realizar consulta
+            String sql = "SELECT PS.nombres, PR.idPersonalReceptor, PS.salarioMensual, PR.fechaPago FROM PagoRealizado PR JOIN Personal PS ON PR.idPersonalReceptor = PS.idPersonal and PR.idPersonalReceptor = PS.idPersonal WHERE idPago =?";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            //Lenar los parámetros de la clase, se coloca en el orden de la consulta
+            cmd.setInt(1, idPago);
+            ResultSet res = cmd.executeQuery();
+            while(res.next()){
+                datos[0] = res.getString(1);    
+                datos[1] = res.getString(2);
+                datos[2] = res.getString(3);
+                datos[3] = res.getString(4);
+
+                TPago.addRow(datos);                      
+            }        
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());            
+        }
+        return TPago;
+    }
+     
+     
+     
+    
+      
+    public boolean consultarPago(){
+        boolean bres = false;
+        try{
+            //Realizar consulta
+            String sql = "SELECT * FROM pagoRealizado WHERE idPago =?";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            //Lenar los parámetros de la clase, se coloca en el orden de la consulta
+            cmd.setInt(1, idPago);
+            ResultSet res = cmd.executeQuery();
+            if (res.next()) {
+                bres=true;
+                idPago = res.getInt(1);
+                idPersonalEmisor = res.getInt(2);
+                idPersonalReceptor = res.getInt(3);
+                cantidadPago = res.getInt(4);
+                fechaPago = res.getString(5);
+            }    
+        //cerrando conexion
+        cmd.close();
+       }
+       catch(Exception ex){
+         System.out.println(ex.toString());
+        }
+    return bres;
+    }
+    
  }  
 

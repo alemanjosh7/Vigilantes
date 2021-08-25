@@ -5,6 +5,10 @@
  */
 package FormsVigilante;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author CRISTIAN
@@ -135,13 +139,18 @@ public class FrmMenuPago extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPagosActionPerformed
-        FrmPagoPersonal PP = new FrmPagoPersonal();
+        FrmPagoPersonal PP = null;
+        try {
+            PP = new FrmPagoPersonal();
+        } catch (SQLException ex) {
+            Logger.getLogger(FrmMenuPago.class.getName()).log(Level.SEVERE, null, ex);
+        }
         PP.show();
         dispose();
     }//GEN-LAST:event_btnRegistrarPagosActionPerformed
 
     private void btnVisualizarPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarPagosActionPerformed
-        FrmVisualizarEntrada VEV = new FrmVisualizarEntrada();
+        FrmVisualizarPago VEV = new FrmVisualizarPago();
         VEV.show();
         dispose();
     }//GEN-LAST:event_btnVisualizarPagosActionPerformed

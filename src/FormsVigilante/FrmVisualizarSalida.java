@@ -55,7 +55,6 @@ public class FrmVisualizarSalida extends javax.swing.JFrame {
         jFTBusqueda = new javax.swing.JFormattedTextField();
         lblVisitante = new javax.swing.JLabel();
         lblImgBusqueda4 = new javax.swing.JLabel();
-        btnConsultar = new javax.swing.JButton();
         jPSSalida = new javax.swing.JScrollPane();
         jTRegistroSalida = new javax.swing.JTable();
 
@@ -239,6 +238,9 @@ public class FrmVisualizarSalida extends javax.swing.JFrame {
         jFTBusqueda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
         jFTBusqueda.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jFTBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jFTBusquedaKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jFTBusquedaKeyTyped(evt);
             }
@@ -251,18 +253,6 @@ public class FrmVisualizarSalida extends javax.swing.JFrame {
         lblImgBusqueda4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgBuscar.png"))); // NOI18N
         lblImgBusqueda4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        btnConsultar.setBackground(new java.awt.Color(255, 211, 105));
-        btnConsultar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnConsultar.setText("Consultar");
-        btnConsultar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnConsultar.setContentAreaFilled(false);
-        btnConsultar.setFocusable(false);
-        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPBusquedaContainerLayout = new javax.swing.GroupLayout(jPBusquedaContainer);
         jPBusquedaContainer.setLayout(jPBusquedaContainerLayout);
         jPBusquedaContainerLayout.setHorizontalGroup(
@@ -274,16 +264,13 @@ public class FrmVisualizarSalida extends javax.swing.JFrame {
                 .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblVisitante)
                     .addComponent(jFTBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(262, Short.MAX_VALUE))
+                .addContainerGap(401, Short.MAX_VALUE))
         );
         jPBusquedaContainerLayout.setVerticalGroup(
             jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBusquedaContainerLayout.createSequentialGroup()
                 .addContainerGap(36, Short.MAX_VALUE)
                 .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblImgBusqueda4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
                         .addComponent(lblVisitante)
@@ -350,10 +337,6 @@ public class FrmVisualizarSalida extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnGoLogInActionPerformed
 
-    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnConsultarActionPerformed
-
     private void jFTBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaKeyTyped
         //Solo permitir paso de numeros
         if(SoloNumero(evt.getKeyChar())){
@@ -362,6 +345,19 @@ public class FrmVisualizarSalida extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Ingresar números");
             }
         }//GEN-LAST:event_jFTBusquedaKeyTyped
+
+    private void jFTBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaKeyReleased
+        //Consultar al soltar el teclado
+        if (jFTBusqueda.getText().isEmpty()) {
+            this.jTRegistroSalida.setModel(SC.consultarDatosTabla());
+        }
+        else{
+            SC.setIdRegistroSalida(Integer.parseInt(jFTBusqueda.getText()));
+            if (SC.consultarSalida()) {
+                this.jTRegistroSalida.setModel(SC.DatosTablaTecleado());
+            }   
+        }
+    }//GEN-LAST:event_jFTBusquedaKeyReleased
 
     //Metodos
     //Para validar que solo permitan pasar Numeros
@@ -418,7 +414,6 @@ public class FrmVisualizarSalida extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnGoLogIn;
     private javax.swing.JButton btnTheme26;
     private javax.swing.JFormattedTextField jFTBusqueda;

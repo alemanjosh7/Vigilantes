@@ -45,10 +45,8 @@ public class FrmPersonal extends javax.swing.JFrame {
         try{
             cmbTipoPersonal.setSelectedIndex(0);
             cmbIdEstadoPersonal.setSelectedIndex(0);
-            cmbUsuario.setSelectedIndex(0);
         }
         catch(Exception e){
-            
         }
         
     }
@@ -70,22 +68,16 @@ public class FrmPersonal extends javax.swing.JFrame {
             headerLabel.setHorizontalAlignment(JLabel.CENTER);
             
             //Combobox cmbTipoPersonal
-            
             DefaultComboBoxModel cmbmodelo = obj.generarComboBoxCargo();
             cmbTipoPersonal.setModel(cmbmodelo);
             
             //Combobox cmbIdEstadoPersonal
             cmbmodelo = obj.generarComboBoxEstadoPersonal();
             cmbIdEstadoPersonal.setModel(cmbmodelo);
-            
-            //Combobox cmbIdEstadoPersonal
-            cmbmodelo = obj.generarComboBoxUsuario();
-            cmbUsuario.setModel(cmbmodelo);
-            
+                        
             try{
                 cmbTipoPersonal.setSelectedIndex(0);
                 cmbIdEstadoPersonal.setSelectedIndex(0);
-                cmbUsuario.setSelectedIndex(0);
             }
             catch(Exception e){
 
@@ -129,7 +121,6 @@ public class FrmPersonal extends javax.swing.JFrame {
         lblTipoPersonal = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
         lblDUI = new javax.swing.JLabel();
-        cmbUsuario = new javax.swing.JComboBox<>();
         jSTablaGestionVigilantes = new javax.swing.JScrollPane();
         jTVigilantes = new javax.swing.JTable();
         lbID = new javax.swing.JLabel();
@@ -139,7 +130,6 @@ public class FrmPersonal extends javax.swing.JFrame {
         jTxtDUI = new javax.swing.JTextField();
         jTxtCorreo = new javax.swing.JTextField();
         jTxtTelefono = new javax.swing.JTextField();
-        lblTipoPersonal2 = new javax.swing.JLabel();
         jTxtID = new javax.swing.JTextField();
         lblCorreoElectronico1 = new javax.swing.JLabel();
         jTxtSalario = new javax.swing.JTextField();
@@ -262,22 +252,22 @@ public class FrmPersonal extends javax.swing.JFrame {
         lblApellido.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblApellido.setText("Apellidos:");
         jPGestionVigilante.add(lblApellido);
-        lblApellido.setBounds(380, 70, 89, 22);
+        lblApellido.setBounds(660, 80, 89, 22);
 
         lblEstadoPersonal.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblEstadoPersonal.setText("Estado del Personal: ");
         jPGestionVigilante.add(lblEstadoPersonal);
-        lblEstadoPersonal.setBounds(800, 160, 186, 22);
+        lblEstadoPersonal.setBounds(360, 240, 186, 22);
 
         lblTelefono.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblTelefono.setText("Teléfono:");
         jPGestionVigilante.add(lblTelefono);
-        lblTelefono.setBounds(340, 160, 84, 22);
+        lblTelefono.setBounds(360, 160, 84, 22);
 
         lblSalarioMensual.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblSalarioMensual.setText("Salario Mensual:");
+        lblSalarioMensual.setText("Salario Mensual ($) :");
         jPGestionVigilante.add(lblSalarioMensual);
-        lblSalarioMensual.setBounds(44, 270, 160, 22);
+        lblSalarioMensual.setBounds(660, 240, 180, 22);
 
         cmbIdEstadoPersonal.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         cmbIdEstadoPersonal.addActionListener(new java.awt.event.ActionListener() {
@@ -286,7 +276,7 @@ public class FrmPersonal extends javax.swing.JFrame {
             }
         });
         jPGestionVigilante.add(cmbIdEstadoPersonal);
-        cmbIdEstadoPersonal.setBounds(800, 190, 200, 26);
+        cmbIdEstadoPersonal.setBounds(360, 270, 250, 26);
 
         jPBotones.setBackground(new java.awt.Color(255, 255, 255));
         jPBotones.setPreferredSize(new java.awt.Dimension(895, 60));
@@ -385,27 +375,17 @@ public class FrmPersonal extends javax.swing.JFrame {
         lblTipoPersonal.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblTipoPersonal.setText("Cargo de Personal:");
         jPGestionVigilante.add(lblTipoPersonal);
-        lblTipoPersonal.setBounds(570, 160, 168, 22);
+        lblTipoPersonal.setBounds(50, 160, 168, 22);
 
         lblNombre.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblNombre.setText("Nombres:");
         jPGestionVigilante.add(lblNombre);
-        lblNombre.setBounds(40, 70, 87, 22);
+        lblNombre.setBounds(360, 80, 100, 22);
 
         lblDUI.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblDUI.setText("DUI:");
         jPGestionVigilante.add(lblDUI);
-        lblDUI.setBounds(720, 70, 38, 22);
-
-        cmbUsuario.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        cmbUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
-        cmbUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbUsuarioActionPerformed(evt);
-            }
-        });
-        jPGestionVigilante.add(cmbUsuario);
-        cmbUsuario.setBounds(440, 270, 190, 26);
+        lblDUI.setBounds(660, 160, 38, 22);
 
         jTVigilantes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -430,39 +410,34 @@ public class FrmPersonal extends javax.swing.JFrame {
         lbID.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lbID.setText("ID:");
         jPGestionVigilante.add(lbID);
-        lbID.setBounds(680, 240, 40, 22);
+        lbID.setBounds(50, 80, 25, 22);
         lbID.getAccessibleContext().setAccessibleName("ID");
 
         cmbTipoPersonal.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         cmbTipoPersonal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         jPGestionVigilante.add(cmbTipoPersonal);
-        cmbTipoPersonal.setBounds(570, 190, 200, 26);
+        cmbTipoPersonal.setBounds(50, 190, 250, 26);
         jPGestionVigilante.add(jTxtNombre);
-        jTxtNombre.setBounds(40, 100, 300, 24);
+        jTxtNombre.setBounds(360, 110, 250, 24);
         jPGestionVigilante.add(jTxtApellido);
-        jTxtApellido.setBounds(380, 100, 300, 24);
+        jTxtApellido.setBounds(660, 110, 250, 24);
         jPGestionVigilante.add(jTxtDUI);
-        jTxtDUI.setBounds(720, 100, 180, 24);
+        jTxtDUI.setBounds(660, 190, 250, 24);
         jPGestionVigilante.add(jTxtCorreo);
-        jTxtCorreo.setBounds(50, 190, 270, 24);
+        jTxtCorreo.setBounds(50, 270, 250, 24);
         jPGestionVigilante.add(jTxtTelefono);
-        jTxtTelefono.setBounds(340, 190, 200, 24);
-
-        lblTipoPersonal2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblTipoPersonal2.setText("Usuario:");
-        jPGestionVigilante.add(lblTipoPersonal2);
-        lblTipoPersonal2.setBounds(440, 240, 80, 22);
+        jTxtTelefono.setBounds(360, 190, 250, 24);
 
         jTxtID.setEditable(false);
         jPGestionVigilante.add(jTxtID);
-        jTxtID.setBounds(680, 270, 120, 24);
+        jTxtID.setBounds(50, 110, 170, 24);
 
         lblCorreoElectronico1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblCorreoElectronico1.setText("Correo Electronico:");
         jPGestionVigilante.add(lblCorreoElectronico1);
-        lblCorreoElectronico1.setBounds(50, 160, 171, 22);
+        lblCorreoElectronico1.setBounds(50, 240, 171, 22);
         jPGestionVigilante.add(jTxtSalario);
-        jTxtSalario.setBounds(215, 270, 178, 24);
+        jTxtSalario.setBounds(660, 270, 250, 24);
 
         jPColorGestionLLamada.add(jPGestionVigilante);
         jPGestionVigilante.setBounds(30, 20, 1040, 670);
@@ -541,14 +516,10 @@ public class FrmPersonal extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPToolStrip);
-        jPToolStrip.setBounds(270, 0, 1100, 61);
+        jPToolStrip.setBounds(270, 0, 1100, 47);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cmbUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbUsuarioActionPerformed
 
     private void cmbIdEstadoPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbIdEstadoPersonalActionPerformed
         // TODO add your handling code here:
@@ -620,11 +591,6 @@ public class FrmPersonal extends javax.swing.JFrame {
         model = cmbTipoPersonal.getModel();
         me = (ComboItems) model.getElementAt(index);
         obj.setIdTipoPersonal(me.getKey());
-
-        index = cmbUsuario.getSelectedIndex();
-        model = cmbUsuario.getModel();
-        me = (ComboItems) model.getElementAt(index);
-        obj.setIdUsuario(me.getKey());
         
         //inserta datos en la base, o mensaje de lo contrario
         if(obj.insertarPersonal()){
@@ -660,11 +626,6 @@ public class FrmPersonal extends javax.swing.JFrame {
         model = cmbTipoPersonal.getModel();
         me = (ComboItems) model.getElementAt(index);
         obj.setIdTipoPersonal(me.getKey());
-
-        index = cmbUsuario.getSelectedIndex();
-        model = cmbUsuario.getModel();
-        me = (ComboItems) model.getElementAt(index);
-        obj.setIdUsuario(me.getKey());
         
         //modifica datos en la base, o mensaje de lo contrario
         if(obj.modificarPersonal()){
@@ -704,12 +665,6 @@ public class FrmPersonal extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -728,7 +683,6 @@ public class FrmPersonal extends javax.swing.JFrame {
     private javax.swing.JButton btnTheme;
     private javax.swing.JComboBox<String> cmbIdEstadoPersonal;
     private javax.swing.JComboBox<String> cmbTipoPersonal;
-    private javax.swing.JComboBox<String> cmbUsuario;
     private javax.swing.JPanel jPBotones;
     private javax.swing.JPanel jPColorGestionLLamada;
     private javax.swing.JPanel jPGestionVigilante;
@@ -762,7 +716,6 @@ public class FrmPersonal extends javax.swing.JFrame {
     private javax.swing.JLabel lblSistemaVigilantes;
     private javax.swing.JLabel lblTelefono;
     private javax.swing.JLabel lblTipoPersonal;
-    private javax.swing.JLabel lblTipoPersonal2;
     private javax.swing.JLabel lblUsuario;
     // End of variables declaration//GEN-END:variables
 }

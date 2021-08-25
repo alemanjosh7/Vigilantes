@@ -22,6 +22,8 @@ public class SalidaController {
     private int idTipoES;
     private int idPorton;
     private int idVisitante;
+    private String fechaHora;
+
 
     
      //get -- set
@@ -65,7 +67,14 @@ public class SalidaController {
     public void setIdVisitante(int idVisitante){
         this.idVisitante = idVisitante;
     }
+    //fecha y hora de la entrada
+    public String getFechaHora(){
+        return fechaHora;
+    }
     
+    public void setFechaHora(String fechaHora){
+        this.fechaHora = fechaHora;
+    }       
     //Estableciendo la conexión en el constructor
     public SalidaController(){
     //Establecemos la conexion
@@ -78,17 +87,17 @@ public class SalidaController {
     public boolean guardarSalida(){
         boolean res = false;
         try{
-            String sql = "INSERT INTO RegistroSalida(idTipoES, idPorton, idVisitante) values (?,?,?) ";//se pasan por referencia por seguridad
+            String sql = "INSERT INTO RegistroSalida(idTipoES, idPorton, idVisitante, fechaHora) values (?,?,?,?) ";//se pasan por referencia por seguridad
             PreparedStatement cmd = cn.prepareStatement(sql);
             cmd.setInt(1,idTipoES);
             cmd.setInt(2, idPorton);
             cmd.setInt(3, idVisitante);
+            cmd.setString(4, fechaHora);            
             if (!cmd.execute()) {
                 res=true;
             }
             //cerrando conexión
             cmd.close();
-            cn.close();
         }
         catch(Exception ex){
             System.out.println(ex.toString());
@@ -100,17 +109,18 @@ public class SalidaController {
     public boolean modificarSalida(){
         boolean res = false;
         try{
-            String sql = "UPDATE RegistroSalida SET idTipoES =?, idPorton =?, idVisitante =? WHERE idRegistroSalida =?";//se pasan por referencia por seguridad
+            String sql = "UPDATE RegistroSalida SET idTipoES =?, idPorton =?, idVisitante =?, fechaHora =? WHERE idRegistroSalida =?";//se pasan por referencia por seguridad
             PreparedStatement cmd = cn.prepareStatement(sql);
             cmd.setInt(1,idTipoES);
             cmd.setInt(2, idPorton);
             cmd.setInt(3, idVisitante);
+            cmd.setString(4, fechaHora);
+            cmd.setInt(5, idRegistroSalida);
             if (!cmd.execute()) {
                 res=true;
             }
             //cerrando conexión
             cmd.close();
-            cn.close();
         }
         catch(Exception ex){
             System.out.println(ex.toString());
@@ -130,13 +140,13 @@ public class SalidaController {
             }
             //cerrando conexión
             cmd.close();
-            cn.close();
         }
         catch(Exception ex){
             System.out.println(ex.toString());
         }
         return res;
     }    
+    
     //Consultar los datos
     public ResultSet consultaDatos(String sql){
         ResultSet res = null;
@@ -166,63 +176,12 @@ public class SalidaController {
         }
         return PortonList;
     }
-
-    //Convirtiendo el valor del combobox a Id: Visitante
-    public boolean convertirVisitante(String visitante){
-        boolean res = false;
-        try{
-            String sql = ("SELECT idVisitante FROM Visitante WHERE nombres =?");
-            PreparedStatement cmd = cn.prepareStatement(sql);
-            cmd.setString(1, visitante);
-            //Ejecutar la consulta
-            ResultSet rs = cmd.executeQuery();
-            //recorrer la lista de registros
-            if(rs.next()){
-              res=true;
-              //asignándole a los atributos de la clase
-              setIdVisitante(rs.getInt(1));
-            }
-            //cerrando conexion
-            cmd.close();
-            cn.close();
-        }
-        catch(Exception ex){
-            
-        }   
-        return res;
-    }
-    
-    //Convirtiendo el valor del combobox a Id: TipoES
-    public boolean convertirTipoES(String TipoES){
-        boolean res = false;
-        try{
-            String sql = ("SELECT idTipoES FROM TipoEntradaSalida WHERE descripcion =?");
-            PreparedStatement cmd = cn.prepareStatement(sql);
-            cmd.setString(1, TipoES);
-            //Ejecutar la consulta
-            ResultSet rs = cmd.executeQuery();
-            //recorrer la lista de registros
-            if(rs.next()){
-              res=true;
-              //asignándole a los atributos de la clase
-              setIdIdTipoES(rs.getInt(1));
-            }
-            //cerrando conexion
-            cmd.close();
-            cn.close();
-        }
-        catch(Exception ex){
-            
-        }   
-        return res;
-    }
-    
     
     //Obtener los datos para el combobox del Visitante
     public DefaultComboBoxModel consultarVisitante(){
         DefaultComboBoxModel VisitanteList = new DefaultComboBoxModel();
         VisitanteList.addElement("Seleccione visitante");
-        ResultSet res = this.consultaDatos("SELECT * FROM Visitante order by apellidos");
+        ResultSet res = this.consultaDatos("SELECT * FROM Visitante");
         try{
             while (res.next()) {
                 VisitanteList.addElement(res.getString("nombres"));
@@ -236,20 +195,20 @@ public class SalidaController {
     }
     
     //Obtener los datos para el combobox de Tipo Porton
-    public DefaultComboBoxModel consultarTipoPorton(){
-        DefaultComboBoxModel TipoPortonList = new DefaultComboBoxModel();
-        TipoPortonList.addElement("Tipo de Porton");
-        ResultSet res = this.consultaDatos("SELECT * FROM TipoPorton");
+    public DefaultComboBoxModel consultarTipoES(){
+        DefaultComboBoxModel TipoESList = new DefaultComboBoxModel();
+        TipoESList.addElement("Tipo de Salida");
+        ResultSet res = this.consultaDatos("SELECT * FROM TipoEntradaSalida");
         try{
             while (res.next()) {
-                TipoPortonList.addElement(res.getString("descripciónTipoPorton"));
+                TipoESList.addElement(res.getString("descripcion"));
             }
             res.close();
         }
         catch(SQLException ex){
             System.out.println(ex.getMessage());
         }
-        return TipoPortonList;
+        return TipoESList;
     }
     
     //Generar la tabla de Salida
@@ -281,4 +240,139 @@ public class SalidaController {
         return tSalida;
     }    
     
+    //Convirtiendo el valor del combobox a Id: Visitante
+    public boolean convertirVisitante(String visitante){
+        boolean res = false;
+        try{
+            String sql = ("SELECT idVisitante FROM Visitante WHERE nombres =?");
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            cmd.setString(1, visitante);
+            //Ejecutar la consulta
+            ResultSet rs = cmd.executeQuery();
+            //recorrer la lista de registros
+            if(rs.next()){
+              res=true;
+              //asignándole a los atributos de la clase
+              setIdVisitante(rs.getInt(1));
+            }
+            //cerrando conexion
+            cmd.close();
+        }
+        catch(Exception ex){
+            
+        }   
+        return res;
+    }
+    
+    //Convirtiendo el valor del combobox a Id: TipoES
+    public boolean convertirTipoES(String TipoES){
+        boolean res = false;
+        try{
+            String sql = ("SELECT idTipoES FROM TipoEntradaSalida WHERE descripcion =?");
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            cmd.setString(1, TipoES);
+            //Ejecutar la consulta
+            ResultSet rs = cmd.executeQuery();
+            //recorrer la lista de registros
+            if(rs.next()){
+              res=true;
+              //asignándole a los atributos de la clase
+              setIdIdTipoES(rs.getInt(1));
+            }
+            //cerrando conexion
+            cmd.close();
+        }
+        catch(Exception ex){
+            
+        }   
+        return res;
+    }  
+    
+    public boolean consultarSalida(){
+        boolean bres = false;     
+        try{
+            //Realizar consulta
+            String sql = "SELECT * FROM RegistroSalida WHERE idRegistroSalida =?";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            //Lenar los parámetros de la clase, se coloca en el orden de la consulta
+            cmd.setInt(1, idRegistroSalida);
+            ResultSet res = cmd.executeQuery();
+            if (res.next()) {
+                bres=true;
+                idRegistroSalida = res.getInt(1);
+                idTipoES = res.getInt(2);
+                idPorton = res.getInt(3);
+                idVisitante = res.getInt(4);
+                fechaHora = res.getString(5);
+            }
+            //cerrando conexion
+            cmd.close();
+        }
+        catch(Exception ex){
+            System.out.println(ex.toString());
+        }
+        return bres;
+    }
+    
+    public DefaultTableModel filtrarDatosTabla(){
+        DefaultTableModel tSalidaFiltrada = new DefaultTableModel();
+        tSalidaFiltrada.addColumn("Indentificación");
+        tSalidaFiltrada.addColumn("Porton");
+        tSalidaFiltrada.addColumn("Tipo Salida");
+        tSalidaFiltrada.addColumn("Nombre");
+        tSalidaFiltrada.addColumn("Apellido");
+                
+        String[] datos =  new String[5];
+        try{
+            //Realizar consulta
+            String sql = "SELECT RS.idRegistroSalida, P.idPorton, TES.descripcion, V.nombres, V.apellidos FROM RegistroSalida RS JOIN Porton P ON RS.idPorton = P.idPorton JOIN TipoEntradaSalida TES ON RS.idTipoES = TES.idTipoES JOIN Visitante v ON RS.idVisitante = V.idVisitante WHERE idRegistroSalida =?";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            //Lenar los parámetros de la clase, se coloca en el orden de la consulta
+            cmd.setInt(1, idRegistroSalida);
+            ResultSet res = cmd.executeQuery();
+            while(res.next()){
+                datos[0] = res.getString(1);    
+                datos[1] = res.getString(2);
+                datos[2] = res.getString(3);
+                datos[3] = res.getString(4);
+                datos[4] = res.getString(5);
+                tSalidaFiltrada.addRow(datos);                      
+            }            
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());            
+        }
+        return tSalidaFiltrada;
+    }
+    
+    public DefaultTableModel DatosTablaTecleado(){
+        DefaultTableModel tSalidaFiltrada = new DefaultTableModel();
+        tSalidaFiltrada.addColumn("Indentificación");
+        tSalidaFiltrada.addColumn("Porton");
+        tSalidaFiltrada.addColumn("Tipo Salida");
+        tSalidaFiltrada.addColumn("Nombre");
+        tSalidaFiltrada.addColumn("Apellido");
+                
+        String[] datos =  new String[5];
+        try{
+            //Realizar consulta
+            String sql = "SELECT RS.idRegistroSalida, P.idPorton, TES.descripcion, V.nombres, V.apellidos FROM RegistroSalida RS JOIN Porton P ON RS.idPorton = P.idPorton JOIN TipoEntradaSalida TES ON RS.idTipoES = TES.idTipoES JOIN Visitante v ON RS.idVisitante = V.idVisitante WHERE idRegistroSalida LIKE CONCAT('%',?,'%')";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            //Lenar los parámetros de la clase, se coloca en el orden de la consulta
+            cmd.setInt(1, idRegistroSalida);
+            ResultSet res = cmd.executeQuery();
+            while(res.next()){
+                datos[0] = res.getString(1);    
+                datos[1] = res.getString(2);
+                datos[2] = res.getString(3);
+                datos[3] = res.getString(4);
+                datos[4] = res.getString(5);
+                tSalidaFiltrada.addRow(datos);                      
+            }            
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());            
+        }
+        return tSalidaFiltrada;
+    }
 }

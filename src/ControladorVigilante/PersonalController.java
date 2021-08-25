@@ -4,21 +4,23 @@
  * and open the template in the editor.
  */
 package ControladorVigilante;
-import java.sql.Connection;
-import Clases.Conexion;
+
 import Modelo.ComboItems;
+import Modelo.Conexion;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
- * @author CRISTIAN
+ * @author César
  */
 public class PersonalController {
     
-     
     //Datos a utilizar
     private Connection cn;
     private String busquedaNombrePersonal;
@@ -30,12 +32,11 @@ public class PersonalController {
     private String dui;
     private String correo;
     private Integer idEstadoPersonal;
-    private Integer idUsuario;
     private Float salarioMensual;
     
     public PersonalController(){
         //Establecemos la conexion
-        Modelo.Conexion con = new Modelo.Conexion();
+        Conexion con = new Conexion();
         cn = con.conectar();
     }
     public ResultSet consultarTabla(){
@@ -113,40 +114,10 @@ public class PersonalController {
         return modelo;
     }
     
-    public ResultSet consultarTablaUsuario(){
-        boolean res = false;
-        Statement st;
-        ResultSet datos = null;
-        try{
-            st=getCn().createStatement();
-            datos=st.executeQuery("Select idUsuario, nombreUsuario FROM Usuario");
-        }catch(Exception e){
-            System.out.println(e.toString());
-        }
-        return datos;
-    }
-    
-    public DefaultComboBoxModel generarComboBoxUsuario(){
-        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-        
-        try {
-            ResultSet rs = consultarTablaUsuario();
-            
-            while(rs.next()){
-                modelo.addElement(new ComboItems( Integer.parseInt(rs.getObject(1).toString()), rs.getObject(2).toString()));
-            }
-            
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
-        
-        return modelo;
-    }
-    
     public boolean insertarPersonal(){
         boolean res = false;
         try{ //Realizar consulta INSERT
-            String sql = "INSERT INTO Personal(idTipoPersonal, nombres, apellidos, telefono, dui, correo, idEstadoPersonal, idUsuario, salarioMensual) values(?, ?, ?, ?, ?, ?, ?, ?, ?)"; //se pasan por referencia por seguridad
+            String sql = "INSERT INTO Personal(idTipoPersonal, nombres, apellidos, telefono, dui, correo, idEstadoPersonal, salarioMensual) values(?, ?, ?, ?, ?, ?, ?, ?)"; //se pasan por referencia por seguridad
             //pide importar clase Prepared Statement
             PreparedStatement cmd = cn.prepareStatement(sql);
             //Lenar los parámetros de la clase, se coloca en el orden de la tabla
@@ -157,8 +128,7 @@ public class PersonalController {
             cmd.setString(5, dui);
             cmd.setString(6, correo);
             cmd.setInt(7, idEstadoPersonal);
-            cmd.setInt(8, idUsuario);
-            cmd.setFloat(9, salarioMensual);
+            cmd.setFloat(8, salarioMensual);
             //Si da error devuelve 1, caso contrario 
             //Tomar en cuenta que el ! es negación
             if(!cmd.execute()){
@@ -177,7 +147,7 @@ public class PersonalController {
     public boolean modificarPersonal(){
         boolean res = false;
         try{ //Realizar consulta INSERT
-            String sql = "UPDATE Personal SET idTipoPersonal = ?, nombres = ?, apellidos = ?, telefono = ?, dui = ?, correo = ?, idEstadoPersonal = ?, idUsuario = ?, salarioMensual = ? WHERE idPersonal = ?"; //se pasan por referencia por seguridad
+            String sql = "UPDATE Personal SET idTipoPersonal = ?, nombres = ?, apellidos = ?, telefono = ?, dui = ?, correo = ?, idEstadoPersonal = ?, salarioMensual = ? WHERE idPersonal = ?"; //se pasan por referencia por seguridad
             //pide importar clase Prepared Statement
             PreparedStatement cmd = cn.prepareStatement(sql);
             //Lenar los parámetros de la clase, se coloca en el orden de la tabla
@@ -188,9 +158,8 @@ public class PersonalController {
             cmd.setString(5, dui);
             cmd.setString(6, correo);
             cmd.setInt(7, idEstadoPersonal);
-            cmd.setInt(8, idUsuario);
-            cmd.setFloat(9, salarioMensual);
-            cmd.setInt(10, idPersonal);
+            cmd.setFloat(8, salarioMensual);
+            cmd.setInt(9, idPersonal);
             //Si da error devuelve 1, caso contrario 
             //Tomar en cuenta que el ! es negación
             if(!cmd.execute()){
@@ -438,20 +407,6 @@ public class PersonalController {
     }
 
     /**
-     * @return the idUsuario
-     */
-    public Integer getIdUsuario() {
-        return idUsuario;
-    }
-
-    /**
-     * @param idUsuario the idUsuario to set
-     */
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    /**
      * @return the salarioMensual
      */
     public Float getSalarioMensual() {
@@ -464,6 +419,5 @@ public class PersonalController {
     public void setSalarioMensual(Float salarioMensual) {
         this.salarioMensual = salarioMensual;
     }
-    
     
 }
