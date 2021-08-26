@@ -6,6 +6,8 @@
 package FormsVigilante;
 
 import ControladorVigilante.PersonalController;
+import Modelo.Conexion;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -17,7 +19,8 @@ import javax.swing.table.TableCellRenderer;
  * @author CRISTIAN
  */
 public class FrmVisualizarPersonal extends javax.swing.JFrame {
-
+    Conexion enlace = new Conexion();
+    Connection conect = enlace.conectar();
     /**
      * Creates new form VisualizarPersonal
      */
@@ -213,6 +216,9 @@ public class FrmVisualizarPersonal extends javax.swing.JFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jFTBusquedaKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFTBusquedaKeyTyped(evt);
+            }
         });
 
         jlblTipoEntrada.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -388,6 +394,23 @@ public class FrmVisualizarPersonal extends javax.swing.JFrame {
         mostrarDatos();
     }//GEN-LAST:event_jFTBusquedaKeyReleased
 
+    private void jFTBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaKeyTyped
+        if(!SoloLetra(evt.getKeyChar()) ){
+           //no deja que se escriba un letra
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Ingresar solo letras");
+        }
+    }//GEN-LAST:event_jFTBusquedaKeyTyped
+
+    public boolean SoloLetra(char letra){
+        if(Character.isLetter(letra) || Character.isISOControl(letra)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */

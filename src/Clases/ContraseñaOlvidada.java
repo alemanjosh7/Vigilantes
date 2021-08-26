@@ -391,8 +391,8 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
             props.setProperty("mail.smtp.port", "587");
             props.setProperty("mail.smtp.auth", "true");
             Session session = Session.getDefaultInstance(props);
-            String correoRemitente = ""; //pongan un correo aqui
-            String passwordRemitente = ""; //pongan una contra aqui
+            String correoRemitente = "ptc2021vigilantes@gmail.com"; //pongan un correo aqui
+            String passwordRemitente = "ITR2021ptcVigilantes"; //pongan una contra aqui
             String correoReceptor = jTextField1.getText();
             String asunto = "Mensaje enviado exitosamente: Recuperación de Contraseña";
             String secretKey = "SomosProgramadores";
@@ -478,6 +478,22 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ContraseñaOlvidada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

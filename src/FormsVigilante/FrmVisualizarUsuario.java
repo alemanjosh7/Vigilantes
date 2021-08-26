@@ -21,8 +21,13 @@ public class FrmVisualizarUsuario extends javax.swing.JFrame {
      * Creates new form FrmVisualizarUsuario
      */
     public FrmVisualizarUsuario() {
+        this.setUndecorated(true);        
+        this.setLocationRelativeTo(null);
         initComponents();
         mostrarDatos();
+        FrmLogin log = new FrmLogin();
+        lblCargoUsuario.setText(log.cargo);
+        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);        
     }
     
     private void mostrarDatos(){
@@ -74,9 +79,9 @@ public class FrmVisualizarUsuario extends javax.swing.JFrame {
         btnGoLogIn = new javax.swing.JButton();
         jPToolStrip26 = new javax.swing.JPanel();
         btnTheme26 = new javax.swing.JButton();
-        lblCargoUsuario26 = new javax.swing.JLabel();
+        lblCargoUsuario = new javax.swing.JLabel();
         lblCargo26 = new javax.swing.JLabel();
-        lblNombreUsuario26 = new javax.swing.JLabel();
+        lblNombreUsuario = new javax.swing.JLabel();
         lblUsuario26 = new javax.swing.JLabel();
         lblExitButton26 = new javax.swing.JLabel();
         jPBusquedaContainer = new javax.swing.JPanel();
@@ -203,14 +208,14 @@ public class FrmVisualizarUsuario extends javax.swing.JFrame {
         btnTheme26.setAlignmentY(0.7F);
         btnTheme26.setContentAreaFilled(false);
 
-        lblCargoUsuario26.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblCargoUsuario26.setText("Administrador");
+        lblCargoUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblCargoUsuario.setText("Administrador");
 
         lblCargo26.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblCargo26.setText("Cargo:");
 
-        lblNombreUsuario26.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblNombreUsuario26.setText("Josué Alemán");
+        lblNombreUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNombreUsuario.setText("Josué Alemán");
 
         lblUsuario26.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblUsuario26.setText("Usuario:");
@@ -231,11 +236,11 @@ public class FrmVisualizarUsuario extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(lblUsuario26)
                 .addGap(27, 27, 27)
-                .addComponent(lblNombreUsuario26)
+                .addComponent(lblNombreUsuario)
                 .addGap(60, 60, 60)
                 .addComponent(lblCargo26)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblCargoUsuario26)
+                .addComponent(lblCargoUsuario)
                 .addGap(219, 219, 219)
                 .addComponent(btnTheme26, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 299, Short.MAX_VALUE)
@@ -254,9 +259,9 @@ public class FrmVisualizarUsuario extends javax.swing.JFrame {
                             .addComponent(btnTheme26, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPToolStrip26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblUsuario26)
-                                .addComponent(lblNombreUsuario26)
+                                .addComponent(lblNombreUsuario)
                                 .addComponent(lblCargo26)
-                                .addComponent(lblCargoUsuario26)))))
+                                .addComponent(lblCargoUsuario)))))
                 .addContainerGap())
         );
 
@@ -400,11 +405,11 @@ public class FrmVisualizarUsuario extends javax.swing.JFrame {
     private javax.swing.JPanel jPbtnSBContainer;
     private javax.swing.JTable jTUsuario;
     private javax.swing.JLabel lblCargo26;
-    private javax.swing.JLabel lblCargoUsuario26;
+    private javax.swing.JLabel lblCargoUsuario;
     private javax.swing.JLabel lblExitButton26;
     private javax.swing.JLabel lblImagen;
     private javax.swing.JLabel lblImgBusqueda4;
-    private javax.swing.JLabel lblNombreUsuario26;
+    private javax.swing.JLabel lblNombreUsuario;
     private javax.swing.JLabel lblSistemaVigilantes;
     private javax.swing.JLabel lblUsuario26;
     private javax.swing.JLabel lblVisitante;

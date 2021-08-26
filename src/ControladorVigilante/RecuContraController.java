@@ -91,7 +91,8 @@ public class RecuContraController {
            String sql = "SELECT contrasena from Personal Inner Join Usuario on Personal.idPersonal = Usuario.idPersonal where Personal.correo = ?";
        //pide importar clase Prepared Statement
            PreparedStatement cmd = cn.prepareStatement(sql);
-           
+           //Cuenta  ptc2021vigilantes@gmail.com
+           //Contraseña ITR2021ptcVigilantes
            //Lenar los parámetros de la clase, se coloca en el orden de la consulta
            cmd.setString(1, correo);
            //Ejecutar la consulta

@@ -211,6 +211,7 @@ public class HorarioController {
         
         try {
             ResultSet rs = consultarTablaPorton();
+            modelo.addElement(new ComboItems( 0,  "Seleccionar Portón:" ) );
             
             while(rs.next()){
                 modelo.addElement(new ComboItems( Integer.parseInt(rs.getObject(1).toString()), rs.getObject(1).toString()));
@@ -229,7 +230,7 @@ public class HorarioController {
         ResultSet datos = null;
         try{
             st=getCn().createStatement();
-            datos=st.executeQuery("Select p.idPersonal, p.nombres, p.apellidos FROM Personal as p WHERE p.idEstadoPersonal = 1");
+            datos=st.executeQuery("Select p.idPersonal, p.nombres, p.apellidos FROM Personal as p WHERE p.idEstadoPersonal = 1 AND p.idTipoPersonal = 2");
         }catch(Exception e){
             System.out.println(e.toString());
         }
@@ -241,7 +242,8 @@ public class HorarioController {
         
         try {
             ResultSet rs = consultarTablaPersonal();
-            
+            modelo.addElement(new ComboItems( 0,  "Seleccionar Personal:" ) );
+
             while(rs.next()){
                 modelo.addElement(new ComboItems( Integer.parseInt(rs.getObject(1).toString()),  rs.getObject(1).toString() + "- " + rs.getObject(2).toString() + " " + rs.getObject(3).toString() ) );
             }

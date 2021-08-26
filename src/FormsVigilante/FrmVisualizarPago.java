@@ -34,6 +34,9 @@ public class FrmVisualizarPago extends javax.swing.JFrame {
      * Creates new form FrmVisualizarPago
      */
     public FrmVisualizarPago() {
+       FrmLogin log = new FrmLogin();
+        lblCargoUsuario.setText(log.cargo);
+        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);
         setUndecorated(true);
         initComponents();
         setLocationRelativeTo(null);

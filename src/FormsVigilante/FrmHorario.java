@@ -7,10 +7,21 @@ package FormsVigilante;
 
 import ControladorVigilante.HorarioController;
 import Modelo.ComboItems;
+import com.toedter.calendar.JTextFieldDateEditor;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
+import javax.swing.SpinnerDateModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
@@ -27,9 +38,19 @@ public class FrmHorario extends javax.swing.JFrame {
     public FrmHorario() {
         initComponents();
         mostrarDatos();
+        limpiarDatos();
     }
     
     private void mostrarDatos(){
+        // deshabilitar 
+        try {
+            JTextFieldDateEditor editor = (JTextFieldDateEditor) jDateFecha.getDateEditor();
+            editor.setEditable(false); 
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "No se pudo deshabilitar");
+        }
+        
         //LimpiarCampos();
         HorarioController obj = new HorarioController();
         try {
@@ -84,10 +105,10 @@ public class FrmHorario extends javax.swing.JFrame {
         lblHoraIngreso = new javax.swing.JLabel();
         jTxtHoraSalida = new javax.swing.JTextField();
         lblHoraSalida = new javax.swing.JLabel();
-        jTxtFecha = new javax.swing.JTextField();
         lblIDPorton1 = new javax.swing.JLabel();
         jCmbIDPersonal = new javax.swing.JComboBox<>();
         jCmbIDPorton = new javax.swing.JComboBox<>();
+        jDateFecha = new com.toedter.calendar.JDateChooser();
         jPToolStrip = new javax.swing.JPanel();
         lblExitButton = new javax.swing.JLabel();
         btnTheme = new javax.swing.JButton();
@@ -238,27 +259,39 @@ public class FrmHorario extends javax.swing.JFrame {
         lblIDPorton.setBounds(730, 80, 100, 22);
 
         lblIDPersonal.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblIDPersonal.setText("ID personal:");
+        lblIDPersonal.setText("Personal:");
         jPContenedorHorario.add(lblIDPersonal);
         lblIDPersonal.setBounds(400, 80, 120, 22);
+
+        jTxtIDTurno.setEditable(false);
         jPContenedorHorario.add(jTxtIDTurno);
-        jTxtIDTurno.setBounds(90, 110, 200, 24);
+        jTxtIDTurno.setBounds(90, 110, 220, 24);
+
+        jTxtHoraIngreso.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTxtHoraIngresoKeyTyped(evt);
+            }
+        });
         jPContenedorHorario.add(jTxtHoraIngreso);
-        jTxtHoraIngreso.setBounds(90, 200, 200, 24);
+        jTxtHoraIngreso.setBounds(90, 200, 220, 24);
 
         lblHoraIngreso.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblHoraIngreso.setText("Hora de Ingreso (hh:mm:ss):");
         jPContenedorHorario.add(lblHoraIngreso);
         lblHoraIngreso.setBounds(90, 170, 260, 22);
+
+        jTxtHoraSalida.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTxtHoraSalidaKeyTyped(evt);
+            }
+        });
         jPContenedorHorario.add(jTxtHoraSalida);
-        jTxtHoraSalida.setBounds(400, 200, 200, 24);
+        jTxtHoraSalida.setBounds(400, 200, 250, 24);
 
         lblHoraSalida.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblHoraSalida.setText("Hora de salida (hh:mm:ss):");
         jPContenedorHorario.add(lblHoraSalida);
         lblHoraSalida.setBounds(400, 170, 250, 22);
-        jPContenedorHorario.add(jTxtFecha);
-        jTxtFecha.setBounds(730, 200, 200, 24);
 
         lblIDPorton1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblIDPorton1.setText("Fecha (mm-dd-aaaa):");
@@ -269,7 +302,16 @@ public class FrmHorario extends javax.swing.JFrame {
         jCmbIDPersonal.setBounds(400, 110, 250, 30);
 
         jPContenedorHorario.add(jCmbIDPorton);
-        jCmbIDPorton.setBounds(730, 110, 200, 30);
+        jCmbIDPorton.setBounds(730, 110, 210, 30);
+
+        jDateFecha.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jDateFecha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jDateFechaKeyTyped(evt);
+            }
+        });
+        jPContenedorHorario.add(jDateFecha);
+        jDateFecha.setBounds(730, 200, 210, 30);
 
         jPIngresoHorario.add(jPContenedorHorario);
         jPContenedorHorario.setBounds(10, 100, 1040, 650);
@@ -588,7 +630,8 @@ public class FrmHorario extends javax.swing.JFrame {
         HorarioController obj = new HorarioController();
         obj.setHoraIngreso(jTxtHoraIngreso.getText());
         obj.setHoraSalida(jTxtHoraSalida.getText());
-        obj.setFecha(jTxtFecha.getText());
+        String date  = ((JTextField) jDateFecha.getDateEditor().getUiComponent()).getText();
+        obj.setFecha(date);
         
         if(!jTxtIDTurno.getText().equals("")) obj.setIdTurno(Integer.parseInt(jTxtIDTurno.getText()));
 
@@ -628,7 +671,15 @@ public class FrmHorario extends javax.swing.JFrame {
         String[] HoraSalida = model.getValueAt(index, 6).toString().split(" ");
         jTxtHoraSalida.setText(HoraSalida[1]);
 
-        jTxtFecha.setText( model.getValueAt(index, 7).toString() );
+        String date = model.getValueAt(index, 7).toString();
+        Date date1 = new Date();  
+        try {
+            date1 = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+        } catch (Exception ex) {
+        }
+        
+        
+        jDateFecha.setDate(date1);
     }//GEN-LAST:event_jTableHorariosMouseClicked
 
     private void BtnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnConsultarActionPerformed
@@ -645,10 +696,13 @@ public class FrmHorario extends javax.swing.JFrame {
         HorarioController obj = new HorarioController();
         obj.setHoraIngreso(jTxtHoraIngreso.getText());
         obj.setHoraSalida(jTxtHoraSalida.getText());
-        obj.setFecha(jTxtFecha.getText());
+        String date  = ((JTextField) jDateFecha.getDateEditor().getUiComponent()).getText();
+        obj.setFecha(date);
+        
+        JOptionPane.showMessageDialog(this, date);
         
         if(!jTxtIDTurno.getText().equals("")) obj.setIdTurno(Integer.parseInt(jTxtIDTurno.getText()));
-
+        
         int index = 0;
         
         index = jCmbIDPersonal.getSelectedIndex();
@@ -672,6 +726,45 @@ public class FrmHorario extends javax.swing.JFrame {
         mostrarDatos();
     }//GEN-LAST:event_BtnModificarActionPerformed
 
+    private void jDateFechaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDateFechaKeyTyped
+        //Evita que se escriba 
+        evt.consume();
+    }//GEN-LAST:event_jDateFechaKeyTyped
+
+    private void jTxtHoraIngresoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtHoraIngresoKeyTyped
+        if(!SoloNumero(evt.getKeyChar()) && !SoloDosPuntos(evt.getKeyChar())){
+           //no deja que se escriba un letra
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Ingresar número o ':' ");
+        }
+    }//GEN-LAST:event_jTxtHoraIngresoKeyTyped
+
+    private void jTxtHoraSalidaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtHoraSalidaKeyTyped
+        if(!SoloNumero(evt.getKeyChar()) && !SoloDosPuntos(evt.getKeyChar())){
+           //no deja que se escriba un letra
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Ingresar número o ':' ");
+        }
+    }//GEN-LAST:event_jTxtHoraSalidaKeyTyped
+
+    public boolean SoloNumero(char numero){
+        if(Character.isDigit(numero) || Character.isISOControl(numero)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+     public boolean SoloDosPuntos(char letra){
+        if(letra == ':' || Character.isISOControl(letra)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -724,6 +817,7 @@ public class FrmHorario extends javax.swing.JFrame {
     private javax.swing.JButton btnTheme;
     private javax.swing.JComboBox<String> jCmbIDPersonal;
     private javax.swing.JComboBox<String> jCmbIDPorton;
+    private com.toedter.calendar.JDateChooser jDateFecha;
     private javax.swing.JPanel jPBotones;
     private javax.swing.JPanel jPContenedorHorario;
     private javax.swing.JPanel jPImageContainer;
@@ -736,7 +830,6 @@ public class FrmHorario extends javax.swing.JFrame {
     private javax.swing.JPanel jPbtnSBContainer1;
     private javax.swing.JScrollPane jSTablaDatos;
     private javax.swing.JTable jTableHorarios;
-    private javax.swing.JTextField jTxtFecha;
     private javax.swing.JTextField jTxtHoraIngreso;
     private javax.swing.JTextField jTxtHoraSalida;
     private javax.swing.JTextField jTxtIDTurno;
@@ -759,7 +852,11 @@ public class FrmHorario extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void limpiarDatos() {
-        jTxtFecha.setText("");
+
+        Calendar today = Calendar.getInstance();
+        today.set(Calendar.HOUR_OF_DAY, 0);
+        
+        jDateFecha.setDate(today.getTime());
         jTxtHoraIngreso.setText("");
         jTxtHoraSalida.setText("");
         jTxtIDTurno.setText("");

@@ -72,7 +72,8 @@ public class PersonalController {
         
         try {
             ResultSet rs = consultarTablaCargo();
-            
+            modelo.addElement(new ComboItems( 0, "Seleccionar Cargo:"));
+
             while(rs.next()){
                 modelo.addElement(new ComboItems( Integer.parseInt(rs.getObject(1).toString()), rs.getObject(2).toString()));
             }
@@ -102,7 +103,8 @@ public class PersonalController {
         
         try {
             ResultSet rs = consultarTablaEstadoPersonal();
-            
+            modelo.addElement(new ComboItems( 0, "Seleccionar Estado:"));
+
             while(rs.next()){
                 modelo.addElement(new ComboItems( Integer.parseInt(rs.getObject(1).toString()), rs.getObject(2).toString()));
             }

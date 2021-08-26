@@ -6,6 +6,8 @@
 package FormsVigilante;
 
 import ControladorVigilante.ZonasController;
+import Modelo.Conexion;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -17,6 +19,8 @@ import javax.swing.table.TableCellRenderer;
  * @author josue
  */
 public class FrmVisualizarZonas extends javax.swing.JFrame {
+    Conexion enlace = new Conexion();
+    Connection conect = enlace.conectar();
     
     /**
      * Creates new form VisualizarZonas
@@ -215,8 +219,14 @@ public class FrmVisualizarZonas extends javax.swing.JFrame {
         jFTBusqueda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
         jFTBusqueda.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jFTBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jFTBusquedaKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jFTBusquedaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFTBusquedaKeyTyped(evt);
             }
         });
 
@@ -370,6 +380,27 @@ public class FrmVisualizarZonas extends javax.swing.JFrame {
         mostrarDatos();
     }//GEN-LAST:event_jFTBusquedaKeyReleased
 
+    private void jFTBusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaKeyPressed
+        
+    }//GEN-LAST:event_jFTBusquedaKeyPressed
+
+    private void jFTBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaKeyTyped
+        if(!SoloLetra(evt.getKeyChar()) ){
+           //no deja que se escriba un letra
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Ingresar solo letras");
+        }
+    }//GEN-LAST:event_jFTBusquedaKeyTyped
+
+    public boolean SoloLetra(char letra){
+        if(Character.isLetter(letra) || Character.isISOControl(letra)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */

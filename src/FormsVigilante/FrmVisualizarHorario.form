@@ -427,6 +427,7 @@
               </Properties>
               <Events>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jFTBusquedaHorarioKeyReleased"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jFTBusquedaHorarioKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblImgBusqueda2">

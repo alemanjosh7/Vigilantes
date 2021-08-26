@@ -276,6 +276,9 @@ public class FrmVisualizarHorario extends javax.swing.JFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jFTBusquedaHorarioKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFTBusquedaHorarioKeyTyped(evt);
+            }
         });
 
         lblImgBusqueda2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -383,6 +386,23 @@ public class FrmVisualizarHorario extends javax.swing.JFrame {
         mostrarDatos();
     }//GEN-LAST:event_jFTBusquedaHorarioKeyReleased
 
+    private void jFTBusquedaHorarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaHorarioKeyTyped
+        if(!SoloNumero(evt.getKeyChar()) ){
+           //no deja que se escriba un letra
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Ingresar números");
+        }
+    }//GEN-LAST:event_jFTBusquedaHorarioKeyTyped
+
+    public boolean SoloNumero(char numero){
+        if(Character.isDigit(numero) || Character.isISOControl(numero)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */

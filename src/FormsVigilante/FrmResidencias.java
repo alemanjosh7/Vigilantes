@@ -26,8 +26,8 @@ public class FrmResidencias extends javax.swing.JFrame {
      */
     public FrmResidencias() {
         this.setUndecorated(true);
-        setLocationRelativeTo(null);
         initComponents(); 
+        this.setLocationRelativeTo(null);
         this.cmbZona.setModel(RC.consultarZona());
         this.cmbResidente.setModel(RC.consultarResidente());
         CargarDatosTabla();
@@ -48,9 +48,9 @@ public class FrmResidencias extends javax.swing.JFrame {
         lblNumCasa = new javax.swing.JLabel();
         jPBotones = new javax.swing.JPanel();
         btnRegistrar = new javax.swing.JButton();
-        btnAgregar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
+        btnConsulta = new javax.swing.JButton();
         lblGestionResidencia = new javax.swing.JLabel();
         lblZona = new javax.swing.JLabel();
         jSTablaDatos = new javax.swing.JScrollPane();
@@ -100,13 +100,6 @@ public class FrmResidencias extends javax.swing.JFrame {
         btnRegistrar.setContentAreaFilled(false);
         btnRegistrar.setFocusable(false);
 
-        btnAgregar.setBackground(new java.awt.Color(255, 211, 105));
-        btnAgregar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnAgregar.setText("Agregar");
-        btnAgregar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnAgregar.setContentAreaFilled(false);
-        btnAgregar.setFocusable(false);
-
         btnModificar.setBackground(new java.awt.Color(255, 211, 105));
         btnModificar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btnModificar.setText("Modificar");
@@ -121,23 +114,32 @@ public class FrmResidencias extends javax.swing.JFrame {
         btnLimpiar.setContentAreaFilled(false);
         btnLimpiar.setFocusable(false);
 
+        btnConsulta.setBackground(new java.awt.Color(255, 211, 105));
+        btnConsulta.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnConsulta.setText("Consultar");
+        btnConsulta.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnConsulta.setContentAreaFilled(false);
+        btnConsulta.setFocusable(false);
+        btnConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPBotonesLayout = new javax.swing.GroupLayout(jPBotones);
         jPBotones.setLayout(jPBotonesLayout);
         jPBotonesLayout.setHorizontalGroup(
             jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
-                .addGap(281, 281, 281)
-                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                .addGap(71, 71, 71)
                 .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(119, 119, 119)
+                .addGap(107, 107, 107)
                 .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
-            .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPBotonesLayout.createSequentialGroup()
-                    .addGap(82, 82, 82)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(708, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
+                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(100, 100, 100)
+                .addComponent(btnConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64))
         );
         jPBotonesLayout.setVerticalGroup(
             jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,13 +148,9 @@ public class FrmResidencias extends javax.swing.JFrame {
                 .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32))
-            .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
-                    .addContainerGap(16, Short.MAX_VALUE)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(29, 29, 29)))
         );
 
         lblGestionResidencia.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
@@ -247,7 +245,7 @@ public class FrmResidencias extends javax.swing.JFrame {
                         .addGap(378, 378, 378)
                         .addComponent(lblGestionResidencia))
                     .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
-                        .addGap(58, 58, 58)
+                        .addGap(66, 66, 66)
                         .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -278,15 +276,15 @@ public class FrmResidencias extends javax.swing.JFrame {
                 .addComponent(lblidResidencia)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jFNumeroResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addComponent(jSTablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
 
         getContentPane().add(jPGestionResidencia);
-        jPGestionResidencia.setBounds(300, 80, 1030, 660);
+        jPGestionResidencia.setBounds(310, 80, 1030, 660);
 
         jPSideBar.setBackground(new java.awt.Color(57, 62, 70));
         jPSideBar.setPreferredSize(new java.awt.Dimension(287, 811));
@@ -493,7 +491,7 @@ public class FrmResidencias extends javax.swing.JFrame {
         CargarDatosTabla();
     }//GEN-LAST:event_btnModificarActionPerformed
 
-    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+    private void btnConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaActionPerformed
          if (jFNumeroResidencia.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");              
         }
@@ -512,7 +510,7 @@ public class FrmResidencias extends javax.swing.JFrame {
             }             
         }
         CargarDatosTabla();
-    }//GEN-LAST:event_btnConsultarActionPerformed
+    }//GEN-LAST:event_btnConsultaActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         if (jFNumeroResidencia.getText().isEmpty() || jFDireccion.getText().isEmpty() || cmbResidente.getSelectedIndex() == 0) {
@@ -551,6 +549,10 @@ public class FrmResidencias extends javax.swing.JFrame {
     private void jFNumCasaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFNumCasaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFNumCasaActionPerformed
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarActionPerformed
         private void LimpiarCampos() {
          jFNumeroResidencia.setText("");
          jFDireccion.setText(""); 
@@ -662,7 +664,7 @@ public class FrmResidencias extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnConsulta;
     private javax.swing.JButton btnGoLogIn;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
