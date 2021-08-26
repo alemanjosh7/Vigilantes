@@ -6,6 +6,7 @@
 package FormsVigilante;
 
 import Clases.ContraseñaOlvidada;
+import Clases.Encoder;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -458,12 +459,14 @@ public class FrmLogin extends javax.swing.JFrame {
         LoginController obj = new LoginController();
         String nombre = jTNombreUsuario.getText();
         obj.setNombre_usuario(nombre);
+        Encoder mMain = new Encoder();
+        String secretKey = "SomosProgramadores";
         contra = jPFContrasena.getText();
-        obj.setContrasena(contra);
-        
+        String cadenaEncriptada = mMain.ecnode(secretKey, contra);
+        obj.setContrasena(cadenaEncriptada);
         
         //enviando guardar a  SQLServer
-        if(obj.existenciaUsuario(nombre, jPFContrasena.getText()) == 1){
+        if(obj.existenciaUsuario(nombre, cadenaEncriptada) == 1){
             
             estadoUsuario = obj.getId_estado_usuario();
             idUsuario = obj.getId_usuario();

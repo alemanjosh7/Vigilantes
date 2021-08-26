@@ -108,7 +108,6 @@ public class UsuarioController {
             }
             //cerrando conexion
             cmd.close();
-            cn.close();
         }catch(Exception e ){
             System.out.println(e.toString());
         }
@@ -160,7 +159,6 @@ public class UsuarioController {
             }
             //cerrando conexion
             cmd.close();
-            cn.close();
         }catch(Exception e ){
             System.out.println(e.toString());
         }
@@ -269,7 +267,7 @@ public class UsuarioController {
         ResultSet datos = null;
         try{
             st=getCn().createStatement();
-            datos=st.executeQuery("Select p.idPersonal, p.nombres, p.apellidos FROM Personal as p WHERE p.idEstadoPersonal = 1 AND p.idTipoPersonal = 2");
+            datos=st.executeQuery("Select p.idPersonal, p.nombres, p.apellidos FROM Personal as p WHERE p.idEstadoPersonal = 1");
         }catch(Exception e){
             System.out.println(e.toString());
         }

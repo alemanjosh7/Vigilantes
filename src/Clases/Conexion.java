@@ -21,7 +21,7 @@ public class Conexion {
      try{
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         //*pedira importar import java.sql.DriverManager;*/
-        cn = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-HIQUDUB\\MSSQLSERVER; databaseName=TBDS_Sistema_Vigilantes; IntegratedSecurity=true;");
+        cn = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-8K90LO2P\\SQLSERVER; databaseName=TBDS_Sistema_Vigilantes; IntegratedSecurity=true;");
         //"jdbc:sqlserver://LAPTOP-7QMN6CMR\\SQLEXPRESS
         if(cn!=null){
             System.out.println("se conecta");

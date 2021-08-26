@@ -58,7 +58,7 @@ public class Encoder {
             desencriptacion = new String(plainText, "UTF-8");
 
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Algo salió mal");
+            JOptionPane.showMessageDialog(null, "Yikes, smth wrong");
         }
         return desencriptacion;
     }

@@ -406,11 +406,12 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
     //            mail.addRecipient(Message RecipientType.TO, new InternetAddress(correoReceptor));
                 mail.setSubject(asunto);
                 mail.setText(mensaje);
-
+                
                 Transport transporte = session.getTransport("smtp");
                 transporte.connect(correoRemitente, passwordRemitente);
                 transporte.sendMessage(mail, mail.getRecipients(Message.RecipientType.TO));
                 transporte.close();
+                System.out.println(contra + " " + cadenaDesencriptada);
                 JOptionPane.showMessageDialog(null, "Correo enviado");
     //            mail.addRecipient(Message RecipientType TO, new InternetAddress(correoReceptor)); 
             } catch (AddressException ex) {
