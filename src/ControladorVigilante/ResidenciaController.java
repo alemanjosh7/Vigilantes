@@ -327,7 +327,8 @@ public class ResidenciaController {
         }
         return tResidencia;
     }
-   public DefaultTableModel filtrarDatosTabla(){
+         
+    public DefaultTableModel filtrarDatosTabla(){
         DefaultTableModel tResidenteFiltrada = new DefaultTableModel();
         tResidenteFiltrada.addColumn("Indentificación");
         tResidenteFiltrada.addColumn("Numero");
@@ -337,7 +338,7 @@ public class ResidenciaController {
         String[] datos =  new String[5];
         try{
             //Realizar consulta
-            String sql = "select R.idResidencia, R.numeroResidencia, R.direccionResidencia, Z.nombreZona, RD.nombres from Residencia R join Zonas Z on R.idZona = Z.idZona  join Residente RD  on R.idResidente = RD.idResidente WHERE idResidencia=?";
+            String sql = "select R.idResidencia, R.numeroResidencia, R.direccionResidencia, Z.nombreZona, RD.nombres from Residencia R join Zonas Z on R.idZona = Z.idZona  join Residente RD  on R.idResidente = RD.idResidente WHERE idResidencia =?";
             PreparedStatement cmd = cn.prepareStatement(sql);
             //Lenar los parámetros de la clase, se coloca en el orden de la consulta
             cmd.setInt(1, idResidente);
@@ -356,4 +357,34 @@ public class ResidenciaController {
         }
         return tResidenteFiltrada; 
     }
+    
+    public DefaultTableModel filtrarDatosTablaNum(){
+        DefaultTableModel tResidenteFiltrada = new DefaultTableModel();
+        tResidenteFiltrada.addColumn("Indentificación");
+        tResidenteFiltrada.addColumn("Numero");
+        tResidenteFiltrada.addColumn("Direccion");
+        tResidenteFiltrada.addColumn("Zona");
+        tResidenteFiltrada.addColumn("Residente");           
+        String[] datos =  new String[5];
+        try{
+            //Realizar consulta
+            String sql = "select R.idResidencia, R.numeroResidencia, R.direccionResidencia, Z.nombreZona, RD.nombres from Residencia R join Zonas Z on R.idZona = Z.idZona  join Residente RD  on R.idResidente = RD.idResidente WHERE numeroResidencia LIKE CONCAT('%',?,'%')";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            //Lenar los parámetros de la clase, se coloca en el orden de la consulta
+            cmd.setInt(1, numeroResidencia);
+            ResultSet res = cmd.executeQuery();
+            while(res.next()){
+                datos[0] = res.getString(1);    
+                datos[1] = res.getString(2);
+                datos[2] = res.getString(3);
+                datos[3] = res.getString(4);
+                datos[4] = res.getString(5);
+                tResidenteFiltrada.addRow(datos);                      
+            }        
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());            
+        }
+        return tResidenteFiltrada; 
+    }    
 }

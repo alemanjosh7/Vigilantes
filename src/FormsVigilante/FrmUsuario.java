@@ -5,6 +5,14 @@
  */
 package FormsVigilante;
 
+import javax.swing.JOptionPane;
+import Modelo.Conexion;
+import ControladorVigilante.UsuarioController;
+import ControladorVigilante.ZonasController;
+import Clases.Encoder;
+import Modelo.ComboItems;
+import java.sql.Connection;
+import javax.swing.DefaultComboBoxModel;
 /**
  *
  * @author CRISTIAN
@@ -14,10 +22,17 @@ public class FrmUsuario extends javax.swing.JFrame {
     /**
      * Creates new form FrmUsuario
      */
+    private Conexion enlace = new Conexion();
+    private Connection conect = enlace.conectar();
+    private UsuarioController UC = new UsuarioController();
     public FrmUsuario() {
         setUndecorated(true);
         initComponents();
         setLocationRelativeTo(null);
+        mostrarDatos();
+        FrmLogin log = new FrmLogin();
+        lblCargoUsuario.setText(log.cargo);
+        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);
     }
 
     /**
@@ -55,15 +70,15 @@ public class FrmUsuario extends javax.swing.JFrame {
         lblGestionResidencia = new javax.swing.JLabel();
         lblZona = new javax.swing.JLabel();
         cmbEstado = new javax.swing.JComboBox<>();
-        jFDNombreUsuario = new javax.swing.JFormattedTextField();
         jSTablaDatos = new javax.swing.JScrollPane();
         jTUsuario = new javax.swing.JTable();
-        jFContrasena = new javax.swing.JFormattedTextField();
         lblEstadoResidencia1 = new javax.swing.JLabel();
         cmbVigilante = new javax.swing.JComboBox<>();
         lblImgBusqueda4 = new javax.swing.JLabel();
         jFDidUsuario = new javax.swing.JFormattedTextField();
         lblNumCasa1 = new javax.swing.JLabel();
+        jPassword = new javax.swing.JPasswordField();
+        jFDNombreUsuario = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1366, 768));
@@ -270,6 +285,11 @@ public class FrmUsuario extends javax.swing.JFrame {
         btnAgregar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
         btnAgregar.setContentAreaFilled(false);
         btnAgregar.setFocusable(false);
+        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarMouseClicked(evt);
+            }
+        });
 
         btnModificar.setBackground(new java.awt.Color(255, 211, 105));
         btnModificar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -284,6 +304,11 @@ public class FrmUsuario extends javax.swing.JFrame {
         btnLimpiar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
         btnLimpiar.setContentAreaFilled(false);
         btnLimpiar.setFocusable(false);
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPBotonesLayout = new javax.swing.GroupLayout(jPBotones);
         jPBotones.setLayout(jPBotonesLayout);
@@ -334,14 +359,6 @@ public class FrmUsuario extends javax.swing.JFrame {
             }
         });
 
-        jFDNombreUsuario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFDNombreUsuario.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jFDNombreUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFDNombreUsuarioActionPerformed(evt);
-            }
-        });
-
         jTUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -353,14 +370,6 @@ public class FrmUsuario extends javax.swing.JFrame {
             }
         ));
         jSTablaDatos.setViewportView(jTUsuario);
-
-        jFContrasena.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFContrasena.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jFContrasena.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFContrasenaActionPerformed(evt);
-            }
-        });
 
         lblEstadoResidencia1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblEstadoResidencia1.setText("Personal a Asignar:");
@@ -406,24 +415,8 @@ public class FrmUsuario extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jSTablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 951, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
-                        .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPGestionResidenciaLayout.createSequentialGroup()
-                                .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblDireccion, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jFDNombreUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(62, 62, 62)
-                                .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jFContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblNumCasa))
-                                .addGap(30, 30, 30)
-                                .addComponent(lblImgBusqueda4, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
-                                        .addComponent(lblNumCasa1)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jFDidUsuario)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPGestionResidenciaLayout.createSequentialGroup()
+                        .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
                                 .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
                                         .addComponent(lblZona)
@@ -437,7 +430,23 @@ public class FrmUsuario extends javax.swing.JFrame {
                                 .addGap(62, 62, 62)
                                 .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblEstadoResidencia1)
-                                    .addComponent(cmbVigilante, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(cmbVigilante, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
+                                .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblDireccion)
+                                    .addComponent(jFDNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(68, 68, 68)
+                                .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblNumCasa)
+                                    .addComponent(jPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(41, 41, 41)
+                                .addComponent(lblImgBusqueda4, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
+                                        .addComponent(lblNumCasa1)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(jFDidUsuario))))
                         .addGap(74, 74, 74)))
                 .addGap(42, 42, 42))
         );
@@ -452,16 +461,16 @@ public class FrmUsuario extends javax.swing.JFrame {
                         .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblDireccion)
                             .addComponent(lblNumCasa))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jFDNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jFDNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(lblImgBusqueda4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
                         .addComponent(lblNumCasa1)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jFDidUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
                         .addComponent(lblZona)
@@ -517,14 +526,6 @@ public class FrmUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbEstadoActionPerformed
 
-    private void jFDNombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFDNombreUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFDNombreUsuarioActionPerformed
-
-    private void jFContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFContrasenaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFContrasenaActionPerformed
-
     private void cmbVigilanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbVigilanteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbVigilanteActionPerformed
@@ -533,6 +534,89 @@ public class FrmUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jFDidUsuarioActionPerformed
 
+    private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
+        // TODO add your handling code here:
+        int indexEstado = cmbEstado.getSelectedIndex();
+        int indexTipo = cmbTipoUsuario.getSelectedIndex();
+        int indexPersonal = cmbVigilante.getSelectedIndex();
+        if (jFDNombreUsuario.getText().isEmpty() || jPassword.getText().isEmpty() || jPassword.getText().isEmpty() || 
+                indexEstado == 0 || indexTipo == 0 || indexPersonal == 0) {
+            JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");   
+        } 
+        else{
+            //Registrar contenido a la Tabla Zonas
+            //Envamos los datos a la clase
+            Encoder mMain = new Encoder();
+            String secretKey = "SomosProgramadores";
+            String cadenaEncriptada = mMain.ecnode(secretKey, jPassword.getText());
+            UC.setNombre_usuario(jFDNombreUsuario.getText());
+            UC.setContrasena(cadenaEncriptada);
+            UC.setId_estado_usuario(cmbEstado.getSelectedIndex());
+            UC.setId_tipo_usuario(cmbTipoUsuario.getSelectedIndex());
+            String id = "", cadena = cmbVigilante.getSelectedItem().toString();
+            for(int i = 0; i < cadena.length(); i++){
+                char x = cadena.charAt(i);
+                if(Character.isDigit(x) == true){
+                    id += x;
+                }
+                else break;
+            }
+            
+            UC.setId_personal(Integer.parseInt(id));
+            System.out.println(id);
+            //Enviando los datos a SQL
+            if (UC.guardarUsuario()) {
+                JOptionPane.showMessageDialog(this,"Datos guardados exitosamente");
+                CargarDatosTabla();
+            }
+            else{
+                JOptionPane.showMessageDialog(this,"Datos no guardados");
+            }
+            LimpiarCampos();            
+        }     
+    }//GEN-LAST:event_btnAgregarMouseClicked
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // TODO add your handling code here:
+        LimpiarCampos();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    public void mostrarDatos(){
+        
+        UsuarioController obj = new UsuarioController();
+        
+        try {
+                        
+            //Combobox cmbEstado
+            DefaultComboBoxModel cmbmodelo = obj.generarComboBoxEstadoUsuario();
+            cmbEstado.setModel(cmbmodelo);
+            
+            //Combobox cmbTipoUsuario
+            cmbmodelo = obj.generarComboBoxTipoUsuario();
+            cmbTipoUsuario.setModel(cmbmodelo);
+            
+            //Combobox cmbPersonal
+            cmbmodelo = obj.generarComboBoxPersonal();
+            cmbVigilante.setModel(cmbmodelo);
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "No se pudo recibir datos");
+        }
+    }
+    
+   private void LimpiarCampos(){
+       jFDNombreUsuario.setText("");
+       jPassword.setText("");
+       cmbEstado.setSelectedIndex(0);
+       cmbTipoUsuario.setSelectedIndex(0);
+       cmbVigilante.setSelectedIndex(0);
+       jFDidUsuario.setText("");
+   }
+    
+   public void CargarDatosTabla(){
+//        this.jTUsuario.setModel(UC.consultarDatosTabla());
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -578,7 +662,6 @@ public class FrmUsuario extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbEstado;
     private javax.swing.JComboBox<String> cmbTipoUsuario;
     private javax.swing.JComboBox<String> cmbVigilante;
-    private javax.swing.JFormattedTextField jFContrasena;
     private javax.swing.JFormattedTextField jFDNombreUsuario;
     private javax.swing.JFormattedTextField jFDidUsuario;
     private javax.swing.JPanel jPBotones;
@@ -586,6 +669,7 @@ public class FrmUsuario extends javax.swing.JFrame {
     private javax.swing.JPanel jPImageContainer;
     private javax.swing.JPanel jPSideBar;
     private javax.swing.JPanel jPToolStrip;
+    private javax.swing.JPasswordField jPassword;
     private javax.swing.JPanel jPbtnSBContainer;
     private javax.swing.JScrollPane jSTablaDatos;
     private javax.swing.JTable jTUsuario;

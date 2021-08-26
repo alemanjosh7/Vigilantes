@@ -34,8 +34,10 @@ public class FrmMenuVigilantes extends javax.swing.JFrame {
         jPToolStrip = new javax.swing.JPanel();
         changeThemeBtn = new javax.swing.JButton();
         lblButtonExit = new javax.swing.JLabel();
+        btnGestionarUsuarios = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btnGestionarHorarios.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnGestionarHorarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgEditar.png"))); // NOI18N
@@ -104,27 +106,45 @@ public class FrmMenuVigilantes extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        btnGestionarUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnGestionarUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgEditar.png"))); // NOI18N
+        btnGestionarUsuarios.setText("Gestionar Usuarios");
+        btnGestionarUsuarios.setContentAreaFilled(false);
+        btnGestionarUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGestionarUsuarios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnGestionarUsuarios.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnGestionarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGestionarUsuariosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(btnGestionarVigilantes, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(btnGestionarHorarios, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(90, 90, 90))
             .addComponent(jPToolStrip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnGestionarVigilantes, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addComponent(btnGestionarHorarios, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(87, 87, 87))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(233, 233, 233)
+                .addComponent(btnGestionarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPToolStrip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(118, 118, 118)
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnGestionarHorarios, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGestionarVigilantes, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(167, Short.MAX_VALUE))
+                    .addComponent(btnGestionarVigilantes, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGestionarHorarios, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(btnGestionarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
         );
 
         pack();
@@ -151,6 +171,12 @@ public class FrmMenuVigilantes extends javax.swing.JFrame {
         menu.show();
         dispose();
     }//GEN-LAST:event_lblButtonExitMouseClicked
+
+    private void btnGestionarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarUsuariosActionPerformed
+        FrmMenuUsuario MU = new FrmMenuUsuario();
+        MU.show();
+        dispose();
+    }//GEN-LAST:event_btnGestionarUsuariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,6 +216,7 @@ public class FrmMenuVigilantes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGestionarHorarios;
+    private javax.swing.JButton btnGestionarUsuarios;
     private javax.swing.JButton btnGestionarVigilantes;
     private javax.swing.JButton changeThemeBtn;
     private javax.swing.JPanel jPToolStrip;

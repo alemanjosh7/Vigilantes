@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
 public class FrmVisitante extends javax.swing.JFrame {
     private Conexion enlace = new Conexion();
     private Connection conect = enlace.conectar();
-    VisitanteController V = new VisitanteController();
+    VisitanteController VC = new VisitanteController();
     /**
      * Creates new form Visitante
      */
@@ -28,7 +28,8 @@ public class FrmVisitante extends javax.swing.JFrame {
         this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);      
-        this.jTVisitantes.setModel(V.consultarDatosTabla());
+        CargarDatosTabla();
+        rbtSI.setSelected(true);
     }
 
     /**
@@ -50,7 +51,6 @@ public class FrmVisitante extends javax.swing.JFrame {
         btnGoLogIn = new javax.swing.JButton();
         jPToolStrip = new javax.swing.JPanel();
         lblExitButton = new javax.swing.JLabel();
-        btnTheme = new javax.swing.JButton();
         lblCargoUsuario = new javax.swing.JLabel();
         lblCargo = new javax.swing.JLabel();
         lblNombreUsuario = new javax.swing.JLabel();
@@ -58,24 +58,27 @@ public class FrmVisitante extends javax.swing.JFrame {
         jPContainer = new javax.swing.JPanel();
         jPRegistroVigilantes = new javax.swing.JPanel();
         lblApellido = new javax.swing.JLabel();
-        rbtTrueSI = new javax.swing.JRadioButton();
-        rbtFalseNO = new javax.swing.JRadioButton();
-        lblMayorEdad = new javax.swing.JLabel();
         jSTablaDatos = new javax.swing.JScrollPane();
-        jTVisitantes = new javax.swing.JTable();
+        jTVisitante = new javax.swing.JTable();
         jPBotones = new javax.swing.JPanel();
-        btnRegistrar = new javax.swing.JButton();
-        btnConsultar = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
-        btnLimpiar = new javax.swing.JButton();
+        btnRegistrar = new javax.swing.JButton();
+        btnConsulta = new javax.swing.JButton();
+        lblRegistroVisitantes = new javax.swing.JLabel();
         lblNIT = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
         lblDUI = new javax.swing.JLabel();
+        lblId = new javax.swing.JLabel();
+        jFIdVisitante = new javax.swing.JFormattedTextField();
+        jPBtnGroup = new javax.swing.JPanel();
+        rbtSI = new javax.swing.JRadioButton();
+        rbtNO = new javax.swing.JRadioButton();
+        lblMayorEdad = new javax.swing.JLabel();
+        jFNIT = new javax.swing.JTextField();
         jFDUI = new javax.swing.JTextField();
         jFNombre = new javax.swing.JTextField();
         jFApellido = new javax.swing.JTextField();
-        jFNIT = new javax.swing.JTextField();
-        jFVisitantes = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1366, 768));
@@ -120,55 +123,46 @@ public class FrmVisitante extends javax.swing.JFrame {
         btnGoLogIn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgCerrarSesionLight.png"))); // NOI18N
         btnGoLogIn.setContentAreaFilled(false);
         btnGoLogIn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnGoLogIn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnGoLogInMouseClicked(evt);
-            }
-        });
-        btnGoLogIn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGoLogInActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPBotonSalidaLayout = new javax.swing.GroupLayout(jPBotonSalida);
         jPBotonSalida.setLayout(jPBotonSalidaLayout);
         jPBotonSalidaLayout.setHorizontalGroup(
             jPBotonSalidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPBotonSalidaLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonSalidaLayout.createSequentialGroup()
+                .addContainerGap(38, Short.MAX_VALUE)
                 .addComponent(btnGoLogIn)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addGap(21, 21, 21))
         );
         jPBotonSalidaLayout.setVerticalGroup(
             jPBotonSalidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonSalidaLayout.createSequentialGroup()
-                .addContainerGap(115, Short.MAX_VALUE)
+            .addGroup(jPBotonSalidaLayout.createSequentialGroup()
+                .addGap(87, 87, 87)
                 .addComponent(btnGoLogIn)
-                .addGap(82, 82, 82))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPSsitemaVigilanciaLayout = new javax.swing.GroupLayout(jPSsitemaVigilancia);
         jPSsitemaVigilancia.setLayout(jPSsitemaVigilanciaLayout);
         jPSsitemaVigilanciaLayout.setHorizontalGroup(
             jPSsitemaVigilanciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPSsitemaVigilanciaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPNombreSistema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(jPSsitemaVigilanciaLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jPBotonSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPSsitemaVigilanciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPSsitemaVigilanciaLayout.createSequentialGroup()
+                        .addComponent(jPNombreSistema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPSsitemaVigilanciaLayout.createSequentialGroup()
+                        .addComponent(jPBotonSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49))))
         );
         jPSsitemaVigilanciaLayout.setVerticalGroup(
             jPSsitemaVigilanciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPSsitemaVigilanciaLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jPNombreSistema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
                 .addComponent(jPBotonSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60))
+                .addGap(67, 67, 67))
         );
 
         javax.swing.GroupLayout jPColorSistemaVigilanciaLayout = new javax.swing.GroupLayout(jPColorSistemaVigilancia);
@@ -203,15 +197,6 @@ public class FrmVisitante extends javax.swing.JFrame {
             }
         });
 
-        btnTheme.setAlignmentY(0.7F);
-        btnTheme.setContentAreaFilled(false);
-        btnTheme.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnTheme.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemeActionPerformed(evt);
-            }
-        });
-
         lblCargoUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblCargoUsuario.setText("Administrador");
 
@@ -237,9 +222,7 @@ public class FrmVisitante extends javax.swing.JFrame {
                 .addComponent(lblCargo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblCargoUsuario)
-                .addGap(219, 219, 219)
-                .addComponent(btnTheme, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 560, Short.MAX_VALUE)
                 .addComponent(lblExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -250,19 +233,17 @@ public class FrmVisitante extends javax.swing.JFrame {
                 .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPToolStripLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnTheme, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblUsuario)
-                                .addComponent(lblNombreUsuario)
-                                .addComponent(lblCargo)
-                                .addComponent(lblCargoUsuario)))))
+                        .addGap(0, 10, Short.MAX_VALUE)
+                        .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblUsuario)
+                            .addComponent(lblNombreUsuario)
+                            .addComponent(lblCargo)
+                            .addComponent(lblCargoUsuario))))
                 .addContainerGap())
         );
 
         getContentPane().add(jPToolStrip);
-        jPToolStrip.setBounds(290, 0, 1080, 57);
+        jPToolStrip.setBounds(290, 0, 1080, 61);
 
         jPContainer.setMinimumSize(new java.awt.Dimension(1366, 768));
         jPContainer.setLayout(null);
@@ -273,65 +254,29 @@ public class FrmVisitante extends javax.swing.JFrame {
         lblApellido.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblApellido.setText("Apellido:");
 
-        buttonGroup1.add(rbtTrueSI);
-        rbtTrueSI.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        rbtTrueSI.setText("SI");
-
-        buttonGroup1.add(rbtFalseNO);
-        rbtFalseNO.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        rbtFalseNO.setText("NO");
-        rbtFalseNO.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbtFalseNOActionPerformed(evt);
-            }
-        });
-
-        lblMayorEdad.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblMayorEdad.setText("¿Mayor de Edad?");
-
-        jTVisitantes.setModel(new javax.swing.table.DefaultTableModel(
+        jTVisitante.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Apellido", "DUI", "NIT", "Mayor de edad"
+                "Identificación", "Nombre", "Apellido", "Estado del Ingreso", "DUI"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jSTablaDatos.setViewportView(jTVisitantes);
+        ));
+        jSTablaDatos.setViewportView(jTVisitante);
 
         jPBotones.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnRegistrar.setBackground(new java.awt.Color(255, 211, 105));
-        btnRegistrar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnRegistrar.setText("Registrar");
-        btnRegistrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnRegistrar.setContentAreaFilled(false);
-        btnRegistrar.setFocusable(false);
-        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregar.setBackground(new java.awt.Color(255, 211, 105));
+        btnAgregar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnAgregar.setText("Limpiar");
+        btnAgregar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnAgregar.setContentAreaFilled(false);
+        btnAgregar.setFocusable(false);
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarActionPerformed(evt);
-            }
-        });
-
-        btnConsultar.setBackground(new java.awt.Color(255, 211, 105));
-        btnConsultar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnConsultar.setText("Consultar");
-        btnConsultar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnConsultar.setContentAreaFilled(false);
-        btnConsultar.setFocusable(false);
-        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultarActionPerformed(evt);
+                btnAgregarActionPerformed(evt);
             }
         });
 
@@ -347,15 +292,27 @@ public class FrmVisitante extends javax.swing.JFrame {
             }
         });
 
-        btnLimpiar.setBackground(new java.awt.Color(255, 211, 105));
-        btnLimpiar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnLimpiar.setText("Limpiar");
-        btnLimpiar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnLimpiar.setContentAreaFilled(false);
-        btnLimpiar.setFocusable(false);
-        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrar.setBackground(new java.awt.Color(255, 211, 105));
+        btnRegistrar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnRegistrar.setText("Registrar");
+        btnRegistrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnRegistrar.setContentAreaFilled(false);
+        btnRegistrar.setFocusable(false);
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimpiarActionPerformed(evt);
+                btnRegistrarActionPerformed(evt);
+            }
+        });
+
+        btnConsulta.setBackground(new java.awt.Color(255, 211, 105));
+        btnConsulta.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnConsulta.setText("Consultar");
+        btnConsulta.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnConsulta.setContentAreaFilled(false);
+        btnConsulta.setFocusable(false);
+        btnConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultaActionPerformed(evt);
             }
         });
 
@@ -364,34 +321,31 @@ public class FrmVisitante extends javax.swing.JFrame {
         jPBotonesLayout.setHorizontalGroup(
             jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
-                .addGap(281, 281, 281)
-                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
-                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(119, 119, 119)
+                .addGap(60, 60, 60)
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(115, 115, 115)
                 .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
-            .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPBotonesLayout.createSequentialGroup()
-                    .addGap(82, 82, 82)
-                    .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(708, Short.MAX_VALUE)))
+                .addGap(108, 108, 108)
+                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
+                .addComponent(btnConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73))
         );
         jPBotonesLayout.setVerticalGroup(
             jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
+            .addGroup(jPBotonesLayout.createSequentialGroup()
                 .addContainerGap(28, Short.MAX_VALUE)
                 .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32))
-            .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
-                    .addContainerGap(31, Short.MAX_VALUE)
-                    .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(29, 29, 29)))
         );
+
+        lblRegistroVisitantes.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        lblRegistroVisitantes.setForeground(new java.awt.Color(255, 211, 105));
+        lblRegistroVisitantes.setText("Registro Visitantes");
 
         lblNIT.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblNIT.setText("NIT:");
@@ -402,83 +356,141 @@ public class FrmVisitante extends javax.swing.JFrame {
         lblDUI.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblDUI.setText("DUI:");
 
+        lblId.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblId.setText("Identificación");
+
+        jFIdVisitante.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        jFIdVisitante.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+
+        jPBtnGroup.setBackground(new java.awt.Color(255, 255, 255));
+
+        buttonGroup1.add(rbtSI);
+        rbtSI.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        rbtSI.setText("SI");
+        rbtSI.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbtSIMouseClicked(evt);
+            }
+        });
+
+        buttonGroup1.add(rbtNO);
+        rbtNO.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        rbtNO.setText("NO");
+        rbtNO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbtNOMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPBtnGroupLayout = new javax.swing.GroupLayout(jPBtnGroup);
+        jPBtnGroup.setLayout(jPBtnGroupLayout);
+        jPBtnGroupLayout.setHorizontalGroup(
+            jPBtnGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPBtnGroupLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(rbtSI)
+                .addGap(26, 26, 26)
+                .addComponent(rbtNO)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPBtnGroupLayout.setVerticalGroup(
+            jPBtnGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBtnGroupLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPBtnGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbtSI)
+                    .addComponent(rbtNO)))
+        );
+
+        lblMayorEdad.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblMayorEdad.setText("Mayor de Edad");
+
+        jFNIT.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+
+        jFDUI.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+
+        jFNombre.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+
+        jFApellido.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+
         javax.swing.GroupLayout jPRegistroVigilantesLayout = new javax.swing.GroupLayout(jPRegistroVigilantes);
         jPRegistroVigilantes.setLayout(jPRegistroVigilantesLayout);
         jPRegistroVigilantesLayout.setHorizontalGroup(
             jPRegistroVigilantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPRegistroVigilantesLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPRegistroVigilantesLayout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addGroup(jPRegistroVigilantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPRegistroVigilantesLayout.createSequentialGroup()
                         .addComponent(jSTablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(25, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPRegistroVigilantesLayout.createSequentialGroup()
-                        .addGroup(jPRegistroVigilantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPRegistroVigilantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblNombre)
                             .addComponent(lblNIT)
-                            .addComponent(jFNIT, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(201, 201, 201)
+                            .addComponent(jFNIT, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                            .addComponent(jFNombre))
+                        .addGap(61, 61, 61)
                         .addGroup(jPRegistroVigilantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jFDUI, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jFApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblApellido)
-                            .addComponent(jFApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPRegistroVigilantesLayout.createSequentialGroup()
-                                .addComponent(rbtTrueSI)
-                                .addGap(40, 40, 40)
-                                .addComponent(rbtFalseNO))
-                            .addComponent(lblMayorEdad))
-                        .addGap(139, 139, 139)
-                        .addGroup(jPRegistroVigilantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblDUI)
-                            .addComponent(jFDUI, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                            .addComponent(jFVisitantes))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(jPRegistroVigilantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPRegistroVigilantesLayout.createSequentialGroup()
-                    .addGap(40, 40, 40)
-                    .addComponent(jFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(823, Short.MAX_VALUE)))
+                            .addComponent(lblDUI))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                        .addGroup(jPRegistroVigilantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblId)
+                            .addComponent(jFIdVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblMayorEdad)
+                            .addComponent(jPBtnGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(51, 51, 51))))
+            .addGroup(jPRegistroVigilantesLayout.createSequentialGroup()
+                .addGap(405, 405, 405)
+                .addComponent(lblRegistroVisitantes)
+                .addContainerGap(416, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPRegistroVigilantesLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69))
         );
         jPRegistroVigilantesLayout.setVerticalGroup(
             jPRegistroVigilantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPRegistroVigilantesLayout.createSequentialGroup()
-                .addGap(59, 59, 59)
+                .addGap(12, 12, 12)
+                .addComponent(lblRegistroVisitantes)
+                .addGap(19, 19, 19)
                 .addGroup(jPRegistroVigilantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPRegistroVigilantesLayout.createSequentialGroup()
-                        .addComponent(lblNombre)
-                        .addGap(52, 52, 52)
-                        .addComponent(lblNIT)
-                        .addGap(9, 9, 9)
-                        .addGroup(jPRegistroVigilantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jFNIT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFVisitantes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPRegistroVigilantesLayout.createSequentialGroup()
-                        .addGroup(jPRegistroVigilantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblApellido)
-                            .addComponent(lblDUI))
+                        .addComponent(lblId)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jFIdVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPRegistroVigilantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jFDUI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(31, 31, 31)
                         .addComponent(lblMayorEdad)
                         .addGap(18, 18, 18)
+                        .addComponent(jPBtnGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPRegistroVigilantesLayout.createSequentialGroup()
                         .addGroup(jPRegistroVigilantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rbtTrueSI)
-                            .addComponent(rbtFalseNO))))
-                .addGap(18, 18, 18)
+                            .addComponent(lblNombre)
+                            .addComponent(lblApellido))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPRegistroVigilantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jFApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPRegistroVigilantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPRegistroVigilantesLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(lblNIT)
+                                .addGap(18, 18, 18))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPRegistroVigilantesLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblDUI)
+                                .addGap(6, 6, 6)))
+                        .addGroup(jPRegistroVigilantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jFNIT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jFDUI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(jSTablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
-            .addGroup(jPRegistroVigilantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPRegistroVigilantesLayout.createSequentialGroup()
-                    .addGap(97, 97, 97)
-                    .addComponent(jFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(561, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         jPContainer.add(jPRegistroVigilantes);
@@ -500,22 +512,6 @@ public class FrmVisitante extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_lblExitButtonMouseClicked
 
-    private void btnThemeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnThemeActionPerformed
-
-    private void btnGoLogInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGoLogInMouseClicked
-        FrmLogin login = new FrmLogin();
-        login.show();
-        dispose();
-    }//GEN-LAST:event_btnGoLogInMouseClicked
-
-    private void btnGoLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoLogInActionPerformed
-        FrmLogin login = new FrmLogin();
-        login.show();
-        dispose();
-    }//GEN-LAST:event_btnGoLogInActionPerformed
-
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         //Verificar que no se manden datos vacios o invalidos.
         if (jFNombre.getText().isEmpty() || jFApellido.getText().isEmpty() || jFDUI.getText().isEmpty() || jFNIT.getText().isEmpty()) {
@@ -524,16 +520,21 @@ public class FrmVisitante extends javax.swing.JFrame {
         else{
             // Registrar los datos a la Tabla registro Salida
             int MayorEdad = 0 ;
-            if (rbtTrueSI.isSelected()) {
+            if (rbtSI.isSelected()) {
                 MayorEdad = 1;
-            }                     
-            V.setNombre(jFNombre.getText());
-            V.setEdad(MayorEdad);          
-            V.setApellido(jFApellido.getText());
-            V.setDUI(jFDUI.getText());
-            V.setNIT(jFNIT.getText());
+            }                 
+            else{
+                MayorEdad = 0;
+                jFDUI.setText("No posee");
+                jFNIT.setText("No posee");
+            }
+            VC.setNombre(jFNombre.getText());
+            VC.setEdad(MayorEdad);          
+            VC.setApellido(jFApellido.getText());
+            VC.setDUI(jFDUI.getText());
+            VC.setNIT(jFNIT.getText());
            
-            if (V.guardarVisitante()) {
+            if (VC.guardarVisitante()) {
                 JOptionPane.showMessageDialog(this,"Datos guardados exitosamente");
                 CargarDatosTabla();
             }
@@ -545,43 +546,7 @@ public class FrmVisitante extends javax.swing.JFrame {
         CargarDatosTabla();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
-    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-         if (jFVisitantes.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");   
-        }
-        else{
-            //Consultar
-            int MayorEdad = 0 ;
-            //Realizar Consulta
-            V.setIdVisitante(Integer.parseInt(jFVisitantes.getText()));
-            if (V.consultarVisitante()) {
-                jFVisitantes.setText(String.valueOf(V.getIdVisitante()));
-                //Cargando los datos a los combobox
-                jFNombre.setText(String.valueOf((V.getNombre())));
-                jFApellido.setText(String.valueOf((V.getApellido())));
-                jFDUI.setText(String.valueOf((V.getDUI())));
-                jFNIT.setText(String.valueOf((V.getNIT())));
-              
-                MayorEdad = V.getEdad();             
-                if (MayorEdad == 1) {
-                    rbtTrueSI.setSelected(true);
-                    rbtFalseNO.setSelected(false);
-                }
-                else{
-                    rbtTrueSI.setSelected(true);
-                    rbtFalseNO.setSelected(false);
-                }               
-                jTVisitantes.setModel(V.consultarDatosTabla());
-            }
-            else{
-                JOptionPane.showMessageDialog(this, "Error al consultar");
-            }   
-        } 
-          LimpiarCampos();
-              
-    }//GEN-LAST:event_btnConsultarActionPerformed
-
-    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         LimpiarCampos();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
@@ -592,16 +557,21 @@ public class FrmVisitante extends javax.swing.JFrame {
         else{
             // Registrar los datos a la Tabla registro Salida
             int MayorEdad = 0 ;
-            if (rbtTrueSI.isSelected()) {
+            if (rbtSI.isSelected()) {
                 MayorEdad = 1;
-            }           
-            V.setNombre(jFNombre.getText());
-            V.setEdad(MayorEdad);          
-            V.setApellido(jFApellido.getText());
-            V.setDUI(jFDUI.getText());
-            V.setNIT(jFNIT.getText());
+            }   
+            else{
+                MayorEdad = 0;
+                jFDUI.setText("No posee");
+                jFNIT.setText("No posee");
+            }
+            VC.setNombre(jFNombre.getText());
+            VC.setEdad(MayorEdad);          
+            VC.setApellido(jFApellido.getText());
+            VC.setDUI(jFDUI.getText());
+            VC.setNIT(jFNIT.getText());
            
-            if (V.modificarVisitante()) {
+            if (VC.modificarVisitante()) {
                 JOptionPane.showMessageDialog(this,"Datos guardados exitosamente");
                 CargarDatosTabla();
             }
@@ -612,17 +582,70 @@ public class FrmVisitante extends javax.swing.JFrame {
         }
         CargarDatosTabla();
     }//GEN-LAST:event_btnModificarActionPerformed
-        private void CargarDatosTabla() {
-            this.jTVisitantes.setModel(V.consultarDatosTabla());
+
+    private void rbtSIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbtSIMouseClicked
+        // Validar que  se introduzcan
+        jFDUI.setEditable(true);
+        jFNIT.setEditable(true);
+    }//GEN-LAST:event_rbtSIMouseClicked
+
+    private void rbtNOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbtNOMouseClicked
+        // Validar que no se introduzcan
+        jFDUI.setEditable(false);
+        jFNIT.setEditable(false);
+    }//GEN-LAST:event_rbtNOMouseClicked
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        //Limpiar Campos
+        LimpiarCampos();
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaActionPerformed
+        if (jFIdVisitante.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");
+        }
+        else{
+            //Consultar
+            int mayorEdad = 0;
+            //Realizar Consulta
+            VC.setIdVisitante(Integer.parseInt(jFIdVisitante.getText()));
+            if (VC.consultarVisitante()) {
+                jFIdVisitante.setText(String.valueOf((VC.getIdVisitante())));                
+                //Cargando la fecha
+                jFNombre.setText(VC.getNombre());
+                jFApellido.setText(VC.getApellido());
+                jFDUI.setText(VC.getDUI());
+                jFNIT.setText(VC.getNIT());
+                mayorEdad = VC.getEdad();
+                if (mayorEdad == 1) {
+                    rbtSI.setSelected(true);
+                    rbtNO.setSelected(false);
+                }
+                else{
+                    rbtSI.setSelected(false);
+                    rbtNO.setSelected(true);
+                }
+
+                jTVisitante.setModel(VC.filtrarDatosTabla());
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Error al consultar");
+            }
+        }
+    }//GEN-LAST:event_btnConsultaActionPerformed
+
+    private void CargarDatosTabla() {
+        this.jTVisitante.setModel(VC.consultarDatosTabla());
     }
         
-        private void LimpiarCampos(){
-                jFNombre.setText("");;
-                jFApellido.setText("");
-                jFDUI.setText("");
-                jFNIT.setText("");
-                jFNombre.setText("");
-        }
+    private void LimpiarCampos(){
+        jFNombre.setText("");;
+        jFApellido.setText("");
+        jFDUI.setText("");
+        jFNIT.setText("");
+        jFNombre.setText("");
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -660,20 +683,20 @@ public class FrmVisitante extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnConsultar;
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnConsulta;
     private javax.swing.JButton btnGoLogIn;
-    private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
-    private javax.swing.JButton btnTheme;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField jFApellido;
     private javax.swing.JTextField jFDUI;
+    private javax.swing.JFormattedTextField jFIdVisitante;
     private javax.swing.JTextField jFNIT;
     private javax.swing.JTextField jFNombre;
-    private javax.swing.JTextField jFVisitantes;
     private javax.swing.JPanel jPBotonSalida;
     private javax.swing.JPanel jPBotones;
+    private javax.swing.JPanel jPBtnGroup;
     private javax.swing.JPanel jPColorSistemaVigilancia;
     private javax.swing.JPanel jPContainer;
     private javax.swing.JPanel jPNombreSistema;
@@ -681,21 +704,23 @@ public class FrmVisitante extends javax.swing.JFrame {
     private javax.swing.JPanel jPSsitemaVigilancia;
     private javax.swing.JPanel jPToolStrip;
     private javax.swing.JScrollPane jSTablaDatos;
-    private javax.swing.JTable jTVisitantes;
+    private javax.swing.JTable jTVisitante;
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblCargoUsuario;
     private javax.swing.JLabel lblDUI;
     private javax.swing.JLabel lblExitButton;
+    private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblMayorEdad;
     private javax.swing.JLabel lblNIT;
     private javax.swing.JLabel lblNegro;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNombreSistema;
     private javax.swing.JLabel lblNombreUsuario;
+    private javax.swing.JLabel lblRegistroVisitantes;
     private javax.swing.JLabel lblUsuario;
-    private javax.swing.JRadioButton rbtFalseNO;
-    private javax.swing.JRadioButton rbtTrueSI;
+    private javax.swing.JRadioButton rbtNO;
+    private javax.swing.JRadioButton rbtSI;
     // End of variables declaration//GEN-END:variables
 
     

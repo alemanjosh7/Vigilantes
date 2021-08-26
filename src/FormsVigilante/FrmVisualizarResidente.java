@@ -8,6 +8,7 @@ package FormsVigilante;
 import ControladorVigilante.ResidenteController;
 import Modelo.Conexion;
 import java.sql.Connection;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -261,6 +262,9 @@ public class FrmVisualizarResidente extends javax.swing.JFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jFTBusquedaNombreKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFTBusquedaNombreKeyTyped(evt);
+            }
         });
 
         lblIDResidente.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -271,6 +275,9 @@ public class FrmVisualizarResidente extends javax.swing.JFrame {
         jFTBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jFTBusquedaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFTBusquedaKeyTyped(evt);
             }
         });
 
@@ -377,15 +384,61 @@ public class FrmVisualizarResidente extends javax.swing.JFrame {
         else{
             RC.setidResidente(Integer.parseInt(jFTBusqueda.getText()));
             if (RC.consultarResidente()) {
-                this.jTResidente.setModel(RC.DatosTablaTecleado());
+                this.jTResidente.setModel(RC.filtrarDatosTabla());
             }   
         }
     }//GEN-LAST:event_jFTBusquedaKeyReleased
 
     private void jFTBusquedaNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaNombreKeyReleased
-        // TODO add your handling code here:
+        //Consultar al soltar el teclado
+        if (jFTBusquedaNombre.getText().isEmpty()) {
+            this.jTResidente.setModel(RC.consultarDatosTabla());
+        }
+        else{
+            RC.setNombreResidente(jFTBusquedaNombre.getText());           
+            this.jTResidente.setModel(RC.filtrarDatosTablaNombre());       
+        }
     }//GEN-LAST:event_jFTBusquedaNombreKeyReleased
 
+    private void jFTBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaKeyTyped
+        //Solo permitir paso de números
+        if(SoloNumero(evt.getKeyChar())){
+            //no deja que se escriba un letras
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Ingresar números");
+        }
+    }//GEN-LAST:event_jFTBusquedaKeyTyped
+
+    private void jFTBusquedaNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaNombreKeyTyped
+        //Solo permitir paso de números
+        if(soloLetras(evt.getKeyChar())){
+            //no deja que se escriba un letras
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Ingresar letras");
+        }    }//GEN-LAST:event_jFTBusquedaNombreKeyTyped
+
+    //Metodos 
+    //Para validar que solo permitan pasar Numeros
+    public boolean SoloNumero(char numero){
+        if(Character.isDigit(numero) || Character.isISOControl(numero)){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    
+    //Permitir solo numeros y letras
+    public boolean soloLetras(char caracter){
+        if (Character.isLetter(caracter) || Character.isISOControl(caracter)|| Character.isSpaceChar(caracter)) {
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    
     /**
      * @param args the command line arguments
      */

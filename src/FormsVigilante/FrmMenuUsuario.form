@@ -27,9 +27,9 @@
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
-                  <Component id="btnRegistrarPagos" min="-2" pref="270" max="-2" attributes="0"/>
+                  <Component id="btnRegistrarUsuario" min="-2" pref="270" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="btnVisualizarPagos" min="-2" pref="270" max="-2" attributes="0"/>
+                  <Component id="btnVisualizarUsuarios" min="-2" pref="270" max="-2" attributes="0"/>
                   <EmptySpace pref="93" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -45,8 +45,8 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="173" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="btnRegistrarPagos" alignment="1" min="-2" pref="170" max="-2" attributes="0"/>
-                      <Component id="btnVisualizarPagos" alignment="1" min="-2" pref="170" max="-2" attributes="0"/>
+                      <Component id="btnRegistrarUsuario" alignment="1" min="-2" pref="170" max="-2" attributes="0"/>
+                      <Component id="btnVisualizarUsuarios" alignment="1" min="-2" pref="170" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="173" max="32767" attributes="0"/>
               </Group>
@@ -116,7 +116,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="btnRegistrarPagos">
+    <Component class="javax.swing.JButton" name="btnRegistrarUsuario">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="0"/>
@@ -133,10 +133,10 @@
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistrarPagosActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistrarUsuarioActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnVisualizarPagos">
+    <Component class="javax.swing.JButton" name="btnVisualizarUsuarios">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="0"/>
@@ -153,7 +153,7 @@
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVisualizarPagosActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVisualizarUsuariosActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

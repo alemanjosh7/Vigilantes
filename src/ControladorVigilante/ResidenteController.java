@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -95,13 +96,82 @@ public class ResidenteController {
     public void setidEstadoResidente(int idEstadoResidente){
         this.idEstadoResidente = idEstadoResidente;
     }  
-    
+            
     //Estableciendo la conexión en el constructor
     public ResidenteController(){
     //Establecemos la conexion
        Conexion con = new Conexion();
        cn = con.conectar();
     }
+    
+    //Guardar los datos
+    public boolean guardarResidentes(){
+        boolean res = false;
+        try{
+            String sql = "INSERT INTO Residente(nombres, apellidos, dui, nit, mayoriaEdad, idEstadoResidente) values (?,?,?,?,?,?) ";//se pasan por referencia por seguridad
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            cmd.setString(1,nombreResidente);
+            cmd.setString(2, apellidosResidente);
+            cmd.setString(3, dui);
+            cmd.setString(4, nit);
+            cmd.setInt(5, mayorEdad);
+            cmd.setInt(6,idEstadoResidente);
+            if (!cmd.execute()) {
+                res=true;
+            }
+            //cerrando conexión
+            cmd.close();
+        }
+        catch(Exception ex){
+            System.out.println(ex.toString());
+        }
+        return res;
+    }
+    
+    //Modificar los datos
+    public boolean modificarResidentes(){
+        boolean res = false;
+        try{
+            String sql = "UPDATE Residente SET nombres =?, apellidos =?, dui =?, nit =?, mayoriaEdad =?, idEstadoResidente =? WHERE idResidente =?";//se pasan por referencia por seguridad
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            cmd.setString(1,nombreResidente);
+            cmd.setString(2, apellidosResidente);
+            cmd.setString(3, dui);
+            cmd.setString(4, nit);
+            cmd.setInt(5, mayorEdad);
+            cmd.setInt(6,idEstadoResidente);
+            cmd.setInt(7, idResidente);
+            if (!cmd.execute()) {
+                res=true;
+            }
+            //cerrando conexión
+            cmd.close();
+        }
+        catch(Exception ex){
+            System.out.println(ex.toString());
+        }
+        return res;
+    }
+    
+    //Eliminar los datos
+    public boolean eliminarResidentes(){
+        boolean res = false;
+        try{
+            String sql = "DELETE FROM Residente WHERE idResidente =?";//se pasan por referencia por seguridad
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            cmd.setInt(1, idResidente);
+            if (!cmd.execute()) {
+                res=true;
+            }
+            //cerrando conexión
+            cmd.close();
+        }
+        catch(Exception ex){
+            System.out.println(ex.toString());
+        }
+        return res;
+    }    
+      
     
     //Consultar los datos
     public ResultSet consultaDatos(String sql){
@@ -115,6 +185,50 @@ public class ResidenteController {
         }
         return res;
     }    
+    
+    
+    //Obtener los datos para el combobox de Porton de Salida
+    public DefaultComboBoxModel consultarEsResidente(){
+        DefaultComboBoxModel EstadoResidenteList = new DefaultComboBoxModel();
+        EstadoResidenteList.addElement("Estado de Residente");
+        ResultSet res = this.consultaDatos("SELECT * FROM EstadoResidente");
+        try{
+            while (res.next()) {
+                EstadoResidenteList.addElement(res.getString("nombreEstado"));
+            }
+            res.close();
+        }
+        catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }
+        return EstadoResidenteList;
+    }            
+    
+    
+    //Convirtiendo el valor del combobox a Id: TipoES
+    public boolean convertirEsResidente(String estadoResidente){
+        boolean res = false;
+        try{
+            String sql = ("SELECT idEstadoResidente FROM EstadoResidente WHERE nombreEstado =?");
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            cmd.setString(1, estadoResidente);
+            //Ejecutar la consulta
+            ResultSet rs = cmd.executeQuery();
+            //recorrer la lista de registros
+            if(rs.next()){
+              res=true;
+              //asignándole a los atributos de la clase
+              setidEstadoResidente(rs.getInt(1));
+            }
+            //cerrando conexion
+            cmd.close();
+        }
+        catch(Exception ex){
+            
+        }   
+        return res;
+    }
+        
     
     //Generar la tabla de Entrada
     public DefaultTableModel consultarDatosTabla(){
@@ -225,7 +339,7 @@ public class ResidenteController {
     }
     
     
-    public DefaultTableModel DatosTablaTecleado(){
+    public DefaultTableModel filtrarDatosTablaNombre(){
         DefaultTableModel tResidenteFiltrada = new DefaultTableModel();
         tResidenteFiltrada.addColumn("Indentificación");
         tResidenteFiltrada.addColumn("Nombre");
@@ -238,10 +352,10 @@ public class ResidenteController {
         String[] datos =  new String[6];
         try{
             //Realizar consulta
-            String sql = "SELECT R.idResidente, R.nombres, R.apellidos, R.dui, R.mayoriaEdad, ER.nombreEstado FROM Residente R JOIN EstadoResidente ER ON ER.idEstadoResidente = R.idEstadoResidente  WHERE idResidente LIKE CONCAT('%',?,'%')";
+            String sql = "SELECT R.idResidente, R.nombres, R.apellidos, R.dui, R.mayoriaEdad, ER.nombreEstado FROM Residente R JOIN EstadoResidente ER ON ER.idEstadoResidente = R.idEstadoResidente WHERE nombres LIKE CONCAT('%',?,'%')";
             PreparedStatement cmd = cn.prepareStatement(sql);
             //Lenar los parámetros de la clase, se coloca en el orden de la consulta
-            cmd.setInt(1, idResidente);
+            cmd.setString(1, nombreResidente);
             ResultSet res = cmd.executeQuery();
             while(res.next()){
                 datos[0] = res.getString(1);    

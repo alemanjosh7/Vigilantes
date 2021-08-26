@@ -24,8 +24,8 @@ public class FrmMenuAdministrador extends javax.swing.JFrame {
         scaleImage();
         this.setLocationRelativeTo(null);
         FrmLogin log = new FrmLogin();
-//        lblCargoUsuario.setText(log.cargo);
-//        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);
+        lblCargoUsuario.setText(log.cargo);
+        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);
 //        System.out.println(log.idUsuario);
     }
     

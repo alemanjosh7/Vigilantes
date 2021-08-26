@@ -395,7 +395,10 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
             String passwordRemitente = ""; //pongan una contra aqui
             String correoReceptor = jTextField1.getText();
             String asunto = "Mensaje enviado exitosamente: Recuperación de Contraseña";
-            String mensaje = "Su contraseña es: " + j.getContrasena();
+            String secretKey = "SomosProgramadores";
+            Encoder mMain = new Encoder();
+            String cadenaDesencriptada = mMain.deecnode(secretKey, contra);
+            String mensaje = "Su contraseña es: " + cadenaDesencriptada;
             MimeMessage mail = new MimeMessage(session);
             try {
                 mail.setFrom(new InternetAddress(correoRemitente));
@@ -418,6 +421,9 @@ public class ContraseñaOlvidada extends javax.swing.JFrame {
     //            JOptionPane.showMessageDialog(null, "Hubo un problema para enviar el correo, por favor verifique que el correo se haya escrito bien");
             }
             this.setState(this.ICONIFIED);
+            FrmLogin log = new FrmLogin();
+            log.show();
+            dispose();
         }
     }//GEN-LAST:event_jButton1MouseClicked
 

@@ -5,6 +5,12 @@
  */
 package FormsVigilante;
 
+import ControladorVigilante.UsuarioController;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+
 /**
  *
  * @author CRISTIAN
@@ -16,7 +22,39 @@ public class FrmVisualizarUsuario extends javax.swing.JFrame {
      */
     public FrmVisualizarUsuario() {
         initComponents();
+        mostrarDatos();
     }
+    
+    private void mostrarDatos(){
+        
+        UsuarioController obj = new UsuarioController();
+        
+        try {
+            
+            DefaultTableModel modelo = obj.generarTablaFiltrada();
+            
+            if(jFTBusqueda.getText().trim().length() != 0){
+                obj.setBusquedaIDUsuario(Integer.parseInt(jFTBusqueda.getText().trim())  );
+                modelo = obj.generarTablaFiltrada();
+            }
+            else{
+                modelo = obj.generarTabla();
+            }
+            
+            jTUsuario.setModel(modelo);
+            modelo.fireTableDataChanged();
+            jTUsuario.getTableHeader().setReorderingAllowed(false);
+            TableCellRenderer rendererFromHeader = jTUsuario.getTableHeader().getDefaultRenderer();
+            JLabel headerLabel = (JLabel) rendererFromHeader;
+            headerLabel.setHorizontalAlignment(JLabel.CENTER);
+            
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "No se pudo recibir datos");
+        }
+        
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -306,8 +344,7 @@ public class FrmVisualizarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_lblExitButton26lblExitButtonMouseClicked
 
     private void jFTBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaKeyReleased
-        //Consultar al soltar el teclado
-
+        mostrarDatos();
     }//GEN-LAST:event_jFTBusquedaKeyReleased
 
     private void jFTBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaKeyTyped

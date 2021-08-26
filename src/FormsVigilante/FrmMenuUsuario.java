@@ -17,7 +17,9 @@ public class FrmMenuUsuario extends javax.swing.JFrame {
      * Creates new form FrmMenuUsuario
      */
     public FrmMenuUsuario() {
+        this.setUndecorated(true);
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -32,8 +34,8 @@ public class FrmMenuUsuario extends javax.swing.JFrame {
         jPToolStrip = new javax.swing.JPanel();
         changeThemeBtn = new javax.swing.JButton();
         lblButtonExit = new javax.swing.JLabel();
-        btnRegistrarPagos = new javax.swing.JButton();
-        btnVisualizarPagos = new javax.swing.JButton();
+        btnRegistrarUsuario = new javax.swing.JButton();
+        btnVisualizarUsuarios = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,29 +80,29 @@ public class FrmMenuUsuario extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        btnRegistrarPagos.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnRegistrarPagos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgEditar.png"))); // NOI18N
-        btnRegistrarPagos.setText("Registrar Usuario");
-        btnRegistrarPagos.setContentAreaFilled(false);
-        btnRegistrarPagos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnRegistrarPagos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnRegistrarPagos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnRegistrarPagos.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrarUsuario.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnRegistrarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgEditar.png"))); // NOI18N
+        btnRegistrarUsuario.setText("Registrar Usuario");
+        btnRegistrarUsuario.setContentAreaFilled(false);
+        btnRegistrarUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegistrarUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnRegistrarUsuario.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnRegistrarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarPagosActionPerformed(evt);
+                btnRegistrarUsuarioActionPerformed(evt);
             }
         });
 
-        btnVisualizarPagos.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnVisualizarPagos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgLupaDark.png"))); // NOI18N
-        btnVisualizarPagos.setText("Visualizar Usuario");
-        btnVisualizarPagos.setContentAreaFilled(false);
-        btnVisualizarPagos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnVisualizarPagos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnVisualizarPagos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnVisualizarPagos.addActionListener(new java.awt.event.ActionListener() {
+        btnVisualizarUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnVisualizarUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgLupaDark.png"))); // NOI18N
+        btnVisualizarUsuarios.setText("Visualizar Usuario");
+        btnVisualizarUsuarios.setContentAreaFilled(false);
+        btnVisualizarUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVisualizarUsuarios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnVisualizarUsuarios.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnVisualizarUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVisualizarPagosActionPerformed(evt);
+                btnVisualizarUsuariosActionPerformed(evt);
             }
         });
 
@@ -112,9 +114,9 @@ public class FrmMenuUsuario extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(92, 92, 92)
-                    .addComponent(btnRegistrarPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRegistrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(35, 35, 35)
-                    .addComponent(btnVisualizarPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVisualizarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(93, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -126,8 +128,8 @@ public class FrmMenuUsuario extends javax.swing.JFrame {
                 .addGroup(layout.createSequentialGroup()
                     .addGap(173, 173, 173)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnRegistrarPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnVisualizarPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnRegistrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnVisualizarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(173, Short.MAX_VALUE)))
         );
 
@@ -144,17 +146,17 @@ public class FrmMenuUsuario extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_lblButtonExitMouseClicked
 
-    private void btnRegistrarPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPagosActionPerformed
-        FrmMenuAdministrador menu = new FrmMenuAdministrador();
+    private void btnRegistrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarUsuarioActionPerformed
+        FrmUsuario menu = new FrmUsuario();
         menu.show();
         dispose();
-    }//GEN-LAST:event_btnRegistrarPagosActionPerformed
+    }//GEN-LAST:event_btnRegistrarUsuarioActionPerformed
 
-    private void btnVisualizarPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarPagosActionPerformed
+    private void btnVisualizarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarUsuariosActionPerformed
         FrmVisualizarUsuario VUV = new FrmVisualizarUsuario();
         VUV.show();
         dispose();
-    }//GEN-LAST:event_btnVisualizarPagosActionPerformed
+    }//GEN-LAST:event_btnVisualizarUsuariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,8 +194,8 @@ public class FrmMenuUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRegistrarPagos;
-    private javax.swing.JButton btnVisualizarPagos;
+    private javax.swing.JButton btnRegistrarUsuario;
+    private javax.swing.JButton btnVisualizarUsuarios;
     private javax.swing.JButton changeThemeBtn;
     private javax.swing.JPanel jPToolStrip;
     private javax.swing.JLabel lblButtonExit;

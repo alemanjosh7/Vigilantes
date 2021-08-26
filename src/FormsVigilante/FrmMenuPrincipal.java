@@ -24,8 +24,8 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         scaleImage();
         FrmLogin log = new FrmLogin();
-//        lblCargoSeleccioado.setText(log.cargo);
-//        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);
+        lblCargoSeleccioado.setText(log.cargo);
+        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);
         }
     
         public void scaleImage(){

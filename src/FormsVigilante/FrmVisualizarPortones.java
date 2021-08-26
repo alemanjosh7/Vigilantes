@@ -519,6 +519,7 @@ public class FrmVisualizarPortones extends javax.swing.JFrame {
             if (PC.guardarPorton()) {
                 JOptionPane.showMessageDialog(this,"Datos guardados exitosamente");
                 CargarDatosTabla();
+                LimpiarCampos();
             }
             else{
                 JOptionPane.showMessageDialog(this,"Datos no guardados");
@@ -540,6 +541,7 @@ public class FrmVisualizarPortones extends javax.swing.JFrame {
             if (PC.modificarPorton()) {
                 JOptionPane.showMessageDialog(this,"Datos actualizados exitosamente");
                 CargarDatosTabla();
+                LimpiarCampos();       
             }
             else{
                 JOptionPane.showMessageDialog(this,"Datos no actualizados");

@@ -170,27 +170,27 @@ public  class VisitanteController {
 
             try{
                 while(res.next()){
-                datos[0] = res.getString(1);
-                datos[1] = res.getString(2);
-                datos[2] = res.getString(3);
-                datos[3] = res.getString(4);
-                datos[4] = res.getString(5);
-                
-                MayorEdad = res.getInt(6);             
+                    datos[0] = res.getString(1);
+                    datos[1] = res.getString(2);
+                    datos[2] = res.getString(3);
+                    datos[3] = res.getString(4);
+                    datos[4] = res.getString(5);                
+                    MayorEdad = res.getInt(6);             
                 if(MayorEdad==1){
-                datos[5]="SI";
+                    datos[5]="Mayor de Edad";
                 }
                 else{
-                datos[5]="NO";
+                    datos[5]="Menor de Edad";
                 }               
-                tVisitante.addRow(datos);
+                    tVisitante.addRow(datos);
                 }
-                }
-             catch(Exception ex){
+            }
+            catch(Exception ex){
                 System.out.println(ex.getMessage());
-                }
-                return tVisitante;
-}
+            }
+         return tVisitante;
+        }
+        
    public boolean consultarVisitante(){
         boolean bres = false;     
         try{
@@ -226,7 +226,8 @@ public  class VisitanteController {
             tVisitante.addColumn("DUI");
             tVisitante.addColumn("NIT");
             tVisitante.addColumn("Edad");        
-            String[] datos = new String[6];         
+            String[] datos = new String[6];   
+            int MayorEdad;
            try{
             //Realizar consulta
             String sql = "select V.idVisitante, V.nombres, V.apellidos, V.dui, V.nit, V.mayoriaEdad from Visitante V WHERE idVisitante LIKE CONCAT('%',?,'%')";
@@ -239,7 +240,13 @@ public  class VisitanteController {
                 datos[2] = res.getString(3);
                 datos[3] = res.getString(4);
                 datos[4] = res.getString(5);
-                datos[5] = res.getString(6);
+                MayorEdad = res.getInt(6);             
+                if(MayorEdad==1){
+                datos[5]="Mayor de Edad";
+                }
+                else{
+                datos[5]="Menor de Edad";
+                }    
                 tVisitante.addRow(datos);                      
             }            
         }
@@ -255,7 +262,8 @@ public  class VisitanteController {
         tVisitantesFiltrada.addColumn("Apellido");
         tVisitantesFiltrada.addColumn("DUI");
         tVisitantesFiltrada.addColumn("NIT");
-        tVisitantesFiltrada.addColumn("Edad");             
+        tVisitantesFiltrada.addColumn("Edad");
+        int MayorEdad;
         String[] datos =  new String[6];
         try{
             //Realizar consulta
@@ -270,7 +278,13 @@ public  class VisitanteController {
                 datos[2] = res.getString(3);
                 datos[3] = res.getString(4);
                 datos[4] = res.getString(5);
-                datos[5] = res.getString(6);
+                MayorEdad = res.getInt(6);             
+                if(MayorEdad==1){
+                datos[5]="Mayor de Edad";
+                }
+                else{
+                datos[5]="Menor de Edad";
+                } 
                 tVisitantesFiltrada.addRow(datos);                      
             }        
         }
