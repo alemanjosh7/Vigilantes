@@ -5,7 +5,7 @@
  */
 package FormsVigilante;
 
-import Modelo.Conexion;
+import Clases.Conexion;
 import ControladorVigilante.SalidaController;
 import java.sql.Connection;
 import javax.swing.JOptionPane;

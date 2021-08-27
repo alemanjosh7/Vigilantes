@@ -6,7 +6,7 @@
 package ControladorVigilante;
 
 import Modelo.ComboItems;
-import Modelo.Conexion;
+import Clases.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

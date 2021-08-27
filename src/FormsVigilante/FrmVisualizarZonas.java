@@ -6,7 +6,7 @@
 package FormsVigilante;
 
 import ControladorVigilante.ZonasController;
-import Modelo.Conexion;
+import Clases.Conexion;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import javax.swing.JLabel;

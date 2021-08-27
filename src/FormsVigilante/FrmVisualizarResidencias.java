@@ -5,7 +5,7 @@
  */
 package FormsVigilante;
 
-import Modelo.Conexion;
+import Clases.Conexion;
 import ControladorVigilante.ResidenciaController;
 import java.awt.Image;
 import java.awt.Toolkit;

@@ -5,7 +5,7 @@
  */
 package FormsVigilante;
 
-import Modelo.Conexion;
+import Clases.Conexion;
 import ControladorVigilante.PagoController;
 import ControladorVigilante.PersonalController;
 import java.sql.Connection;

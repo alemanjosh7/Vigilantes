@@ -6,7 +6,7 @@
 package ControladorVigilante;
 
 import java.sql.Connection;
-import Modelo.Conexion;
+import Clases.Conexion;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

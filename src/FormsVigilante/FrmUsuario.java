@@ -6,7 +6,7 @@
 package FormsVigilante;
 
 import javax.swing.JOptionPane;
-import Modelo.Conexion;
+import Clases.Conexion;
 import ControladorVigilante.UsuarioController;
 import ControladorVigilante.ZonasController;
 import Clases.Encoder;

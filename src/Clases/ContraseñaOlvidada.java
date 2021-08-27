@@ -7,7 +7,7 @@ package Clases;
 
 import FormsVigilante.FrmLogin;
 
-import Modelo.Conexion;
+import Clases.Conexion;
 import ControladorVigilante.RecuContraController;
 import FormsVigilante.FrmLogin;
 import java.awt.Color;

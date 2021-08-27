@@ -22,8 +22,8 @@ public class FrmVisualizarUsuario extends javax.swing.JFrame {
      */
     public FrmVisualizarUsuario() {
         this.setUndecorated(true);        
-        this.setLocationRelativeTo(null);
         initComponents();
+        this.setLocationRelativeTo(null);
         mostrarDatos();
         FrmLogin log = new FrmLogin();
         lblCargoUsuario.setText(log.cargo);
@@ -325,7 +325,7 @@ public class FrmVisualizarUsuario extends javax.swing.JFrame {
         ));
         jPSSalida.setViewportView(jTUsuario);
 
-        getContentPane().add(jPSSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 260, 970, -1));
+        getContentPane().add(jPSSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 970, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
