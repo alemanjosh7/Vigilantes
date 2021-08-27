@@ -23,6 +23,7 @@ public class FrmEntradaVisitante extends javax.swing.JFrame {
     private Conexion enlace = new Conexion();
     private Connection conect = enlace.conectar();
     private EntradaController EC = new EntradaController();
+
     /**
      * Creates new form EntradaVisitante
      */
@@ -42,6 +43,10 @@ public class FrmEntradaVisitante extends javax.swing.JFrame {
         rbtFalseEntrada.setSelected(true);
         //Llenar hora y fehca de Ingreso        
         jFTfechaHora.setText(fechaActual());
+        //Llenar datos del usuario
+        FrmLogin log = new FrmLogin();
+        lblCargoUsuario.setText(log.cargo);
+        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);
     }
 
 

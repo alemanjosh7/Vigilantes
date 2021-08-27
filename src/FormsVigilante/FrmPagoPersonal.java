@@ -38,11 +38,15 @@ public class FrmPagoPersonal extends javax.swing.JFrame {
     public FrmPagoPersonal() throws SQLException {
         initComponents();
         //Cargamos los combobox.
-     this.cmbRecibePago.setModel(PC.consultarPersonal());
-     this.cmbEncargado.setModel(PC.consultarEncargado());
-     //cargamos la tabla 
-     CargarDatosTablaPago();
-      TxtFecha.setText(fechaActual());
+        this.cmbRecibePago.setModel(PC.consultarPersonal());
+        this.cmbEncargado.setModel(PC.consultarEncargado());
+        //cargamos la tabla 
+        CargarDatosTablaPago();
+        TxtFecha.setText(fechaActual());
+        //Llenar datos del usuario
+        FrmLogin log = new FrmLogin();
+        lblCargoUsuario.setText(log.cargo);
+        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);
     }
 
     //Mostrar los datos de la tabla

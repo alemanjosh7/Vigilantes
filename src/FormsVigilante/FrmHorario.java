@@ -39,6 +39,10 @@ public class FrmHorario extends javax.swing.JFrame {
         initComponents();
         mostrarDatos();
         limpiarDatos();
+        //Llenar datos del usuario
+        FrmLogin log = new FrmLogin();
+        lblCargoUsuario.setText(log.cargo);
+        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);        
     }
     
     private void mostrarDatos(){

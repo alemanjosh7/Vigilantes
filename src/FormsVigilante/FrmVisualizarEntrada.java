@@ -27,6 +27,10 @@ public class FrmVisualizarEntrada extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         jTRegistroEntrada.setModel(EC.consultarDatosTabla());
+        //Llenar datos del usuario
+        FrmLogin log = new FrmLogin();
+        lblCargoUsuario.setText(log.cargo);
+        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);        
     }
 
     /**

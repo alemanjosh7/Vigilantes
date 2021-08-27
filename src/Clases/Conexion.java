@@ -16,7 +16,7 @@ import java.sql.DriverManager;
  */
 public class Conexion {
     private String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    private String url = "jdbc:sqlserver://2.tcp.ngrok.io:18658; databaseName=TBDS_Sistema_Vigilantes";
+    private String url = "jdbc:sqlserver://2.tcp.ngrok.io:17439; databaseName=TBDS_Sistema_Vigilantes";
     private String user = "PTC_NewLogin";
     private String pswd = "ITR2021";
     public Connection cn = null;
@@ -37,7 +37,7 @@ public class Conexion {
 //      }
 //        return cn;
 //    }
-    
+//    
     public Connection conectar(){
         try{
             Class.forName(driver);

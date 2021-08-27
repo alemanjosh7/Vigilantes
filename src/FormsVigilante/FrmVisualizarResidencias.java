@@ -29,6 +29,10 @@ public class FrmVisualizarResidencias extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         CargarDatosTabla();
+        //Llenar datos del usuario
+        FrmLogin log = new FrmLogin();
+        lblCargoUsuario.setText(log.cargo);
+        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);           
     }
 
     /**

@@ -218,11 +218,11 @@
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   <Component id="lblUsuario26" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="lblNombreUsuario26" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblNombreUsuario" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                   <Component id="lblCargo26" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="lblCargoUsuario26" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblCargoUsuario" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="219" max="-2" attributes="0"/>
                   <Component id="btnTheme26" min="-2" pref="44" max="-2" attributes="0"/>
                   <EmptySpace pref="299" max="32767" attributes="0"/>
@@ -243,9 +243,9 @@
                               <Component id="btnTheme26" alignment="1" min="-2" pref="35" max="-2" attributes="0"/>
                               <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                                   <Component id="lblUsuario26" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblNombreUsuario26" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblNombreUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblCargo26" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblCargoUsuario26" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblCargoUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -262,7 +262,7 @@
             <Property name="contentAreaFilled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblCargoUsuario26">
+        <Component class="javax.swing.JLabel" name="lblCargoUsuario">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
@@ -278,7 +278,7 @@
             <Property name="text" type="java.lang.String" value="Cargo:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblNombreUsuario26">
+        <Component class="javax.swing.JLabel" name="lblNombreUsuario">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>

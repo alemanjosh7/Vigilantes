@@ -35,6 +35,10 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
         CargarDatosTabla();        
         //Llenar hora y fehca de Ingreso         
         jFTfechaHora.setText(fechaActual());
+        //Llenar datos del usuario
+        FrmLogin log = new FrmLogin();
+        lblCargoUsuario.setText(log.cargo);
+        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);        
     }
 
     /**

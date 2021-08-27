@@ -32,6 +32,10 @@ public class FrmVisualizarPortones extends javax.swing.JFrame {
         this.cmbZonas.setModel(PC.consultarZona());
         this.cmbTipoPorton.setModel(PC.consultarTipoPorton());
         CargarDatosTabla();
+        //Llenar datos del usuario
+        FrmLogin log = new FrmLogin();
+        lblCargoUsuario.setText(log.cargo);
+        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);        
     }
     
 

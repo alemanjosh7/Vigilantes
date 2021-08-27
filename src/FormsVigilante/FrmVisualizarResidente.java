@@ -26,7 +26,10 @@ public class FrmVisualizarResidente extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.jTResidente.setModel(RC.consultarDatosTabla());
-
+        //Llenar datos del usuario
+        FrmLogin log = new FrmLogin();
+        lblCargoUsuario.setText(log.cargo);
+        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);   
     }
 
 

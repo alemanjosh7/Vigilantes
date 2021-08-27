@@ -28,6 +28,10 @@ public class FrmResidente extends javax.swing.JFrame {
         this.cmbEstadoResidente.setModel(RC.consultarEsResidente());
         CargarDatosTabla();
         rbtMayorEdad.setSelected(true);
+        //Llenar datos del usuario
+        FrmLogin log = new FrmLogin();
+        lblCargoUsuario.setText(log.cargo);
+        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);    
     }
 
     /**

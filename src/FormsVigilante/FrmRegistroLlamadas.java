@@ -36,6 +36,10 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
         //Llenar hora y fehca de Ingreso        
         jFfechaHora.setText(fechaActual());        
         CargarTabla();
+        //Llenar datos del usuario
+        FrmLogin log = new FrmLogin();
+        lblCargoUsuario.setText(log.cargo);
+        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);        
     }
 
     /**

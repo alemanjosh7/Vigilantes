@@ -24,6 +24,10 @@ public class FrmZonas extends javax.swing.JFrame {
     public FrmZonas() {
         initComponents();
         CargarDatosTabla();
+        //Llenar datos del usuario
+        FrmLogin log = new FrmLogin();
+        lblCargoUsuario.setText(log.cargo);
+        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);           
     }
 
     /**

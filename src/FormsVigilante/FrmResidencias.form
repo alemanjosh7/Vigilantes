@@ -48,28 +48,38 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="378" max="-2" attributes="0"/>
+                  <Component id="lblGestionResidencia" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="392" max="32767" attributes="0"/>
+              </Group>
               <Group type="102" alignment="1" attributes="0">
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace pref="35" max="32767" attributes="0"/>
-                          <Component id="jSTablaDatos" min="-2" pref="951" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblDireccion" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jFNumeroResidencia" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="lblidResidencia" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jSTablaDatos" alignment="1" min="-2" pref="951" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="jPBotones" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jFDireccion" min="-2" pref="210" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblDireccion" min="-2" max="-2" attributes="0"/>
+                              <Component id="jFDireccion" min="-2" pref="217" max="-2" attributes="0"/>
+                              <Component id="lblidResidencia" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jFNumeroResidencia" alignment="0" min="-2" pref="217" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblNumCasa" min="-2" max="-2" attributes="0"/>
-                              <Component id="jFNumCasa" min="-2" pref="140" max="-2" attributes="0"/>
+                              <Component id="jFNumCasa" min="-2" pref="141" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblZona" min="-2" max="-2" attributes="0"/>
                               <Component id="cmbZona" min="-2" pref="220" max="-2" attributes="0"/>
@@ -83,19 +93,6 @@
                   </Group>
                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
               </Group>
-              <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="378" max="-2" attributes="0"/>
-                          <Component id="lblGestionResidencia" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-                          <Component id="jPBotones" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -106,20 +103,16 @@
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblDireccion" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                  <Component id="lblZona" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblNumCasa" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblZona" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblNumCasa" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblDireccion" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cmbZona" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jFDireccion" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jFNumCasa" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="cmbZona" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jFDireccion" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jFNumCasa" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -128,15 +121,15 @@
                           <Component id="cmbResidente" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="lblidResidencia" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jFNumeroResidencia" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jPBotones" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="19" max="32767" attributes="0"/>
-                  <Component id="jSTablaDatos" min="-2" pref="301" max="-2" attributes="0"/>
+                  <Component id="jFNumeroResidencia" min="-2" pref="32" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="jPBotones" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="25" max="32767" attributes="0"/>
+                  <Component id="jSTablaDatos" min="-2" pref="301" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -394,19 +387,6 @@
             <Property name="text" type="java.lang.String" value="idResidencia"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFNumeroResidencia">
-          <Properties>
-            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format subtype="1" type="2"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Arial" size="18" style="0"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFNumeroResidenciaActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JComboBox" name="cmbZona">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -438,31 +418,11 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFDireccion">
-          <Properties>
-            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format subtype="1" type="2"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Arial" size="18" style="0"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFDireccionActionPerformed"/>
-          </Events>
+        <Component class="javax.swing.JTextField" name="jFDireccion">
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFNumCasa">
-          <Properties>
-            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format subtype="1" type="2"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Arial" size="18" style="0"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFNumCasaActionPerformed"/>
-          </Events>
+        <Component class="javax.swing.JTextField" name="jFNumCasa">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jFNumeroResidencia">
         </Component>
       </SubComponents>
     </Container>

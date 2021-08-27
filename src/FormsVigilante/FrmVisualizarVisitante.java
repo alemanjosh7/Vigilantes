@@ -25,6 +25,10 @@ public class FrmVisualizarVisitante extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.jTVisitante.setModel(VV.consultarDatosTabla());
+        //Llenar datos del usuario
+        FrmLogin log = new FrmLogin();
+        lblCargoUsuario.setText(log.cargo);
+        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);           
     }
     /**
      * This method is called from within the constructor to initialize the form.

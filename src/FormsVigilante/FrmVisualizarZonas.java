@@ -29,6 +29,10 @@ public class FrmVisualizarZonas extends javax.swing.JFrame {
         initComponents();
         LimpiarCampos();
         mostrarDatos();
+        //Llenar datos del usuario
+        FrmLogin log = new FrmLogin();
+        lblCargoUsuario.setText(log.cargo);
+        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);           
     }
     
     private void LimpiarCampos() {

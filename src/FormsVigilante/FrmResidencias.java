@@ -31,7 +31,10 @@ public class FrmResidencias extends javax.swing.JFrame {
         this.cmbZona.setModel(RC.consultarZona());
         this.cmbResidente.setModel(RC.consultarResidente());
         CargarDatosTabla();
-        
+        //Llenar datos del usuario
+        FrmLogin log = new FrmLogin();
+        lblCargoUsuario.setText(log.cargo);
+        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,11 +59,11 @@ public class FrmResidencias extends javax.swing.JFrame {
         jSTablaDatos = new javax.swing.JScrollPane();
         jTResidencia = new javax.swing.JTable();
         lblidResidencia = new javax.swing.JLabel();
-        jFNumeroResidencia = new javax.swing.JFormattedTextField();
         cmbZona = new javax.swing.JComboBox<>();
         cmbResidente = new javax.swing.JComboBox<>();
-        jFDireccion = new javax.swing.JFormattedTextField();
-        jFNumCasa = new javax.swing.JFormattedTextField();
+        jFDireccion = new javax.swing.JTextField();
+        jFNumCasa = new javax.swing.JTextField();
+        jFNumeroResidencia = new javax.swing.JTextField();
         jPSideBar = new javax.swing.JPanel();
         jPImageContainer = new javax.swing.JPanel();
         lblSistemaVigilantes = new javax.swing.JLabel();
@@ -175,14 +178,6 @@ public class FrmResidencias extends javax.swing.JFrame {
         lblidResidencia.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblidResidencia.setText("idResidencia");
 
-        jFNumeroResidencia.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFNumeroResidencia.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jFNumeroResidencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFNumeroResidenciaActionPerformed(evt);
-            }
-        });
-
         cmbZona.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         cmbZona.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
 
@@ -193,44 +188,36 @@ public class FrmResidencias extends javax.swing.JFrame {
             }
         });
 
-        jFDireccion.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFDireccion.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jFDireccion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFDireccionActionPerformed(evt);
-            }
-        });
-
-        jFNumCasa.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFNumCasa.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jFNumCasa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFNumCasaActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPGestionResidenciaLayout = new javax.swing.GroupLayout(jPGestionResidencia);
         jPGestionResidencia.setLayout(jPGestionResidenciaLayout);
         jPGestionResidenciaLayout.setHorizontalGroup(
             jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
+                .addGap(378, 378, 378)
+                .addComponent(lblGestionResidencia)
+                .addGap(0, 392, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPGestionResidenciaLayout.createSequentialGroup()
                 .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
-                        .addContainerGap(35, Short.MAX_VALUE)
-                        .addComponent(jSTablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 951, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSTablaDatos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 951, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(25, 25, 25))))
+                    .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblDireccion)
-                            .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jFNumeroResidencia, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblidResidencia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jFDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jFDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblidResidencia)
+                            .addComponent(jFNumeroResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblNumCasa)
-                            .addComponent(jFNumCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(51, 51, 51)
+                            .addComponent(jFNumCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(50, 50, 50)
                         .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblZona)
                             .addComponent(cmbZona, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -239,15 +226,6 @@ public class FrmResidencias extends javax.swing.JFrame {
                             .addComponent(lblResidente)
                             .addComponent(cmbResidente, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(42, 42, 42))
-            .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
-                .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
-                        .addGap(378, 378, 378)
-                        .addComponent(lblGestionResidencia))
-                    .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPGestionResidenciaLayout.setVerticalGroup(
             jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,30 +235,28 @@ public class FrmResidencias extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
-                        .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblDireccion)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblZona)
-                                .addComponent(lblNumCasa)))
+                        .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblZona)
+                            .addComponent(lblNumCasa)
+                            .addComponent(lblDireccion))
                         .addGap(18, 18, 18)
-                        .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbZona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jFDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jFNumCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cmbZona)
+                            .addComponent(jFDireccion)
+                            .addComponent(jFNumCasa)))
                     .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
                         .addComponent(lblResidente)
                         .addGap(18, 18, 18)
                         .addComponent(cmbResidente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addComponent(lblidResidencia)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jFNumeroResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jFNumeroResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
                 .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(jSTablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addContainerGap())
         );
 
         getContentPane().add(jPGestionResidencia);
@@ -534,21 +510,9 @@ public class FrmResidencias extends javax.swing.JFrame {
         CargarDatosTabla();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
-    private void jFNumeroResidenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFNumeroResidenciaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFNumeroResidenciaActionPerformed
-
     private void cmbResidenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbResidenteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbResidenteActionPerformed
-
-    private void jFDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFDireccionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFDireccionActionPerformed
-
-    private void jFNumCasaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFNumCasaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFNumCasaActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
@@ -671,9 +635,9 @@ public class FrmResidencias extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JComboBox<String> cmbResidente;
     private javax.swing.JComboBox<String> cmbZona;
-    private javax.swing.JFormattedTextField jFDireccion;
-    private javax.swing.JFormattedTextField jFNumCasa;
-    private javax.swing.JFormattedTextField jFNumeroResidencia;
+    private javax.swing.JTextField jFDireccion;
+    private javax.swing.JTextField jFNumCasa;
+    private javax.swing.JTextField jFNumeroResidencia;
     private javax.swing.JPanel jPBotones;
     private javax.swing.JPanel jPGestionResidencia;
     private javax.swing.JPanel jPImageContainer;

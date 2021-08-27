@@ -30,6 +30,10 @@ public class FrmVisitante extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);      
         CargarDatosTabla();
         rbtSI.setSelected(true);
+        //Llenar datos del usuario
+        FrmLogin log = new FrmLogin();
+        lblCargoUsuario.setText(log.cargo);
+        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);        
     }
 
     /**

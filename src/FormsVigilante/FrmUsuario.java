@@ -13,6 +13,9 @@ import Clases.Encoder;
 import Modelo.ComboItems;
 import java.sql.Connection;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 /**
  *
  * @author CRISTIAN
@@ -29,7 +32,8 @@ public class FrmUsuario extends javax.swing.JFrame {
         setUndecorated(true);
         initComponents();
         setLocationRelativeTo(null);
-        mostrarDatos();
+        mostrarDatosCombobox();
+        this.jTUsuario.setModel(UC.generarTabla());
         FrmLogin log = new FrmLogin();
         lblCargoUsuario.setText(log.cargo);
         lblNombreUsuario.setText(log.nombres + " " + log.apellidos);
@@ -581,7 +585,7 @@ public class FrmUsuario extends javax.swing.JFrame {
         LimpiarCampos();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
-    public void mostrarDatos(){
+    public void mostrarDatosCombobox(){
         
         UsuarioController obj = new UsuarioController();
         
@@ -603,6 +607,8 @@ public class FrmUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No se pudo recibir datos");
         }
     }
+    
+
     
    private void LimpiarCampos(){
        jFDNombreUsuario.setText("");
