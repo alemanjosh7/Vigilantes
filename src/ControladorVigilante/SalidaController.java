@@ -22,6 +22,7 @@ public class SalidaController {
     private int idTipoES;
     private int idPorton;
     private int idVisitante;
+    private int idPersonal; 
     private String fechaHora;
 
 
@@ -75,6 +76,16 @@ public class SalidaController {
     public void setFechaHora(String fechaHora){
         this.fechaHora = fechaHora;
     }       
+    
+    //Personal que atiende
+    public Integer getidPersonal(){
+        return idPersonal;
+    }
+    
+    public void setidPersonal(int idPersonal){
+        this.idPersonal = idPersonal;
+    }
+    
     //Estableciendo la conexión en el constructor
     public SalidaController(){
     //Establecemos la conexion
@@ -87,12 +98,13 @@ public class SalidaController {
     public boolean guardarSalida(){
         boolean res = false;
         try{
-            String sql = "INSERT INTO RegistroSalida(idTipoES, idPorton, idVisitante, fechaHora) values (?,?,?,?) ";//se pasan por referencia por seguridad
+            String sql = "INSERT INTO RegistroSalida(idTipoES, idPorton, idPersonal, idVisitante, fechaHora) values (?,?,?,?,?) ";//se pasan por referencia por seguridad
             PreparedStatement cmd = cn.prepareStatement(sql);
             cmd.setInt(1,idTipoES);
             cmd.setInt(2, idPorton);
-            cmd.setInt(3, idVisitante);
-            cmd.setString(4, fechaHora);            
+            cmd.setInt(3, idPersonal);
+            cmd.setInt(4, idVisitante);
+            cmd.setString(5, fechaHora);            
             if (!cmd.execute()) {
                 res=true;
             }
@@ -109,13 +121,14 @@ public class SalidaController {
     public boolean modificarSalida(){
         boolean res = false;
         try{
-            String sql = "UPDATE RegistroSalida SET idTipoES =?, idPorton =?, idVisitante =?, fechaHora =? WHERE idRegistroSalida =?";//se pasan por referencia por seguridad
+            String sql = "UPDATE RegistroSalida SET idTipoES =?, idPorton =?, idPersonal =?, idVisitante =?, fechaHora =? WHERE idRegistroSalida =?";//se pasan por referencia por seguridad
             PreparedStatement cmd = cn.prepareStatement(sql);
             cmd.setInt(1,idTipoES);
             cmd.setInt(2, idPorton);
-            cmd.setInt(3, idVisitante);
-            cmd.setString(4, fechaHora);
-            cmd.setInt(5, idRegistroSalida);
+            cmd.setInt(3, idPersonal);
+            cmd.setInt(4, idVisitante);
+            cmd.setString(5, fechaHora);
+            cmd.setInt(6, idRegistroSalida);
             if (!cmd.execute()) {
                 res=true;
             }
@@ -264,6 +277,31 @@ public class SalidaController {
         return res;
     }
     
+    //Convirtiendo el valor del id: Personal
+    public boolean convertirPersonal(String nombre, String apellido){
+        boolean res = false;
+        try{
+            String sql = ("SELECT idPersonal FROM Personal WHERE nombres = ? and apellidos = ?");
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            cmd.setString(1, nombre);
+            cmd.setString(2, apellido);
+            //Ejecutar la consulta
+            ResultSet rs = cmd.executeQuery();
+            //recorrer la lista de registros
+            if(rs.next()){
+              res=true;
+              //asignándole a los atributos de la clase
+              setidPersonal(rs.getInt(1));
+            }
+            //cerrando conexion
+            cmd.close();                       
+        }
+        catch(Exception ex){
+            
+        }
+        return res;
+    }
+    
     //Convirtiendo el valor del combobox a Id: TipoES
     public boolean convertirTipoES(String TipoES){
         boolean res = false;
@@ -302,8 +340,9 @@ public class SalidaController {
                 idRegistroSalida = res.getInt(1);
                 idTipoES = res.getInt(2);
                 idPorton = res.getInt(3);
-                idVisitante = res.getInt(4);
-                fechaHora = res.getString(5);
+                idPersonal = res.getInt(4);                
+                idVisitante = res.getInt(5);
+                fechaHora = res.getString(6);
             }
             //cerrando conexion
             cmd.close();

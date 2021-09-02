@@ -45,8 +45,8 @@ public class FrmEntradaVisitante extends javax.swing.JFrame {
         jFTfechaHora.setText(fechaActual());
         //Llenar datos del usuario
         FrmLogin log = new FrmLogin();
-        lblCargoUsuario.setText(log.cargo);
-        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);
+        lblNombreUsuario.setText(log.nombres);        
+        lblApellidoUsuario.setText(log.apellidos);
     }
 
 
@@ -61,9 +61,16 @@ public class FrmEntradaVisitante extends javax.swing.JFrame {
 
         btnGEmergencia = new javax.swing.ButtonGroup();
         btnGEntradaPermitida = new javax.swing.ButtonGroup();
+        jPSideBar = new javax.swing.JPanel();
+        jPImageContainer = new javax.swing.JPanel();
+        lblSistemaVigilantes = new javax.swing.JLabel();
+        lblImgBusqueda = new javax.swing.JLabel();
+        jPbtnSBContainer = new javax.swing.JPanel();
+        btnGoLogIn = new javax.swing.JButton();
         jPToolStrip = new javax.swing.JPanel();
         lblExitButton = new javax.swing.JLabel();
         lblCargoUsuario = new javax.swing.JLabel();
+        lblApellidoUsuario = new javax.swing.JLabel();
         lblCargo = new javax.swing.JLabel();
         lblNombreUsuario = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
@@ -100,12 +107,6 @@ public class FrmEntradaVisitante extends javax.swing.JFrame {
         lblResidencia = new javax.swing.JLabel();
         jFTfechaHora = new javax.swing.JTextField();
         lblIdRegistroEntrada1 = new javax.swing.JLabel();
-        jPSideBar = new javax.swing.JPanel();
-        jPImageContainer = new javax.swing.JPanel();
-        lblSistemaVigilantes = new javax.swing.JLabel();
-        lblImgBusqueda = new javax.swing.JLabel();
-        jPbtnSBContainer = new javax.swing.JPanel();
-        btnGoLogIn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registro Ingreso");
@@ -113,6 +114,100 @@ public class FrmEntradaVisitante extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1366, 768));
         setUndecorated(true);
         getContentPane().setLayout(null);
+
+        jPSideBar.setBackground(new java.awt.Color(57, 62, 70));
+        jPSideBar.setPreferredSize(new java.awt.Dimension(287, 811));
+        jPSideBar.setRequestFocusEnabled(false);
+
+        jPImageContainer.setBackground(new java.awt.Color(57, 62, 70));
+
+        lblSistemaVigilantes.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        lblSistemaVigilantes.setForeground(new java.awt.Color(255, 255, 255));
+        lblSistemaVigilantes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSistemaVigilantes.setText("Sistema Vigilantes");
+        lblSistemaVigilantes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        lblImgBusqueda.setFocusable(false);
+        lblImgBusqueda.setPreferredSize(new java.awt.Dimension(232, 240));
+        lblImgBusqueda.setRequestFocusEnabled(false);
+
+        javax.swing.GroupLayout jPImageContainerLayout = new javax.swing.GroupLayout(jPImageContainer);
+        jPImageContainer.setLayout(jPImageContainerLayout);
+        jPImageContainerLayout.setHorizontalGroup(
+            jPImageContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblSistemaVigilantes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPImageContainerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblImgBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+        jPImageContainerLayout.setVerticalGroup(
+            jPImageContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPImageContainerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblSistemaVigilantes, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(lblImgBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
+        );
+
+        jPbtnSBContainer.setBackground(new java.awt.Color(57, 62, 70));
+
+        btnGoLogIn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgCerrarSesionLight.png"))); // NOI18N
+        btnGoLogIn.setContentAreaFilled(false);
+        btnGoLogIn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGoLogIn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGoLogInMouseClicked(evt);
+            }
+        });
+        btnGoLogIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGoLogInActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPbtnSBContainerLayout = new javax.swing.GroupLayout(jPbtnSBContainer);
+        jPbtnSBContainer.setLayout(jPbtnSBContainerLayout);
+        jPbtnSBContainerLayout.setHorizontalGroup(
+            jPbtnSBContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPbtnSBContainerLayout.createSequentialGroup()
+                .addComponent(btnGoLogIn)
+                .addGap(0, 59, Short.MAX_VALUE))
+        );
+        jPbtnSBContainerLayout.setVerticalGroup(
+            jPbtnSBContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPbtnSBContainerLayout.createSequentialGroup()
+                .addContainerGap(144, Short.MAX_VALUE)
+                .addComponent(btnGoLogIn)
+                .addGap(53, 53, 53))
+        );
+
+        javax.swing.GroupLayout jPSideBarLayout = new javax.swing.GroupLayout(jPSideBar);
+        jPSideBar.setLayout(jPSideBarLayout);
+        jPSideBarLayout.setHorizontalGroup(
+            jPSideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPSideBarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPImageContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPSideBarLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPbtnSBContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46))
+        );
+        jPSideBarLayout.setVerticalGroup(
+            jPSideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPSideBarLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jPImageContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(155, 155, 155)
+                .addComponent(jPbtnSBContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 3, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPSideBar);
+        jPSideBar.setBounds(0, 0, 287, 811);
 
         jPToolStrip.setBackground(new java.awt.Color(255, 211, 105));
         jPToolStrip.setMinimumSize(new java.awt.Dimension(1082, 61));
@@ -129,6 +224,9 @@ public class FrmEntradaVisitante extends javax.swing.JFrame {
         lblCargoUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblCargoUsuario.setText("Administrador");
 
+        lblApellidoUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblApellidoUsuario.setText("Josué Alemán");
+
         lblCargo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblCargo.setText("Cargo:");
 
@@ -143,15 +241,17 @@ public class FrmEntradaVisitante extends javax.swing.JFrame {
         jPToolStripLayout.setHorizontalGroup(
             jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPToolStripLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(48, 48, 48)
                 .addComponent(lblUsuario)
                 .addGap(27, 27, 27)
-                .addComponent(lblNombreUsuario)
-                .addGap(60, 60, 60)
+                .addComponent(lblNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblApellidoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
                 .addComponent(lblCargo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblCargoUsuario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 560, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 219, Short.MAX_VALUE)
                 .addComponent(lblExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -160,19 +260,20 @@ public class FrmEntradaVisitante extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPToolStripLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPToolStripLayout.createSequentialGroup()
-                        .addGap(0, 10, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblUsuario)
                             .addComponent(lblNombreUsuario)
                             .addComponent(lblCargo)
-                            .addComponent(lblCargoUsuario))))
+                            .addComponent(lblCargoUsuario)
+                            .addComponent(lblApellidoUsuario)))
+                    .addComponent(lblExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         getContentPane().add(jPToolStrip);
-        jPToolStrip.setBounds(290, 0, 1080, 61);
+        jPToolStrip.setBounds(280, 0, 1090, 61);
 
         jPIngresoVisitantes.setMinimumSize(new java.awt.Dimension(1366, 768));
         jPIngresoVisitantes.setPreferredSize(new java.awt.Dimension(1366, 768));
@@ -521,117 +622,9 @@ public class FrmEntradaVisitante extends javax.swing.JFrame {
         getContentPane().add(jPIngresoVisitantes);
         jPIngresoVisitantes.setBounds(290, 40, 1080, 730);
 
-        jPSideBar.setBackground(new java.awt.Color(57, 62, 70));
-        jPSideBar.setPreferredSize(new java.awt.Dimension(287, 811));
-        jPSideBar.setRequestFocusEnabled(false);
-
-        jPImageContainer.setBackground(new java.awt.Color(57, 62, 70));
-
-        lblSistemaVigilantes.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
-        lblSistemaVigilantes.setForeground(new java.awt.Color(255, 255, 255));
-        lblSistemaVigilantes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSistemaVigilantes.setText("Sistema Vigilantes");
-        lblSistemaVigilantes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        lblImgBusqueda.setFocusable(false);
-        lblImgBusqueda.setPreferredSize(new java.awt.Dimension(232, 240));
-        lblImgBusqueda.setRequestFocusEnabled(false);
-
-        javax.swing.GroupLayout jPImageContainerLayout = new javax.swing.GroupLayout(jPImageContainer);
-        jPImageContainer.setLayout(jPImageContainerLayout);
-        jPImageContainerLayout.setHorizontalGroup(
-            jPImageContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblSistemaVigilantes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPImageContainerLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblImgBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-        jPImageContainerLayout.setVerticalGroup(
-            jPImageContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPImageContainerLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblSistemaVigilantes, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(lblImgBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
-        );
-
-        jPbtnSBContainer.setBackground(new java.awt.Color(57, 62, 70));
-
-        btnGoLogIn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgCerrarSesionLight.png"))); // NOI18N
-        btnGoLogIn.setContentAreaFilled(false);
-        btnGoLogIn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnGoLogIn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnGoLogInMouseClicked(evt);
-            }
-        });
-        btnGoLogIn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGoLogInActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPbtnSBContainerLayout = new javax.swing.GroupLayout(jPbtnSBContainer);
-        jPbtnSBContainer.setLayout(jPbtnSBContainerLayout);
-        jPbtnSBContainerLayout.setHorizontalGroup(
-            jPbtnSBContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPbtnSBContainerLayout.createSequentialGroup()
-                .addComponent(btnGoLogIn)
-                .addGap(0, 59, Short.MAX_VALUE))
-        );
-        jPbtnSBContainerLayout.setVerticalGroup(
-            jPbtnSBContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPbtnSBContainerLayout.createSequentialGroup()
-                .addContainerGap(144, Short.MAX_VALUE)
-                .addComponent(btnGoLogIn)
-                .addGap(53, 53, 53))
-        );
-
-        javax.swing.GroupLayout jPSideBarLayout = new javax.swing.GroupLayout(jPSideBar);
-        jPSideBar.setLayout(jPSideBarLayout);
-        jPSideBarLayout.setHorizontalGroup(
-            jPSideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPSideBarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPImageContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPSideBarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPbtnSBContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46))
-        );
-        jPSideBarLayout.setVerticalGroup(
-            jPSideBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPSideBarLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jPImageContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(155, 155, 155)
-                .addComponent(jPbtnSBContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 3, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPSideBar);
-        jPSideBar.setBounds(0, 0, 287, 811);
-
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cmbPortonEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPortonEntradaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbPortonEntradaActionPerformed
-
-    private void cmbVisitantesjcmbIdResidenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbVisitantesjcmbIdResidenciaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbVisitantesjcmbIdResidenciaActionPerformed
-
-    private void lblExitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitButtonMouseClicked
-        FrmMenuPrincipal menu = new FrmMenuPrincipal();
-        menu.show();
-        dispose();
-    }//GEN-LAST:event_lblExitButtonMouseClicked
 
     private void btnGoLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoLogInActionPerformed
         FrmLogin login = new FrmLogin();
@@ -644,12 +637,108 @@ public class FrmEntradaVisitante extends javax.swing.JFrame {
         login.show();
         dispose();    }//GEN-LAST:event_btnGoLogInMouseClicked
 
-    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        if (jFTidEntrada.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");   
+    private void jFTfechaHoraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTfechaHoraKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFTfechaHoraKeyTyped
+
+    private void jFTidEntradaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTidEntradaKeyTyped
+        //Solo permitir paso de números
+        if(SoloNumero(evt.getKeyChar())){
+            //no deja que se escriba un letras
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Ingresar números");
+        }
+    }//GEN-LAST:event_jFTidEntradaKeyTyped
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        //Verificar que no se manden datos vacios o invalidos.
+        if (TMotivoVisita.getText().isEmpty() || cmbPortonEntrada.getSelectedIndex() == 0 || cmbVisitantes.getSelectedIndex() == 0 || cmbTipoEntrada.getSelectedIndex() == 0 ||jFTidEntrada.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");
+        }
+        else{
+            // Registrar los datos a la Tabla registro Salida
+            int emergencia = 0, entrada = 0;
+            String nombre, apellido;
+            nombre = lblNombreUsuario.getText();
+            apellido = lblApellidoUsuario.getText();                  
+            if (rbtTrueEmergencia.isSelected()) {
+                emergencia = 1;
+            }
+            if (rbtTrueEntrada.isSelected()) {
+                entrada = 1;
+            }
+            EC.convertirPersonal(nombre, apellido);                          
+            EC.setMotivoEntrada(TMotivoVisita.getText());
+            EC.setEmergencia(emergencia);
+            EC.setPermisoEntrada(entrada);
+            EC.setIdPorton(Integer.parseInt(cmbPortonEntrada.getSelectedItem().toString()));
+            EC.convertirVisitante(cmbVisitantes.getSelectedItem().toString());
+            EC.convertirTipoES(cmbTipoEntrada.getSelectedItem().toString());
+            EC.convertirResidencia(cmbResidencia.getSelectedItem().toString());
+            EC.setFechaHora(jFTfechaHora.getText());
+            EC.setIdRegistroEntrada(Integer.parseInt(jFTidEntrada.getText()));
+            //Enviando los datos a SQL
+            if (EC.modificarZona()) {
+                JOptionPane.showMessageDialog(this,"Datos actualizados exitosamente");
+                CargarDatosTabla();
+                LimpiarCampos();                
+            }
+            else{
+                JOptionPane.showMessageDialog(this,"Datos no actualizados");
+            }
+        }
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        //Verificar que no se manden datos vacios o invalidos.
+        if (TMotivoVisita.getText().isEmpty() || cmbPortonEntrada.getSelectedIndex() == 0 || cmbVisitantes.getSelectedIndex() == 0 || cmbTipoEntrada.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");
         }
         else{
             //Consultar
+            int emergencia = 0, entrada = 0;
+            String nombre, apellido;
+            nombre = lblNombreUsuario.getText();
+            apellido = lblApellidoUsuario.getText();                      
+            // Registrar los datos a la Tabla registro Salida
+            if (rbtTrueEmergencia.isSelected()) {
+                emergencia = 1;
+            }
+            if (rbtTrueEntrada.isSelected()) {
+                entrada = 1;
+            }
+            // Actualizar los datos a la Tabla registro Salida
+            EC.convertirPersonal(nombre, apellido);              
+            EC.setMotivoEntrada(TMotivoVisita.getText());
+            EC.setEmergencia(emergencia);
+            EC.setPermisoEntrada(entrada);
+            EC.setIdPorton(Integer.parseInt(cmbPortonEntrada.getSelectedItem().toString()));
+            EC.convertirVisitante(cmbVisitantes.getSelectedItem().toString());
+            EC.convertirTipoES(cmbTipoEntrada.getSelectedItem().toString());
+            EC.convertirResidencia(cmbResidencia.getSelectedItem().toString());
+            EC.setFechaHora(jFTfechaHora.getText());
+            //Enviando los datos a SQL
+            if (EC.guardarEntradas()) {
+                JOptionPane.showMessageDialog(this,"Datos guardados exitosamente");
+                CargarDatosTabla();
+                LimpiarCampos();
+            }
+            else{
+                JOptionPane.showMessageDialog(this,"Datos no guardados");
+            }
+        }
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        //Limpiar los campos
+        LimpiarCampos();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        if (jFTidEntrada.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");
+        }
+        else{
             int emergencia = 0, entrada = 0;
             //Realizar Consulta
             EC.setIdRegistroEntrada(Integer.parseInt(jFTidEntrada.getText()));
@@ -680,109 +769,38 @@ public class FrmEntradaVisitante extends javax.swing.JFrame {
                 }
                 else{
                     rbtTrueEntrada.setSelected(false);
-                    rbtFalseEntrada.setSelected(true);   
+                    rbtFalseEntrada.setSelected(true);
                 }
                 jTDatosIngreso.setModel(EC.filtrarDatosTabla());
             }
             else{
                 JOptionPane.showMessageDialog(this, "Error al consultar");
-            }   
-        }        
+            }
+        }
     }//GEN-LAST:event_btnConsultarActionPerformed
-
-    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        //Limpiar los campos
-        LimpiarCampos();
-    }//GEN-LAST:event_btnLimpiarActionPerformed
-
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        //Verificar que no se manden datos vacios o invalidos.
-        if (TMotivoVisita.getText().isEmpty() || cmbPortonEntrada.getSelectedIndex() == 0 || cmbVisitantes.getSelectedIndex() == 0 || cmbTipoEntrada.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");  
-        }
-        else{
-            // Registrar los datos a la Tabla registro Salida
-            int emergencia = 0, entrada = 0;
-            if (rbtTrueEmergencia.isSelected()) {
-                emergencia = 1;
-            }
-            if (rbtTrueEntrada.isSelected()) {
-                entrada = 1;
-            }
-            EC.setMotivoEntrada(TMotivoVisita.getText());
-            EC.setEmergencia(emergencia);
-            EC.setPermisoEntrada(entrada);
-            EC.setIdPorton(Integer.parseInt(cmbPortonEntrada.getSelectedItem().toString()));
-            EC.convertirVisitante(cmbVisitantes.getSelectedItem().toString());
-            EC.convertirTipoES(cmbTipoEntrada.getSelectedItem().toString());
-            EC.convertirResidencia(cmbResidencia.getSelectedItem().toString());
-            EC.setFechaHora(jFTfechaHora.getText());            
-            //Enviando los datos a SQL
-            if (EC.guardarEntradas()) {
-                JOptionPane.showMessageDialog(this,"Datos guardados exitosamente");
-                CargarDatosTabla();
-            }
-            else{
-                JOptionPane.showMessageDialog(this,"Datos no guardados");
-            }
-        }
-    }//GEN-LAST:event_btnRegistrarActionPerformed
-
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        //Verificar que no se manden datos vacios o invalidos.
-        if (TMotivoVisita.getText().isEmpty() || cmbPortonEntrada.getSelectedIndex() == 0 || cmbVisitantes.getSelectedIndex() == 0 || cmbTipoEntrada.getSelectedIndex() == 0 ||jFTidEntrada.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");  
-        }
-        else{
-            // Registrar los datos a la Tabla registro Salida
-            int emergencia = 0, entrada = 0;
-            if (rbtTrueEmergencia.isSelected()) {
-                emergencia = 1;
-            }
-            if (rbtTrueEntrada.isSelected()) {
-                entrada = 1;
-            }
-            EC.setMotivoEntrada(TMotivoVisita.getText());
-            EC.setEmergencia(emergencia);
-            EC.setPermisoEntrada(entrada);
-            EC.setIdPorton(Integer.parseInt(cmbPortonEntrada.getSelectedItem().toString()));
-            EC.convertirVisitante(cmbVisitantes.getSelectedItem().toString());
-            EC.convertirTipoES(cmbTipoEntrada.getSelectedItem().toString());
-            EC.convertirResidencia(cmbResidencia.getSelectedItem().toString());
-            EC.setFechaHora(jFTfechaHora.getText()); 
-            EC.setIdRegistroEntrada(Integer.parseInt(jFTidEntrada.getText()));
-            //Enviando los datos a SQL
-            if (EC.modificarZona()) {
-                JOptionPane.showMessageDialog(this,"Datos actualizados exitosamente");
-                CargarDatosTabla();
-            }
-            else{
-                JOptionPane.showMessageDialog(this,"Datos no actualizados");
-            }   
-        }
-    }//GEN-LAST:event_btnModificarActionPerformed
 
     private void TMotivoVisitaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TMotivoVisitaKeyTyped
         //Permitir que hayan numeros y letras
         if(NumyLetras(evt.getKeyChar())){
-           //no deja que se caracter extraño 
+            //no deja que se caracter extraño
             evt.consume();
             JOptionPane.showMessageDialog(rootPane, "Ingresar letras O números");
         }
     }//GEN-LAST:event_TMotivoVisitaKeyTyped
 
-    private void jFTidEntradaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTidEntradaKeyTyped
-        //Solo permitir paso de números
-        if(SoloNumero(evt.getKeyChar())){
-            //no deja que se escriba un letras
-            evt.consume();
-            JOptionPane.showMessageDialog(rootPane, "Ingresar números");
-        }
-    }//GEN-LAST:event_jFTidEntradaKeyTyped
-
-    private void jFTfechaHoraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTfechaHoraKeyTyped
+    private void cmbVisitantesjcmbIdResidenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbVisitantesjcmbIdResidenciaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFTfechaHoraKeyTyped
+    }//GEN-LAST:event_cmbVisitantesjcmbIdResidenciaActionPerformed
+
+    private void cmbPortonEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPortonEntradaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbPortonEntradaActionPerformed
+
+    private void lblExitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitButtonMouseClicked
+        FrmMenuPrincipal menu = new FrmMenuPrincipal();
+        menu.show();
+        dispose();
+    }//GEN-LAST:event_lblExitButtonMouseClicked
 
     //Metodos 
     //Para validar que solo permitan pasar Numeros
@@ -894,6 +912,7 @@ public class FrmEntradaVisitante extends javax.swing.JFrame {
     private javax.swing.JScrollPane jSMotivoVisita;
     private javax.swing.JScrollPane jSTablaIngreso;
     private javax.swing.JTable jTDatosIngreso;
+    private javax.swing.JLabel lblApellidoUsuario;
     private javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblCargoUsuario;
     private javax.swing.JLabel lblEmergencia;

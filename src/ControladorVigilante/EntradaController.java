@@ -28,6 +28,7 @@ public class EntradaController {
     private String fechaHora;
     private int permisoEntrada;
     private int emergencia;
+    private int idPersonal;
     
     //get -- set
     
@@ -109,6 +110,16 @@ public class EntradaController {
         this.emergencia = emergencia;
     }
 
+    //Personal que atiende
+    public Integer getidPersonal(){
+        return idPersonal;
+    }
+    
+    public void setidPersonal(int idPersonal){
+        this.idPersonal = idPersonal;
+    }
+    
+    
     //Estableciendo la conexión en el constructor
     public EntradaController(){
     //Establecemos la conexion
@@ -120,16 +131,17 @@ public class EntradaController {
     public boolean guardarEntradas(){
         boolean res = false;
         try{
-            String sql = "INSERT INTO RegistroEntrada(idTipoES, idVisitante, idPorton, residenciaVisita, motivoIngreso, fechaHora, permisoIngreso, emergencia) values (?,?,?,?,?,?,?,?) ";//se pasan por referencia por seguridad
+            String sql = "INSERT INTO RegistroEntrada(idTipoES, idVisitante, idPorton, idPersonal, residenciaVisita, motivoIngreso, fechaHora, permisoIngreso, emergencia) values (?,?,?,?,?,?,?,?,?) ";//se pasan por referencia por seguridad
             PreparedStatement cmd = cn.prepareStatement(sql);
             cmd.setInt(1,idTipoES);
             cmd.setInt(2, idVisitante);
             cmd.setInt(3, idPorton);
-            cmd.setInt(4, idResidencia);
-            cmd.setString(5, motivoIngreso);
-            cmd.setString(6, fechaHora);
-            cmd.setInt(7,permisoEntrada);
-            cmd.setInt(8, emergencia);
+            cmd.setInt(4, idPersonal);
+            cmd.setInt(5, idResidencia);
+            cmd.setString(6, motivoIngreso);
+            cmd.setString(7, fechaHora);
+            cmd.setInt(8,permisoEntrada);
+            cmd.setInt(9, emergencia);
             if (!cmd.execute()) {
                 res=true;
             }
@@ -146,17 +158,18 @@ public class EntradaController {
     public boolean modificarZona(){
         boolean res = false;
         try{
-            String sql = "UPDATE RegistroEntrada SET idTipoES =?, idVisitante =?, idPorton =?, residenciaVisita =?, motivoIngreso =?, fechaHora =?, permisoIngreso =?, emergencia =? WHERE idRegistroIngreso =?";//se pasan por referencia por seguridad
+            String sql = "UPDATE RegistroEntrada SET idTipoES =?, idVisitante =?, idPorton =?, idPersonal =?, residenciaVisita =?, motivoIngreso =?, fechaHora =?, permisoIngreso =?, emergencia =? WHERE idRegistroIngreso =?";//se pasan por referencia por seguridad
             PreparedStatement cmd = cn.prepareStatement(sql);
             cmd.setInt(1,idTipoES);
             cmd.setInt(2, idVisitante);
             cmd.setInt(3, idPorton);
-            cmd.setInt(4, idResidencia);
-            cmd.setString(5, motivoIngreso);
-            cmd.setString(6, fechaHora);
-            cmd.setInt(7,permisoEntrada);
-            cmd.setInt(8, emergencia);
-            cmd.setInt(9, idRegistroEntrada);
+            cmd.setInt(4, idPersonal);
+            cmd.setInt(5, idResidencia);
+            cmd.setString(6, motivoIngreso);
+            cmd.setString(7, fechaHora);
+            cmd.setInt(8,permisoEntrada);
+            cmd.setInt(9, emergencia);
+            cmd.setInt(10, idRegistroEntrada);
             if (!cmd.execute()) {
                 res=true;
             }
@@ -363,6 +376,31 @@ public class EntradaController {
         return res;
     }    
     
+    //Convirtiendo el valor del id: Personal
+    public boolean convertirPersonal(String nombre, String apellido){
+        boolean res = false;
+        try{
+            String sql = ("SELECT idPersonal FROM Personal WHERE nombres = ? and apellidos = ?");
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            cmd.setString(1, nombre);
+            cmd.setString(2, apellido);
+            //Ejecutar la consulta
+            ResultSet rs = cmd.executeQuery();
+            //recorrer la lista de registros
+            if(rs.next()){
+              res=true;
+              //asignándole a los atributos de la clase
+              setidPersonal(rs.getInt(1));
+            }
+            //cerrando conexion
+            cmd.close();                       
+        }
+        catch(Exception ex){
+            
+        }
+        return res;
+    }
+    
     //Convirtiendo el valor del combobox a Id: TipoES
     public boolean convertirResidencia(String residencia){
         boolean res = false;
@@ -402,11 +440,12 @@ public class EntradaController {
                 idTipoES = res.getInt(2);
                 idVisitante = res.getInt(3);
                 idPorton = res.getInt(4);
-                idResidencia = res.getInt(5);
-                motivoIngreso = res.getString(6);
-                fechaHora = res.getString(7);
-                permisoEntrada = res.getInt(8);
-                emergencia = res.getInt(9);
+                idPersonal = res.getInt(5);
+                idResidencia = res.getInt(6);
+                motivoIngreso = res.getString(7);
+                fechaHora = res.getString(8);
+                permisoEntrada = res.getInt(9);
+                emergencia = res.getInt(10);
             }
             //cerrando conexion
             cmd.close();

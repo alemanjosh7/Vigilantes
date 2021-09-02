@@ -38,7 +38,8 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
         //Llenar datos del usuario
         FrmLogin log = new FrmLogin();
         lblCargoUsuario.setText(log.cargo);
-        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);        
+        lblNombreUsuario.setText(log.nombres);        
+        lblApellidoUsuario.setText(log.apellidos);
     }
 
     /**
@@ -71,18 +72,19 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
         jFTidSalida = new javax.swing.JTextField();
         lblHoraFecha = new javax.swing.JLabel();
         jFTfechaHora = new javax.swing.JTextField();
-        jPToolStrip = new javax.swing.JPanel();
-        lblExitButton = new javax.swing.JLabel();
-        lblCargoUsuario = new javax.swing.JLabel();
-        lblCargo = new javax.swing.JLabel();
-        lblNombreUsuario = new javax.swing.JLabel();
-        lblUsuario = new javax.swing.JLabel();
         jPSideBar = new javax.swing.JPanel();
         jPImageContainer = new javax.swing.JPanel();
         lblSistemaVigilantes = new javax.swing.JLabel();
         lblImgBusqueda = new javax.swing.JLabel();
         jPbtnSBContainer = new javax.swing.JPanel();
         btnGoLogIn = new javax.swing.JButton();
+        jPToolStrip = new javax.swing.JPanel();
+        lblExitButton = new javax.swing.JLabel();
+        lblCargoUsuario = new javax.swing.JLabel();
+        lblCargo = new javax.swing.JLabel();
+        lblNombreUsuario = new javax.swing.JLabel();
+        lblUsuario = new javax.swing.JLabel();
+        lblApellidoUsuario = new javax.swing.JLabel();
 
         jFTidZona.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jFTidZona.setPreferredSize(new java.awt.Dimension(6, 30));
@@ -331,66 +333,6 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
         getContentPane().add(jPContainer);
         jPContainer.setBounds(290, 60, 1098, 710);
 
-        jPToolStrip.setBackground(new java.awt.Color(255, 211, 105));
-        jPToolStrip.setMinimumSize(new java.awt.Dimension(1082, 61));
-
-        lblExitButton.setFont(new java.awt.Font("Segoe UI", 0, 42)); // NOI18N
-        lblExitButton.setText("x");
-        lblExitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblExitButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblExitButtonMouseClicked(evt);
-            }
-        });
-
-        lblCargoUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblCargoUsuario.setText("Administrador");
-
-        lblCargo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblCargo.setText("Cargo:");
-
-        lblNombreUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblNombreUsuario.setText("Josué Alemán");
-
-        lblUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblUsuario.setText("Usuario:");
-
-        javax.swing.GroupLayout jPToolStripLayout = new javax.swing.GroupLayout(jPToolStrip);
-        jPToolStrip.setLayout(jPToolStripLayout);
-        jPToolStripLayout.setHorizontalGroup(
-            jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPToolStripLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(lblUsuario)
-                .addGap(27, 27, 27)
-                .addComponent(lblNombreUsuario)
-                .addGap(60, 60, 60)
-                .addComponent(lblCargo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblCargoUsuario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 560, Short.MAX_VALUE)
-                .addComponent(lblExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
-        );
-        jPToolStripLayout.setVerticalGroup(
-            jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPToolStripLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(jPToolStripLayout.createSequentialGroup()
-                        .addGap(0, 10, Short.MAX_VALUE)
-                        .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblUsuario)
-                            .addComponent(lblNombreUsuario)
-                            .addComponent(lblCargo)
-                            .addComponent(lblCargoUsuario))))
-                .addContainerGap())
-        );
-
-        getContentPane().add(jPToolStrip);
-        jPToolStrip.setBounds(290, 0, 1080, 61);
-
         jPSideBar.setBackground(new java.awt.Color(57, 62, 70));
         jPSideBar.setPreferredSize(new java.awt.Dimension(287, 811));
         jPSideBar.setRequestFocusEnabled(false);
@@ -486,6 +428,72 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
         getContentPane().add(jPSideBar);
         jPSideBar.setBounds(0, 0, 287, 811);
 
+        jPToolStrip.setBackground(new java.awt.Color(255, 211, 105));
+        jPToolStrip.setMinimumSize(new java.awt.Dimension(1082, 61));
+
+        lblExitButton.setFont(new java.awt.Font("Segoe UI", 0, 42)); // NOI18N
+        lblExitButton.setText("x");
+        lblExitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblExitButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblExitButtonMouseClicked(evt);
+            }
+        });
+
+        lblCargoUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblCargoUsuario.setText("Administrador");
+
+        lblCargo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblCargo.setText("Cargo:");
+
+        lblNombreUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNombreUsuario.setText("Josué Alemán");
+
+        lblUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblUsuario.setText("Usuario:");
+
+        lblApellidoUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblApellidoUsuario.setText("Josué Alemán");
+
+        javax.swing.GroupLayout jPToolStripLayout = new javax.swing.GroupLayout(jPToolStrip);
+        jPToolStrip.setLayout(jPToolStripLayout);
+        jPToolStripLayout.setHorizontalGroup(
+            jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPToolStripLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(lblUsuario)
+                .addGap(27, 27, 27)
+                .addComponent(lblNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblApellidoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
+                .addComponent(lblCargo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblCargoUsuario)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 245, Short.MAX_VALUE)
+                .addComponent(lblExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
+        );
+        jPToolStripLayout.setVerticalGroup(
+            jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPToolStripLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(jPToolStripLayout.createSequentialGroup()
+                        .addGap(0, 10, Short.MAX_VALUE)
+                        .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblUsuario)
+                            .addComponent(lblNombreUsuario)
+                            .addComponent(lblCargo)
+                            .addComponent(lblCargoUsuario)
+                            .addComponent(lblApellidoUsuario))))
+                .addContainerGap())
+        );
+
+        getContentPane().add(jPToolStrip);
+        jPToolStrip.setBounds(280, 0, 1090, 61);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -530,7 +538,11 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");  
         } 
         else{
+            String nombre, apellido;
+            nombre = lblNombreUsuario.getText();
+            apellido = lblApellidoUsuario.getText();
             // Registrar los datos a la Tabla registro Salida
+            SC.convertirPersonal(nombre, apellido);
             SC.setIdPorton(Integer.parseInt(cmbPortonSalida.getSelectedItem().toString()));
             SC.convertirVisitante(cmbVisitante.getSelectedItem().toString());
             SC.convertirTipoES(cmbTipoES.getSelectedItem().toString());
@@ -553,7 +565,11 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");  
         } 
         else{
+            String nombre, apellido;
+            nombre = lblNombreUsuario.getText();
+            apellido = lblApellidoUsuario.getText();
             // Actualizar los datos a la Tabla registro Salida
+            SC.convertirPersonal(nombre, apellido);
             SC.setIdRegistroSalida(Integer.parseInt(jFTidSalida.getText()));
             SC.setIdPorton(Integer.parseInt(cmbPortonSalida.getSelectedItem().toString()));
             SC.convertirVisitante(cmbVisitante.getSelectedItem().toString());
@@ -706,6 +722,7 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
     private javax.swing.JPanel jPbtnSBContainer;
     private javax.swing.JScrollPane jSTablaDatos;
     private javax.swing.JTable jTRegistroSalida;
+    private javax.swing.JLabel lblApellidoUsuario;
     private javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblCargoUsuario;
     private javax.swing.JLabel lblExitButton;
