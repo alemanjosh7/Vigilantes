@@ -18,6 +18,7 @@ import javax.swing.ButtonModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
@@ -30,27 +31,24 @@ public class FrmPagoPersonal extends javax.swing.JFrame {
     private Conexion enlace = new Conexion();
     private Connection conect = enlace.conectar();
     private PagoController PC = new PagoController();
-    private Object Interger;
 
     /**
      * Creates new form PagoPersonal
      */
-    public FrmPagoPersonal() throws SQLException {
+    public FrmPagoPersonal(){
         initComponents();
         //Cargamos los combobox.
-        this.cmbRecibePago.setModel(PC.consultarPersonal());
-        this.cmbEncargado.setModel(PC.consultarEncargado());
-        //cargamos la tabla 
-        CargarDatosTablaPago();
-        TxtFecha.setText(fechaActual());
-        //Llenar datos del usuario
-        FrmLogin log = new FrmLogin();
-        lblCargoUsuario.setText(log.cargo);
-        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);
+     this.cmbRecibePago.setModel(PC.consultarPersonal());
+     this.cmbEncargado.setModel(PC.consultarEncargado());
+     //cargamos la tabla 
+     CargarDatosTablaPago();
+      FrmLogin log = new FrmLogin();
+       lblCargoUsuario.setText(log.cargo);
+       lblNombreUsuario.setText(log.nombres + " " + log.apellidos);
     }
 
     //Mostrar los datos de la tabla
-    public void CargarDatosTablaPago() throws SQLException{
+    public void CargarDatosTablaPago(){
         this.jTPagoPersonal.setModel(PC.consultarDatosTablaPago());
     }
     
@@ -64,23 +62,31 @@ public class FrmPagoPersonal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPPagoPersonal = new javax.swing.JPanel();
-        jPContenedorPago = new javax.swing.JPanel();
-        lblRecibePago = new javax.swing.JLabel();
-        lblCantidadPagar = new javax.swing.JLabel();
-        lblPagoPersonal = new javax.swing.JLabel();
-        lblEncagadoPago = new javax.swing.JLabel();
+        jPContenedorPago4 = new javax.swing.JPanel();
+        lblRecibePago4 = new javax.swing.JLabel();
+        lblCantidadPagar4 = new javax.swing.JLabel();
+        lblPagoPersonal4 = new javax.swing.JLabel();
+        lblEncagadoPago4 = new javax.swing.JLabel();
         cmbRecibePago = new javax.swing.JComboBox<>();
-        btnModificar = new javax.swing.JButton();
-        btnLimpiar = new javax.swing.JButton();
-        btnRegistrar = new javax.swing.JButton();
-        lblFechaPago = new javax.swing.JLabel();
-        jSTablaDatosPago = new javax.swing.JScrollPane();
+        lblFechaPago8 = new javax.swing.JLabel();
+        jSTablaDatosPago4 = new javax.swing.JScrollPane();
         jTPagoPersonal = new javax.swing.JTable();
         cmbEncargado = new javax.swing.JComboBox<>();
-        TxtFecha = new javax.swing.JTextField();
         TxtCantidadPago = new javax.swing.JTextField();
-        btnConsultar = new javax.swing.JButton();
         jFBusqueda = new javax.swing.JTextField();
+        lblFechaPago9 = new javax.swing.JLabel();
+        jPButtons = new javax.swing.JPanel();
+        btnRegistrar4 = new javax.swing.JButton();
+        btnLimpiar4 = new javax.swing.JButton();
+        btnModificar4 = new javax.swing.JButton();
+        btnConsultar4 = new javax.swing.JButton();
+        jDateFecha = new com.toedter.calendar.JDateChooser();
+        jPSideBar = new javax.swing.JPanel();
+        jPImageContainer = new javax.swing.JPanel();
+        lblSistemaVigilantes = new javax.swing.JLabel();
+        lblImgBusqueda = new javax.swing.JLabel();
+        jPbtnSBContainer = new javax.swing.JPanel();
+        btnGoLogIn = new javax.swing.JButton();
         jPToolStrip = new javax.swing.JPanel();
         lblExitButton = new javax.swing.JLabel();
         btnTheme = new javax.swing.JButton();
@@ -88,36 +94,33 @@ public class FrmPagoPersonal extends javax.swing.JFrame {
         lblCargo = new javax.swing.JLabel();
         lblNombreUsuario = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
-        jPSideBar = new javax.swing.JPanel();
-        jPImageContainer = new javax.swing.JPanel();
-        lblSistemaVigilantes = new javax.swing.JLabel();
-        lblImgBusqueda = new javax.swing.JLabel();
-        jPbtnSBContainer = new javax.swing.JPanel();
-        btnGoLogIn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(32767, 32767));
         setMinimumSize(new java.awt.Dimension(1366, 768));
         setUndecorated(true);
         getContentPane().setLayout(null);
 
         jPPagoPersonal.setMinimumSize(new java.awt.Dimension(1366, 768));
+        jPPagoPersonal.setName(""); // NOI18N
         jPPagoPersonal.setLayout(null);
 
-        jPContenedorPago.setBackground(new java.awt.Color(255, 255, 255));
-        jPContenedorPago.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPContenedorPago4.setBackground(new java.awt.Color(255, 255, 255));
+        jPContenedorPago4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPContenedorPago4.setName(""); // NOI18N
 
-        lblRecibePago.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblRecibePago.setText("Recibe el pago:");
+        lblRecibePago4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblRecibePago4.setText("Recibe el pago:");
 
-        lblCantidadPagar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblCantidadPagar.setText("Cantidad a pagar ($):");
+        lblCantidadPagar4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblCantidadPagar4.setText("Cantidad a pagar ($):");
 
-        lblPagoPersonal.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        lblPagoPersonal.setForeground(new java.awt.Color(255, 211, 105));
-        lblPagoPersonal.setText("Pago del Personal");
+        lblPagoPersonal4.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        lblPagoPersonal4.setForeground(new java.awt.Color(255, 211, 105));
+        lblPagoPersonal4.setText("Pago del Personal");
 
-        lblEncagadoPago.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblEncagadoPago.setText("Encargado de el Pago:");
+        lblEncagadoPago4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblEncagadoPago4.setText("Encargado de el Pago:");
 
         cmbRecibePago.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         cmbRecibePago.addActionListener(new java.awt.event.ActionListener() {
@@ -126,44 +129,8 @@ public class FrmPagoPersonal extends javax.swing.JFrame {
             }
         });
 
-        btnModificar.setBackground(new java.awt.Color(255, 211, 105));
-        btnModificar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnModificar.setText("Modificar");
-        btnModificar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnModificar.setContentAreaFilled(false);
-        btnModificar.setFocusable(false);
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
-            }
-        });
-
-        btnLimpiar.setBackground(new java.awt.Color(255, 211, 105));
-        btnLimpiar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnLimpiar.setText("Limpiar");
-        btnLimpiar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnLimpiar.setContentAreaFilled(false);
-        btnLimpiar.setFocusable(false);
-        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimpiarActionPerformed(evt);
-            }
-        });
-
-        btnRegistrar.setBackground(new java.awt.Color(255, 211, 105));
-        btnRegistrar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnRegistrar.setText("Registrar");
-        btnRegistrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnRegistrar.setContentAreaFilled(false);
-        btnRegistrar.setFocusable(false);
-        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarActionPerformed(evt);
-            }
-        });
-
-        lblFechaPago.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblFechaPago.setText("Fecha del Pago:");
+        lblFechaPago8.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblFechaPago8.setText("ID Pago");
 
         jTPagoPersonal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -190,7 +157,7 @@ public class FrmPagoPersonal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jSTablaDatosPago.setViewportView(jTPagoPersonal);
+        jSTablaDatosPago4.setViewportView(jTPagoPersonal);
 
         cmbEncargado.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         cmbEncargado.addActionListener(new java.awt.event.ActionListener() {
@@ -199,196 +166,187 @@ public class FrmPagoPersonal extends javax.swing.JFrame {
             }
         });
 
-        TxtFecha.setEditable(false);
-        TxtFecha.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-
+        TxtCantidadPago.setEditable(false);
         TxtCantidadPago.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        TxtCantidadPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtCantidadPagoActionPerformed(evt);
+            }
+        });
 
-        btnConsultar.setBackground(new java.awt.Color(255, 211, 105));
-        btnConsultar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnConsultar.setText("Consultar");
-        btnConsultar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnConsultar.setContentAreaFilled(false);
-        btnConsultar.setFocusable(false);
-        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+        jFBusqueda.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFBusquedaActionPerformed(evt);
+            }
+        });
+
+        lblFechaPago9.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblFechaPago9.setText("Fecha (mm-dd-aaaa):");
+
+        jPButtons.setBackground(new java.awt.Color(255, 255, 255));
+
+        btnRegistrar4.setBackground(new java.awt.Color(255, 211, 105));
+        btnRegistrar4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnRegistrar4.setText("Registrar");
+        btnRegistrar4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnRegistrar4.setContentAreaFilled(false);
+        btnRegistrar4.setFocusable(false);
+        btnRegistrar4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
+
+        btnLimpiar4.setBackground(new java.awt.Color(255, 211, 105));
+        btnLimpiar4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnLimpiar4.setText("Limpiar");
+        btnLimpiar4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnLimpiar4.setContentAreaFilled(false);
+        btnLimpiar4.setFocusable(false);
+        btnLimpiar4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+
+        btnModificar4.setBackground(new java.awt.Color(255, 211, 105));
+        btnModificar4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnModificar4.setText("Modificar");
+        btnModificar4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnModificar4.setContentAreaFilled(false);
+        btnModificar4.setFocusable(false);
+        btnModificar4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+
+        btnConsultar4.setBackground(new java.awt.Color(255, 211, 105));
+        btnConsultar4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnConsultar4.setText("Consultar");
+        btnConsultar4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnConsultar4.setContentAreaFilled(false);
+        btnConsultar4.setFocusable(false);
+        btnConsultar4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultarActionPerformed(evt);
             }
         });
 
-        jFBusqueda.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-
-        javax.swing.GroupLayout jPContenedorPagoLayout = new javax.swing.GroupLayout(jPContenedorPago);
-        jPContenedorPago.setLayout(jPContenedorPagoLayout);
-        jPContenedorPagoLayout.setHorizontalGroup(
-            jPContenedorPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPContenedorPagoLayout.createSequentialGroup()
-                .addGap(103, 103, 103)
-                .addComponent(lblCantidadPagar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblFechaPago)
-                .addGap(179, 179, 179))
-            .addGroup(jPContenedorPagoLayout.createSequentialGroup()
-                .addGap(89, 89, 89)
-                .addGroup(jPContenedorPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPContenedorPagoLayout.createSequentialGroup()
-                        .addGroup(jPContenedorPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbEncargado, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPContenedorPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TxtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbRecibePago, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(91, 91, 91))
-                    .addGroup(jPContenedorPagoLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(lblEncagadoPago)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblRecibePago)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jFBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62))))
-            .addGroup(jPContenedorPagoLayout.createSequentialGroup()
-                .addGroup(jPContenedorPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPContenedorPagoLayout.createSequentialGroup()
-                        .addGap(416, 416, 416)
-                        .addComponent(lblPagoPersonal))
-                    .addGroup(jPContenedorPagoLayout.createSequentialGroup()
-                        .addGap(114, 114, 114)
-                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(321, 321, 321)
-                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(84, 84, 84)
-                        .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(138, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPContenedorPagoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSTablaDatosPago, javax.swing.GroupLayout.PREFERRED_SIZE, 951, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
-            .addGroup(jPContenedorPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPContenedorPagoLayout.createSequentialGroup()
-                    .addGap(99, 99, 99)
-                    .addComponent(TxtCantidadPago)
-                    .addGap(579, 579, 579)))
-        );
-        jPContenedorPagoLayout.setVerticalGroup(
-            jPContenedorPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPContenedorPagoLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(jPContenedorPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPContenedorPagoLayout.createSequentialGroup()
-                        .addComponent(jFBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addGroup(jPContenedorPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbEncargado, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbRecibePago, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPContenedorPagoLayout.createSequentialGroup()
-                        .addComponent(lblPagoPersonal)
-                        .addGap(27, 27, 27)
-                        .addGroup(jPContenedorPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblEncagadoPago)
-                            .addComponent(lblRecibePago))
-                        .addGap(79, 79, 79)))
-                .addGap(24, 24, 24)
-                .addGroup(jPContenedorPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCantidadPagar)
-                    .addComponent(lblFechaPago))
-                .addGap(18, 18, 18)
-                .addComponent(TxtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addGroup(jPContenedorPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSTablaDatosPago, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 21, Short.MAX_VALUE))
-            .addGroup(jPContenedorPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPContenedorPagoLayout.createSequentialGroup()
-                    .addGap(251, 251, 251)
-                    .addComponent(TxtCantidadPago, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(381, Short.MAX_VALUE)))
-        );
-
-        jPPagoPersonal.add(jPContenedorPago);
-        jPContenedorPago.setBounds(0, 0, 1030, 670);
-
-        getContentPane().add(jPPagoPersonal);
-        jPPagoPersonal.setBounds(297, 68, 1040, 690);
-
-        jPToolStrip.setBackground(new java.awt.Color(255, 211, 105));
-        jPToolStrip.setMinimumSize(new java.awt.Dimension(1082, 61));
-
-        lblExitButton.setFont(new java.awt.Font("Segoe UI", 0, 42)); // NOI18N
-        lblExitButton.setText("x");
-        lblExitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblExitButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblExitButtonMouseClicked(evt);
-            }
-        });
-
-        btnTheme.setAlignmentY(0.7F);
-        btnTheme.setContentAreaFilled(false);
-        btnTheme.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnTheme.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemeActionPerformed(evt);
-            }
-        });
-
-        lblCargoUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblCargoUsuario.setText("Administrador");
-
-        lblCargo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblCargo.setText("Cargo:");
-
-        lblNombreUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblNombreUsuario.setText("Josué Alemán");
-
-        lblUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblUsuario.setText("Usuario:");
-
-        javax.swing.GroupLayout jPToolStripLayout = new javax.swing.GroupLayout(jPToolStrip);
-        jPToolStrip.setLayout(jPToolStripLayout);
-        jPToolStripLayout.setHorizontalGroup(
-            jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPToolStripLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(lblUsuario)
-                .addGap(27, 27, 27)
-                .addComponent(lblNombreUsuario)
-                .addGap(60, 60, 60)
-                .addComponent(lblCargo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblCargoUsuario)
-                .addGap(219, 219, 219)
-                .addComponent(btnTheme, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 257, Short.MAX_VALUE)
-                .addComponent(lblExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
-        );
-        jPToolStripLayout.setVerticalGroup(
-            jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPToolStripLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(jPToolStripLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnTheme, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblUsuario)
-                                .addComponent(lblNombreUsuario)
-                                .addComponent(lblCargo)
-                                .addComponent(lblCargoUsuario)))))
+        javax.swing.GroupLayout jPButtonsLayout = new javax.swing.GroupLayout(jPButtons);
+        jPButtons.setLayout(jPButtonsLayout);
+        jPButtonsLayout.setHorizontalGroup(
+            jPButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPButtonsLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(btnLimpiar4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(148, 148, 148)
+                .addComponent(btnRegistrar4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
+                .addComponent(btnModificar4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(160, 160, 160)
+                .addComponent(btnConsultar4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+        jPButtonsLayout.setVerticalGroup(
+            jPButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPButtonsLayout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addGroup(jPButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegistrar4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLimpiar4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModificar4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConsultar4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25))
+        );
 
-        getContentPane().add(jPToolStrip);
-        jPToolStrip.setBounds(290, 0, 1040, 61);
+        jDateFecha.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jDateFecha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jDateFechaKeyTyped(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPContenedorPago4Layout = new javax.swing.GroupLayout(jPContenedorPago4);
+        jPContenedorPago4.setLayout(jPContenedorPago4Layout);
+        jPContenedorPago4Layout.setHorizontalGroup(
+            jPContenedorPago4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPContenedorPago4Layout.createSequentialGroup()
+                .addGroup(jPContenedorPago4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPContenedorPago4Layout.createSequentialGroup()
+                        .addGap(416, 416, 416)
+                        .addComponent(lblPagoPersonal4))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPContenedorPago4Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(jPContenedorPago4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSTablaDatosPago4, javax.swing.GroupLayout.PREFERRED_SIZE, 944, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(45, Short.MAX_VALUE))
+            .addGroup(jPContenedorPago4Layout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addGroup(jPContenedorPago4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPContenedorPago4Layout.createSequentialGroup()
+                        .addGroup(jPContenedorPago4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblEncagadoPago4)
+                            .addComponent(TxtCantidadPago, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCantidadPagar4))
+                        .addGap(73, 73, 73)
+                        .addGroup(jPContenedorPago4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPContenedorPago4Layout.createSequentialGroup()
+                                .addComponent(lblFechaPago9)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPContenedorPago4Layout.createSequentialGroup()
+                                .addComponent(lblRecibePago4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblFechaPago8)
+                                .addGap(98, 98, 98))
+                            .addGroup(jPContenedorPago4Layout.createSequentialGroup()
+                                .addGroup(jPContenedorPago4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jDateFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cmbRecibePago, 0, 350, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jFBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29))))
+                    .addGroup(jPContenedorPago4Layout.createSequentialGroup()
+                        .addComponent(cmbEncargado, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+        );
+        jPContenedorPago4Layout.setVerticalGroup(
+            jPContenedorPago4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPContenedorPago4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblPagoPersonal4)
+                .addGap(21, 21, 21)
+                .addGroup(jPContenedorPago4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEncagadoPago4)
+                    .addComponent(lblRecibePago4)
+                    .addComponent(lblFechaPago8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPContenedorPago4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbEncargado, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbRecibePago, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGroup(jPContenedorPago4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCantidadPagar4)
+                    .addComponent(lblFechaPago9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPContenedorPago4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(TxtCantidadPago, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(jDateFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jSTablaDatosPago4, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
+        );
+
+        jPPagoPersonal.add(jPContenedorPago4);
+        jPContenedorPago4.setBounds(0, 10, 1060, 630);
+
+        getContentPane().add(jPPagoPersonal);
+        jPPagoPersonal.setBounds(297, 68, 1070, 700);
 
         jPSideBar.setBackground(new java.awt.Color(57, 62, 70));
         jPSideBar.setPreferredSize(new java.awt.Dimension(287, 811));
@@ -447,16 +405,15 @@ public class FrmPagoPersonal extends javax.swing.JFrame {
         jPbtnSBContainerLayout.setHorizontalGroup(
             jPbtnSBContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPbtnSBContainerLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(btnGoLogIn)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addGap(0, 59, Short.MAX_VALUE))
         );
         jPbtnSBContainerLayout.setVerticalGroup(
             jPbtnSBContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPbtnSBContainerLayout.createSequentialGroup()
-                .addContainerGap(115, Short.MAX_VALUE)
+            .addGroup(jPbtnSBContainerLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(btnGoLogIn)
-                .addGap(82, 82, 82))
+                .addContainerGap(215, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPSideBarLayout = new javax.swing.GroupLayout(jPSideBar);
@@ -483,7 +440,80 @@ public class FrmPagoPersonal extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPSideBar);
-        jPSideBar.setBounds(0, 0, 287, 811);
+        jPSideBar.setBounds(0, 0, 287, 710);
+
+        jPToolStrip.setBackground(new java.awt.Color(255, 211, 105));
+        jPToolStrip.setMinimumSize(new java.awt.Dimension(1082, 61));
+
+        lblExitButton.setFont(new java.awt.Font("Segoe UI", 0, 42)); // NOI18N
+        lblExitButton.setText("x");
+        lblExitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblExitButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblExitButtonMouseClicked(evt);
+            }
+        });
+
+        btnTheme.setAlignmentY(0.7F);
+        btnTheme.setContentAreaFilled(false);
+        btnTheme.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTheme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemeActionPerformed(evt);
+            }
+        });
+
+        lblCargoUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblCargoUsuario.setText("Administrador");
+
+        lblCargo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblCargo.setText("Cargo:");
+
+        lblNombreUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNombreUsuario.setText("Josué Alemán");
+
+        lblUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblUsuario.setText("Usuario:");
+
+        javax.swing.GroupLayout jPToolStripLayout = new javax.swing.GroupLayout(jPToolStrip);
+        jPToolStrip.setLayout(jPToolStripLayout);
+        jPToolStripLayout.setHorizontalGroup(
+            jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPToolStripLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(lblUsuario)
+                .addGap(27, 27, 27)
+                .addComponent(lblNombreUsuario)
+                .addGap(60, 60, 60)
+                .addComponent(lblCargo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblCargoUsuario)
+                .addGap(219, 219, 219)
+                .addComponent(btnTheme, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 307, Short.MAX_VALUE)
+                .addComponent(lblExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
+        );
+        jPToolStripLayout.setVerticalGroup(
+            jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPToolStripLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(jPToolStripLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnTheme, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblUsuario)
+                                .addComponent(lblNombreUsuario)
+                                .addComponent(lblCargo)
+                                .addComponent(lblCargoUsuario)))))
+                .addContainerGap())
+        );
+
+        getContentPane().add(jPToolStrip);
+        jPToolStrip.setBounds(280, 0, 1090, 61);
 
         pack();
         setLocationRelativeTo(null);
@@ -495,16 +525,18 @@ public class FrmPagoPersonal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");  
         }
         {
+            PC.setCantidadPago(Integer.parseInt(TxtCantidadPago.getText()));
             PC.convertirEmisor(cmbEncargado.getSelectedItem().toString());
             PC.convertirReceptor(cmbRecibePago.getSelectedItem().toString());
-            PC.setfechaPago(TxtFecha.getText());            
+            String date  = ((JTextField) jDateFecha.getDateEditor().getUiComponent()).getText();
+            PC.setfechaPago(date);
             //Enviando los datos a SQL
             if (PC.guardarPagos()) {
                 try {
                     JOptionPane.showMessageDialog(this,"Datos guardados exitosamente");
                     CargarDatosTablaPago();
-                } catch (SQLException ex) {
-                    Logger.getLogger(FrmPagoPersonal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception ex) {
+                    System.out.println(ex.toString());
                 }
             }
             else{
@@ -557,8 +589,9 @@ public class FrmPagoPersonal extends javax.swing.JFrame {
             PC.setIdPago(Integer.parseInt(jFBusqueda.getText()));
             if (PC.consultarPago()) {
                 TxtCantidadPago.setText(String.valueOf(PC.getCantidadPago()));
-                TxtFecha.setText(PC.getfechaPago());
                 this.jTPagoPersonal.setModel(PC.consultarTablaFiltrada());
+                String date  = ((JTextField) jDateFecha.getDateEditor().getUiComponent()).getText();
+                 PC.setfechaPago(date);
             }
             else{
                 JOptionPane.showMessageDialog(this, "Error al consultar");
@@ -573,16 +606,18 @@ public class FrmPagoPersonal extends javax.swing.JFrame {
           } 
         else{
             // Registrar los datos a la Tabla registro Salida
+            PC.setCantidadPago(Integer.parseInt(TxtCantidadPago.getText()));
             PC.convertirEmisor(cmbEncargado.getSelectedItem().toString());
             PC.convertirReceptor(cmbRecibePago.getSelectedItem().toString());
-            PC.setfechaPago(TxtFecha.getText());
+            String date  = ((JTextField) jDateFecha.getDateEditor().getUiComponent()).getText();
+            PC.setfechaPago(date);
             //Enviando los datos a SQL
             if (PC.guardarPagos()) {
                 try {
                     JOptionPane.showMessageDialog(this,"Datos guardados exitosamente");
                     CargarDatosTablaPago();
-                } catch (SQLException ex) {
-                    Logger.getLogger(FrmPagoPersonal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception ex) {
+                  JOptionPane.showMessageDialog(this,"Datos no actualizado");
                 }
             }
             else{
@@ -591,20 +626,25 @@ public class FrmPagoPersonal extends javax.swing.JFrame {
             LimpiarCamposPago();
         }
     }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void jDateFechaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDateFechaKeyTyped
+        //Evita que se escriba
+        evt.consume();
+    }//GEN-LAST:event_jDateFechaKeyTyped
+
+    private void jFBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFBusquedaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFBusquedaActionPerformed
+
+    private void TxtCantidadPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtCantidadPagoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtCantidadPagoActionPerformed
 //Limpiamos todos los campos 
     public void LimpiarCamposPago(){
         TxtCantidadPago.setText("");
         cmbEncargado.setSelectedIndex(0);
         cmbRecibePago.setSelectedIndex(0);
-    }
-    
-    //Establecemos una fecha y hora actual 
-     //Obtener la hora actual
-    private String fechaActual() {
-        Date fecha = new Date();
-        SimpleDateFormat formatoFecha= new SimpleDateFormat("YYYY-MM-dd hh:mm:ss");
-        return formatoFecha.format(fecha);
-    }    
+    }   
     /**
      * @param args the command line arguments
      */
@@ -636,45 +676,43 @@ public class FrmPagoPersonal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new FrmPagoPersonal().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(FrmPagoPersonal.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new FrmPersonal().setVisible(true);
     }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField TxtCantidadPago;
-    private javax.swing.JTextField TxtFecha;
-    private javax.swing.JButton btnConsultar;
+    private javax.swing.JButton btnConsultar4;
     private javax.swing.JButton btnGoLogIn;
-    private javax.swing.JButton btnLimpiar;
-    private javax.swing.JButton btnModificar;
-    private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnLimpiar4;
+    private javax.swing.JButton btnModificar4;
+    private javax.swing.JButton btnRegistrar4;
     private javax.swing.JButton btnTheme;
     private javax.swing.JComboBox<String> cmbEncargado;
     private javax.swing.JComboBox<String> cmbRecibePago;
+    private com.toedter.calendar.JDateChooser jDateFecha;
     private javax.swing.JTextField jFBusqueda;
-    private javax.swing.JPanel jPContenedorPago;
+    private javax.swing.JPanel jPButtons;
+    private javax.swing.JPanel jPContenedorPago4;
     private javax.swing.JPanel jPImageContainer;
     private javax.swing.JPanel jPPagoPersonal;
     private javax.swing.JPanel jPSideBar;
     private javax.swing.JPanel jPToolStrip;
     private javax.swing.JPanel jPbtnSBContainer;
-    private javax.swing.JScrollPane jSTablaDatosPago;
+    private javax.swing.JScrollPane jSTablaDatosPago4;
     private javax.swing.JTable jTPagoPersonal;
-    private javax.swing.JLabel lblCantidadPagar;
+    private javax.swing.JLabel lblCantidadPagar4;
     private javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblCargoUsuario;
-    private javax.swing.JLabel lblEncagadoPago;
+    private javax.swing.JLabel lblEncagadoPago4;
     private javax.swing.JLabel lblExitButton;
-    private javax.swing.JLabel lblFechaPago;
+    private javax.swing.JLabel lblFechaPago8;
+    private javax.swing.JLabel lblFechaPago9;
     private javax.swing.JLabel lblImgBusqueda;
     private javax.swing.JLabel lblNombreUsuario;
-    private javax.swing.JLabel lblPagoPersonal;
-    private javax.swing.JLabel lblRecibePago;
+    private javax.swing.JLabel lblPagoPersonal4;
+    private javax.swing.JLabel lblRecibePago4;
     private javax.swing.JLabel lblSistemaVigilantes;
     private javax.swing.JLabel lblUsuario;
     // End of variables declaration//GEN-END:variables

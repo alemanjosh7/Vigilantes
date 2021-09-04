@@ -16,14 +16,15 @@ import java.sql.DriverManager;
  */
 public class Conexion {
     private String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    private String url = "jdbc:sqlserver://0.tcp.ngrok.io:18687; databaseName=TBDS_Sistema_Vigilantes";
+    private String url = "jdbc:sqlserver://0.tcp.ngrok.io:14577; databaseName=TBDS_Sistema_Vigilantes";
     private String user = "PTC_NewLogin";
     private String pswd = "ITR2021";
     public Connection cn = null;
 
     
-//    public Connection conectar(){
-//     try{
+//    public Connection conectar(){        
+//    Connection cn = null;
+//    try{
 //        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 //        //*pedira importar import java.sql.DriverManager;*/
 //        cn = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-8K90LO2P\\SQLSERVER; databaseName=TBDS_Sistema_Vigilantes; IntegratedSecurity=true;");
@@ -37,7 +38,7 @@ public class Conexion {
 //      }
 //        return cn;
 //    }
-//    
+    
     public Connection conectar(){
         try{
             Class.forName(driver);

@@ -139,12 +139,7 @@ public class FrmMenuPago extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPagosActionPerformed
-        FrmPagoPersonal PP = null;
-        try {
-            PP = new FrmPagoPersonal();
-        } catch (SQLException ex) {
-            Logger.getLogger(FrmMenuPago.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        FrmPagoPersonal PP = new FrmPagoPersonal();
         PP.show();
         dispose();
     }//GEN-LAST:event_btnRegistrarPagosActionPerformed

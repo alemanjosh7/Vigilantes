@@ -25,21 +25,20 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPSideBar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                      <Component id="jPToolStrip" max="32767" attributes="0"/>
+                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                      <Component id="jPBusquedaContainer" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
+                      <Component id="jSTablaDatosPago" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="jPBusquedaContainer" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="292" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="jSTablaDatosPago" alignment="1" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="jPToolStrip" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -55,7 +54,7 @@
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="jPBusquedaContainer" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                      <Component id="jSTablaDatosPago" min="-2" pref="516" max="-2" attributes="0"/>
+                      <Component id="jSTablaDatosPago" min="-2" pref="537" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jPSideBar" min="-2" pref="796" max="-2" attributes="0"/>
               </Group>
@@ -261,7 +260,7 @@
                       <Component id="jlblTipoEntrada" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jFTBusqueda" alignment="0" min="-2" pref="336" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="401" max="32767" attributes="0"/>
+                  <EmptySpace pref="419" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -303,7 +302,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Nombre del Vigilante:"/>
+            <Property name="text" type="java.lang.String" value="ID vigilante:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblImgBusqueda3">
@@ -339,7 +338,7 @@
                   <Component id="lblCargoUsuario" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
                   <Component id="btnTheme" min="-2" pref="44" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="361" max="32767" attributes="0"/>
                   <Component id="lblExitButton" min="-2" pref="25" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               </Group>

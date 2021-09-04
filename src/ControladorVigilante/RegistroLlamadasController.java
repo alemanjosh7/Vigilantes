@@ -218,10 +218,10 @@ public class RegistroLlamadasController {
         public DefaultComboBoxModel consultarPersonal(){
         DefaultComboBoxModel PersonalList = new DefaultComboBoxModel();
         PersonalList.addElement("Seleccione Personal ");
-        ResultSet res = this.consultaDatos("SELECT * FROM TipoPersonal");
+        ResultSet res = this.consultaDatos("SELECT * FROM Personal");
         try{
             while (res.next()) {
-                PersonalList.addElement(res.getString("idTipoPersonal"));
+                PersonalList.addElement(res.getString("nombres"));
             }
             res.close();
         }
@@ -234,7 +234,7 @@ public class RegistroLlamadasController {
         public boolean convertirPersonal(String Zonas){
         boolean res = false;
         try{
-            String sql = ("SELECT idTipoPersonal FROM TipoPersonal WHERE idTipoPersonal =?");
+            String sql = ("SELECT idPersonal FROM Personal WHERE nombres =?");
             PreparedStatement cmd = cn.prepareStatement(sql);
             cmd.setString(1, Zonas);
             //Ejecutar la consulta
@@ -243,7 +243,7 @@ public class RegistroLlamadasController {
             if(rs.next()){
               res=true;
               //asignándole a los atributos de la clase
-              setIdRegistro(rs.getInt(1));
+              setIdPersonal(rs.getInt(1));
             }
             //cerrando conexion
             cmd.close();
@@ -299,7 +299,7 @@ public class RegistroLlamadasController {
         ResultSet res = this.consultaDatos("SELECT * FROM Residente");
         try{
             while (res.next()) {
-                ResidentelList.addElement(res.getString("idResidente"));
+                ResidentelList.addElement(res.getString("nombres"));
             }
             res.close();
         }
@@ -312,7 +312,7 @@ public class RegistroLlamadasController {
         public boolean convertirResidente(String Zonas){
         boolean res = false;
         try{
-            String sql = ("SELECT idResidente FROM Residente WHERE idResidente =?");
+            String sql = ("SELECT idResidente FROM Residente WHERE nombres =?");
             PreparedStatement cmd = cn.prepareStatement(sql);
             cmd.setString(1, Zonas);
             //Ejecutar la consulta
@@ -321,7 +321,7 @@ public class RegistroLlamadasController {
             if(rs.next()){
               res=true;
               //asignándole a los atributos de la clase
-              setIdRegistro(rs.getInt(1));
+              setIdResidencia(rs.getInt(1));
             }
             //cerrando conexion
             cmd.close();
@@ -344,7 +344,7 @@ public class RegistroLlamadasController {
             
             String[] datos = new String[6];
            
-            ResultSet res = this.consultaDatos("select RL.idRegistroLl, TP.idTipoPersonal, RL.idPorton, R.nombres, RL.fecha, RL.motivoLlamada from RegistroLlamadas RL join TipoPersonal TP on RL.idPersonal = TP.idTipoPersonal  join Residente R  on RL.idResidencia = R.idResidente");
+            ResultSet res = this.consultaDatos("select RL.idRegistroLl, TP.nombres, RL.idPorton, R.nombres, RL.fecha, RL.motivoLlamada from RegistroLlamadas RL join Personal TP on RL.idPersonal = TP.idPersonal  join Residente R  on RL.idResidencia = R.idResidente");
 
             try{
                 while(res.next()){

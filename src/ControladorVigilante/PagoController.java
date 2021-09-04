@@ -103,7 +103,6 @@ public class PagoController {
             }
             //cerrando conexión
             cmd.close();
-            cn.close();
         }
         catch(Exception ex){
             System.out.println(ex.toString());
@@ -127,7 +126,6 @@ public class PagoController {
             }
     //cerrando conexión
             cmd.close();
-            cn.close();
         }
         catch(Exception ex){
             System.out.println(ex.toString());
@@ -147,7 +145,6 @@ public class PagoController {
             }
             //cerrando conexión
             cmd.close();
-            cn.close();
         }
         catch(Exception ex){
             System.out.println(ex.toString());

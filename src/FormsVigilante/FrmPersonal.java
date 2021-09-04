@@ -38,10 +38,6 @@ public class FrmPersonal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         mostrarDatos();
-        //Llenar datos del usuario
-        FrmLogin log = new FrmLogin();
-        lblCargoUsuario.setText(log.cargo);
-        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);        
         
     }
     
@@ -281,14 +277,14 @@ public class FrmPersonal extends javax.swing.JFrame {
         jPGestionVigilante.add(lblSalarioMensual);
         lblSalarioMensual.setBounds(660, 240, 180, 22);
 
-        cmbIdEstadoPersonal.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        cmbIdEstadoPersonal.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         cmbIdEstadoPersonal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbIdEstadoPersonalActionPerformed(evt);
             }
         });
         jPGestionVigilante.add(cmbIdEstadoPersonal);
-        cmbIdEstadoPersonal.setBounds(360, 270, 250, 22);
+        cmbIdEstadoPersonal.setBounds(360, 270, 250, 25);
 
         jPBotones.setBackground(new java.awt.Color(255, 255, 255));
         jPBotones.setPreferredSize(new java.awt.Dimension(895, 60));
@@ -399,6 +395,7 @@ public class FrmPersonal extends javax.swing.JFrame {
         jPGestionVigilante.add(lblDUI);
         lblDUI.setBounds(660, 160, 38, 22);
 
+        jTVigilantes.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTVigilantes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
@@ -425,31 +422,45 @@ public class FrmPersonal extends javax.swing.JFrame {
         lbID.setBounds(50, 80, 25, 22);
         lbID.getAccessibleContext().setAccessibleName("ID");
 
-        cmbTipoPersonal.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        cmbTipoPersonal.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         cmbTipoPersonal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        cmbTipoPersonal.setSelectedIndex(-1);
         jPGestionVigilante.add(cmbTipoPersonal);
-        cmbTipoPersonal.setBounds(50, 190, 250, 22);
+        cmbTipoPersonal.setBounds(50, 190, 250, 25);
+
+        jTxtNombre.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jPGestionVigilante.add(jTxtNombre);
-        jTxtNombre.setBounds(360, 110, 250, 22);
+        jTxtNombre.setBounds(360, 110, 250, 28);
+
+        jTxtApellido.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jPGestionVigilante.add(jTxtApellido);
-        jTxtApellido.setBounds(660, 110, 250, 22);
+        jTxtApellido.setBounds(660, 110, 250, 28);
+
+        jTxtDUI.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jPGestionVigilante.add(jTxtDUI);
-        jTxtDUI.setBounds(660, 190, 250, 22);
+        jTxtDUI.setBounds(660, 190, 250, 25);
+
+        jTxtCorreo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jPGestionVigilante.add(jTxtCorreo);
-        jTxtCorreo.setBounds(50, 270, 250, 22);
+        jTxtCorreo.setBounds(50, 270, 250, 25);
+
+        jTxtTelefono.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jPGestionVigilante.add(jTxtTelefono);
-        jTxtTelefono.setBounds(360, 190, 250, 22);
+        jTxtTelefono.setBounds(360, 190, 250, 25);
 
         jTxtID.setEditable(false);
+        jTxtID.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jPGestionVigilante.add(jTxtID);
-        jTxtID.setBounds(50, 110, 170, 22);
+        jTxtID.setBounds(50, 110, 250, 25);
 
         lblCorreoElectronico1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblCorreoElectronico1.setText("Correo Electronico:");
         jPGestionVigilante.add(lblCorreoElectronico1);
         lblCorreoElectronico1.setBounds(50, 240, 171, 22);
+
+        jTxtSalario.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jPGestionVigilante.add(jTxtSalario);
-        jTxtSalario.setBounds(660, 270, 250, 22);
+        jTxtSalario.setBounds(660, 270, 250, 25);
 
         jPColorGestionLLamada.add(jPGestionVigilante);
         jPGestionVigilante.setBounds(30, 20, 1040, 670);
@@ -528,7 +539,7 @@ public class FrmPersonal extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPToolStrip);
-        jPToolStrip.setBounds(270, 0, 1100, 61);
+        jPToolStrip.setBounds(270, 0, 1100, 57);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

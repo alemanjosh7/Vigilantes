@@ -4,27 +4,14 @@
  * and open the template in the editor.
  */
 package FormsVigilante;
-
 import Clases.Conexion;
 import ControladorVigilante.PagoController;
-import ControladorVigilante.PersonalController;
 import java.sql.Connection;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.ButtonModel;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
-
 
 /**
  *
- * @author malex
+ * @author  Miguel
  */
 public class FrmVisualizarPago extends javax.swing.JFrame {
     private Conexion enlace = new Conexion();
@@ -34,16 +21,11 @@ public class FrmVisualizarPago extends javax.swing.JFrame {
      * Creates new form FrmVisualizarPago
      */
     public FrmVisualizarPago() {
-       FrmLogin log = new FrmLogin();
-        lblCargoUsuario.setText(log.cargo);
-        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);
-        setUndecorated(true);
+       this.setUndecorated(true);
         initComponents();
-        setLocationRelativeTo(null);
-        CargarDatosTablaPago();
-    }
-    
-    
+        this.setLocationRelativeTo(null);
+        this.jTPagoPersonal.setModel(PC.consultarDatosTablaPago());
+    }    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -210,7 +192,7 @@ public class FrmVisualizarPago extends javax.swing.JFrame {
         });
 
         jlblTipoEntrada.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jlblTipoEntrada.setText("Nombre del Vigilante:");
+        jlblTipoEntrada.setText("ID vigilante:");
 
         lblImgBusqueda3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblImgBusqueda3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgBuscar.png"))); // NOI18N
@@ -227,7 +209,7 @@ public class FrmVisualizarPago extends javax.swing.JFrame {
                 .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jlblTipoEntrada)
                     .addComponent(jFTBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(401, Short.MAX_VALUE))
+                .addContainerGap(419, Short.MAX_VALUE))
         );
         jPBusquedaContainerLayout.setVerticalGroup(
             jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -285,7 +267,7 @@ public class FrmVisualizarPago extends javax.swing.JFrame {
                 .addComponent(lblCargoUsuario)
                 .addGap(117, 117, 117)
                 .addComponent(btnTheme, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 361, Short.MAX_VALUE)
                 .addComponent(lblExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -324,18 +306,18 @@ public class FrmVisualizarPago extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPSideBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(jPToolStrip, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(10, 10, 10)
+                        .addComponent(jPBusquedaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPBusquedaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 292, Short.MAX_VALUE))
-                            .addComponent(jSTablaDatosPago, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addContainerGap())))
+                        .addComponent(jSTablaDatosPago)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jPToolStrip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -347,7 +329,7 @@ public class FrmVisualizarPago extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addComponent(jPBusquedaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(48, 48, 48)
-                        .addComponent(jSTablaDatosPago, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jSTablaDatosPago, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPSideBar, javax.swing.GroupLayout.PREFERRED_SIZE, 796, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2))
         );
@@ -367,41 +349,41 @@ public class FrmVisualizarPago extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnGoLogInActionPerformed
 
-    private void lblExitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitButtonMouseClicked
-        FrmMenuAdministrador menu = new FrmMenuAdministrador();
-        menu.show();
-        dispose();
-    }//GEN-LAST:event_lblExitButtonMouseClicked
-
-    private void btnThemeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnThemeActionPerformed
-
     private void jFTBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFTBusquedaActionPerformed
         
     }//GEN-LAST:event_jFTBusquedaActionPerformed
 
     private void jFTBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaKeyReleased
-        //Consultar        
+          //Consultar al soltar el teclado
         if (jFTBusqueda.getText().isEmpty()) {
             this.jTPagoPersonal.setModel(PC.consultarDatosTablaPago());
         }
         else{
             PC.setIdPago(Integer.parseInt(jFTBusqueda.getText()));
             if (PC.consultarPago()) {
-               this.jTPagoPersonal.setModel(PC.consultarTablaFiltrada());
-           }           
+                this.jTPagoPersonal.setModel(PC.consultarTablaFiltrada());
+            }   
         }
     }//GEN-LAST:event_jFTBusquedaKeyReleased
 
     private void jFTBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaKeyTyped
-        //Solo permitir paso de numeros
+    //Solo permitir paso de números
         if(SoloNumero(evt.getKeyChar())){
-           //no deja que se escriba un letra
+            //no deja que se escriba un letras
             evt.consume();
             JOptionPane.showMessageDialog(rootPane, "Ingresar números");
-            }
+        }
     }//GEN-LAST:event_jFTBusquedaKeyTyped
+
+    private void btnThemeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnThemeActionPerformed
+
+    private void lblExitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitButtonMouseClicked
+        FrmMenuAdministrador menu = new FrmMenuAdministrador();
+        menu.show();
+        dispose();
+    }//GEN-LAST:event_lblExitButtonMouseClicked
 
     //Metodos
     //Para validar que solo permitan pasar Numeros
@@ -412,12 +394,6 @@ public class FrmVisualizarPago extends javax.swing.JFrame {
         else{
             return true;
         }
-    }
-
-    
-    //Mostrar los datos de la tabla
-    public void CargarDatosTablaPago(){
-        this.jTPagoPersonal.setModel(PC.consultarDatosTablaPago());
     }
     /**
      * @param args the command line arguments
