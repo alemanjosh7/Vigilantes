@@ -6,6 +6,7 @@
 package FormsVigilante;
 
 import ControladorVigilante.PersonalController;
+import FormsVigilante.FrmVisualizarReporteVigilantes;
 import Clases.Conexion;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -80,6 +81,7 @@ public class FrmVisualizarPersonal extends javax.swing.JFrame {
         jFTBusqueda = new javax.swing.JFormattedTextField();
         jlblTipoEntrada = new javax.swing.JLabel();
         lblImgBusqueda3 = new javax.swing.JLabel();
+        btnGenerarReporte = new javax.swing.JButton();
         jSPVigilante = new javax.swing.JScrollPane();
         jTVigilante = new javax.swing.JTable();
         jPToolStrip = new javax.swing.JPanel();
@@ -144,17 +146,17 @@ public class FrmVisualizarPersonal extends javax.swing.JFrame {
         jPbtnSBContainer.setLayout(jPbtnSBContainerLayout);
         jPbtnSBContainerLayout.setHorizontalGroup(
             jPbtnSBContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPbtnSBContainerLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPbtnSBContainerLayout.createSequentialGroup()
+                .addContainerGap(35, Short.MAX_VALUE)
                 .addComponent(btnGoLogIn)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
         jPbtnSBContainerLayout.setVerticalGroup(
             jPbtnSBContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPbtnSBContainerLayout.createSequentialGroup()
-                .addContainerGap(115, Short.MAX_VALUE)
+            .addGroup(jPbtnSBContainerLayout.createSequentialGroup()
+                .addGap(96, 96, 96)
                 .addComponent(btnGoLogIn)
-                .addGap(82, 82, 82))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         jImgLogo.setText("Imagen");
@@ -232,6 +234,18 @@ public class FrmVisualizarPersonal extends javax.swing.JFrame {
         lblImgBusqueda3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgBuscar.png"))); // NOI18N
         lblImgBusqueda3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        btnGenerarReporte.setBackground(new java.awt.Color(255, 211, 105));
+        btnGenerarReporte.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnGenerarReporte.setText("Generar Reporte");
+        btnGenerarReporte.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnGenerarReporte.setContentAreaFilled(false);
+        btnGenerarReporte.setFocusable(false);
+        btnGenerarReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerarReporteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPBusquedaContainerLayout = new javax.swing.GroupLayout(jPBusquedaContainer);
         jPBusquedaContainer.setLayout(jPBusquedaContainerLayout);
         jPBusquedaContainerLayout.setHorizontalGroup(
@@ -241,21 +255,28 @@ public class FrmVisualizarPersonal extends javax.swing.JFrame {
                 .addComponent(lblImgBusqueda3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlblTipoEntrada)
-                    .addComponent(jFTBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(401, Short.MAX_VALUE))
+                    .addComponent(jFTBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlblTipoEntrada))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
+                .addComponent(btnGenerarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(99, 99, 99))
         );
         jPBusquedaContainerLayout.setVerticalGroup(
             jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBusquedaContainerLayout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
-                .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblImgBusqueda3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
-                        .addComponent(jlblTipoEntrada)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFTBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+            .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBusquedaContainerLayout.createSequentialGroup()
+                        .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblImgBusqueda3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
+                                .addComponent(jlblTipoEntrada)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jFTBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBusquedaContainerLayout.createSequentialGroup()
+                        .addComponent(btnGenerarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27))))
         );
 
         jTVigilante.setModel(new javax.swing.table.DefaultTableModel(
@@ -287,7 +308,7 @@ public class FrmVisualizarPersonal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPContainerLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jPBusquedaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addComponent(jSPVigilante, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
         );
@@ -406,6 +427,13 @@ public class FrmVisualizarPersonal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jFTBusquedaKeyTyped
 
+    private void btnGenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarReporteActionPerformed
+        //Ir al formulario de generar reporte
+        FrmVisualizarReporteVigilantes vrp = new FrmVisualizarReporteVigilantes();
+        vrp.show();
+        dispose();
+    }//GEN-LAST:event_btnGenerarReporteActionPerformed
+
     public boolean SoloLetra(char letra){
         if(Character.isLetter(letra) || Character.isISOControl(letra)){
             return true;
@@ -454,6 +482,7 @@ public class FrmVisualizarPersonal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGenerarReporte;
     private javax.swing.JButton btnGoLogIn;
     private javax.swing.JButton btnTheme;
     private javax.swing.JFormattedTextField jFTBusqueda;

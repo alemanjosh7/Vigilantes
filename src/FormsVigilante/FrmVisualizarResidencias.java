@@ -29,6 +29,9 @@ public class FrmVisualizarResidencias extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.jTResidencia.setModel(R.consultarDatosTabla());
+        FrmLogin log = new FrmLogin();
+        lblCargoUsuario.setText(log.cargo);
+        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);
     }
 
     /**
@@ -69,9 +72,6 @@ public class FrmVisualizarResidencias extends javax.swing.JFrame {
         jTResidencia = new javax.swing.JTable();
         jFBusquedaResidente = new javax.swing.JTextField();
         lblImgBusqueda3 = new javax.swing.JLabel();
-        lblDireccion1 = new javax.swing.JLabel();
-        lblImgBusqueda4 = new javax.swing.JLabel();
-        jFBusquedaResidente1 = new javax.swing.JTextField();
         jPSideBar = new javax.swing.JPanel();
         jPImageContainer = new javax.swing.JPanel();
         lblSistemaVigilantes = new javax.swing.JLabel();
@@ -373,27 +373,6 @@ public class FrmVisualizarResidencias extends javax.swing.JFrame {
         lblImgBusqueda3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgBuscar.png"))); // NOI18N
         lblImgBusqueda3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        lblDireccion1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblDireccion1.setText("Busqueda Residente:");
-
-        lblImgBusqueda4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblImgBusqueda4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgBuscar.png"))); // NOI18N
-        lblImgBusqueda4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        jFBusquedaResidente1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFBusquedaResidente1ActionPerformed(evt);
-            }
-        });
-        jFBusquedaResidente1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jFBusquedaResidente1KeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jFBusquedaResidente1KeyTyped(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPGestionResidenciaLayout = new javax.swing.GroupLayout(jPGestionResidencia);
         jPGestionResidencia.setLayout(jPGestionResidenciaLayout);
         jPGestionResidenciaLayout.setHorizontalGroup(
@@ -409,12 +388,6 @@ public class FrmVisualizarResidencias extends javax.swing.JFrame {
                 .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblDireccion)
                     .addComponent(jFBusquedaResidente, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(62, 62, 62)
-                .addComponent(lblImgBusqueda4, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDireccion1)
-                    .addComponent(jFBusquedaResidente1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPGestionResidenciaLayout.setVerticalGroup(
@@ -425,18 +398,10 @@ public class FrmVisualizarResidencias extends javax.swing.JFrame {
                     .addComponent(lblImgBusqueda3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
-                                .addComponent(lblDireccion)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jFBusquedaResidente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(lblDireccion1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jFBusquedaResidente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblImgBusqueda4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(67, 67, 67)
+                        .addComponent(lblDireccion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jFBusquedaResidente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(69, 69, 69)
                 .addComponent(jSTablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(121, 121, 121))
         );
@@ -610,7 +575,7 @@ public class FrmVisualizarResidencias extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPToolStrip);
-        jPToolStrip.setBounds(280, 0, 1090, 57);
+        jPToolStrip.setBounds(280, 0, 1090, 61);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -676,18 +641,6 @@ public class FrmVisualizarResidencias extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_jFBusquedaResidenteKeyTyped
 
-    private void jFBusquedaResidente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFBusquedaResidente1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFBusquedaResidente1ActionPerformed
-
-    private void jFBusquedaResidente1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFBusquedaResidente1KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFBusquedaResidente1KeyReleased
-
-    private void jFBusquedaResidente1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFBusquedaResidente1KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFBusquedaResidente1KeyTyped
-
     public boolean SoloNumero(char numero){
         if(Character.isDigit(numero) || Character.isISOControl(numero)){
             return false;
@@ -745,7 +698,6 @@ public class FrmVisualizarResidencias extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JTextField jFBusquedaResidente;
-    private javax.swing.JTextField jFBusquedaResidente1;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JFormattedTextField jFormattedTextField3;
@@ -775,11 +727,9 @@ public class FrmVisualizarResidencias extends javax.swing.JFrame {
     private javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblCargoUsuario;
     private javax.swing.JLabel lblDireccion;
-    private javax.swing.JLabel lblDireccion1;
     private javax.swing.JLabel lblExitButton;
     private javax.swing.JLabel lblImgBusqueda;
     private javax.swing.JLabel lblImgBusqueda3;
-    private javax.swing.JLabel lblImgBusqueda4;
     private javax.swing.JLabel lblNombreUsuario;
     private javax.swing.JLabel lblSistemaVigilantes;
     private javax.swing.JLabel lblUsuario;

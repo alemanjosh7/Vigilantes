@@ -25,6 +25,9 @@ public class FrmVisualizarPago extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.jTPagoPersonal.setModel(PC.consultarDatosTablaPago());
+        FrmLogin log = new FrmLogin();
+        lblCargoUsuario.setText(log.cargo);
+        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);
     }    
 
     /**
@@ -53,10 +56,12 @@ public class FrmVisualizarPago extends javax.swing.JFrame {
         lblCargoUsuario = new javax.swing.JLabel();
         lblCargo = new javax.swing.JLabel();
         lblNombreUsuario = new javax.swing.JLabel();
+        lblUsuario = new javax.swing.JLabel();
         jSTablaDatosPago = new javax.swing.JScrollPane();
         jTPagoPersonal = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPSideBar.setBackground(new java.awt.Color(57, 62, 70));
         jPSideBar.setForeground(new java.awt.Color(57, 62, 70));
@@ -175,6 +180,8 @@ public class FrmVisualizarPago extends javax.swing.JFrame {
                 .addComponent(jPGap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        getContentPane().add(jPSideBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 796));
+
         jFTBusqueda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
         jFTBusqueda.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jFTBusqueda.addActionListener(new java.awt.event.ActionListener() {
@@ -224,6 +231,8 @@ public class FrmVisualizarPago extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        getContentPane().add(jPBusquedaContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 91, -1, -1));
+
         jPToolStrip.setBackground(new java.awt.Color(255, 211, 105));
         jPToolStrip.setMinimumSize(new java.awt.Dimension(1082, 61));
 
@@ -254,12 +263,17 @@ public class FrmVisualizarPago extends javax.swing.JFrame {
         lblNombreUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblNombreUsuario.setText("Josué Alemán");
 
+        lblUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblUsuario.setText("Usuario:");
+
         javax.swing.GroupLayout jPToolStripLayout = new javax.swing.GroupLayout(jPToolStrip);
         jPToolStrip.setLayout(jPToolStripLayout);
         jPToolStripLayout.setHorizontalGroup(
             jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPToolStripLayout.createSequentialGroup()
-                .addGap(119, 119, 119)
+                .addContainerGap()
+                .addComponent(lblUsuario)
+                .addGap(37, 37, 37)
                 .addComponent(lblNombreUsuario)
                 .addGap(156, 156, 156)
                 .addComponent(lblCargo)
@@ -267,7 +281,7 @@ public class FrmVisualizarPago extends javax.swing.JFrame {
                 .addComponent(lblCargoUsuario)
                 .addGap(117, 117, 117)
                 .addComponent(btnTheme, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 361, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 367, Short.MAX_VALUE)
                 .addComponent(lblExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -284,9 +298,12 @@ public class FrmVisualizarPago extends javax.swing.JFrame {
                             .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblNombreUsuario)
                                 .addComponent(lblCargo)
-                                .addComponent(lblCargoUsuario)))))
+                                .addComponent(lblCargoUsuario)
+                                .addComponent(lblUsuario)))))
                 .addContainerGap())
         );
+
+        getContentPane().add(jPToolStrip, new org.netbeans.lib.awtextra.AbsoluteConstraints(291, 0, 1150, -1));
 
         jTPagoPersonal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -300,39 +317,7 @@ public class FrmVisualizarPago extends javax.swing.JFrame {
         ));
         jSTablaDatosPago.setViewportView(jTPagoPersonal);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPSideBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jPBusquedaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jSTablaDatosPago)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jPToolStrip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPToolStrip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(jPBusquedaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)
-                        .addComponent(jSTablaDatosPago, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPSideBar, javax.swing.GroupLayout.PREFERRED_SIZE, 796, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2))
-        );
+        getContentPane().add(jSTablaDatosPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 248, 1132, 537));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -450,5 +435,6 @@ public class FrmVisualizarPago extends javax.swing.JFrame {
     private javax.swing.JLabel lblImgBusqueda3;
     private javax.swing.JLabel lblNombreUsuario;
     private javax.swing.JLabel lblSistemaVigilantes;
+    private javax.swing.JLabel lblUsuario;
     // End of variables declaration//GEN-END:variables
 }

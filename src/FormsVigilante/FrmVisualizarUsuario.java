@@ -83,7 +83,8 @@ public class FrmVisualizarUsuario extends javax.swing.JFrame {
         lblCargo26 = new javax.swing.JLabel();
         lblNombreUsuario = new javax.swing.JLabel();
         lblUsuario26 = new javax.swing.JLabel();
-        lblExitButton26 = new javax.swing.JLabel();
+        lblExitButton = new javax.swing.JLabel();
+        lblExitButton1 = new javax.swing.JLabel();
         jPBusquedaContainer = new javax.swing.JPanel();
         jFTBusqueda = new javax.swing.JFormattedTextField();
         lblVisitante = new javax.swing.JLabel();
@@ -220,11 +221,21 @@ public class FrmVisualizarUsuario extends javax.swing.JFrame {
         lblUsuario26.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblUsuario26.setText("Usuario:");
 
-        lblExitButton26.setFont(new java.awt.Font("Segoe UI", 0, 42)); // NOI18N
-        lblExitButton26.setText("x");
-        lblExitButton26.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblExitButton.setFont(new java.awt.Font("Segoe UI", 0, 42)); // NOI18N
+        lblExitButton.setText("x");
+        lblExitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblExitButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblExitButton26lblExitButtonMouseClicked(evt);
+                lblExitButtonMouseClicked(evt);
+            }
+        });
+
+        lblExitButton1.setFont(new java.awt.Font("Segoe UI", 0, 42)); // NOI18N
+        lblExitButton1.setText("x");
+        lblExitButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblExitButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblExitButton1MouseClicked(evt);
             }
         });
 
@@ -243,19 +254,26 @@ public class FrmVisualizarUsuario extends javax.swing.JFrame {
                 .addComponent(lblCargoUsuario)
                 .addGap(219, 219, 219)
                 .addComponent(btnTheme26, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 299, Short.MAX_VALUE)
-                .addComponent(lblExitButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+                .addGroup(jPToolStrip26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPToolStrip26Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 256, Short.MAX_VALUE)
+                        .addComponent(lblExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69))
+                    .addGroup(jPToolStrip26Layout.createSequentialGroup()
+                        .addGap(146, 146, 146)
+                        .addComponent(lblExitButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPToolStrip26Layout.setVerticalGroup(
             jPToolStrip26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPToolStrip26Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPToolStrip26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblExitButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(lblExitButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPToolStrip26Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPToolStrip26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnTheme26, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPToolStrip26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblUsuario26)
@@ -342,12 +360,6 @@ public class FrmVisualizarUsuario extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnGoLogInActionPerformed
 
-    private void lblExitButton26lblExitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitButton26lblExitButtonMouseClicked
-        FrmMenuPrincipal menu = new FrmMenuPrincipal();
-        menu.show();
-        dispose();
-    }//GEN-LAST:event_lblExitButton26lblExitButtonMouseClicked
-
     private void jFTBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaKeyReleased
         mostrarDatos();
     }//GEN-LAST:event_jFTBusquedaKeyReleased
@@ -356,6 +368,18 @@ public class FrmVisualizarUsuario extends javax.swing.JFrame {
         //Solo permitir paso de numeros
 
     }//GEN-LAST:event_jFTBusquedaKeyTyped
+
+    private void lblExitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitButtonMouseClicked
+        FrmMenuAdministrador menu = new FrmMenuAdministrador();
+        menu.show();
+        dispose();
+    }//GEN-LAST:event_lblExitButtonMouseClicked
+
+    private void lblExitButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitButton1MouseClicked
+        FrmMenuAdministrador menu = new FrmMenuAdministrador();
+        menu.show();
+        dispose();
+    }//GEN-LAST:event_lblExitButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -406,7 +430,8 @@ public class FrmVisualizarUsuario extends javax.swing.JFrame {
     private javax.swing.JTable jTUsuario;
     private javax.swing.JLabel lblCargo26;
     private javax.swing.JLabel lblCargoUsuario;
-    private javax.swing.JLabel lblExitButton26;
+    private javax.swing.JLabel lblExitButton;
+    private javax.swing.JLabel lblExitButton1;
     private javax.swing.JLabel lblImagen;
     private javax.swing.JLabel lblImgBusqueda4;
     private javax.swing.JLabel lblNombreUsuario;

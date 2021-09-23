@@ -7,6 +7,7 @@ package FormsVigilante;
 
 import ControladorVigilante.HorarioController;
 import ControladorVigilante.ZonasController;
+import FormsReportes.FrmVisualizarReporteHorarios;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -24,6 +25,10 @@ public class FrmVisualizarHorario extends javax.swing.JFrame {
     public FrmVisualizarHorario() {
         initComponents();
         mostrarDatos();
+        //Llenar datos del usuario
+        FrmLogin log = new FrmLogin();
+        lblCargoUsuario.setText(log.cargo);
+        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);   
     }
     
     private void mostrarDatos(){
@@ -83,6 +88,7 @@ public class FrmVisualizarHorario extends javax.swing.JFrame {
         jlblTipoEntrada = new javax.swing.JLabel();
         jFTBusquedaHorario = new javax.swing.JFormattedTextField();
         lblImgBusqueda2 = new javax.swing.JLabel();
+        btnGenerarReporte = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1366, 768));
@@ -235,7 +241,7 @@ public class FrmVisualizarHorario extends javax.swing.JFrame {
                 .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPToolStripLayout.createSequentialGroup()
-                        .addGap(0, 14, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnTheme, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -285,6 +291,18 @@ public class FrmVisualizarHorario extends javax.swing.JFrame {
         lblImgBusqueda2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgBuscar.png"))); // NOI18N
         lblImgBusqueda2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        btnGenerarReporte.setBackground(new java.awt.Color(255, 211, 105));
+        btnGenerarReporte.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnGenerarReporte.setText("Generar Reporte");
+        btnGenerarReporte.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnGenerarReporte.setContentAreaFilled(false);
+        btnGenerarReporte.setFocusable(false);
+        btnGenerarReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerarReporteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPBusquedaContainerLayout = new javax.swing.GroupLayout(jPBusquedaContainer);
         jPBusquedaContainer.setLayout(jPBusquedaContainerLayout);
         jPBusquedaContainerLayout.setHorizontalGroup(
@@ -296,39 +314,44 @@ public class FrmVisualizarHorario extends javax.swing.JFrame {
                 .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jFTBusquedaHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlblTipoEntrada))
-                .addContainerGap(537, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 219, Short.MAX_VALUE)
+                .addComponent(btnGenerarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(135, 135, 135))
         );
         jPBusquedaContainerLayout.setVerticalGroup(
             jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBusquedaContainerLayout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblImgBusqueda2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
+                    .addComponent(lblImgBusqueda2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBusquedaContainerLayout.createSequentialGroup()
                         .addComponent(jlblTipoEntrada)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jFTBusquedaHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(15, 15, 15))
+                .addGap(11, 11, 11))
+            .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(btnGenerarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPContainerLayout = new javax.swing.GroupLayout(jPContainer);
         jPContainer.setLayout(jPContainerLayout);
         jPContainerLayout.setHorizontalGroup(
             jPContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPContainerLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPBusquedaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPContainerLayout.createSequentialGroup()
                 .addContainerGap(32, Short.MAX_VALUE)
-                .addComponent(jSPHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 1038, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPBusquedaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSPHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 1038, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPContainerLayout.setVerticalGroup(
             jPContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPContainerLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
                 .addComponent(jPBusquedaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jSPHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
@@ -394,6 +417,13 @@ public class FrmVisualizarHorario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jFTBusquedaHorarioKeyTyped
 
+    private void btnGenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarReporteActionPerformed
+        // TODO add your handling code here:
+        FrmVisualizarReporteHorarios vrh = new FrmVisualizarReporteHorarios();
+        vrh.show();
+        dispose();
+    }//GEN-LAST:event_btnGenerarReporteActionPerformed
+
     public boolean SoloNumero(char numero){
         if(Character.isDigit(numero) || Character.isISOControl(numero)){
             return true;
@@ -454,6 +484,7 @@ public class FrmVisualizarHorario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGenerarReporte;
     private javax.swing.JButton btnGoLogIn;
     private javax.swing.JButton btnTheme;
     private javax.swing.JFormattedTextField jFTBusquedaHorario;

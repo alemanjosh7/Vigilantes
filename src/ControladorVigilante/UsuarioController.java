@@ -149,15 +149,10 @@ public class UsuarioController {
            cmd.setInt(4, id_estado_usuario);
            cmd.setInt(5, getId_personal());
            cmd.setInt(6, id_usuario);
-
-           //Ejecutar la consulta
-            //pedirá importar la clase ResultSet
-            ResultSet rs = cmd.executeQuery();
-            //recorrer la lista de registros
-            if(rs.next()){
-              res=true;
+            if (!cmd.execute()) {
+               res=true;  
             }
-            //cerrando conexion
+            //cerrando conexión
             cmd.close();
         }catch(Exception e ){
             System.out.println(e.toString());
@@ -390,4 +385,31 @@ public class UsuarioController {
         this.BusquedaIDUsuario = BusquedaIDUsuario;
     }
 
+    public boolean consultarUsuario(){
+        boolean bres = false;     
+        try{
+            //Realizar consulta
+            String sql = "SELECT * FROM Usuario WHERE idUsuario =?";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            //Lenar los parámetros de la clase, se coloca en el orden de la consulta
+            cmd.setInt(1, id_usuario);
+            ResultSet res = cmd.executeQuery();
+            if (res.next()) {
+                bres=true;
+                id_usuario = res.getInt(1);
+                nombre_usuario = res.getString(2);
+                contrasena = res.getString(3);
+                id_tipo_usuario = res.getInt(4);
+                id_estado_usuario = res.getInt(5);
+                id_personal = res.getInt(6);
+            }
+            //cerrando conexion
+            cmd.close();
+        }
+        catch(Exception ex){
+            System.out.println(ex.toString());
+        }
+        return bres;
+    }
+    
 }

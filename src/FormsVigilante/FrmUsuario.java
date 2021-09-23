@@ -33,7 +33,7 @@ public class FrmUsuario extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         mostrarDatosCombobox();
-        this.jTUsuario.setModel(UC.generarTabla());
+        CargarDatosTabla();
         FrmLogin log = new FrmLogin();
         lblCargoUsuario.setText(log.cargo);
         lblNombreUsuario.setText(log.nombres + " " + log.apellidos);
@@ -67,7 +67,7 @@ public class FrmUsuario extends javax.swing.JFrame {
         lblNumCasa = new javax.swing.JLabel();
         cmbTipoUsuario = new javax.swing.JComboBox<>();
         jPBotones = new javax.swing.JPanel();
-        btnRegistrar = new javax.swing.JButton();
+        btnConsultar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
@@ -158,7 +158,7 @@ public class FrmUsuario extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(jPToolStrip, new org.netbeans.lib.awtextra.AbsoluteConstraints(288, 0, 1080, -1));
+        getContentPane().add(jPToolStrip, new org.netbeans.lib.awtextra.AbsoluteConstraints(288, 0, 1080, 70));
 
         jPSideBar.setBackground(new java.awt.Color(57, 62, 70));
         jPSideBar.setPreferredSize(new java.awt.Dimension(287, 811));
@@ -276,16 +276,21 @@ public class FrmUsuario extends javax.swing.JFrame {
         jPBotones.setBackground(new java.awt.Color(255, 255, 255));
         jPBotones.setPreferredSize(new java.awt.Dimension(895, 60));
 
-        btnRegistrar.setBackground(new java.awt.Color(255, 211, 105));
-        btnRegistrar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnRegistrar.setText("Registrar");
-        btnRegistrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnRegistrar.setContentAreaFilled(false);
-        btnRegistrar.setFocusable(false);
+        btnConsultar.setBackground(new java.awt.Color(255, 211, 105));
+        btnConsultar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnConsultar.setText("Consultar");
+        btnConsultar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnConsultar.setContentAreaFilled(false);
+        btnConsultar.setFocusable(false);
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
 
         btnAgregar.setBackground(new java.awt.Color(255, 211, 105));
         btnAgregar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnAgregar.setText("Agregar");
+        btnAgregar.setText("Registrar");
         btnAgregar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
         btnAgregar.setContentAreaFilled(false);
         btnAgregar.setFocusable(false);
@@ -301,6 +306,11 @@ public class FrmUsuario extends javax.swing.JFrame {
         btnModificar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
         btnModificar.setContentAreaFilled(false);
         btnModificar.setFocusable(false);
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         btnLimpiar.setBackground(new java.awt.Color(255, 211, 105));
         btnLimpiar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -319,33 +329,26 @@ public class FrmUsuario extends javax.swing.JFrame {
         jPBotonesLayout.setHorizontalGroup(
             jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
-                .addGap(281, 281, 281)
-                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                .addGap(78, 78, 78)
                 .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(119, 119, 119)
-                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(102, 102, 102)
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(103, 103, 103)
+                .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67))
-            .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPBotonesLayout.createSequentialGroup()
-                    .addGap(82, 82, 82)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(708, Short.MAX_VALUE)))
         );
         jPBotonesLayout.setVerticalGroup(
             jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32))
-            .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
-                    .addContainerGap(16, Short.MAX_VALUE)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(29, 29, 29)))
         );
 
         lblGestionResidencia.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
@@ -423,11 +426,11 @@ public class FrmUsuario extends javax.swing.JFrame {
                             .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
                                 .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
-                                        .addComponent(lblZona)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
                                         .addComponent(cmbEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(62, 62, 62)))
+                                        .addGap(62, 62, 62))
+                                    .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
+                                        .addComponent(lblZona)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cmbTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblEstadoResidencia))
@@ -474,7 +477,7 @@ public class FrmUsuario extends javax.swing.JFrame {
                         .addComponent(lblNumCasa1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jFDidUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
                         .addComponent(lblZona)
@@ -495,7 +498,7 @@ public class FrmUsuario extends javax.swing.JFrame {
                 .addGap(25, 25, 25))
         );
 
-        getContentPane().add(jPGestionResidencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 1040, 670));
+        getContentPane().add(jPGestionResidencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 1040, 690));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -576,7 +579,8 @@ public class FrmUsuario extends javax.swing.JFrame {
             else{
                 JOptionPane.showMessageDialog(this,"Datos no guardados");
             }
-            LimpiarCampos();            
+            LimpiarCampos();      
+            
         }     
     }//GEN-LAST:event_btnAgregarMouseClicked
 
@@ -584,6 +588,71 @@ public class FrmUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
         LimpiarCampos();
     }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        // TODO add your handling code here:
+        int indexEstado = cmbEstado.getSelectedIndex();
+        int indexTipo = cmbTipoUsuario.getSelectedIndex();
+        int indexPersonal = cmbVigilante.getSelectedIndex();
+        if (jFDNombreUsuario.getText().isEmpty() || jPassword.getText().isEmpty() || jPassword.getText().isEmpty() || 
+                indexEstado == 0 || indexTipo == 0 || indexPersonal == 0 || jFDidUsuario.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");   
+        } 
+        else{
+            //Registrar contenido a la Tabla Zonas
+            //Envamos los datos a la clase
+            Encoder mMain = new Encoder();
+            String secretKey = "SomosProgramadores";
+            String cadenaEncriptada = mMain.ecnode(secretKey, jPassword.getText());
+            UC.setNombre_usuario(jFDNombreUsuario.getText());
+            UC.setContrasena(cadenaEncriptada);
+            UC.setId_estado_usuario(cmbEstado.getSelectedIndex());
+            UC.setId_tipo_usuario(cmbTipoUsuario.getSelectedIndex());
+            String id = "", cadena = cmbVigilante.getSelectedItem().toString();
+            for(int i = 0; i < cadena.length(); i++){
+                char x = cadena.charAt(i);
+                if(Character.isDigit(x) == true){
+                    id += x;
+                }
+                else break;
+            }
+            
+            UC.setId_personal(Integer.parseInt(id));
+            UC.setId_usuario(Integer.parseInt(jFDidUsuario.getText()));
+            //Enviando los datos a SQL
+            if (UC.modificarUsuario()) {
+                JOptionPane.showMessageDialog(this,"Datos actualizados exitosamente");
+                CargarDatosTabla();
+            }
+            else{
+                JOptionPane.showMessageDialog(this,"Datos no actualizados");
+            }  
+            LimpiarCampos();
+        }
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+         if (jFDidUsuario.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");   
+        }
+        else{
+            //Consular
+            //Realizar Consulta
+            UC.setId_usuario(Integer.parseInt(jFDidUsuario.getText()));
+            if (UC.consultarUsuario()) {
+                jFDNombreUsuario.setText(String.valueOf(UC.getNombre_usuario()));
+                jPassword.setText(String.valueOf(UC.getContrasena()));
+                cmbEstado.setSelectedIndex(UC.getId_estado_usuario());
+                cmbTipoUsuario.setSelectedIndex(UC.getId_tipo_usuario());
+                cmbVigilante.setSelectedIndex(UC.getId_personal());
+                this.jTUsuario.setModel(UC.generarTabla());
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Error al consultar");
+            }
+            
+        }
+    }//GEN-LAST:event_btnConsultarActionPerformed
 
     public void mostrarDatosCombobox(){
         
@@ -620,7 +689,7 @@ public class FrmUsuario extends javax.swing.JFrame {
    }
     
    public void CargarDatosTabla(){
-//        this.jTUsuario.setModel(UC.consultarDatosTabla());
+       this.jTUsuario.setModel(UC.generarTabla());
     }
     
     /**
@@ -660,10 +729,10 @@ public class FrmUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnGoLogIn;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
-    private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnTheme;
     private javax.swing.JComboBox<String> cmbEstado;
     private javax.swing.JComboBox<String> cmbTipoUsuario;

@@ -37,9 +37,9 @@ public class FrmVisualizarVisitante extends javax.swing.JFrame {
 
         jMainContainer = new javax.swing.JPanel();
         jPBusquedaContainer = new javax.swing.JPanel();
-        jFTBusqueda = new javax.swing.JFormattedTextField();
         lblVisitante = new javax.swing.JLabel();
         lblImgBusqueda4 = new javax.swing.JLabel();
+        jFTBusqueda = new javax.swing.JTextField();
         jSPVistiante = new javax.swing.JScrollPane();
         jTVisitante = new javax.swing.JTable();
         jPSideBar = new javax.swing.JPanel();
@@ -61,25 +61,22 @@ public class FrmVisualizarVisitante extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1366, 768));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jFTBusqueda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFTBusqueda.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jFTBusqueda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFTBusquedaActionPerformed(evt);
-            }
-        });
-        jFTBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jFTBusquedaKeyReleased(evt);
-            }
-        });
-
         lblVisitante.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblVisitante.setText("Busqueda de Visitante:");
 
         lblImgBusqueda4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblImgBusqueda4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgBuscar.png"))); // NOI18N
         lblImgBusqueda4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jFTBusqueda.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFTBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jFTBusquedaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFTBusquedaKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPBusquedaContainerLayout = new javax.swing.GroupLayout(jPBusquedaContainer);
         jPBusquedaContainer.setLayout(jPBusquedaContainerLayout);
@@ -91,8 +88,8 @@ public class FrmVisualizarVisitante extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblVisitante)
-                    .addComponent(jFTBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(401, Short.MAX_VALUE))
+                    .addComponent(jFTBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(344, Short.MAX_VALUE))
         );
         jPBusquedaContainerLayout.setVerticalGroup(
             jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +100,7 @@ public class FrmVisualizarVisitante extends javax.swing.JFrame {
                     .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
                         .addComponent(lblVisitante)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFTBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jFTBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -342,19 +339,8 @@ public class FrmVisualizarVisitante extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnGoLogInActionPerformed
 
-    
-    private void jFTBusquedaKeyTyped(java.awt.event.KeyEvent evt) {                                     
-        //Solo permitir paso de numeros
-        if(SoloNumero(evt.getKeyChar())){
-            evt.consume();
-            JOptionPane.showMessageDialog(rootPane, "Solo numeros");
-            }
-        }                                  
-    private void jFTBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFTBusquedaActionPerformed
-       
-    }//GEN-LAST:event_jFTBusquedaActionPerformed
-
     private void jFTBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaKeyReleased
+        // TODO add your handling code here:
         if (jFTBusqueda.getText().isEmpty()) {
             this.jTVisitante.setModel(VV.consultarDatosTabla());
         }
@@ -366,6 +352,17 @@ public class FrmVisualizarVisitante extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jFTBusquedaKeyReleased
 
+    private void jFTBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaKeyTyped
+        //Solo permitir paso de números
+        if(SoloNumero(evt.getKeyChar())){
+            //no deja que se escriba un letras
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Ingresar números");
+        }
+    }//GEN-LAST:event_jFTBusquedaKeyTyped
+
+
+    
     public boolean SoloNumero(char numero){
         if(Character.isDigit(numero) || Character.isISOControl(numero)){
             return false;
@@ -427,7 +424,7 @@ public class FrmVisualizarVisitante extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGoLogIn;
     private javax.swing.JButton btnTheme;
-    private javax.swing.JFormattedTextField jFTBusqueda;
+    private javax.swing.JTextField jFTBusqueda;
     private javax.swing.JPanel jMainContainer;
     private javax.swing.JPanel jPBusquedaContainer;
     private javax.swing.JPanel jPContainer;

@@ -114,7 +114,7 @@ public class PagoController {
     public boolean modificarPago(){
         boolean res = false;
         try{
-            String sql = "UPDATE RegistroEntrada SET idPersonalEmisor =?, idPersonalReceptor =?, cantidadPago =?, fechaPago =? WHERE idPago =?";//se pasan por referencia por seguridad
+            String sql = "UPDATE PagoRealizado SET idPersonalEmisor =?, idPersonalReceptor =?, cantidadPago =?, fechaPago =? WHERE idPago =?";//se pasan por referencia por seguridad
             PreparedStatement cmd = cn.prepareStatement(sql);
             cmd.setInt(1,idPersonalEmisor);
             cmd.setInt(2, idPersonalReceptor);

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteVigilante" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b089874c-1fc5-42cc-b2d6-340bf2e0aecd">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Administrador" class="java.lang.String"/>
+	<parameter name="CostoInicial" class="java.lang.String"/>
+	<parameter name="CostoFinal" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[Select p.idPersonal, CONCAT(p.nombres, ' ', p.apellidos) as nombreCompleto, tp.nombreTipo, p.idEstadoPersonal as id, p.salarioMensual FROM Personal AS p
+Inner Join TipoPersonal AS tp ON p.idTipoPersonal = tp.idTipoPersonal
+Inner Join EstadoPersonal AS ep ON p.idEstadoPersonal = ep.idEstadoPersonal
+WHERE p.idEstadoPersonal = 1 AND p.salarioMensual >= $P{CostoInicial} AND p.salarioMensual <= $P{CostoFinal}
+order by p.salarioMensual]]>
+	</queryString>
+	<field name="idPersonal" class="java.lang.Integer"/>
+	<field name="nombreCompleto" class="java.lang.String"/>
+	<field name="nombreTipo" class="java.lang.String"/>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="salarioMensual" class="java.math.BigDecimal"/>
+	<variable name="salarioMensual_1" class="java.math.BigDecimal" calculation="Lowest">
+		<variableExpression><![CDATA[$F{salarioMensual}]]></variableExpression>
+	</variable>
+	<variable name="salarioMensual_2" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{salarioMensual}]]></variableExpression>
+	</variable>
+	<variable name="salarioMensual_3" class="java.math.BigDecimal" calculation="Average">
+		<variableExpression><![CDATA[$F{salarioMensual}]]></variableExpression>
+	</variable>
+	<title>
+		<band height="109" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="572" height="109" forecolor="#FFFFFF" backcolor="#FFD369" uuid="072064b4-770b-4664-aacc-fe0cbde2a69b"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="116" y="48" width="161" height="20" uuid="f0ff8817-40b0-40df-9cc6-beb4816c4aa5"/>
+				<textElement>
+					<font fontName="Segoe UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Administrador a cargo: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="226" y="9" width="152" height="29" uuid="896df4f1-b8f4-47c5-b62c-e79375eca923"/>
+				<textElement>
+					<font fontName="Segoe UI" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sistema Vigilantes]]></text>
+			</staticText>
+			<line>
+				<reportElement x="216" y="38" width="163" height="1" uuid="f4e5612c-24c3-41e6-a35c-425e5f303a10"/>
+			</line>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="426" y="68" width="100" height="20" uuid="fc6fe305-b2aa-4f03-98e5-de0e44e67fe1"/>
+				<textElement>
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="426" y="48" width="186" height="20" uuid="da60ef7d-504a-4cc4-b68a-f2dd3af1fac5"/>
+				<textElement>
+					<font fontName="Segoe UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha y hora de impresión:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="121" y="68" width="100" height="20" uuid="ccd6a9b7-a8e3-4e3e-8543-490a9c0a85c5"/>
+				<textElement>
+					<font fontName="Segoe UI" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Administrador}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame">
+				<reportElement x="17" y="9" width="75" height="90" uuid="cb1cf1d6-4cda-4471-bf5a-3ccefd403bac"/>
+				<imageExpression><![CDATA["C:\\Users\\CRISTIAN\\Desktop\\LEGIT Vigilante\\Vigilantes\\src\\Vigilante_Imagenes\\imgLogoDarkJpeg.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="53" splitType="Stretch">
+			<staticText>
+				<reportElement x="328" y="0" width="76" height="20" forecolor="#FFFFFF" uuid="1f511401-fc47-42de-af45-d6fa33465d27"/>
+				<textElement>
+					<font fontName="Segoe UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Zona]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="17" width="571" height="34" forecolor="#FFFFFF" backcolor="#393E46" uuid="4f83b573-0e4a-4ece-a33a-2f65dea85bb0"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="186" y="17" width="240" height="34" forecolor="#FFFFFF" uuid="a4ecb834-8d09-49ba-836a-eba2867e8615"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Segoe UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE SALARIOS DE PERSONAL ]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="48" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="9" width="105" height="34" forecolor="#FFFFFF" backcolor="#393E46" uuid="9c1429b1-2393-424a-a94b-396bc0d1027d"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="7" y="17" width="85" height="20" forecolor="#FFFFFF" uuid="a790781b-b12a-4c0a-8178-a6dc6c4c4b03"/>
+				<textElement>
+					<font fontName="Segoe UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID de Personal]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="122" y="9" width="266" height="34" forecolor="#FFFFFF" backcolor="#393E46" uuid="bbd7a0da-e07a-4cb7-802a-e8db995008ad"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="136" y="17" width="104" height="20" forecolor="#FFFFFF" uuid="9f428940-4524-441c-806d-912836fc3d28"/>
+				<textElement>
+					<font fontName="Segoe UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre Completo]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="400" y="9" width="115" height="34" forecolor="#FFFFFF" backcolor="#393E46" uuid="33a4285f-1553-4c64-a5a6-37b2764d81b7"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="408" y="17" width="81" height="20" forecolor="#FFFFFF" uuid="aed0b804-4ed5-4dbf-a342-e0588b3fd88a"/>
+				<textElement>
+					<font fontName="Segoe UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Salario ]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="32" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="23" width="105" height="1" uuid="911cbd58-2b5c-4c87-ab7f-3b1b5bee77e5"/>
+			</line>
+			<line>
+				<reportElement x="125" y="22" width="263" height="1" uuid="7432aa12-210c-4c16-b46b-5d60605971d5"/>
+			</line>
+			<line>
+				<reportElement x="400" y="23" width="115" height="1" uuid="8aa7c6b5-a9aa-446c-b833-4f30fb4b9069"/>
+			</line>
+			<textField>
+				<reportElement x="5" y="0" width="100" height="20" uuid="76b88bdd-866e-4196-8fcc-efce2004c894"/>
+				<textFieldExpression><![CDATA[$F{idPersonal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="2" width="100" height="18" uuid="8e227c03-e6d0-4780-967e-4608948b9e2b"/>
+				<textFieldExpression><![CDATA[$F{nombreCompleto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="426" y="2" width="100" height="20" uuid="898ae292-036d-4839-bec4-de2525fa3854"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{salarioMensual}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="404" y="2" width="22" height="20" uuid="c066b61d-b56a-46aa-8f11-4d40e93de48c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[$]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="464" y="34" width="100" height="20" uuid="e63a4787-9a13-43ce-a97b-875a224e47a3"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="548" y="34" width="100" height="20" uuid="90fa997b-ed88-4f64-b7a8-4c0ec9ba0a00"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="531" y="34" width="100" height="20" uuid="3afc68e2-89c1-4f32-a884-f040dfc91207"/>
+				<text><![CDATA[de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="426" y="34" width="33" height="20" uuid="8b814fda-d889-497e-8a63-8841d71ed3a4"/>
+				<text><![CDATA[Página]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="83" splitType="Stretch">
+			<rectangle>
+				<reportElement x="328" y="7" width="217" height="66" forecolor="#000000" backcolor="#FFD369" uuid="52c46ba7-6c34-4a23-a0bb-a020825b39bf"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="341" y="7" width="85" height="20" forecolor="#000000" uuid="58d1a5f9-0a5d-4780-97f8-05604f6f9ac3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Pagado:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="341" y="27" width="85" height="20" forecolor="#000000" uuid="8060c2e9-a0bb-4566-885f-500e1cd3b897"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Salario mínimo: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="341" y="47" width="85" height="20" forecolor="#000000" uuid="6fa7b2eb-0ded-416e-9159-f0b9d76ef9f4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Salario promedio: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="448" y="27" width="100" height="20" uuid="31e66c6b-e597-4b2c-a5c7-bdb10760de28"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{salarioMensual_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="426" y="7" width="22" height="20" uuid="20ed8c38-3550-446e-b623-8eecdda1e459"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="426" y="27" width="22" height="20" uuid="abba917b-3d55-45da-a9cc-5acf32c53bef"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="426" y="47" width="22" height="20" uuid="af47dbec-3fb4-4956-8a30-d244de5964c0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="448" y="7" width="100" height="20" uuid="604364b4-2f83-4d8c-b006-42b317d0b012"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{salarioMensual_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="448" y="47" width="100" height="20" uuid="c5d2863c-b5ca-4746-add5-9d0f598b5d9e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{salarioMensual_3}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

@@ -432,17 +432,6 @@ public class FrmLogin extends javax.swing.JFrame {
     
     }//GEN-LAST:event_lblIcoMouseClicked
 
-    private void jSliderModeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderModeStateChanged
-        int val = jSliderMode.getValue();
-
-        if(val >= 50){
-            SetBackgroundLight();
-        }
-        else{
-            SetBackgroundDark();
-        }
-    }//GEN-LAST:event_jSliderModeStateChanged
-
     private void lblCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCerrarMouseClicked
         dispose();
     }//GEN-LAST:event_lblCerrarMouseClicked
@@ -508,6 +497,17 @@ public class FrmLogin extends javax.swing.JFrame {
         contra.show();
         dispose();
     }//GEN-LAST:event_lblContraseñaOlvidadaMouseClicked
+
+    private void jSliderModeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderModeStateChanged
+        int val = jSliderMode.getValue();
+
+        if(val >= 50){
+            SetBackgroundLight();
+        }
+        else{
+            SetBackgroundDark();
+        }
+    }//GEN-LAST:event_jSliderModeStateChanged
 
     /**
      * @param args the command line arguments

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteSalida" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="56425275-c720-47c1-93cc-1ba98cb7f0e4">
+	<property name="ireport.zoom" value="1.7715610000000013"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fechaInicio" class="java.lang.String"/>
+	<parameter name="fechaFinal" class="java.lang.String"/>
+	<parameter name="idVigilante" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT RS.idRegistroSalida, P.idPorton, TES.descripcion, V.nombres, V.apellidos,
+(select nombres from Personal where idPersonal = $P{idVigilante} )[Vigilante] FROM RegistroSalida RS JOIN Porton P ON RS.idPorton = P.idPorton JOIN TipoEntradaSalida TES ON RS.idTipoES = TES.idTipoES JOIN Visitante v ON RS.idVisitante = V.idVisitante where fechaHora between $P{fechaInicio} and $P{fechaFinal}]]>
+	</queryString>
+	<field name="idRegistroSalida" class="java.lang.Integer"/>
+	<field name="idPorton" class="java.lang.Integer"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="nombres" class="java.lang.String"/>
+	<field name="apellidos" class="java.lang.String"/>
+	<field name="Vigilante" class="java.lang.String"/>
+	<variable name="idRegistroSalida_1" class="java.lang.Integer" resetType="Group" resetGroup="Portones" calculation="Count">
+		<variableExpression><![CDATA[$F{idRegistroSalida}]]></variableExpression>
+	</variable>
+	<group name="Portones">
+		<groupExpression><![CDATA[$F{idPorton}]]></groupExpression>
+		<groupHeader>
+			<band height="68">
+				<textField>
+					<reportElement mode="Opaque" x="18" y="6" width="32" height="20" backcolor="#FFCC99" uuid="c313cc2b-4a82-4c70-8ca6-88e577e0b4de"/>
+					<textFieldExpression><![CDATA[$F{idPorton}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="53" y="6" width="100" height="20" backcolor="#FFCC99" uuid="536c69ee-b952-4e40-bc17-05b33b00d724"/>
+					<text><![CDATA[Intentos de Entradas]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="157" y="6" width="100" height="20" backcolor="#FFCC99" uuid="edbf4545-14c3-4721-b9e9-034ce14c4cdb"/>
+					<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="18" y="37" width="32" height="31" forecolor="#FFFFFF" backcolor="#393E46" uuid="da4bf77d-a06b-45d9-a7b5-484be260bde7"/>
+					<text><![CDATA[Salida]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="53" y="37" width="100" height="31" forecolor="#FFFFFF" backcolor="#393E46" uuid="2964836c-dd13-4011-a453-419a27ca02a7"/>
+					<text><![CDATA[nombres]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="157" y="37" width="100" height="31" forecolor="#FFFFFF" backcolor="#393E46" uuid="1244906a-26b2-4dc2-a485-51dfa7d5bc61"/>
+					<text><![CDATA[apellidos]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="47">
+				<line>
+					<reportElement mode="Transparent" x="17" y="10" width="513" height="1" uuid="acc6897f-45c8-4098-bd94-25f87ac87ef6"/>
+					<graphicElement>
+						<pen lineWidth="5.0" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<textField>
+					<reportElement x="491" y="19" width="38" height="20" uuid="de805363-b369-42bf-a7ed-961e69382740"/>
+					<textFieldExpression><![CDATA[$V{idRegistroSalida_1}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="125" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="572" height="125" backcolor="#FFD369" uuid="1002bb58-5294-4308-bd85-b57ccb762bb9"/>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement x="18" y="15" width="81" height="91" uuid="71f71da1-fbb3-4584-8b36-ac3e73a0f1a2"/>
+				<imageExpression><![CDATA["C:\\Users\\CRISTIAN\\Desktop\\LEGIT Vigilante\\Vigilantes\\src\\Vigilante_Imagenes\\imgLogoDarkJpeg.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="226" y="23" width="140" height="29" uuid="2ba48535-3a78-45a5-9006-2a76dba5f77c"/>
+				<textElement>
+					<font fontName="Segoe UI" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sistema Vigilantes]]></text>
+			</staticText>
+			<line>
+				<reportElement x="213" y="51" width="163" height="1" uuid="b74dd8be-8275-4432-92ac-036b68d1fb08"/>
+			</line>
+			<staticText>
+				<reportElement x="136" y="82" width="88" height="20" uuid="bb353b02-dc37-4f03-a879-a51d17c28c5e"/>
+				<textElement>
+					<font fontName="Segoe UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vigilante a cargo: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="445" y="82" width="137" height="20" uuid="07973e1c-fc6d-4d3d-8ac5-4acbcac5edbd"/>
+				<textElement>
+					<font fontName="Segoe UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha y hora de impresión:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="445" y="102" width="100" height="20" uuid="417fb792-c141-4776-9c7a-3ffe9b614ef0"/>
+				<textElement>
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="102" width="121" height="20" uuid="46b910bd-d5ce-4507-8b17-177fb704a0f1"/>
+				<textFieldExpression><![CDATA[$F{Vigilante}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="65">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="5" width="572" height="54" forecolor="#FFFFFF" backcolor="#393E46" uuid="1845118f-7953-45df-9dbc-c4ac19e62a91"/>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Reportes de Salidas]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="36" splitType="Stretch">
+			<textField>
+				<reportElement x="18" y="2" width="32" height="20" uuid="d86b5a84-e598-4dc6-86d7-cf016fc2ebd4"/>
+				<textFieldExpression><![CDATA[$F{idRegistroSalida}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="53" y="2" width="100" height="20" uuid="87d96083-458a-482b-bdc2-99c54a65fe7d"/>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="157" y="2" width="100" height="20" uuid="8bf1cf27-a9b3-48e6-a1aa-aa875cb5c73a"/>
+				<textFieldExpression><![CDATA[$F{apellidos}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="530" y="22" width="19" height="20" uuid="7423804c-4840-4518-b1e6-1f83d256d9ce"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="542" y="22" width="14" height="20" uuid="4141f27a-09dc-4152-b746-3c2dfe1d1da3"/>
+				<text><![CDATA[de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="495" y="22" width="35" height="20" uuid="76b7365a-a557-4cf9-b4c9-417202d655b6"/>
+				<text><![CDATA[Página]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="558" y="22" width="100" height="20" uuid="032be1d6-ead6-4f79-a777-f9a930eca260"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="197" splitType="Stretch">
+			<barChart>
+				<chart>
+					<reportElement x="57" y="0" width="434" height="197" uuid="e7ee3826-8560-48d6-a399-f81d67c36bea"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Portones de Salida"]]></seriesExpression>
+						<categoryExpression><![CDATA["Porton "+$F{idPorton}]]></categoryExpression>
+						<valueExpression><![CDATA[$V{idRegistroSalida_1}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+		</band>
+	</summary>
+</jasperReport>

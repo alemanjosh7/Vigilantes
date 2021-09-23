@@ -38,7 +38,10 @@ public class FrmPersonal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         mostrarDatos();
-        
+                //Llenar datos del usuario
+        FrmLogin log = new FrmLogin();
+        lblCargoUsuario.setText(log.cargo);
+        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);   
     }
     
     private void limpiarDatos(){

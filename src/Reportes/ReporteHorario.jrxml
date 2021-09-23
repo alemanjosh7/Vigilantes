@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteHorario" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b089874c-1fc5-42cc-b2d6-340bf2e0aecd">
+	<property name="ireport.zoom" value="1.5000000000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Administrador" class="java.lang.String"/>
+	<parameter name="FechaInicio" class="java.lang.String"/>
+	<parameter name="FechaFin" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[Select h.idTurno, p.idPersonal, CONCAT(p.nombres, ' ', p.apellidos) AS nombreCompleto, h.idPorton, substring(convert(varchar, h.horaIngreso, 100), len(convert(varchar, h.horaIngreso, 100)) - 6, 7) AS horaIngreso, substring(convert(varchar, h.horaSalida, 100), len(convert(varchar, h.horaSalida, 100)) - 6, 7) AS horaSalida, FORMAT(h.fecha, 'dd-MM-yyyy') AS fecha FROM Turno AS h Inner Join Personal AS p ON h.idPersonal = p.idPersonal WHERE h.fecha >= $P{FechaInicio} AND h.fecha <= $P{FechaFin} ORDER BY p.idPersonal]]>
+	</queryString>
+	<field name="idTurno" class="java.lang.Integer"/>
+	<field name="idPersonal" class="java.lang.Integer"/>
+	<field name="nombreCompleto" class="java.lang.String"/>
+	<field name="idPorton" class="java.lang.Integer"/>
+	<field name="horaIngreso" class="java.lang.String"/>
+	<field name="horaSalida" class="java.lang.String"/>
+	<field name="fecha" class="java.lang.String"/>
+	<group name="Personal">
+		<groupExpression><![CDATA[$F{idPersonal}]]></groupExpression>
+		<groupHeader>
+			<band height="86">
+				<rectangle>
+					<reportElement x="116" y="54" width="105" height="26" forecolor="#FFFFFF" backcolor="#393E46" uuid="e5f04971-eabc-4534-a6e1-f073120c8943"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="0" y="10" width="571" height="34" forecolor="#FFFFFF" backcolor="#393E46" uuid="bbd7a0da-e07a-4cb7-802a-e8db995008ad"/>
+				</rectangle>
+				<textField>
+					<reportElement x="76" y="10" width="49" height="34" forecolor="#FFFFFF" uuid="043e808f-961b-43b6-ae66-f3b131d65427"/>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font fontName="Segoe UI"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{idPersonal}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="242" y="10" width="322" height="34" forecolor="#FFFFFF" uuid="e16ede44-05f5-48ae-a605-00fbb3e50733"/>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font fontName="Segoe UI"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nombreCompleto}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="16" y="10" width="60" height="34" forecolor="#FFFFFF" uuid="56d67274-10b4-49f6-a81f-6f7cb6622385"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Segoe UI"/>
+					</textElement>
+					<text><![CDATA[ID Personal:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="142" y="10" width="135" height="34" forecolor="#FFFFFF" uuid="6df9af79-4608-49b8-9827-85437f45d402"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Segoe UI"/>
+					</textElement>
+					<text><![CDATA[Nombre Completo:]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement x="0" y="54" width="105" height="26" forecolor="#FFFFFF" backcolor="#393E46" uuid="cd5eedbf-753f-4f2d-b820-8a2bce57ff8a"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="0" y="54" width="105" height="26" forecolor="#FFFFFF" uuid="c22ad551-80a4-4e59-9e24-b99775cf7867"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Segoe UI"/>
+					</textElement>
+					<text><![CDATA[ID Turno]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="116" y="54" width="105" height="26" forecolor="#FFFFFF" uuid="f2cc222d-5e2e-48a8-8d01-6fd6c6e0e2ae"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Segoe UI"/>
+					</textElement>
+					<text><![CDATA[Fecha]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement x="226" y="54" width="105" height="26" forecolor="#FFFFFF" backcolor="#393E46" uuid="889bc5f2-c0d8-4f24-beae-1de0970c7ca1"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="459" y="54" width="105" height="26" forecolor="#FFFFFF" backcolor="#393E46" uuid="572d98bd-c9c4-425e-9f8c-6e7235c866f4"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="343" y="54" width="105" height="26" forecolor="#FFFFFF" backcolor="#393E46" uuid="a6507be0-0549-47ce-af2a-3cc45b9a01f2"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="343" y="54" width="105" height="26" forecolor="#FFFFFF" uuid="33af9522-f4ac-45d9-98c5-293c14b8f9ea"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Segoe UI"/>
+					</textElement>
+					<text><![CDATA[Fecha Ingreso]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="226" y="54" width="105" height="26" forecolor="#FFFFFF" uuid="e0bb631f-2a5e-4900-9181-c9878b4108e7"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Segoe UI"/>
+					</textElement>
+					<text><![CDATA[Portón]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="459" y="54" width="105" height="26" forecolor="#FFFFFF" uuid="9d23c452-7072-493c-b21c-2ea0f8df510a"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Segoe UI"/>
+					</textElement>
+					<text><![CDATA[Fecha Salida]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="22"/>
+		</groupFooter>
+	</group>
+	<title>
+		<band height="109" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="572" height="109" forecolor="#FFFFFF" backcolor="#FFD369" uuid="072064b4-770b-4664-aacc-fe0cbde2a69b"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="116" y="48" width="161" height="20" uuid="f0ff8817-40b0-40df-9cc6-beb4816c4aa5"/>
+				<textElement>
+					<font fontName="Segoe UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Administrador a cargo: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="226" y="9" width="152" height="29" uuid="896df4f1-b8f4-47c5-b62c-e79375eca923"/>
+				<textElement>
+					<font fontName="Segoe UI" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sistema Vigilantes]]></text>
+			</staticText>
+			<line>
+				<reportElement x="216" y="38" width="163" height="1" uuid="f4e5612c-24c3-41e6-a35c-425e5f303a10"/>
+			</line>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="426" y="68" width="100" height="20" uuid="fc6fe305-b2aa-4f03-98e5-de0e44e67fe1"/>
+				<textElement>
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="426" y="48" width="186" height="20" uuid="da60ef7d-504a-4cc4-b68a-f2dd3af1fac5"/>
+				<textElement>
+					<font fontName="Segoe UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha y hora de impresión:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="121" y="68" width="100" height="20" uuid="ccd6a9b7-a8e3-4e3e-8543-490a9c0a85c5"/>
+				<textElement>
+					<font fontName="Segoe UI" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Administrador}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame">
+				<reportElement x="16" y="19" width="71" height="79" uuid="a21877c8-4eeb-40c5-9b8a-723c471626e4"/>
+				<imageExpression><![CDATA["C:\\Users\\CRISTIAN\\Desktop\\LEGIT Vigilante\\Vigilantes\\src\\Vigilante_Imagenes\\imgLogoDarkJpeg.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="53" splitType="Stretch">
+			<staticText>
+				<reportElement x="328" y="0" width="76" height="20" forecolor="#FFFFFF" uuid="1f511401-fc47-42de-af45-d6fa33465d27"/>
+				<textElement>
+					<font fontName="Segoe UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Zona]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="17" width="571" height="34" forecolor="#FFFFFF" backcolor="#393E46" uuid="4f83b573-0e4a-4ece-a33a-2f65dea85bb0"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="186" y="17" width="240" height="34" forecolor="#FFFFFF" uuid="a4ecb834-8d09-49ba-836a-eba2867e8615"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Segoe UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE HORARIOS DE PERSONAL ]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="5" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="20" width="105" height="1" uuid="911cbd58-2b5c-4c87-ab7f-3b1b5bee77e5"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="0" width="105" height="20" uuid="0443b199-d8a9-49d2-b68a-7a3c8bd1e3be"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idTurno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="116" y="0" width="100" height="20" uuid="bda82e85-c573-433d-8bb3-fc4cd3dbd32c"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="116" y="20" width="105" height="1" uuid="5e202978-4016-4b57-b1e7-f4cedc102cc6"/>
+			</line>
+			<line>
+				<reportElement x="226" y="20" width="102" height="1" uuid="4264d0f1-f81d-4201-83b2-e8f05032ae93"/>
+			</line>
+			<textField>
+				<reportElement x="228" y="0" width="100" height="20" uuid="57d703a4-1970-4682-a6a3-0448a34f398c"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idPorton}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="346" y="21" width="102" height="1" uuid="47e985f1-0bc6-418e-b65c-3b35bf29a264"/>
+			</line>
+			<line>
+				<reportElement x="464" y="21" width="100" height="1" uuid="8d9c7c47-4167-4308-a519-6b7356a74a64"/>
+			</line>
+			<textField>
+				<reportElement x="346" y="0" width="100" height="20" uuid="281d1818-664f-42eb-8164-f49196a260e7"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{horaIngreso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="464" y="0" width="100" height="20" uuid="50fa6152-bc3d-4614-b52f-39ea1cc74e6b"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{horaSalida}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="464" y="34" width="100" height="20" uuid="e63a4787-9a13-43ce-a97b-875a224e47a3"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="548" y="34" width="100" height="20" uuid="90fa997b-ed88-4f64-b7a8-4c0ec9ba0a00"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="531" y="34" width="100" height="20" uuid="3afc68e2-89c1-4f32-a884-f040dfc91207"/>
+				<text><![CDATA[de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="426" y="34" width="33" height="20" uuid="8b814fda-d889-497e-8a63-8841d71ed3a4"/>
+				<text><![CDATA[Página]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="11" splitType="Stretch"/>
+	</summary>
+</jasperReport>

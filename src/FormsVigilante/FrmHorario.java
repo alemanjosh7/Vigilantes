@@ -164,7 +164,7 @@ public class FrmHorario extends javax.swing.JFrame {
         jSTablaDatos.setViewportView(jTableHorarios);
 
         jPContenedorHorario.add(jSTablaDatos);
-        jSTablaDatos.setBounds(44, 258, 970, 300);
+        jSTablaDatos.setBounds(44, 258, 970, 270);
 
         jPBotones.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -269,7 +269,7 @@ public class FrmHorario extends javax.swing.JFrame {
 
         jTxtIDTurno.setEditable(false);
         jPContenedorHorario.add(jTxtIDTurno);
-        jTxtIDTurno.setBounds(90, 110, 220, 24);
+        jTxtIDTurno.setBounds(90, 110, 220, 22);
 
         jTxtHoraIngreso.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -277,7 +277,7 @@ public class FrmHorario extends javax.swing.JFrame {
             }
         });
         jPContenedorHorario.add(jTxtHoraIngreso);
-        jTxtHoraIngreso.setBounds(90, 200, 220, 24);
+        jTxtHoraIngreso.setBounds(90, 200, 220, 22);
 
         lblHoraIngreso.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblHoraIngreso.setText("Hora de Ingreso (hh:mm:ss):");
@@ -290,7 +290,7 @@ public class FrmHorario extends javax.swing.JFrame {
             }
         });
         jPContenedorHorario.add(jTxtHoraSalida);
-        jTxtHoraSalida.setBounds(400, 200, 250, 24);
+        jTxtHoraSalida.setBounds(400, 200, 250, 22);
 
         lblHoraSalida.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblHoraSalida.setText("Hora de salida (hh:mm:ss):");
@@ -391,7 +391,7 @@ public class FrmHorario extends javax.swing.JFrame {
         );
 
         jPIngresoHorario.add(jPToolStrip);
-        jPToolStrip.setBounds(0, 0, 1080, 47);
+        jPToolStrip.setBounds(0, 0, 1080, 61);
 
         getContentPane().add(jPIngresoHorario);
         jPIngresoHorario.setBounds(290, 0, 1080, 768);
@@ -546,7 +546,7 @@ public class FrmHorario extends javax.swing.JFrame {
                     .addGroup(jPSideBar1Layout.createSequentialGroup()
                         .addGap(79, 79, 79)
                         .addComponent(jPbtnSBContainer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPSideBar1Layout.setVerticalGroup(
             jPSideBar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteEntradaPorton" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ac289041-3079-42b5-9245-b7ff4b093b4a">
+	<property name="ireport.zoom" value="1.9487171000000185"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="2"/>
+	<scriptlet name="scriptlet1" class="net.sf.jasperreports.engine.JRDefaultScriptlet"/>
+	<parameter name="Porton" class="java.lang.String"/>
+	<parameter name="Vigilante" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\josue\\Desktop\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FechaInicio" class="java.lang.String"/>
+	<parameter name="FechaFinal" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT p.idTipoPorton, z.nombreZona, re.idRegistroIngreso, p.idPorton, v.nombres, v.apellidos, tp.descripciónTipoPorton, re.fechaHora, pe.nombres, pe.apellidos,
+case permisoIngreso when '1' then 'PERMITIDO' else 'NO PERMITIDO' END AS permisoInreso,
+(select COUNT(permisoIngreso) from RegistroEntrada where emergencia = 1 and idPorton = $P{Porton}) [Emergencia],
+(select COUNT(permisoIngreso) [Denegados] from RegistroEntrada where emergencia = 0 and idPorton = $P{Porton}) [NoEmergencia],
+(select nombres from Personal where idPersonal = '1' )[Vigilante]
+FROM RegistroEntrada re JOIN Porton p ON re.idPorton = p.idPorton JOIN Zonas z ON z.idZona = p.idZona JOIN TipoPorton tp ON tp.idTipoPorton = p.idTipoPorton JOIN Personal pe
+ON pe.idPersonal = re.idPersonal JOIN Visitante v ON v.idVisitante = re.idVisitante
+where re.idPorton = $P{Porton} and fechaHora between $P{FechaInicio} and $P{FechaFinal}]]>
+	</queryString>
+	<field name="idTipoPorton" class="java.lang.Integer"/>
+	<field name="nombreZona" class="java.lang.String"/>
+	<field name="idRegistroIngreso" class="java.lang.Integer"/>
+	<field name="idPorton" class="java.lang.Integer"/>
+	<field name="nombres" class="java.lang.String"/>
+	<field name="apellidos" class="java.lang.String"/>
+	<field name="descripciónTipoPorton" class="java.lang.String"/>
+	<field name="fechaHora" class="java.sql.Timestamp"/>
+	<field name="permisoInreso" class="java.lang.String"/>
+	<field name="Emergencia" class="java.lang.Integer"/>
+	<field name="NoEmergencia" class="java.lang.Integer"/>
+	<field name="Vigilante" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="109" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="572" height="109" forecolor="#FFFFFF" backcolor="#FFD369" uuid="973da77b-f8fb-427c-8e5c-977625b996d2"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="116" y="62" width="88" height="20" uuid="ae9d5e26-6197-407e-ab01-16512328c00e"/>
+				<textElement>
+					<font fontName="Segoe UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vigilante a cargo: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="232" y="13" width="152" height="29" uuid="a68c1e89-776f-4909-8933-b54a11181bab"/>
+				<textElement>
+					<font fontName="Segoe UI" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sistema Vigilantes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="62" width="186" height="20" uuid="cb7bf6f6-79cb-4f55-9941-e46408e79944"/>
+				<textElement>
+					<font fontName="Segoe UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha y hora de impresión:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="221" y="42" width="163" height="1" uuid="59bbc0da-82a1-492c-95e2-9aafbb720767"/>
+			</line>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="425" y="82" width="100" height="20" uuid="4e97147f-4e9a-4942-adf7-ae78f3556cd4"/>
+				<textElement>
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="116" y="80" width="100" height="20" uuid="615632d1-460f-4972-9c43-4a914b2ac88d"/>
+				<textElement>
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Vigilante}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame">
+				<reportElement x="19" y="10" width="80" height="90" uuid="fceeabd7-949c-4ddf-b075-413b01bb994d"/>
+				<imageExpression><![CDATA["C:\\Users\\CRISTIAN\\Desktop\\LEGIT Vigilante\\Vigilantes\\src\\Vigilante_Imagenes\\imgLogoDarkJpeg.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="93" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="13" width="571" height="34" forecolor="#FFFFFF" backcolor="#393E46" uuid="1a4e6287-c8f9-4ad8-b04d-fe03ff541e75"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="173" y="21" width="240" height="20" forecolor="#FFFFFF" uuid="a0baca2f-e9f0-4daf-8686-6b90dec143df"/>
+				<textElement>
+					<font fontName="Segoe UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE ENTRADAS POR PORTÓN N°: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="376" y="22" width="100" height="20" forecolor="#FFFFFF" uuid="6f1d73a7-aff9-4878-8591-952ffc2a638c"/>
+				<textElement>
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Porton}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="1" y="59" width="203" height="34" forecolor="#FFFFFF" backcolor="#393E46" uuid="348410c8-e183-4e19-beca-50b58617f2a0"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="5" y="69" width="185" height="20" forecolor="#FFFFFF" uuid="5d0d2fea-dd1f-49fe-859c-0875d71807ec"/>
+				<textElement>
+					<font fontName="Segoe UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Visitante]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="210" y="59" width="117" height="34" forecolor="#FFFFFF" backcolor="#393E46" uuid="5f084088-cdb2-4db0-bea0-ce6c8c1db991"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="216" y="69" width="82" height="20" forecolor="#FFFFFF" uuid="374fa975-2aae-4d4c-bc7e-4b30a8315133"/>
+				<textElement>
+					<font fontName="Segoe UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo de Portón]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="334" y="59" width="237" height="34" forecolor="#FFFFFF" backcolor="#393E46" uuid="eb7e340c-2ce8-4de8-93f4-e903a0ab149b"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="344" y="69" width="132" height="20" forecolor="#FFFFFF" uuid="efd83d06-f70d-41aa-a9b8-893bde1f9999"/>
+				<textElement>
+					<font fontName="Segoe UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha y hora de entrada]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="2" y="3" width="100" height="20" uuid="82c04e25-d879-453c-b6e0-7302b1dcaf32"/>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="2" y="24" width="203" height="1" uuid="be8c555a-b7e2-4ceb-95f4-f9bce5a883c6"/>
+			</line>
+			<textField>
+				<reportElement x="99" y="4" width="105" height="20" uuid="f3e9d704-3024-4a06-9d0a-e490cb344d99"/>
+				<textFieldExpression><![CDATA[$F{apellidos}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="209" y="24" width="100" height="1" uuid="e64ca531-8e13-4329-ad11-9bfc07b68e1d"/>
+			</line>
+			<line>
+				<reportElement x="334" y="24" width="237" height="1" uuid="e99bd7ab-1f9c-454d-90c7-0b2af27a26cd"/>
+			</line>
+			<textField>
+				<reportElement x="211" y="4" width="100" height="20" uuid="25addd76-c584-4f2e-a406-a424c564ed04"/>
+				<textFieldExpression><![CDATA[$F{idPorton}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="336" y="2" width="100" height="20" uuid="1b1c06d4-d519-494a-862f-48eadc56378b"/>
+				<textFieldExpression><![CDATA[$F{fechaHora}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="522" y="3" width="19" height="20" uuid="7c2254a7-15ae-4b4f-b64b-17bea19f2f6a"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="551" y="4" width="100" height="20" uuid="a791f69b-4609-4a0f-8cc9-d56c504ab70b"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="534" y="3" width="14" height="20" uuid="a857aa69-cd52-4d26-bc38-30ddfb2b4fb8"/>
+				<text><![CDATA[de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="487" y="2" width="35" height="20" uuid="fc22c1f1-d5f6-41cd-a3b4-13dfec921a36"/>
+				<text><![CDATA[Página]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="95">
+			<rectangle>
+				<reportElement x="274" y="14" width="297" height="81" forecolor="#000000" backcolor="#FFD369" uuid="18ae52df-2f53-47f6-9e55-fd207e3a54c7"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="289" y="36" width="173" height="20" forecolor="#000000" uuid="ec22f17d-b1ee-4626-b847-988bcc2fd807"/>
+				<textElement>
+					<font fontName="Segoe UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Entradas de emergencia al portón:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="289" y="61" width="187" height="20" forecolor="#000000" uuid="83cba41c-ec5b-4ca3-bb24-4d655e6a30e0"/>
+				<textElement>
+					<font fontName="Segoe UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Entradas de no emergencia al portón: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="453" y="36" width="100" height="20" uuid="396b70fc-9509-4773-8462-781041c5052f"/>
+				<textFieldExpression><![CDATA[$F{Emergencia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="467" y="62" width="100" height="20" uuid="d62762a0-2535-4ef8-a4a7-246da058ac91"/>
+				<textFieldExpression><![CDATA[$F{NoEmergencia}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

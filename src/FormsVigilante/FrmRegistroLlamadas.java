@@ -33,6 +33,10 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
         this.cmbPorton.setModel(RL.consultarPorton());
         this.cmbResidente.setModel(RL.consultarResidente());
         jFFechaLla.setText(fechaActual());
+        //Llenar datos del usuario
+        FrmLogin log = new FrmLogin();
+        lblCargoUsuario.setText(log.cargo);
+        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);
         CargarTabla();
     }
 
@@ -53,6 +57,7 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
         btnConsultar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
+        btnReporte = new javax.swing.JButton();
         cmbPersonal = new javax.swing.JComboBox<>();
         jSTablaDatos = new javax.swing.JScrollPane();
         jTLlamadas = new javax.swing.JTable();
@@ -66,6 +71,7 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
         jFFechaLla = new javax.swing.JTextField();
         lblVigilante2 = new javax.swing.JLabel();
         jFLlamadas = new javax.swing.JTextField();
+        lblApellido1 = new javax.swing.JLabel();
         jPSideBar = new javax.swing.JPanel();
         jPImageContainer = new javax.swing.JPanel();
         lblSistemaVigilantes = new javax.swing.JLabel();
@@ -149,23 +155,34 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
             }
         });
 
+        btnReporte.setBackground(new java.awt.Color(255, 211, 105));
+        btnReporte.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnReporte.setText("Reporte");
+        btnReporte.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnReporte.setContentAreaFilled(false);
+        btnReporte.setFocusable(false);
+        btnReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReporteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPBotonesLayout = new javax.swing.GroupLayout(jPBotones);
         jPBotones.setLayout(jPBotonesLayout);
         jPBotonesLayout.setHorizontalGroup(
             jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
-                .addContainerGap(277, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(107, 107, 107)
                 .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(117, 117, 117)
+                .addGap(84, 84, 84)
                 .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(119, 119, 119)
+                .addGap(97, 97, 97)
                 .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
-            .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPBotonesLayout.createSequentialGroup()
-                    .addGap(82, 82, 82)
-                    .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(708, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66))
         );
         jPBotonesLayout.setVerticalGroup(
             jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,13 +191,10 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
                 .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32))
-            .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
-                    .addContainerGap(16, Short.MAX_VALUE)
+                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(29, 29, 29)))
+                    .addComponent(btnReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32))
         );
 
         cmbPersonal.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -231,6 +245,9 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
         lblVigilante2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblVigilante2.setText("ID Registro:");
 
+        lblApellido1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        lblApellido1.setText("Registro Llamadas");
+
         javax.swing.GroupLayout jPRegistroLlamadaLayout = new javax.swing.GroupLayout(jPRegistroLlamada);
         jPRegistroLlamada.setLayout(jPRegistroLlamadaLayout);
         jPRegistroLlamadaLayout.setHorizontalGroup(
@@ -244,9 +261,7 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
                     .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
-                                .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jPBotones, javax.swing.GroupLayout.DEFAULT_SIZE, 994, Short.MAX_VALUE)
                             .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
                                 .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lblVigilante2)
@@ -270,16 +285,22 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
                                         .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(cmbPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(lblVigilante))
-                                        .addGap(85, 85, 85)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                                         .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(cmbPorton, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(lblPorton))
                                         .addGap(158, 158, 158))))))))
+            .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
+                .addGap(414, 414, 414)
+                .addComponent(lblApellido1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPRegistroLlamadaLayout.setVerticalGroup(
             jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addContainerGap()
+                .addComponent(lblApellido1)
+                .addGap(22, 22, 22)
                 .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPRegistroLlamadaLayout.createSequentialGroup()
                         .addComponent(lblPorton)
@@ -295,7 +316,7 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(cmbPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(cmbPorton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27)))
+                        .addGap(6, 6, 6)))
                 .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
                         .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -316,7 +337,7 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
                 .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(66, 66, 66)
                 .addComponent(jSTablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPRegistroLlamada);
@@ -488,7 +509,7 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPToolStrip);
-        jPToolStrip.setBounds(270, 0, 1100, 57);
+        jPToolStrip.setBounds(270, 0, 1100, 61);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -528,12 +549,12 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        RL.setIdPersonal(Integer.parseInt(cmbPersonal.getSelectedItem().toString()));
+        RL.convertirPersonal(cmbPersonal.getSelectedItem().toString());
         RL.setIdPorton(Integer.parseInt(cmbPorton.getSelectedItem().toString()));
-        RL.setIdResidencia(Integer.parseInt(cmbResidente.getSelectedItem().toString()));
+        RL.convertirResidente(cmbResidente.getSelectedItem().toString());
         RL.setFecha(jFFechaLla.getText());
         RL.setMotivo(jTMotivo.getText());
-
+        RL.setIdRegistro(Integer.parseInt(jFLlamadas.getText()));
         if(RL.modificarRegistro()){
             JOptionPane.showMessageDialog(this, "Datos modificados");
         }else{
@@ -574,15 +595,22 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
         RL.setIdRegistro(Integer.parseInt(jFLlamadas.getText()));
         //enviando guardar a  SQLServer
         if(RL.consultarRegistro()){
-            cmbPersonal.setSelectedItem(String.valueOf((RL.getIdPersonal())));
-            cmbPorton.setSelectedItem(String.valueOf((RL.getIdPorton())));
-            cmbResidente.setSelectedItem(String.valueOf((RL.getIdResidencia())));
+            cmbPersonal.setSelectedIndex(RL.getIdPersonal());
+            cmbPorton.setSelectedIndex(RL.getIdPorton());
+            cmbResidente.setSelectedIndex(RL.getIdResidencia());
             jFFechaLla.setText(String.valueOf((RL.getFecha())));
             jTMotivo.setText(String.valueOf((RL.getMotivo())));
         }else{
             JOptionPane.showMessageDialog(this, "Error al consultar");
         }
     }//GEN-LAST:event_btnConsultarActionPerformed
+
+    private void btnReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteActionPerformed
+        // TODO add your handling code here:
+        ReporteRegistroLlamadas fp = new ReporteRegistroLlamadas();
+        fp.show();
+        dispose();
+    }//GEN-LAST:event_btnReporteActionPerformed
 
     private String fechaActual() {
         Date fecha = new Date();
@@ -635,6 +663,7 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnReporte;
     private javax.swing.JButton btnTheme;
     private javax.swing.JComboBox<String> cmbPersonal;
     private javax.swing.JComboBox<String> cmbPorton;
@@ -651,6 +680,7 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
     private javax.swing.JScrollPane jSTablaDatos;
     private javax.swing.JTable jTLlamadas;
     private javax.swing.JTextArea jTMotivo;
+    private javax.swing.JLabel lblApellido1;
     private javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblCargoUsuario;
     private javax.swing.JLabel lblExitButton;

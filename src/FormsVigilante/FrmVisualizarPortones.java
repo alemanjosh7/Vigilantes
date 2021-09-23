@@ -76,6 +76,7 @@ public class FrmVisualizarPortones extends javax.swing.JFrame {
         btnLimpiar = new javax.swing.JButton();
         btnRegistrar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
+        btnReportes = new javax.swing.JButton();
         jFTBusqueda = new javax.swing.JFormattedTextField();
         cmbZonas = new javax.swing.JComboBox<>();
         cmbTipoPorton = new javax.swing.JComboBox<>();
@@ -325,6 +326,18 @@ public class FrmVisualizarPortones extends javax.swing.JFrame {
             }
         });
 
+        btnReportes.setBackground(new java.awt.Color(255, 211, 105));
+        btnReportes.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnReportes.setText("Reporte");
+        btnReportes.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnReportes.setContentAreaFilled(false);
+        btnReportes.setFocusable(false);
+        btnReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPBotonesLayout = new javax.swing.GroupLayout(jPBotones);
         jPBotones.setLayout(jPBotonesLayout);
         jPBotonesLayout.setHorizontalGroup(
@@ -332,13 +345,15 @@ public class FrmVisualizarPortones extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
                 .addGap(66, 66, 66)
                 .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(113, 113, 113)
+                .addGap(57, 57, 57)
                 .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                .addGap(53, 53, 53)
                 .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(113, 113, 113)
+                .addGap(65, 65, 65)
                 .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59))
         );
         jPBotonesLayout.setVerticalGroup(
             jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -348,7 +363,8 @@ public class FrmVisualizarPortones extends javax.swing.JFrame {
                     .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32))
         );
 
@@ -590,6 +606,13 @@ public class FrmVisualizarPortones extends javax.swing.JFrame {
     private void cmbTipoPortonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoPortonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbTipoPortonActionPerformed
+
+    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
+        // TODO add your handling code here:
+        ReporteVisEntradaPorton vep = new ReporteVisEntradaPorton();
+        vep.show();
+        dispose();
+    }//GEN-LAST:event_btnReportesActionPerformed
     
     //Metodos
     //Para validar que solo permitan pasar Numeros
@@ -660,6 +683,7 @@ public class FrmVisualizarPortones extends javax.swing.JFrame {
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnReportes;
     private javax.swing.JButton btnTheme;
     private javax.swing.JComboBox<String> cmbTipoPorton;
     private javax.swing.JComboBox<String> cmbZonas;

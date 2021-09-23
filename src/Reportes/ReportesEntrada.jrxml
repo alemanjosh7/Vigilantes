@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReportesEntrada" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="09f76a96-8517-48ba-9211-f1a41b6670b0">
+	<property name="ireport.zoom" value="1.9487171000000025"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="48"/>
+	<parameter name="fechaInicio" class="java.lang.String"/>
+	<parameter name="fechaFinal" class="java.lang.String"/>
+	<parameter name="idVigilante" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT RE.idRegistroIngreso, V.nombres, V.apellidos, RE.motivoIngreso, TES.descripcion,RE.emergencia, RE.idPorton,
+case permisoIngreso when '1' then 'PERMITIDO' else 'NO PERMITIDO' END AS permisoInreso,
+(select COUNT(permisoIngreso) from RegistroEntrada where permisoIngreso = 1)  [Aceptados],
+(select COUNT(permisoIngreso) [Denegados] from RegistroEntrada where permisoIngreso = 0) [Denegados],
+(select nombres from Personal where idPersonal = $P{idVigilante} )[Vigilante]
+FROM RegistroEntrada RE JOIN Visitante V  ON RE.idVisitante = V.idVisitante JOIN TipoEntradaSalida TES ON RE.idTipoES = TES.idTipoES where fechaHora between $P{fechaInicio} and $P{fechaFinal}]]>
+	</queryString>
+	<field name="idRegistroIngreso" class="java.lang.Integer"/>
+	<field name="nombres" class="java.lang.String"/>
+	<field name="apellidos" class="java.lang.String"/>
+	<field name="motivoIngreso" class="java.lang.String"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="emergencia" class="java.lang.String"/>
+	<field name="idPorton" class="java.lang.Integer"/>
+	<field name="permisoInreso" class="java.lang.String"/>
+	<field name="Aceptados" class="java.lang.Integer"/>
+	<field name="Denegados" class="java.lang.Integer"/>
+	<field name="Vigilante" class="java.lang.String"/>
+	<group name="Portones">
+		<groupExpression><![CDATA[$F{idPorton}]]></groupExpression>
+		<groupHeader>
+			<band height="75">
+				<staticText>
+					<reportElement mode="Opaque" x="456" y="46" width="88" height="29" forecolor="#FFFFFF" backcolor="#393E46" uuid="c8e7dadb-8667-45ed-aa7d-6e141df00cc7"/>
+					<text><![CDATA[Permiso]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="26" y="12" width="32" height="20" backcolor="#FFCC99" uuid="7f9a565d-3f35-4271-a225-0fb973bdfde2"/>
+					<textFieldExpression><![CDATA[$F{idPorton}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="26" y="46" width="39" height="29" forecolor="#FFFFFF" backcolor="#393E46" uuid="5c4c4cdf-37d5-4a2a-bb82-3152bf06d69d"/>
+					<text><![CDATA[Entrada]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="61" y="12" width="100" height="20" backcolor="#FFCC99" uuid="1cc8c348-ed92-4173-b9b7-a8648f58a841"/>
+					<text><![CDATA[Tipo de Salida:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="271" y="46" width="183" height="29" forecolor="#FFFFFF" backcolor="#393E46" uuid="a0b373b6-045a-47cd-a0e3-88b0183aa39d"/>
+					<text><![CDATA[Motivo del Ingreso]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="169" y="46" width="100" height="29" forecolor="#FFFFFF" backcolor="#393E46" uuid="d6fcebc2-ab98-46f4-bbca-ea179edb443c"/>
+					<text><![CDATA[Apellidos]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="67" y="46" width="100" height="29" forecolor="#FFFFFF" backcolor="#393E46" uuid="0999eb87-915b-4119-ace9-2ef9061b8520"/>
+					<text><![CDATA[Nombres]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="171" y="12" width="100" height="20" backcolor="#FFCC99" uuid="d5153050-01c7-4852-8981-9b4ddb1443af"/>
+					<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="27"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="117" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="572" height="117" backcolor="#FFD369" uuid="d2e21a1b-2d5c-4549-bcc8-7d2b52a91498"/>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="216" y="13" width="140" height="29" uuid="3786277a-688a-48de-ba63-815b172a89bf"/>
+				<textElement>
+					<font fontName="Segoe UI" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sistema Vigilantes]]></text>
+			</staticText>
+			<line>
+				<reportElement x="203" y="41" width="163" height="1" uuid="2e0de768-59c4-43f1-add6-e8dc949bb0b1"/>
+			</line>
+			<image scaleImage="FillFrame">
+				<reportElement x="22" y="13" width="81" height="91" uuid="548cb4d1-7e28-4cec-9817-cc75c3676fc6"/>
+				<imageExpression><![CDATA["C:\\Users\\CRISTIAN\\Desktop\\LEGIT Vigilante\\Vigilantes\\src\\Vigilante_Imagenes\\imgLogoDarkJpeg.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="435" y="72" width="137" height="20" uuid="9a198c25-e271-4d6b-8b75-0afd112c0a50"/>
+				<textElement>
+					<font fontName="Segoe UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha y hora de impresión:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="435" y="92" width="100" height="20" uuid="5bdb3b2c-fb7e-4c9f-82cd-9b2505906df1"/>
+				<textElement>
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="126" y="72" width="88" height="20" uuid="727afa1e-2948-4691-b7ad-1530552d2f46"/>
+				<textElement>
+					<font fontName="Segoe UI" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vigilante a cargo: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="126" y="92" width="129" height="20" uuid="86b12e51-123a-40c5-bf58-6b55eecc5a6c"/>
+				<textFieldExpression><![CDATA[$F{Vigilante}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="73" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="12" width="572" height="51" forecolor="#FFFFFF" backcolor="#393E46" uuid="f5a286b9-49ee-4512-9ce1-77f1d43b28cb"/>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Reportes de Entradas]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="44" splitType="Stretch">
+			<textField>
+				<reportElement x="456" y="4" width="88" height="20" uuid="10dcf0b5-2bc9-4a3e-8efe-6b6c301d88f5"/>
+				<textFieldExpression><![CDATA[$F{permisoInreso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="67" y="4" width="100" height="20" uuid="58218f3f-416b-48c8-8c14-0db5302cabc6"/>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="169" y="4" width="100" height="20" uuid="838b2c3b-eb2d-4c77-91f2-48227b12c6da"/>
+				<textFieldExpression><![CDATA[$F{apellidos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="27" y="4" width="39" height="20" uuid="bcdd2926-64ba-496a-857d-e105ecb36b77"/>
+				<textFieldExpression><![CDATA[$F{idRegistroIngreso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="271" y="4" width="183" height="20" uuid="039b111d-eca2-4d75-85ea-441b34eb7e82"/>
+				<textFieldExpression><![CDATA[$F{motivoIngreso}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="27" y="25" width="39" height="1" uuid="b9c81ba9-2eee-4517-9ad8-a81f23098a3e"/>
+			</line>
+			<line>
+				<reportElement x="67" y="25" width="100" height="1" uuid="e03dba4d-9f9a-42fd-87d1-20cceb189ae2"/>
+			</line>
+			<line>
+				<reportElement x="171" y="25" width="98" height="1" uuid="253aca1c-96fe-4d6f-8ec9-3c14798fd1d8"/>
+			</line>
+			<line>
+				<reportElement x="271" y="25" width="183" height="1" uuid="87f34621-0d0b-4673-bfe7-d9f2168b0566"/>
+			</line>
+			<line>
+				<reportElement x="456" y="25" width="88" height="1" uuid="ecad7a55-2496-447a-8ec9-219ee80b27a0"/>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="46" splitType="Stretch">
+			<textField>
+				<reportElement x="560" y="12" width="100" height="20" uuid="d15a1170-4561-482a-8bad-456a538f9bb1"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="497" y="12" width="35" height="20" uuid="ff0a8311-c78e-4a05-b23f-c88c70ac5c6f"/>
+				<text><![CDATA[Página]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="544" y="12" width="14" height="20" uuid="fb763d2b-33fa-4c94-98ae-2d85472a53c5"/>
+				<text><![CDATA[de]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="532" y="12" width="19" height="20" uuid="fd229010-296b-4073-af3b-f33a40f38170"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="81" splitType="Stretch">
+			<staticText>
+				<reportElement x="366" y="20" width="130" height="20" uuid="41249519-e8f9-481f-b8cd-307bfdc09dba"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Se les permitio Ingreso]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="507" y="20" width="33" height="20" uuid="bdd25f5b-2b08-4d23-97c3-7c30942bc907"/>
+				<textFieldExpression><![CDATA[$F{Aceptados}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="366" y="49" width="130" height="20" uuid="bfeda7a3-feef-4b87-aa5a-558086bd72e7"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Se les negó Ingreso]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="507" y="49" width="33" height="20" uuid="5c6434b4-4961-424b-8ae2-0ec2d44554ff"/>
+				<textFieldExpression><![CDATA[$F{Denegados}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
