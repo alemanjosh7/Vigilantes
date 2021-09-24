@@ -286,12 +286,12 @@ public class FrmVisualizarZonas extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPMainContainerLayout.createSequentialGroup()
                 .addComponent(jPBusquedaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jSPZona, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
+                .addComponent(jSPZona, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
         );
 
         getContentPane().add(jPMainContainer);
-        jPMainContainer.setBounds(290, 80, 1082, 651);
+        jPMainContainer.setBounds(290, 80, 1082, 658);
 
         jPToolStrip.setBackground(new java.awt.Color(255, 211, 105));
 
@@ -356,7 +356,7 @@ public class FrmVisualizarZonas extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPToolStrip);
-        jPToolStrip.setBounds(290, 0, 1090, 47);
+        jPToolStrip.setBounds(290, 0, 1090, 61);
 
         pack();
         setLocationRelativeTo(null);
@@ -397,7 +397,7 @@ public class FrmVisualizarZonas extends javax.swing.JFrame {
     }//GEN-LAST:event_jFTBusquedaKeyTyped
 
     public boolean SoloLetra(char letra){
-        if(Character.isLetter(letra) || Character.isISOControl(letra)){
+        if(Character.isLetter(letra) || Character.isISOControl(letra)|| Character.isDigit(letra) || Character.isSpaceChar(letra)){
             return true;
         }
         else{

@@ -338,7 +338,7 @@ public class FrmVisualizarResidencias extends javax.swing.JFrame {
         jPGestionResidencia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblDireccion.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblDireccion.setText("Busqueda ID:");
+        lblDireccion.setText("Busqueda de Residencias por N°:");
 
         jTResidencia.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -355,6 +355,7 @@ public class FrmVisualizarResidencias extends javax.swing.JFrame {
         ));
         jSTablaDatos.setViewportView(jTResidencia);
 
+        jFBusquedaResidente.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jFBusquedaResidente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jFBusquedaResidenteActionPerformed(evt);
@@ -377,33 +378,33 @@ public class FrmVisualizarResidencias extends javax.swing.JFrame {
         jPGestionResidencia.setLayout(jPGestionResidenciaLayout);
         jPGestionResidenciaLayout.setHorizontalGroup(
             jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPGestionResidenciaLayout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
-                .addComponent(jSTablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 951, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
             .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addComponent(lblImgBusqueda3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblDireccion)
                     .addComponent(jFBusquedaResidente, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPGestionResidenciaLayout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addComponent(jSTablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 951, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
         );
         jPGestionResidenciaLayout.setVerticalGroup(
             jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
                 .addContainerGap(77, Short.MAX_VALUE)
-                .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblImgBusqueda3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addComponent(lblDireccion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFBusquedaResidente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(69, 69, 69)
-                .addComponent(jSTablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(121, 121, 121))
+                        .addComponent(jFBusquedaResidente)))
+                .addGap(66, 66, 66)
+                .addComponent(jSTablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43))
         );
 
         getContentPane().add(jPGestionResidencia);

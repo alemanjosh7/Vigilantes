@@ -68,7 +68,7 @@ public class FrmVisualizarReporteVigilantes extends javax.swing.JFrame {
         jCostoInicial = new javax.swing.JTextField();
         jCostoFinal = new javax.swing.JTextField();
         jPBusquedaContainer = new javax.swing.JPanel();
-        jbtnImprimir = new javax.swing.JButton();
+        jbtnReporteG = new javax.swing.JButton();
         LblBusquedaVisitante3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -168,20 +168,37 @@ public class FrmVisualizarReporteVigilantes extends javax.swing.JFrame {
         getContentPane().add(jCostoFinal);
         jCostoFinal.setBounds(540, 220, 170, 30);
 
-        jPBusquedaContainer.setLayout(null);
-
-        jbtnImprimir.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jbtnImprimir.setText("Imprimir Reporte");
-        jbtnImprimir.addActionListener(new java.awt.event.ActionListener() {
+        jbtnReporteG.setBackground(new java.awt.Color(255, 211, 105));
+        jbtnReporteG.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jbtnReporteG.setText("Generar reporte");
+        jbtnReporteG.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        jbtnReporteG.setContentAreaFilled(false);
+        jbtnReporteG.setFocusable(false);
+        jbtnReporteG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnImprimirActionPerformed(evt);
+                jbtnReporteGActionPerformed(evt);
             }
         });
-        jPBusquedaContainer.add(jbtnImprimir);
-        jbtnImprimir.setBounds(570, 30, 198, 39);
+
+        javax.swing.GroupLayout jPBusquedaContainerLayout = new javax.swing.GroupLayout(jPBusquedaContainer);
+        jPBusquedaContainer.setLayout(jPBusquedaContainerLayout);
+        jPBusquedaContainerLayout.setHorizontalGroup(
+            jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBusquedaContainerLayout.createSequentialGroup()
+                .addContainerGap(572, Short.MAX_VALUE)
+                .addComponent(jbtnReporteG, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70))
+        );
+        jPBusquedaContainerLayout.setVerticalGroup(
+            jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jbtnReporteG, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(50, Short.MAX_VALUE))
+        );
 
         getContentPane().add(jPBusquedaContainer);
-        jPBusquedaContainer.setBounds(250, 170, 840, 100);
+        jPBusquedaContainer.setBounds(240, 170, 840, 130);
 
         LblBusquedaVisitante3.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         LblBusquedaVisitante3.setText("GENERAR REPORTE: Vigilante");
@@ -206,30 +223,6 @@ public class FrmVisualizarReporteVigilantes extends javax.swing.JFrame {
         
     }    
     
-    private void jbtnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnImprimirActionPerformed
-        
-        if (jCostoInicial.getText().trim().length() == 0 || jCostoFinal.getText().trim().length() == 0) {
-            JOptionPane.showMessageDialog(this, "Error: Hay campos vacíos");
-            return;
-        }
-        
-        Integer CostoInicial = Integer.parseInt(jCostoInicial.getText());
-        Integer CostoFinal = Integer.parseInt(jCostoFinal.getText());
-        
-        if (CostoFinal < CostoInicial) {
-            JOptionPane.showMessageDialog(this, "El rango de costos debe ser consecutivo");
-        }
-        else{
-            Map Parametros = new HashMap();
-            Parametros.put("CostoInicial", CostoInicial);
-            Parametros.put("CostoFinal", CostoFinal);
-            FrmLogin log = new FrmLogin();
-            Parametros.put("Administrador", log.nombres + " " + log.apellidos);
-            LlamarReportes("ReporteVigilante",Parametros);
-        }
-        
-    }//GEN-LAST:event_jbtnImprimirActionPerformed
-
     private void lblExitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitButtonMouseClicked
         FrmVisualizarPersonal vp = new FrmVisualizarPersonal();
         vp.show();
@@ -253,6 +246,30 @@ public class FrmVisualizarReporteVigilantes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Ingresar números");
         }
     }//GEN-LAST:event_jCostoFinalKeyTyped
+
+    private void jbtnReporteGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnReporteGActionPerformed
+        //Generar reporte
+        if (jCostoInicial.getText().trim().length() == 0 || jCostoFinal.getText().trim().length() == 0) {
+            JOptionPane.showMessageDialog(this, "Error: Hay campos vacíos");
+            return;
+        }
+        
+        Integer CostoInicial = Integer.parseInt(jCostoInicial.getText());
+        Integer CostoFinal = Integer.parseInt(jCostoFinal.getText());
+        
+        if (CostoFinal < CostoInicial) {
+            JOptionPane.showMessageDialog(this, "El rango de costos debe ser consecutivo");
+        }
+        else{
+            Map Parametros = new HashMap();
+            Parametros.put("CostoInicial", CostoInicial);
+            Parametros.put("CostoFinal", CostoFinal);
+            FrmLogin log = new FrmLogin();
+            Parametros.put("Administrador", log.nombres + " " + log.apellidos);
+            LlamarReportes("ReporteVigilante",Parametros);
+        }
+        
+    }//GEN-LAST:event_jbtnReporteGActionPerformed
 
     //Metodos
     //Para validar que solo permitan pasar Numeros
@@ -443,7 +460,7 @@ public class FrmVisualizarReporteVigilantes extends javax.swing.JFrame {
     private javax.swing.JPanel jPBusquedaContainer;
     private javax.swing.JPanel jPContainer;
     private javax.swing.JPanel jPToolStrip;
-    private javax.swing.JButton jbtnImprimir;
+    private javax.swing.JButton jbtnReporteG;
     private javax.swing.JLabel lblExitButton4;
     // End of variables declaration//GEN-END:variables
 }

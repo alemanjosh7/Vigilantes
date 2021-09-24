@@ -54,10 +54,10 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
         cmbPorton = new javax.swing.JComboBox<>();
         jPBotones = new javax.swing.JPanel();
         btnRegistrar = new javax.swing.JButton();
-        btnConsultar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         btnReporte = new javax.swing.JButton();
+        btnConsultar = new javax.swing.JButton();
         cmbPersonal = new javax.swing.JComboBox<>();
         jSTablaDatos = new javax.swing.JScrollPane();
         jTLlamadas = new javax.swing.JTable();
@@ -97,7 +97,6 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
         lblVigilante.setText("Personal:");
 
         cmbPorton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        cmbPorton.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
         cmbPorton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbPortonActionPerformed(evt);
@@ -116,18 +115,6 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
-            }
-        });
-
-        btnConsultar.setBackground(new java.awt.Color(255, 211, 105));
-        btnConsultar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnConsultar.setText("Consultar");
-        btnConsultar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnConsultar.setContentAreaFilled(false);
-        btnConsultar.setFocusable(false);
-        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultarActionPerformed(evt);
             }
         });
 
@@ -157,7 +144,7 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
 
         btnReporte.setBackground(new java.awt.Color(255, 211, 105));
         btnReporte.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnReporte.setText("Reporte");
+        btnReporte.setText("Generar reporte");
         btnReporte.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
         btnReporte.setContentAreaFilled(false);
         btnReporte.setFocusable(false);
@@ -167,22 +154,34 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
             }
         });
 
+        btnConsultar.setBackground(new java.awt.Color(255, 211, 105));
+        btnConsultar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnConsultar.setText("Consultar");
+        btnConsultar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        btnConsultar.setContentAreaFilled(false);
+        btnConsultar.setFocusable(false);
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPBotonesLayout = new javax.swing.GroupLayout(jPBotones);
         jPBotones.setLayout(jPBotonesLayout);
         jPBotonesLayout.setHorizontalGroup(
             jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(107, 107, 107)
-                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(84, 84, 84)
+                .addGap(35, 35, 35)
                 .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(97, 97, 97)
+                .addGap(83, 83, 83)
                 .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(88, 88, 88)
+                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66))
+                .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73)
+                .addComponent(btnReporte)
+                .addGap(37, 37, 37))
         );
         jPBotonesLayout.setVerticalGroup(
             jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,8 +191,8 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
                     .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32))
         );
 
@@ -236,16 +235,23 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
         lblMotivoLlamada.setText("Motivo Llamada:");
 
         jTMotivo.setColumns(20);
+        jTMotivo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTMotivo.setRows(5);
         jSMotivoLlamada.setViewportView(jTMotivo);
 
         lblVigilante1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblVigilante1.setText("Fecha");
 
+        jFFechaLla.setEditable(false);
+        jFFechaLla.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+
         lblVigilante2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblVigilante2.setText("ID Registro:");
 
+        jFLlamadas.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+
         lblApellido1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        lblApellido1.setForeground(new java.awt.Color(255, 211, 105));
         lblApellido1.setText("Registro Llamadas");
 
         javax.swing.GroupLayout jPRegistroLlamadaLayout = new javax.swing.GroupLayout(jPRegistroLlamada);
@@ -253,91 +259,86 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
         jPRegistroLlamadaLayout.setHorizontalGroup(
             jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
-                        .addComponent(jSTablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPBotones, javax.swing.GroupLayout.DEFAULT_SIZE, 994, Short.MAX_VALUE)
-                            .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
-                                .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblVigilante2)
-                                    .addComponent(lblResidencia)
-                                    .addComponent(cmbResidente, 0, 220, Short.MAX_VALUE)
-                                    .addComponent(jFLlamadas))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPRegistroLlamadaLayout.createSequentialGroup()
-                                        .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblVigilante1)
-                                            .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
-                                                .addGap(10, 10, 10)
-                                                .addComponent(jFFechaLla, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jSMotivoLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lblMotivoLlamada))
-                                        .addGap(46, 46, 46))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPRegistroLlamadaLayout.createSequentialGroup()
-                                        .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(cmbPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lblVigilante))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
-                                        .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(cmbPorton, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lblPorton))
-                                        .addGap(158, 158, 158))))))))
-            .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
                 .addGap(414, 414, 414)
                 .addComponent(lblApellido1)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblVigilante2)
+                            .addComponent(lblResidencia)
+                            .addComponent(cmbResidente, 0, 220, Short.MAX_VALUE)
+                            .addComponent(jFLlamadas))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPRegistroLlamadaLayout.createSequentialGroup()
+                                .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblVigilante1)
+                                    .addComponent(jFFechaLla, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                                .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jSMotivoLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblMotivoLlamada))
+                                .addGap(46, 46, 46))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPRegistroLlamadaLayout.createSequentialGroup()
+                                .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cmbPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblVigilante))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblPorton)
+                                    .addComponent(cmbPorton, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(158, 158, 158))))
+                    .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
+                        .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jPBotones, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
+                            .addComponent(jSTablaDatos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         jPRegistroLlamadaLayout.setVerticalGroup(
             jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(23, 23, 23)
                 .addComponent(lblApellido1)
                 .addGap(22, 22, 22)
                 .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPRegistroLlamadaLayout.createSequentialGroup()
                         .addComponent(lblPorton)
-                        .addGap(66, 66, 66))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmbPorton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27))
                     .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
-                        .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
+                        .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPRegistroLlamadaLayout.createSequentialGroup()
                                 .addComponent(lblVigilante2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jFLlamadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jFLlamadas, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
                                 .addComponent(lblVigilante)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cmbPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cmbPorton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cmbPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(6, 6, 6)))
                 .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
+                        .addComponent(lblVigilante1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jFFechaLla, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
                         .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblResidencia)
                             .addComponent(lblMotivoLlamada))
+                        .addGap(18, 18, 18)
                         .addGroup(jPRegistroLlamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmbResidente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jSMotivoLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPRegistroLlamadaLayout.createSequentialGroup()
-                        .addComponent(lblVigilante1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jFFechaLla, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(43, 43, 43)
+                            .addComponent(cmbResidente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSMotivoLlamada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66)
-                .addComponent(jSTablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(118, Short.MAX_VALUE))
+                .addGap(41, 41, 41)
+                .addComponent(jSTablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
         );
 
         getContentPane().add(jPRegistroLlamada);
@@ -509,7 +510,7 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPToolStrip);
-        jPToolStrip.setBounds(270, 0, 1100, 61);
+        jPToolStrip.setBounds(270, 0, 1100, 57);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

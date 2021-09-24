@@ -69,7 +69,6 @@ public class FrmZonas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1366, 768));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1366, 768));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -208,10 +207,10 @@ public class FrmZonas extends javax.swing.JFrame {
             .addGroup(jPRegistroZonasLayout.createSequentialGroup()
                 .addGroup(jPRegistroZonasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPRegistroZonasLayout.createSequentialGroup()
-                        .addGap(378, 378, 378)
+                        .addGap(412, 412, 412)
                         .addComponent(jlblZonas))
                     .addGroup(jPRegistroZonasLayout.createSequentialGroup()
-                        .addGap(70, 70, 70)
+                        .addGap(67, 67, 67)
                         .addGroup(jPRegistroZonasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jlblIdZona)
                             .addGroup(jPRegistroZonasLayout.createSequentialGroup()
@@ -219,21 +218,24 @@ public class FrmZonas extends javax.swing.JFrame {
                                 .addGap(72, 72, 72)
                                 .addGroup(jPRegistroZonasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jlblNombreZona)
-                                    .addComponent(jFTNombreZona, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(0, 116, Short.MAX_VALUE))
+                                    .addComponent(jFTNombreZona, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPRegistroZonasLayout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addGroup(jPRegistroZonasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPBotonesCRUD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPRegistroZonasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPRegistroZonasLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 981, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPRegistroZonasLayout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(jPBotonesCRUD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPRegistroZonasLayout.setVerticalGroup(
             jPRegistroZonasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPRegistroZonasLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(22, 22, 22)
                 .addComponent(jlblZonas)
-                .addGap(67, 67, 67)
+                .addGap(39, 39, 39)
                 .addGroup(jPRegistroZonasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlblIdZona)
                     .addComponent(jlblNombreZona))
@@ -241,15 +243,15 @@ public class FrmZonas extends javax.swing.JFrame {
                 .addGroup(jPRegistroZonasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jFTidZona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jFTNombreZona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                .addGap(45, 45, 45)
                 .addComponent(jPBotonesCRUD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         jPColorSistemaVigilancia.add(jPRegistroZonas);
-        jPRegistroZonas.setBounds(20, 70, 1040, 680);
+        jPRegistroZonas.setBounds(10, 70, 1050, 690);
 
         jPToolStrip.setBackground(new java.awt.Color(255, 211, 105));
         jPToolStrip.setMinimumSize(new java.awt.Dimension(1082, 61));

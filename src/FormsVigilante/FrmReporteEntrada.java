@@ -50,10 +50,10 @@ public class FrmReporteEntrada extends javax.swing.JFrame {
 
         jPBusquedaContainer = new javax.swing.JPanel();
         LblBusquedaVisitante = new javax.swing.JLabel();
-        jbtnImprimir = new javax.swing.JButton();
         LblBusquedaVisitante2 = new javax.swing.JLabel();
         jDateFechaInicio = new com.toedter.calendar.JDateChooser();
         jDateFechaFinal = new com.toedter.calendar.JDateChooser();
+        jbtnReporteG = new javax.swing.JButton();
         jPContainer = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPToolStrip = new javax.swing.JPanel();
@@ -73,28 +73,32 @@ public class FrmReporteEntrada extends javax.swing.JFrame {
         LblBusquedaVisitante.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         LblBusquedaVisitante.setText("Fecha/Hora de Inicio:");
 
-        jbtnImprimir.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jbtnImprimir.setText("Generar Reporte");
-        jbtnImprimir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnImprimirActionPerformed(evt);
-            }
-        });
-
         LblBusquedaVisitante2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         LblBusquedaVisitante2.setText("Fecha/Hora Final:");
 
-        jDateFechaInicio.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jDateFechaInicio.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jDateFechaInicio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jDateFechaInicioKeyTyped(evt);
             }
         });
 
-        jDateFechaFinal.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jDateFechaFinal.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jDateFechaFinal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jDateFechaFinalKeyTyped(evt);
+            }
+        });
+
+        jbtnReporteG.setBackground(new java.awt.Color(255, 211, 105));
+        jbtnReporteG.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jbtnReporteG.setText("Generar reporte");
+        jbtnReporteG.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        jbtnReporteG.setContentAreaFilled(false);
+        jbtnReporteG.setFocusable(false);
+        jbtnReporteG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnReporteGActionPerformed(evt);
             }
         });
 
@@ -109,30 +113,31 @@ public class FrmReporteEntrada extends javax.swing.JFrame {
                     .addComponent(jDateFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LblBusquedaVisitante2, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                    .addComponent(LblBusquedaVisitante2, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
                     .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
                         .addComponent(jDateFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbtnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbtnReporteG, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54))
         );
         jPBusquedaContainerLayout.setVerticalGroup(
             jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LblBusquedaVisitante)
-                    .addComponent(LblBusquedaVisitante2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBusquedaContainerLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbtnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                    .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(LblBusquedaVisitante)
+                            .addComponent(LblBusquedaVisitante2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDateFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDateFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jbtnReporteG, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPBusquedaContainer);
@@ -162,7 +167,7 @@ public class FrmReporteEntrada extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPContainer);
-        jPContainer.setBounds(0, 0, 207, 804);
+        jPContainer.setBounds(0, 0, 209, 804);
 
         jPToolStrip.setBackground(new java.awt.Color(255, 211, 105));
 
@@ -233,7 +238,7 @@ public class FrmReporteEntrada extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPToolStrip);
-        jPToolStrip.setBounds(190, 0, 1082, 61);
+        jPToolStrip.setBounds(190, 0, 1079, 57);
 
         LblBusquedaVisitante1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         LblBusquedaVisitante1.setText("GENERAR REPORTE: Entrada");
@@ -268,7 +273,16 @@ public class FrmReporteEntrada extends javax.swing.JFrame {
     
     
     
-    private void jbtnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnImprimirActionPerformed
+    private void jDateFechaInicioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDateFechaInicioKeyTyped
+        //Evita que se escriba
+        evt.consume();
+    }//GEN-LAST:event_jDateFechaInicioKeyTyped
+
+    private void jDateFechaFinalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDateFechaFinalKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jDateFechaFinalKeyTyped
+
+    private void jbtnReporteGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnReporteGActionPerformed
         //Generar reporte
         EntradaController EC = new EntradaController();
         String nombre, apellido;
@@ -288,16 +302,7 @@ public class FrmReporteEntrada extends javax.swing.JFrame {
             Parametros.put("idVigilante", idVigilante);
             LlamarReportes("ReportesEntrada",Parametros);
         }
-    }//GEN-LAST:event_jbtnImprimirActionPerformed
-
-    private void jDateFechaInicioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDateFechaInicioKeyTyped
-        //Evita que se escriba
-        evt.consume();
-    }//GEN-LAST:event_jDateFechaInicioKeyTyped
-
-    private void jDateFechaFinalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDateFechaFinalKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jDateFechaFinalKeyTyped
+    }//GEN-LAST:event_jbtnReporteGActionPerformed
 
     //Metodos
     //Para validar que solo permitan pasar Numeros
@@ -372,7 +377,7 @@ public class FrmReporteEntrada extends javax.swing.JFrame {
     private javax.swing.JPanel jPBusquedaContainer;
     private javax.swing.JPanel jPContainer;
     private javax.swing.JPanel jPToolStrip;
-    private javax.swing.JButton jbtnImprimir;
+    private javax.swing.JButton jbtnReporteG;
     private javax.swing.JLabel lblApellidoUsuario;
     private javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblCargoUsuario;

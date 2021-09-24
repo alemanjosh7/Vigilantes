@@ -61,7 +61,6 @@ public class ReporteVisEntradaPorton extends javax.swing.JFrame {
         lblIDPorton3 = new javax.swing.JLabel();
         jPorton = new javax.swing.JTextField();
         btnImprimir = new javax.swing.JButton();
-        btnImprimir1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -158,18 +157,6 @@ public class ReporteVisEntradaPorton extends javax.swing.JFrame {
             }
         });
 
-        btnImprimir1.setBackground(new java.awt.Color(255, 211, 105));
-        btnImprimir1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btnImprimir1.setText("Limpiar");
-        btnImprimir1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        btnImprimir1.setContentAreaFilled(false);
-        btnImprimir1.setFocusable(false);
-        btnImprimir1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnImprimir1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -193,10 +180,8 @@ public class ReporteVisEntradaPorton extends javax.swing.JFrame {
                         .addGap(302, 302, 302)
                         .addComponent(lblIDPorton1))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(181, 181, 181)
-                        .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59)
-                        .addComponent(btnImprimir1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(289, 289, 289)
+                        .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -215,9 +200,7 @@ public class ReporteVisEntradaPorton extends javax.swing.JFrame {
                     .addComponent(jDateFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDateFecha1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnImprimir1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -306,10 +289,6 @@ public class ReporteVisEntradaPorton extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_lblExitButtonMouseClicked
 
-    private void btnImprimir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimir1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnImprimir1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -350,7 +329,6 @@ public class ReporteVisEntradaPorton extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnImprimir;
-    private javax.swing.JButton btnImprimir1;
     private com.toedter.calendar.JDateChooser jDateFecha;
     private com.toedter.calendar.JDateChooser jDateFecha1;
     private javax.swing.JLabel jLabel1;

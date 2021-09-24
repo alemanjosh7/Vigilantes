@@ -97,9 +97,9 @@ public class FrmHorario extends javax.swing.JFrame {
         jTableHorarios = new javax.swing.JTable();
         jPBotones = new javax.swing.JPanel();
         BtnConsultar = new javax.swing.JButton();
-        BtnAgregar = new javax.swing.JButton();
         BtnModificar = new javax.swing.JButton();
         BtnLimpiar = new javax.swing.JButton();
+        BtnAgregar = new javax.swing.JButton();
         lblIngresoHorario = new javax.swing.JLabel();
         lblIdHorario = new javax.swing.JLabel();
         lblIDPorton = new javax.swing.JLabel();
@@ -144,7 +144,6 @@ public class FrmHorario extends javax.swing.JFrame {
 
         jPContenedorHorario.setBackground(new java.awt.Color(255, 255, 255));
         jPContenedorHorario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPContenedorHorario.setLayout(null);
 
         jTableHorarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -163,9 +162,6 @@ public class FrmHorario extends javax.swing.JFrame {
         });
         jSTablaDatos.setViewportView(jTableHorarios);
 
-        jPContenedorHorario.add(jSTablaDatos);
-        jSTablaDatos.setBounds(44, 258, 970, 270);
-
         jPBotones.setBackground(new java.awt.Color(255, 255, 255));
 
         BtnConsultar.setBackground(new java.awt.Color(255, 211, 105));
@@ -177,18 +173,6 @@ public class FrmHorario extends javax.swing.JFrame {
         BtnConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnConsultarActionPerformed(evt);
-            }
-        });
-
-        BtnAgregar.setBackground(new java.awt.Color(255, 211, 105));
-        BtnAgregar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        BtnAgregar.setText("Agregar");
-        BtnAgregar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
-        BtnAgregar.setContentAreaFilled(false);
-        BtnAgregar.setFocusable(false);
-        BtnAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAgregarActionPerformed(evt);
             }
         });
 
@@ -216,97 +200,84 @@ public class FrmHorario extends javax.swing.JFrame {
             }
         });
 
+        BtnAgregar.setBackground(new java.awt.Color(255, 211, 105));
+        BtnAgregar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        BtnAgregar.setText("Registrar");
+        BtnAgregar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        BtnAgregar.setContentAreaFilled(false);
+        BtnAgregar.setFocusable(false);
+        BtnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAgregarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPBotonesLayout = new javax.swing.GroupLayout(jPBotones);
         jPBotones.setLayout(jPBotonesLayout);
         jPBotonesLayout.setHorizontalGroup(
             jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(BtnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(93, 93, 93)
-                .addComponent(BtnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(115, 115, 115)
+                .addGap(67, 67, 67)
                 .addComponent(BtnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                .addComponent(BtnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(128, 128, 128)
+                .addComponent(BtnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(108, 108, 108)
                 .addComponent(BtnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67))
         );
         jPBotonesLayout.setVerticalGroup(
             jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPBotonesLayout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BtnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14))
         );
-
-        jPContenedorHorario.add(jPBotones);
-        jPBotones.setBounds(60, 530, 895, 101);
 
         lblIngresoHorario.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblIngresoHorario.setForeground(new java.awt.Color(255, 211, 105));
         lblIngresoHorario.setText("Ingreso de Horario");
-        jPContenedorHorario.add(lblIngresoHorario);
-        lblIngresoHorario.setBounds(379, 24, 214, 29);
 
         lblIdHorario.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblIdHorario.setText("ID horario:");
-        jPContenedorHorario.add(lblIdHorario);
-        lblIdHorario.setBounds(90, 80, 100, 22);
 
         lblIDPorton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblIDPorton.setText("ID porton:");
-        jPContenedorHorario.add(lblIDPorton);
-        lblIDPorton.setBounds(730, 80, 100, 22);
 
         lblIDPersonal.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblIDPersonal.setText("Personal:");
-        jPContenedorHorario.add(lblIDPersonal);
-        lblIDPersonal.setBounds(400, 80, 120, 22);
 
         jTxtIDTurno.setEditable(false);
-        jPContenedorHorario.add(jTxtIDTurno);
-        jTxtIDTurno.setBounds(90, 110, 220, 22);
 
         jTxtHoraIngreso.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTxtHoraIngresoKeyTyped(evt);
             }
         });
-        jPContenedorHorario.add(jTxtHoraIngreso);
-        jTxtHoraIngreso.setBounds(90, 200, 220, 22);
 
         lblHoraIngreso.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblHoraIngreso.setText("Hora de Ingreso (hh:mm:ss):");
-        jPContenedorHorario.add(lblHoraIngreso);
-        lblHoraIngreso.setBounds(90, 170, 260, 22);
 
         jTxtHoraSalida.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTxtHoraSalidaKeyTyped(evt);
             }
         });
-        jPContenedorHorario.add(jTxtHoraSalida);
-        jTxtHoraSalida.setBounds(400, 200, 250, 22);
 
         lblHoraSalida.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblHoraSalida.setText("Hora de salida (hh:mm:ss):");
-        jPContenedorHorario.add(lblHoraSalida);
-        lblHoraSalida.setBounds(400, 170, 250, 22);
 
         lblIDPorton1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblIDPorton1.setText("Fecha (mm-dd-aaaa):");
-        jPContenedorHorario.add(lblIDPorton1);
-        lblIDPorton1.setBounds(730, 170, 210, 22);
 
-        jPContenedorHorario.add(jCmbIDPersonal);
-        jCmbIDPersonal.setBounds(400, 110, 250, 30);
+        jCmbIDPersonal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        jPContenedorHorario.add(jCmbIDPorton);
-        jCmbIDPorton.setBounds(730, 110, 210, 30);
+        jCmbIDPorton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
         jDateFecha.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jDateFecha.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -314,11 +285,84 @@ public class FrmHorario extends javax.swing.JFrame {
                 jDateFechaKeyTyped(evt);
             }
         });
-        jPContenedorHorario.add(jDateFecha);
-        jDateFecha.setBounds(730, 200, 210, 30);
+
+        javax.swing.GroupLayout jPContenedorHorarioLayout = new javax.swing.GroupLayout(jPContenedorHorario);
+        jPContenedorHorario.setLayout(jPContenedorHorarioLayout);
+        jPContenedorHorarioLayout.setHorizontalGroup(
+            jPContenedorHorarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPContenedorHorarioLayout.createSequentialGroup()
+                .addGroup(jPContenedorHorarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPContenedorHorarioLayout.createSequentialGroup()
+                        .addGap(408, 408, 408)
+                        .addComponent(lblIngresoHorario))
+                    .addGroup(jPContenedorHorarioLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addGroup(jPContenedorHorarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPContenedorHorarioLayout.createSequentialGroup()
+                                .addComponent(lblIdHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(239, 239, 239)
+                                .addComponent(lblIDPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(210, 210, 210)
+                                .addComponent(lblIDPorton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSTablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 919, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPContenedorHorarioLayout.createSequentialGroup()
+                                .addGroup(jPContenedorHorarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jTxtIDTurno)
+                                    .addComponent(lblHoraIngreso, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                                    .addComponent(jTxtHoraIngreso, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(79, 79, 79)
+                                .addGroup(jPContenedorHorarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPContenedorHorarioLayout.createSequentialGroup()
+                                        .addComponent(lblHoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(80, 80, 80)
+                                        .addComponent(lblIDPorton1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPContenedorHorarioLayout.createSequentialGroup()
+                                        .addComponent(jCmbIDPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(80, 80, 80)
+                                        .addComponent(jCmbIDPorton, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(jPContenedorHorarioLayout.createSequentialGroup()
+                                        .addComponent(jTxtHoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(80, 80, 80)
+                                        .addComponent(jDateFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)))))))
+                .addContainerGap(59, Short.MAX_VALUE))
+        );
+        jPContenedorHorarioLayout.setVerticalGroup(
+            jPContenedorHorarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPContenedorHorarioLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(lblIngresoHorario)
+                .addGap(50, 50, 50)
+                .addGroup(jPContenedorHorarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPContenedorHorarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblIDPersonal)
+                        .addComponent(lblIdHorario))
+                    .addComponent(lblIDPorton))
+                .addGap(8, 8, 8)
+                .addGroup(jPContenedorHorarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jCmbIDPersonal)
+                    .addComponent(jCmbIDPorton, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(jTxtIDTurno))
+                .addGap(30, 30, 30)
+                .addGroup(jPContenedorHorarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPContenedorHorarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblHoraSalida)
+                        .addComponent(lblHoraIngreso))
+                    .addComponent(lblIDPorton1))
+                .addGap(8, 8, 8)
+                .addGroup(jPContenedorHorarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTxtHoraSalida, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(jDateFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTxtHoraIngreso))
+                .addGap(30, 30, 30)
+                .addComponent(jSTablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
 
         jPIngresoHorario.add(jPContenedorHorario);
-        jPContenedorHorario.setBounds(10, 100, 1040, 650);
+        jPContenedorHorario.setBounds(20, 70, 1040, 690);
 
         jPToolStrip.setBackground(new java.awt.Color(255, 211, 105));
         jPToolStrip.setMinimumSize(new java.awt.Dimension(1082, 61));
@@ -391,7 +435,7 @@ public class FrmHorario extends javax.swing.JFrame {
         );
 
         jPIngresoHorario.add(jPToolStrip);
-        jPToolStrip.setBounds(0, 0, 1080, 61);
+        jPToolStrip.setBounds(0, 0, 1080, 57);
 
         getContentPane().add(jPIngresoHorario);
         jPIngresoHorario.setBounds(290, 0, 1080, 768);
@@ -546,14 +590,14 @@ public class FrmHorario extends javax.swing.JFrame {
                     .addGroup(jPSideBar1Layout.createSequentialGroup()
                         .addGap(79, 79, 79)
                         .addComponent(jPbtnSBContainer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jPSideBar1Layout.setVerticalGroup(
             jPSideBar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPSideBar1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jPImageContainer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                 .addComponent(jPbtnSBContainer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57))
         );

@@ -326,7 +326,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
     private void lblCerrrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCerrrarMouseClicked
         // TODO add your handling code here:
-        dispose();
+        System.exit(0);
     }//GEN-LAST:event_lblCerrrarMouseClicked
 
     private void changeThemeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeThemeBtnActionPerformed

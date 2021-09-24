@@ -242,7 +242,7 @@ public class FrmLogin extends javax.swing.JFrame {
         lblImagen.setPreferredSize(new java.awt.Dimension(232, 240));
         lblImagen.setRequestFocusEnabled(false);
 
-        lblBienvenido.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblBienvenido.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblBienvenido.setForeground(new java.awt.Color(243, 243, 243));
         lblBienvenido.setText("Bienvenido");
 
@@ -267,7 +267,7 @@ public class FrmLogin extends javax.swing.JFrame {
         Line1.setLayout(Line1Layout);
         Line1Layout.setHorizontalGroup(
             Line1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 180, Short.MAX_VALUE)
             .addGroup(Line1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(Line1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -335,6 +335,10 @@ public class FrmLogin extends javax.swing.JFrame {
         lblImgMode.setPreferredSize(new java.awt.Dimension(232, 240));
         lblImgMode.setRequestFocusEnabled(false);
 
+        jTNombreUsuario.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+
+        jPFContrasena.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+
         javax.swing.GroupLayout jPanelLoginLayout = new javax.swing.GroupLayout(jPanelLogin);
         jPanelLogin.setLayout(jPanelLoginLayout);
         jPanelLoginLayout.setHorizontalGroup(
@@ -376,12 +380,12 @@ public class FrmLogin extends javax.swing.JFrame {
                 .addGroup(jPanelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelLoginLayout.createSequentialGroup()
                         .addComponent(lblBienvenido)
-                        .addGap(29, 29, 29)
-                        .addComponent(jTNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Line1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(jPFContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(jPFContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Line2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)

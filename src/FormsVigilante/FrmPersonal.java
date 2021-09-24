@@ -258,27 +258,18 @@ public class FrmPersonal extends javax.swing.JFrame {
 
         jPGestionVigilante.setBackground(new java.awt.Color(255, 255, 255));
         jPGestionVigilante.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPGestionVigilante.setLayout(null);
 
         lblApellido.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblApellido.setText("Apellidos:");
-        jPGestionVigilante.add(lblApellido);
-        lblApellido.setBounds(660, 80, 89, 22);
 
         lblEstadoPersonal.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblEstadoPersonal.setText("Estado del Personal: ");
-        jPGestionVigilante.add(lblEstadoPersonal);
-        lblEstadoPersonal.setBounds(360, 240, 186, 22);
 
         lblTelefono.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblTelefono.setText("Teléfono:");
-        jPGestionVigilante.add(lblTelefono);
-        lblTelefono.setBounds(360, 160, 84, 22);
 
         lblSalarioMensual.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblSalarioMensual.setText("Salario Mensual ($) :");
-        jPGestionVigilante.add(lblSalarioMensual);
-        lblSalarioMensual.setBounds(660, 240, 180, 22);
 
         cmbIdEstadoPersonal.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         cmbIdEstadoPersonal.addActionListener(new java.awt.event.ActionListener() {
@@ -286,8 +277,6 @@ public class FrmPersonal extends javax.swing.JFrame {
                 cmbIdEstadoPersonalActionPerformed(evt);
             }
         });
-        jPGestionVigilante.add(cmbIdEstadoPersonal);
-        cmbIdEstadoPersonal.setBounds(360, 270, 250, 25);
 
         jPBotones.setBackground(new java.awt.Color(255, 255, 255));
         jPBotones.setPreferredSize(new java.awt.Dimension(895, 60));
@@ -347,7 +336,7 @@ public class FrmPersonal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
                 .addGap(281, 281, 281)
                 .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
                 .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(119, 119, 119)
                 .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -356,7 +345,7 @@ public class FrmPersonal extends javax.swing.JFrame {
                 .addGroup(jPBotonesLayout.createSequentialGroup()
                     .addGap(82, 82, 82)
                     .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(708, Short.MAX_VALUE)))
+                    .addContainerGap(783, Short.MAX_VALUE)))
         );
         jPBotonesLayout.setVerticalGroup(
             jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -374,29 +363,18 @@ public class FrmPersonal extends javax.swing.JFrame {
                     .addGap(29, 29, 29)))
         );
 
-        jPGestionVigilante.add(jPBotones);
-        jPBotones.setBounds(71, 585, 895, 60);
-
         lblGestionVigilante.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblGestionVigilante.setForeground(new java.awt.Color(255, 211, 105));
         lblGestionVigilante.setText("Gestión de Vigilantes");
-        jPGestionVigilante.add(lblGestionVigilante);
-        lblGestionVigilante.setBounds(379, 24, 246, 29);
 
         lblTipoPersonal.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblTipoPersonal.setText("Cargo de Personal:");
-        jPGestionVigilante.add(lblTipoPersonal);
-        lblTipoPersonal.setBounds(50, 160, 168, 22);
 
         lblNombre.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblNombre.setText("Nombres:");
-        jPGestionVigilante.add(lblNombre);
-        lblNombre.setBounds(360, 80, 100, 22);
 
         lblDUI.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblDUI.setText("DUI:");
-        jPGestionVigilante.add(lblDUI);
-        lblDUI.setBounds(660, 160, 38, 22);
 
         jTVigilantes.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTVigilantes.setModel(new javax.swing.table.DefaultTableModel(
@@ -416,54 +394,131 @@ public class FrmPersonal extends javax.swing.JFrame {
         });
         jSTablaGestionVigilantes.setViewportView(jTVigilantes);
 
-        jPGestionVigilante.add(jSTablaGestionVigilantes);
-        jSTablaGestionVigilantes.setBounds(44, 320, 970, 247);
-
         lbID.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lbID.setText("ID:");
-        jPGestionVigilante.add(lbID);
-        lbID.setBounds(50, 80, 25, 22);
-        lbID.getAccessibleContext().setAccessibleName("ID");
 
         cmbTipoPersonal.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         cmbTipoPersonal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         cmbTipoPersonal.setSelectedIndex(-1);
-        jPGestionVigilante.add(cmbTipoPersonal);
-        cmbTipoPersonal.setBounds(50, 190, 250, 25);
 
         jTxtNombre.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jPGestionVigilante.add(jTxtNombre);
-        jTxtNombre.setBounds(360, 110, 250, 28);
 
         jTxtApellido.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jPGestionVigilante.add(jTxtApellido);
-        jTxtApellido.setBounds(660, 110, 250, 28);
 
         jTxtDUI.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jPGestionVigilante.add(jTxtDUI);
-        jTxtDUI.setBounds(660, 190, 250, 25);
 
         jTxtCorreo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jPGestionVigilante.add(jTxtCorreo);
-        jTxtCorreo.setBounds(50, 270, 250, 25);
 
         jTxtTelefono.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jPGestionVigilante.add(jTxtTelefono);
-        jTxtTelefono.setBounds(360, 190, 250, 25);
 
         jTxtID.setEditable(false);
         jTxtID.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jPGestionVigilante.add(jTxtID);
-        jTxtID.setBounds(50, 110, 250, 25);
 
         lblCorreoElectronico1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblCorreoElectronico1.setText("Correo Electronico:");
-        jPGestionVigilante.add(lblCorreoElectronico1);
-        lblCorreoElectronico1.setBounds(50, 240, 171, 22);
 
         jTxtSalario.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jPGestionVigilante.add(jTxtSalario);
-        jTxtSalario.setBounds(660, 270, 250, 25);
+
+        javax.swing.GroupLayout jPGestionVigilanteLayout = new javax.swing.GroupLayout(jPGestionVigilante);
+        jPGestionVigilante.setLayout(jPGestionVigilanteLayout);
+        jPGestionVigilanteLayout.setHorizontalGroup(
+            jPGestionVigilanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPGestionVigilanteLayout.createSequentialGroup()
+                .addGroup(jPGestionVigilanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPGestionVigilanteLayout.createSequentialGroup()
+                        .addGap(378, 378, 378)
+                        .addComponent(lblGestionVigilante))
+                    .addGroup(jPGestionVigilanteLayout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(lbID)
+                        .addGap(285, 285, 285)
+                        .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(200, 200, 200)
+                        .addComponent(lblApellido))
+                    .addGroup(jPGestionVigilanteLayout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(jTxtID, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)
+                        .addComponent(jTxtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(jTxtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPGestionVigilanteLayout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(lblTipoPersonal)
+                        .addGap(142, 142, 142)
+                        .addComponent(lblTelefono)
+                        .addGap(216, 216, 216)
+                        .addComponent(lblDUI))
+                    .addGroup(jPGestionVigilanteLayout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(cmbTipoPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)
+                        .addComponent(jTxtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(jTxtDUI, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPGestionVigilanteLayout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(lblCorreoElectronico1)
+                        .addGap(139, 139, 139)
+                        .addComponent(lblEstadoPersonal)
+                        .addGap(114, 114, 114)
+                        .addComponent(lblSalarioMensual, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPGestionVigilanteLayout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(jTxtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)
+                        .addComponent(cmbIdEstadoPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(jTxtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPGestionVigilanteLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addGroup(jPGestionVigilanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jSTablaGestionVigilantes)
+                            .addComponent(jPBotones, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE))))
+                .addGap(25, 25, 25))
+        );
+        jPGestionVigilanteLayout.setVerticalGroup(
+            jPGestionVigilanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPGestionVigilanteLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(lblGestionVigilante)
+                .addGap(25, 25, 25)
+                .addGroup(jPGestionVigilanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbID)
+                    .addComponent(lblNombre)
+                    .addComponent(lblApellido))
+                .addGap(8, 8, 8)
+                .addGroup(jPGestionVigilanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTxtID, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addComponent(jTxtNombre)
+                    .addComponent(jTxtApellido))
+                .addGap(18, 18, 18)
+                .addGroup(jPGestionVigilanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTipoPersonal)
+                    .addComponent(lblTelefono)
+                    .addComponent(lblDUI))
+                .addGap(8, 8, 8)
+                .addGroup(jPGestionVigilanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cmbTipoPersonal, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addComponent(jTxtTelefono)
+                    .addComponent(jTxtDUI))
+                .addGap(18, 18, 18)
+                .addGroup(jPGestionVigilanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCorreoElectronico1)
+                    .addComponent(lblEstadoPersonal)
+                    .addComponent(lblSalarioMensual))
+                .addGap(8, 8, 8)
+                .addGroup(jPGestionVigilanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTxtCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addComponent(cmbIdEstadoPersonal)
+                    .addComponent(jTxtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jSTablaGestionVigilantes, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        lbID.getAccessibleContext().setAccessibleName("ID");
 
         jPColorGestionLLamada.add(jPGestionVigilante);
         jPGestionVigilante.setBounds(30, 20, 1040, 670);

@@ -230,8 +230,8 @@
               <Group type="102" alignment="1" attributes="0">
                   <Component id="jPBusquedaContainer" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jSPZona" min="-2" pref="484" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                  <Component id="jSPZona" min="-2" pref="495" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

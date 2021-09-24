@@ -260,7 +260,7 @@ public class FrmVisualizarUsuario extends javax.swing.JFrame {
                         .addComponent(lblExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(69, 69, 69))
                     .addGroup(jPToolStrip26Layout.createSequentialGroup()
-                        .addGap(146, 146, 146)
+                        .addGap(156, 156, 156)
                         .addComponent(lblExitButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
@@ -329,7 +329,7 @@ public class FrmVisualizarUsuario extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(jPBusquedaContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, -1, -1));
+        getContentPane().add(jPBusquedaContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
 
         jTUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -343,7 +343,7 @@ public class FrmVisualizarUsuario extends javax.swing.JFrame {
         ));
         jPSSalida.setViewportView(jTUsuario);
 
-        getContentPane().add(jPSSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 970, -1));
+        getContentPane().add(jPSSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 1020, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

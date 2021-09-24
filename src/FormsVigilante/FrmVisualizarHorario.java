@@ -274,7 +274,7 @@ public class FrmVisualizarHorario extends javax.swing.JFrame {
         jSPHorario.setViewportView(jTHorario);
 
         jlblTipoEntrada.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jlblTipoEntrada.setText("ID Horario");
+        jlblTipoEntrada.setText("Busqueda de Horario por Id:");
 
         jFTBusquedaHorario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
         jFTBusquedaHorario.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -311,9 +311,9 @@ public class FrmVisualizarHorario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblImgBusqueda2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jFTBusquedaHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlblTipoEntrada))
+                .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jlblTipoEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jFTBusquedaHorario))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 219, Short.MAX_VALUE)
                 .addComponent(btnGenerarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(135, 135, 135))

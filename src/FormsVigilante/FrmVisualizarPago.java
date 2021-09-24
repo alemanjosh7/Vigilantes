@@ -50,6 +50,12 @@ public class FrmVisualizarPago extends javax.swing.JFrame {
         jFTBusqueda = new javax.swing.JFormattedTextField();
         jlblTipoEntrada = new javax.swing.JLabel();
         lblImgBusqueda3 = new javax.swing.JLabel();
+        jFTBusqueda1 = new javax.swing.JFormattedTextField();
+        jlblTipoEntrada1 = new javax.swing.JLabel();
+        lblImgBusqueda4 = new javax.swing.JLabel();
+        jlblTipoEntrada2 = new javax.swing.JLabel();
+        lblImgBusqueda5 = new javax.swing.JLabel();
+        jFTBusqueda2 = new javax.swing.JFormattedTextField();
         jPToolStrip = new javax.swing.JPanel();
         lblExitButton = new javax.swing.JLabel();
         btnTheme = new javax.swing.JButton();
@@ -199,11 +205,57 @@ public class FrmVisualizarPago extends javax.swing.JFrame {
         });
 
         jlblTipoEntrada.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jlblTipoEntrada.setText("ID vigilante:");
+        jlblTipoEntrada.setText("Busqueda de Vigilante por Id:");
 
         lblImgBusqueda3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblImgBusqueda3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgBuscar.png"))); // NOI18N
         lblImgBusqueda3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jFTBusqueda1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        jFTBusqueda1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFTBusqueda1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFTBusqueda1ActionPerformed(evt);
+            }
+        });
+        jFTBusqueda1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jFTBusqueda1KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFTBusqueda1KeyTyped(evt);
+            }
+        });
+
+        jlblTipoEntrada1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jlblTipoEntrada1.setText("Busqueda por DUI:");
+
+        lblImgBusqueda4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblImgBusqueda4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgBuscar.png"))); // NOI18N
+        lblImgBusqueda4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jlblTipoEntrada2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jlblTipoEntrada2.setText("Busqueda por NIT:");
+
+        lblImgBusqueda5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblImgBusqueda5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgBuscar.png"))); // NOI18N
+        lblImgBusqueda5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jFTBusqueda2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        jFTBusqueda2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFTBusqueda2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFTBusqueda2ActionPerformed(evt);
+            }
+        });
+        jFTBusqueda2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jFTBusqueda2KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFTBusqueda2KeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPBusquedaContainerLayout = new javax.swing.GroupLayout(jPBusquedaContainer);
         jPBusquedaContainer.setLayout(jPBusquedaContainerLayout);
@@ -213,16 +265,38 @@ public class FrmVisualizarPago extends javax.swing.JFrame {
                 .addGap(5, 5, 5)
                 .addComponent(lblImgBusqueda3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jlblTipoEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jFTBusqueda))
+                .addGap(50, 50, 50)
+                .addComponent(lblImgBusqueda4, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlblTipoEntrada)
-                    .addComponent(jFTBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(419, Short.MAX_VALUE))
+                    .addComponent(jlblTipoEntrada1)
+                    .addComponent(jFTBusqueda1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(lblImgBusqueda5, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlblTipoEntrada2)
+                    .addComponent(jFTBusqueda2, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32))
         );
         jPBusquedaContainerLayout.setVerticalGroup(
             jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBusquedaContainerLayout.createSequentialGroup()
                 .addContainerGap(36, Short.MAX_VALUE)
                 .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblImgBusqueda5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
+                        .addComponent(jlblTipoEntrada2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jFTBusqueda2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblImgBusqueda4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
+                        .addComponent(jlblTipoEntrada1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jFTBusqueda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblImgBusqueda3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
                         .addComponent(jlblTipoEntrada)
@@ -231,7 +305,7 @@ public class FrmVisualizarPago extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(jPBusquedaContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 91, -1, -1));
+        getContentPane().add(jPBusquedaContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, 1090, -1));
 
         jPToolStrip.setBackground(new java.awt.Color(255, 211, 105));
         jPToolStrip.setMinimumSize(new java.awt.Dimension(1082, 61));
@@ -317,7 +391,7 @@ public class FrmVisualizarPago extends javax.swing.JFrame {
         ));
         jSTablaDatosPago.setViewportView(jTPagoPersonal);
 
-        getContentPane().add(jSTablaDatosPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 248, 1132, 537));
+        getContentPane().add(jSTablaDatosPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 1090, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -370,6 +444,30 @@ public class FrmVisualizarPago extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_lblExitButtonMouseClicked
 
+    private void jFTBusqueda1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusqueda1KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFTBusqueda1KeyTyped
+
+    private void jFTBusqueda1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusqueda1KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFTBusqueda1KeyReleased
+
+    private void jFTBusqueda1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFTBusqueda1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFTBusqueda1ActionPerformed
+
+    private void jFTBusqueda2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusqueda2KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFTBusqueda2KeyTyped
+
+    private void jFTBusqueda2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusqueda2KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFTBusqueda2KeyReleased
+
+    private void jFTBusqueda2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFTBusqueda2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFTBusqueda2ActionPerformed
+
     //Metodos
     //Para validar que solo permitan pasar Numeros
     public boolean SoloNumero(char numero){
@@ -419,6 +517,8 @@ public class FrmVisualizarPago extends javax.swing.JFrame {
     private javax.swing.JButton btnGoLogIn;
     private javax.swing.JButton btnTheme;
     private javax.swing.JFormattedTextField jFTBusqueda;
+    private javax.swing.JFormattedTextField jFTBusqueda1;
+    private javax.swing.JFormattedTextField jFTBusqueda2;
     private javax.swing.JLabel jImgLogo;
     private javax.swing.JPanel jPBusquedaContainer;
     private javax.swing.JPanel jPGap;
@@ -429,10 +529,14 @@ public class FrmVisualizarPago extends javax.swing.JFrame {
     private javax.swing.JScrollPane jSTablaDatosPago;
     private javax.swing.JTable jTPagoPersonal;
     private javax.swing.JLabel jlblTipoEntrada;
+    private javax.swing.JLabel jlblTipoEntrada1;
+    private javax.swing.JLabel jlblTipoEntrada2;
     private javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblCargoUsuario;
     private javax.swing.JLabel lblExitButton;
     private javax.swing.JLabel lblImgBusqueda3;
+    private javax.swing.JLabel lblImgBusqueda4;
+    private javax.swing.JLabel lblImgBusqueda5;
     private javax.swing.JLabel lblNombreUsuario;
     private javax.swing.JLabel lblSistemaVigilantes;
     private javax.swing.JLabel lblUsuario;

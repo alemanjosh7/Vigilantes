@@ -381,9 +381,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblImgBusqueda2" min="-2" pref="64" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jFTBusquedaHorario" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                          <Component id="jlblTipoEntrada" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jlblTipoEntrada" max="32767" attributes="0"/>
+                          <Component id="jFTBusquedaHorario" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="219" max="32767" attributes="0"/>
                       <Component id="btnGenerarReporte" min="-2" pref="183" max="-2" attributes="0"/>
@@ -419,7 +419,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="ID Horario"/>
+                <Property name="text" type="java.lang.String" value="Busqueda de Horario por Id:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="jFTBusquedaHorario">

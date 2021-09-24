@@ -67,59 +67,44 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="416" max="-2" attributes="0"/>
                               <Component id="lblPagoPersonal4" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jSTablaDatosPago4" alignment="1" min="-2" pref="944" max="-2" attributes="0"/>
-                                  <Component id="jPButtons" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                      <Component id="lblFechaPago8" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jFBusqueda" min="-2" pref="136" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace pref="45" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblEncagadoPago4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="TxtCantidadPago" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
-                                  <Component id="lblCantidadPagar4" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="73" pref="73" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lblFechaPago9" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="48" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lblRecibePago4" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="98" pref="446" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="jDateFecha" max="32767" attributes="0"/>
-                                          <Component id="cmbRecibePago" pref="350" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lblEncagadoPago4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblCantidadPagar4" min="-2" max="-2" attributes="0"/>
+                                          <Component id="TxtCantidadPago" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="29" pref="233" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lblFechaPago9" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jDateFecha" min="-2" pref="350" max="-2" attributes="0"/>
+                                          <Component id="lblRecibePago4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="cmbEncargado" min="-2" pref="350" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                                      <Component id="cmbRecibePago" min="-2" pref="350" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lblFechaPago8" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jFBusqueda" min="-2" pref="136" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="jPButtons" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jSTablaDatosPago4" alignment="0" min="-2" pref="971" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="cmbEncargado" min="-2" pref="350" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
                       </Group>
+                      <EmptySpace pref="57" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -128,7 +113,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblPagoPersonal4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblEncagadoPago4" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblRecibePago4" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -140,7 +125,7 @@
                           <Component id="cmbRecibePago" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                           <Component id="jFBusqueda" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="75" max="32767" attributes="0"/>
+                      <EmptySpace pref="70" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblCantidadPagar4" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblFechaPago9" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -150,9 +135,9 @@
                           <Component id="TxtCantidadPago" pref="36" max="32767" attributes="0"/>
                           <Component id="jDateFecha" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPButtons" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="jPButtons" min="-2" pref="63" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                       <Component id="jSTablaDatosPago4" min="-2" pref="262" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   </Group>
@@ -323,9 +308,9 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Component id="btnLimpiar4" min="-2" pref="105" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="190" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
                           <Component id="btnRegistrar4" min="-2" pref="105" max="-2" attributes="0"/>
                           <EmptySpace pref="181" max="32767" attributes="0"/>
                           <Component id="btnModificar4" min="-2" pref="105" max="-2" attributes="0"/>
@@ -338,7 +323,7 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace pref="34" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnRegistrar4" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                               <Component id="btnLimpiar4" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>

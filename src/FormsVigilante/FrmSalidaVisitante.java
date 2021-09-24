@@ -113,6 +113,7 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
         lblTipoPorton.setText("Tipo de Porton:");
 
         cmbVisitante.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        cmbVisitante.setMinimumSize(new java.awt.Dimension(38, 30));
         cmbVisitante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcmbIdResidenciaActionPerformed(evt);
@@ -199,7 +200,7 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
         jPBotonesLayout.setVerticalGroup(
             jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBotonesLayout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -213,6 +214,7 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
 
         cmbPortonSalida.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         cmbPortonSalida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        cmbPortonSalida.setMinimumSize(new java.awt.Dimension(38, 30));
         cmbPortonSalida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbPortonSalidaActionPerformed(evt);
@@ -224,6 +226,7 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
         lblSalidaVisitante.setText("Salida de Visitantes");
 
         cmbTipoES.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        cmbTipoES.setMinimumSize(new java.awt.Dimension(38, 30));
         cmbTipoES.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbTipoESjcmbIdResidenciaActionPerformed(evt);
@@ -234,6 +237,7 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
         lblIdRegistroSalida.setText("N° Registro de Salida:");
 
         jFTidSalida.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFTidSalida.setMinimumSize(new java.awt.Dimension(38, 30));
         jFTidSalida.setPreferredSize(new java.awt.Dimension(6, 30));
         jFTidSalida.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -246,6 +250,7 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
 
         jFTfechaHora.setEditable(false);
         jFTfechaHora.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFTfechaHora.setMinimumSize(new java.awt.Dimension(38, 30));
         jFTfechaHora.setPreferredSize(new java.awt.Dimension(6, 30));
         jFTfechaHora.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -258,42 +263,47 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
         jPSalidaVisitanteLayout.setHorizontalGroup(
             jPSalidaVisitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPSalidaVisitanteLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
                 .addGroup(jPSalidaVisitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPSalidaVisitanteLayout.createSequentialGroup()
-                        .addGap(43, 43, 43)
                         .addGroup(jPSalidaVisitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSTablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPSalidaVisitanteLayout.createSequentialGroup()
+                                .addGroup(jPSalidaVisitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPSalidaVisitanteLayout.createSequentialGroup()
+                                        .addComponent(lblIdRegistroSalida)
+                                        .addGap(143, 143, 143))
+                                    .addGroup(jPSalidaVisitanteLayout.createSequentialGroup()
+                                        .addComponent(jFTidSalida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(59, 59, 59)))
+                                .addComponent(lblHoraFecha)
+                                .addGap(503, 503, 503)))
+                        .addGap(0, 35, Short.MAX_VALUE))
+                    .addGroup(jPSalidaVisitanteLayout.createSequentialGroup()
+                        .addGroup(jPSalidaVisitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jFTfechaHora, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPSalidaVisitanteLayout.createSequentialGroup()
                                 .addGroup(jPSalidaVisitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblPortonSalida)
                                     .addComponent(cmbPortonSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(59, 59, 59)
                                 .addGroup(jPSalidaVisitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblVisitante)
-                                    .addComponent(cmbVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPSalidaVisitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblTipoPorton)
-                                    .addComponent(cmbTipoES, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(27, 27, 27))
-                            .addGroup(jPSalidaVisitanteLayout.createSequentialGroup()
-                                .addGroup(jPSalidaVisitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jSTablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPSalidaVisitanteLayout.createSequentialGroup()
-                                        .addGroup(jPSalidaVisitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jFTidSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lblIdRegistroSalida))
-                                        .addGap(45, 45, 45)
-                                        .addGroup(jPSalidaVisitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jFTfechaHora, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lblHoraFecha))))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                    .addComponent(cmbVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPSalidaVisitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTipoPorton)
+                            .addComponent(cmbTipoES, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(62, 62, 62))))
+            .addGroup(jPSalidaVisitanteLayout.createSequentialGroup()
+                .addGroup(jPSalidaVisitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPSalidaVisitanteLayout.createSequentialGroup()
                         .addGap(71, 71, 71)
                         .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPSalidaVisitanteLayout.createSequentialGroup()
                         .addGap(384, 384, 384)
                         .addComponent(lblSalidaVisitante)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGap(35, 35, 35))
         );
         jPSalidaVisitanteLayout.setVerticalGroup(
             jPSalidaVisitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -306,25 +316,25 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
                     .addComponent(lblVisitante)
                     .addComponent(lblTipoPorton))
                 .addGap(18, 18, 18)
-                .addGroup(jPSalidaVisitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbPortonSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbTipoES, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
                 .addGroup(jPSalidaVisitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPSalidaVisitanteLayout.createSequentialGroup()
-                        .addComponent(lblIdRegistroSalida)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jFTidSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPSalidaVisitanteLayout.createSequentialGroup()
                         .addComponent(lblHoraFecha)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jFTfechaHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jFTfechaHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPSalidaVisitanteLayout.createSequentialGroup()
+                        .addGroup(jPSalidaVisitanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cmbPortonSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbTipoES, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
+                        .addComponent(lblIdRegistroSalida)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jFTidSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(32, 32, 32)
                 .addComponent(jSTablaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addGap(22, 22, 22)
+                .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         jPContainer.add(jPSalidaVisitante);

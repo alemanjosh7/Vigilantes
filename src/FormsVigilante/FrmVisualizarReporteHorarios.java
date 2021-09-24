@@ -83,10 +83,10 @@ public class FrmVisualizarReporteHorarios extends javax.swing.JFrame {
 
         jPBusquedaContainer = new javax.swing.JPanel();
         LblBusquedaVisitante = new javax.swing.JLabel();
-        jbtnImprimir = new javax.swing.JButton();
         LblBusquedaVisitante2 = new javax.swing.JLabel();
         jDateFechaInicio = new com.toedter.calendar.JDateChooser();
         jDateFechaFin = new com.toedter.calendar.JDateChooser();
+        jbtnReporteG = new javax.swing.JButton();
         jPContainer = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPToolStrip = new javax.swing.JPanel();
@@ -98,34 +98,62 @@ public class FrmVisualizarReporteHorarios extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1074, 289));
         getContentPane().setLayout(null);
 
-        jPBusquedaContainer.setLayout(null);
-
         LblBusquedaVisitante.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         LblBusquedaVisitante.setText("Fecha Inicio:");
-        jPBusquedaContainer.add(LblBusquedaVisitante);
-        LblBusquedaVisitante.setBounds(40, 10, 112, 22);
-
-        jbtnImprimir.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jbtnImprimir.setText("Imprimir Reporte");
-        jbtnImprimir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnImprimirActionPerformed(evt);
-            }
-        });
-        jPBusquedaContainer.add(jbtnImprimir);
-        jbtnImprimir.setBounds(610, 30, 198, 39);
 
         LblBusquedaVisitante2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         LblBusquedaVisitante2.setText("Fecha Fin:");
-        jPBusquedaContainer.add(LblBusquedaVisitante2);
-        LblBusquedaVisitante2.setBounds(290, 10, 130, 22);
-        jPBusquedaContainer.add(jDateFechaInicio);
-        jDateFechaInicio.setBounds(40, 50, 210, 30);
-        jPBusquedaContainer.add(jDateFechaFin);
-        jDateFechaFin.setBounds(290, 50, 220, 30);
+
+        jbtnReporteG.setBackground(new java.awt.Color(255, 211, 105));
+        jbtnReporteG.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jbtnReporteG.setText("Generar reporte");
+        jbtnReporteG.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 211, 105), 3, true));
+        jbtnReporteG.setContentAreaFilled(false);
+        jbtnReporteG.setFocusable(false);
+        jbtnReporteG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnReporteGActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPBusquedaContainerLayout = new javax.swing.GroupLayout(jPBusquedaContainer);
+        jPBusquedaContainer.setLayout(jPBusquedaContainerLayout);
+        jPBusquedaContainerLayout.setHorizontalGroup(
+            jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LblBusquedaVisitante)
+                    .addComponent(jDateFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LblBusquedaVisitante2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addComponent(jbtnReporteG, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69))
+        );
+        jPBusquedaContainerLayout.setVerticalGroup(
+            jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
+                        .addComponent(LblBusquedaVisitante)
+                        .addGap(18, 18, 18)
+                        .addComponent(jDateFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
+                        .addComponent(LblBusquedaVisitante2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jDateFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jbtnReporteG, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
 
         getContentPane().add(jPBusquedaContainer);
-        jPBusquedaContainer.setBounds(230, 160, 840, 100);
+        jPBusquedaContainer.setBounds(230, 150, 840, 110);
 
         jPContainer.setBackground(new java.awt.Color(57, 62, 70));
         jPContainer.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -224,13 +252,13 @@ public class FrmVisualizarReporteHorarios extends javax.swing.JFrame {
     }    
     
     
-    private void jbtnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnImprimirActionPerformed
+    private void jbtnReporteGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnReporteGActionPerformed
+        //Generar reporte
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String dateInicio = dateFormat.format(jDateFechaInicio.getDate());
         String dateFin = dateFormat.format(jDateFechaFin.getDate());
-                       
-        
-         if(dateFin.compareTo(dateInicio) < 0){
+
+        if(dateFin.compareTo(dateInicio) < 0){
             JOptionPane.showMessageDialog(this, "Error: Fecha Fin antes de Fecha Inicio");
             return;
         }
@@ -242,8 +270,7 @@ public class FrmVisualizarReporteHorarios extends javax.swing.JFrame {
             Parametros.put("Administrador", log.nombres + " " + log.apellidos);
             LlamarReportes("ReporteHorario",Parametros);
         }
-        
-    }//GEN-LAST:event_jbtnImprimirActionPerformed
+    }//GEN-LAST:event_jbtnReporteGActionPerformed
 
     //Metodos
     //Para validar que solo permitan pasar Numeros
@@ -434,7 +461,7 @@ public class FrmVisualizarReporteHorarios extends javax.swing.JFrame {
     private javax.swing.JPanel jPBusquedaContainer;
     private javax.swing.JPanel jPContainer;
     private javax.swing.JPanel jPToolStrip;
-    private javax.swing.JButton jbtnImprimir;
+    private javax.swing.JButton jbtnReporteG;
     private javax.swing.JLabel lblExitButton;
     // End of variables declaration//GEN-END:variables
 }
