@@ -22,6 +22,7 @@ public class ResidenciaController {
     private Integer idResidencia;
     private Integer numeroResidencia;
     private String direccionResidencia;
+    private String numTelefono;
     private Integer idZona;
     private Integer idResidente;
     
@@ -61,6 +62,15 @@ public class ResidenciaController {
         this.direccionResidencia = direccionResidencia;
     }
     
+    //Numero de Telefono
+    public String getNumTelefono(){
+        return numTelefono;
+    }
+    
+    public void setNumTelefono(String numTelefono){
+        this.numTelefono = numTelefono;
+    }
+    
     //Id Zona
     public Integer getIdZona(){
         return idZona;
@@ -89,13 +99,14 @@ public class ResidenciaController {
     public boolean guardarResidencia(){
         boolean res = false; 
         try{ //Realizar consulta INSERT
-           String sql = "INSERT INTO Residencia (numeroResidencia, direccionResidencia, idZona, idResidente) values (?,?,?,?)";
+           String sql = "INSERT INTO Residencia (numeroResidencia, direccionResidencia, numTelefono, idZona, idResidente) values (?,?,?,?,?)";
            //pide importar clase Prepared Statement
            PreparedStatement cmd = cn.prepareStatement(sql);                           
            cmd.setInt(1, numeroResidencia);
            cmd.setString(2, direccionResidencia);
-           cmd.setInt(3, idZona);
-           cmd.setInt(4, idResidente);           
+           cmd.setString(3, numTelefono);
+           cmd.setInt(4, idZona);
+           cmd.setInt(5, idResidente);           
            if(!cmd.execute()){
               res=true;
             }
@@ -112,14 +123,15 @@ public class ResidenciaController {
     public boolean modificarResidencia(){
         boolean res = false;
         try{ //Realizar consulta UPDATE
-           String sql = "UPDATE Residencia SET  numeroResidencia =?, direccionResidencia =?, idZona=?, idResidente=? WHERE idResidencia=?";
+           String sql = "UPDATE Residencia SET  numeroResidencia =?, direccionResidencia =?, numTelefono =?, idZona=?, idResidente=? WHERE idResidencia=?";
            //pide importar clase Prepared Statement
            PreparedStatement cmd = cn.prepareStatement(sql);                  
            cmd.setInt(1, numeroResidencia);
            cmd.setString(2, direccionResidencia);
-           cmd.setInt(3, idZona);
-           cmd.setInt(4, idResidente); 
-           cmd.setInt(5, idResidencia); 
+           cmd.setString(3, numTelefono);
+           cmd.setInt(4, idZona);
+           cmd.setInt(5, idResidente); 
+           cmd.setInt(6, idResidencia); 
           
            if(!cmd.execute()){
               res=true;
@@ -170,8 +182,9 @@ public class ResidenciaController {
               idResidencia = rs.getInt(1);
               numeroResidencia = rs.getInt(2);
               direccionResidencia = rs.getString(3);
-              idZona = rs.getInt(4);
-              idResidente = rs.getInt(5);             
+              numTelefono = rs.getString(4);
+              idZona = rs.getInt(5);
+              idResidente = rs.getInt(6);             
             }
             //cerrando conexion
             cmd.close();        
@@ -194,7 +207,7 @@ public class ResidenciaController {
              return res;
 }
         
-        public DefaultComboBoxModel consultarZona(){
+    public DefaultComboBoxModel consultarZona(){
         DefaultComboBoxModel ZonasList = new DefaultComboBoxModel();
         ZonasList.addElement("Seleccione Zona");
         ResultSet res = this.consultaDatos("SELECT * FROM Zonas");
@@ -278,10 +291,11 @@ public class ResidenciaController {
             tResidencia.addColumn("Indentificación");
             tResidencia.addColumn("Numero");
             tResidencia.addColumn("Direccion");  
+            tResidencia.addColumn("Numero de Telefono");
             tResidencia.addColumn("Zona");
             tResidencia.addColumn("Residente");  
-            String[] datos = new String[5];         
-            ResultSet res = this.consultaDatos("select R.idResidencia, R.numeroResidencia, R.direccionResidencia, Z.nombreZona, RD.nombres from Residencia R join Zonas Z on R.idZona = Z.idZona  join Residente RD  on R.idResidente = RD.idResidente");
+            String[] datos = new String[6];         
+            ResultSet res = this.consultaDatos("select R.idResidencia, R.numeroResidencia, R.direccionResidencia, R.numTelefono,  Z.nombreZona, RD.nombres from Residencia R join Zonas Z on R.idZona = Z.idZona  join Residente RD  on R.idResidente = RD.idResidente");
 
             try{
                 while(res.next()){
@@ -290,6 +304,7 @@ public class ResidenciaController {
                 datos[2] = res.getString(3);
                 datos[3] = res.getString(4);
                 datos[4] = res.getString(5);
+                datos[5] = res.getString(6);
                 tResidencia.addRow(datos);
                 }
                 }
@@ -303,13 +318,14 @@ public class ResidenciaController {
            DefaultTableModel tResidencia = new DefaultTableModel();
             tResidencia.addColumn("Indentificación");
             tResidencia.addColumn("Numero");
-            tResidencia.addColumn("Direccion");  
+            tResidencia.addColumn("Direccion"); 
+            tResidencia.addColumn("Numero de Telefono");
             tResidencia.addColumn("Zona");
             tResidencia.addColumn("Residente");                
-            String[] datos = new String[5];         
+            String[] datos = new String[6];         
            try{
             //Realizar consulta
-            String sql = "select R.idResidencia, R.numeroResidencia, R.direccionResidencia, Z.nombreZona, RD.nombres from Residencia R join Zonas Z on R.idZona = Z.idZona  join Residente RD  on R.idResidente = RD.idResidente WHERE idResidencia LIKE CONCAT('%',?,'%')";
+            String sql = "select R.idResidencia, R.numeroResidencia, R.direccionResidencia, R.numTelefono Z.nombreZona, RD.nombres from Residencia R join Zonas Z on R.idZona = Z.idZona  join Residente RD  on R.idResidente = RD.idResidente WHERE idResidencia LIKE CONCAT('%',?,'%')";
             PreparedStatement cmd = cn.prepareStatement(sql);
             cmd.setInt(1, idResidencia);                                
             ResultSet res = cmd.executeQuery();
@@ -319,6 +335,7 @@ public class ResidenciaController {
                 datos[2] = res.getString(3);
                 datos[3] = res.getString(4);
                 datos[4] = res.getString(5);
+                datos[5] = res.getString(6);
                 tResidencia.addRow(datos);                      
             }            
         }
@@ -333,6 +350,7 @@ public class ResidenciaController {
         tResidenteFiltrada.addColumn("Indentificación");
         tResidenteFiltrada.addColumn("Numero");
         tResidenteFiltrada.addColumn("Direccion");
+        tResidenteFiltrada.addColumn("Numero de Telefono");
         tResidenteFiltrada.addColumn("Zona");
         tResidenteFiltrada.addColumn("Residente");           
         String[] datos =  new String[5];
@@ -363,12 +381,13 @@ public class ResidenciaController {
         tResidenteFiltrada.addColumn("Indentificación");
         tResidenteFiltrada.addColumn("Numero");
         tResidenteFiltrada.addColumn("Direccion");
+        tResidenteFiltrada.addColumn("Numero de Telefono");        
         tResidenteFiltrada.addColumn("Zona");
         tResidenteFiltrada.addColumn("Residente");           
-        String[] datos =  new String[5];
+        String[] datos =  new String[6];
         try{
             //Realizar consulta
-            String sql = "select R.idResidencia, R.numeroResidencia, R.direccionResidencia, Z.nombreZona, RD.nombres from Residencia R join Zonas Z on R.idZona = Z.idZona  join Residente RD  on R.idResidente = RD.idResidente WHERE numeroResidencia LIKE CONCAT('%',?,'%')";
+            String sql = "select R.idResidencia, R.numeroResidencia, R.direccionResidencia,R.numTelefono Z.nombreZona, RD.nombres from Residencia R join Zonas Z on R.idZona = Z.idZona  join Residente RD  on R.idResidente = RD.idResidente WHERE numeroResidencia LIKE CONCAT('%',?,'%')";
             PreparedStatement cmd = cn.prepareStatement(sql);
             //Lenar los parámetros de la clase, se coloca en el orden de la consulta
             cmd.setInt(1, numeroResidencia);
@@ -379,6 +398,7 @@ public class ResidenciaController {
                 datos[2] = res.getString(3);
                 datos[3] = res.getString(4);
                 datos[4] = res.getString(5);
+                datos[5] = res.getString(6);
                 tResidenteFiltrada.addRow(datos);                      
             }        
         }

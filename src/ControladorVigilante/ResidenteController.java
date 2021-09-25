@@ -25,7 +25,6 @@ public class ResidenteController {
     private String apellidosResidente;
     private String dui;
     private String nit;
-    private int mayorEdad;
     private int idEstadoResidente;
 
     //get -- set
@@ -80,15 +79,6 @@ public class ResidenteController {
     }    
 
     //Si el residente es mayor de Edad
-    public Integer getMayorEdad(){
-        return mayorEdad;
-    }
-    
-    public void setMayorEdad(int mayorEdad){
-        this.mayorEdad = mayorEdad;
-    }    
-
-    //Si el residente es mayor de Edad
     public Integer getidEstadoResidente(){
         return idEstadoResidente;
     }
@@ -108,14 +98,13 @@ public class ResidenteController {
     public boolean guardarResidentes(){
         boolean res = false;
         try{
-            String sql = "INSERT INTO Residente(nombres, apellidos, dui, nit, mayoriaEdad, idEstadoResidente) values (?,?,?,?,?,?) ";//se pasan por referencia por seguridad
+            String sql = "INSERT INTO Residente(nombres, apellidos, dui, nit, idEstadoResidente) values (?,?,?,?,?) ";//se pasan por referencia por seguridad
             PreparedStatement cmd = cn.prepareStatement(sql);
             cmd.setString(1,nombreResidente);
             cmd.setString(2, apellidosResidente);
             cmd.setString(3, dui);
             cmd.setString(4, nit);
-            cmd.setInt(5, mayorEdad);
-            cmd.setInt(6,idEstadoResidente);
+            cmd.setInt(5,idEstadoResidente);
             if (!cmd.execute()) {
                 res=true;
             }
@@ -132,15 +121,14 @@ public class ResidenteController {
     public boolean modificarResidentes(){
         boolean res = false;
         try{
-            String sql = "UPDATE Residente SET nombres =?, apellidos =?, dui =?, nit =?, mayoriaEdad =?, idEstadoResidente =? WHERE idResidente =?";//se pasan por referencia por seguridad
+            String sql = "UPDATE Residente SET nombres =?, apellidos =?, dui =?, nit =?,idEstadoResidente =? WHERE idResidente =?";//se pasan por referencia por seguridad
             PreparedStatement cmd = cn.prepareStatement(sql);
             cmd.setString(1,nombreResidente);
             cmd.setString(2, apellidosResidente);
             cmd.setString(3, dui);
             cmd.setString(4, nit);
-            cmd.setInt(5, mayorEdad);
-            cmd.setInt(6,idEstadoResidente);
-            cmd.setInt(7, idResidente);
+            cmd.setInt(5,idEstadoResidente);
+            cmd.setInt(6, idResidente);
             if (!cmd.execute()) {
                 res=true;
             }
@@ -237,12 +225,11 @@ public class ResidenteController {
         tResidente.addColumn("Nombre");
         tResidente.addColumn("Apellido");
         tResidente.addColumn("DUI");
-        tResidente.addColumn("¿Es mayor de edad?");
+        tResidente.addColumn("NIT");
         tResidente.addColumn("Estado del Residente");
                 
         String[] datos =  new String[6];
-        int mayorEdad;
-        ResultSet res = this.consultaDatos("SELECT R.idResidente, R.nombres, R.apellidos, R.dui, R.mayoriaEdad, ER.nombreEstado FROM Residente R JOIN EstadoResidente ER  ON ER.idEstadoResidente = R.idEstadoResidente");
+        ResultSet res = this.consultaDatos("SELECT R.idResidente, R.nombres, R.apellidos, R.dui, R.nit, ER.nombreEstado FROM Residente R JOIN EstadoResidente ER  ON ER.idEstadoResidente = R.idEstadoResidente");
 
         try{            
             while(res.next()){
@@ -250,13 +237,7 @@ public class ResidenteController {
                 datos[1] = res.getString(2);
                 datos[2] = res.getString(3);
                 datos[3] = res.getString(4);
-                mayorEdad = res.getInt(5);
-                if (mayorEdad == 1) {
-                    datos[4] = "Mayor de Edad";
-                }
-                else{
-                    datos[4] = "Menor de Edad";
-                }
+                datos[4] = res.getString(5);
                 datos[5] = res.getString(6);
                 
                 tResidente.addRow(datos);                      
@@ -285,8 +266,7 @@ public class ResidenteController {
                 apellidosResidente = res.getString(3);
                 dui = res.getString(4);
                 nit = res.getString(5);
-                mayorEdad = res.getInt(6);
-                idEstadoResidente = res.getInt(7);
+                idEstadoResidente = res.getInt(6);
 
             }
             //cerrando conexion
@@ -304,14 +284,14 @@ public class ResidenteController {
         tEntradaFiltrada.addColumn("Nombre");
         tEntradaFiltrada.addColumn("Apellido");
         tEntradaFiltrada.addColumn("DUI");
-        tEntradaFiltrada.addColumn("¿Es mayor de edad?");
+        tEntradaFiltrada.addColumn("NIT");
         tEntradaFiltrada.addColumn("Estado del Residente");
                 
         String[] datos =  new String[6];
         int mayorEdad;
         try{
             //Realizar consulta
-            String sql = "SELECT R.idResidente, R.nombres, R.apellidos, R.dui, R.mayoriaEdad, ER.nombreEstado FROM Residente R JOIN EstadoResidente ER ON ER.idEstadoResidente = R.idEstadoResidente  WHERE idResidente =?";
+            String sql = "SELECT R.idResidente, R.nombres, R.apellidos, R.dui, R.nit, ER.nombreEstado FROM Residente R JOIN EstadoResidente ER ON ER.idEstadoResidente = R.idEstadoResidente  WHERE idResidente =?";
             PreparedStatement cmd = cn.prepareStatement(sql);
             //Lenar los parámetros de la clase, se coloca en el orden de la consulta
             cmd.setInt(1,idResidente);
@@ -321,13 +301,7 @@ public class ResidenteController {
                 datos[1] = res.getString(2);
                 datos[2] = res.getString(3);
                 datos[3] = res.getString(4);
-                mayorEdad = res.getInt(5);
-                if (mayorEdad == 1) {
-                    datos[4] = "Mayor de Edad";
-                }
-                else{
-                    datos[4] = "Menor de Edad";
-                }
+                datos[4] = res.getString(5);
                 datos[5] = res.getString(6);                
                 tEntradaFiltrada.addRow(datos);                      
             }        
@@ -352,7 +326,7 @@ public class ResidenteController {
         String[] datos =  new String[6];
         try{
             //Realizar consulta
-            String sql = "SELECT R.idResidente, R.nombres, R.apellidos, R.dui, R.mayoriaEdad, ER.nombreEstado FROM Residente R JOIN EstadoResidente ER ON ER.idEstadoResidente = R.idEstadoResidente WHERE nombres LIKE CONCAT('%',?,'%')";
+            String sql = "SELECT R.idResidente, R.nombres, R.apellidos, R.dui, R.nit, ER.nombreEstado FROM Residente R JOIN EstadoResidente ER ON ER.idEstadoResidente = R.idEstadoResidente WHERE nombres LIKE CONCAT('%',?,'%')";
             PreparedStatement cmd = cn.prepareStatement(sql);
             //Lenar los parámetros de la clase, se coloca en el orden de la consulta
             cmd.setString(1, nombreResidente);
@@ -362,13 +336,7 @@ public class ResidenteController {
                 datos[1] = res.getString(2);
                 datos[2] = res.getString(3);
                 datos[3] = res.getString(4);
-                mayorEdad = res.getInt(5);
-                if (mayorEdad == 1) {
-                    datos[4] = "Mayor de Edad";
-                }
-                else{
-                    datos[4] = "Menor de Edad";
-                }
+                datos[4] = res.getString(5);
                 datos[5] = res.getString(6);
                 
                 tResidenteFiltrada.addRow(datos);                      

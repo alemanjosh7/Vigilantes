@@ -480,7 +480,6 @@ public class FrmResidencias extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        
         if (jFNumeroResidencia.getText().isEmpty() || jFDireccion.getText().isEmpty() || cmbZona.getSelectedIndex() == 0 || cmbResidente.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");  
         } 
@@ -490,7 +489,8 @@ public class FrmResidencias extends javax.swing.JFrame {
             VR.setDireccionResidencia(jFDireccion.getText());
             VR.convertirZona(cmbZona.getSelectedItem().toString());
             VR.convertirResidente(cmbResidente.getSelectedItem().toString());
-            VR.setIdResidencia(Integer.parseInt(jFTelefono.getText()));
+            VR.setNumTelefono(jFTelefono.getText());
+            VR.setIdResidencia(Integer.parseInt(jFResidencia.getText()));
             //Enviando los datos a SQL
             if (VR.modificarResidencia()) {
                 JOptionPane.showMessageDialog(this,"Datos actualizados exitosamente");
@@ -505,17 +505,18 @@ public class FrmResidencias extends javax.swing.JFrame {
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-         if (jFTelefono.getText().isEmpty()) {
+         if (jFResidencia.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");              
         }
         else{
             //Consultar
-                VR.setIdResidencia(Integer.parseInt(jFTelefono.getText()));
+                VR.setIdResidencia(Integer.parseInt(jFResidencia.getText()));
             if (VR.consultarResidencia()) {                             
                 jFNumeroResidencia.setText(String.valueOf(VR.getNumeroResidencia()));
                 jFDireccion.setText(String.valueOf(VR.getDireccionResidencia()));
                 cmbZona.setSelectedIndex(VR.getIdZona());
                 cmbResidente.setSelectedIndex(VR.getIdResidente());
+                jFTelefono.setText(VR.getNumTelefono());
                 this.jTResidencias5.setModel(VR.consultarDatosTabla());             
             }
             else{
@@ -530,9 +531,10 @@ public class FrmResidencias extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");  
         }
         else{
-            // Registrar los datos a la Tabla Residencia         
+        // Registrar los datos a la Tabla Residencia         
         VR.setNumeroResidencia(Integer.parseInt(jFNumeroResidencia.getText()));
         VR.setDireccionResidencia(jFDireccion.getText());
+        VR.setNumTelefono(jFTelefono.getText());
         VR.convertirZona(cmbZona.getSelectedItem().toString());
         VR.convertirResidente(cmbResidente.getSelectedItem().toString());       
             //Enviando los datos a SQL
@@ -548,11 +550,11 @@ public class FrmResidencias extends javax.swing.JFrame {
         LimpiarCampos();
     }//GEN-LAST:event_btnRegistrarActionPerformed
         private void LimpiarCampos() {
-         jFTelefono.setText("");
-         jFNumeroResidencia.setText("");
-         jFDireccion.setText(""); 
-         cmbZona.setSelectedIndex(0);
-         cmbResidente.setSelectedIndex(0);
+        jFTelefono.setText("");
+        jFNumeroResidencia.setText("");
+        jFDireccion.setText(""); 
+        cmbZona.setSelectedIndex(0);
+        cmbResidente.setSelectedIndex(0);         
     }
         
         private void CargarDatosTabla(){
