@@ -64,8 +64,8 @@ public class FrmVisualizarReporteVigilantes extends javax.swing.JFrame {
         lblExitButton4 = new javax.swing.JLabel();
         LblBusquedaVisitante1 = new javax.swing.JLabel();
         LblBusquedaVisitante = new javax.swing.JLabel();
-        LblBusquedaVisitante2 = new javax.swing.JLabel();
         jCostoInicial = new javax.swing.JTextField();
+        LblBusquedaVisitante2 = new javax.swing.JLabel();
         jCostoFinal = new javax.swing.JTextField();
         jPBusquedaContainer = new javax.swing.JPanel();
         jbtnReporteG = new javax.swing.JButton();
@@ -147,11 +147,7 @@ public class FrmVisualizarReporteVigilantes extends javax.swing.JFrame {
         getContentPane().add(LblBusquedaVisitante);
         LblBusquedaVisitante.setBounds(280, 180, 190, 22);
 
-        LblBusquedaVisitante2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        LblBusquedaVisitante2.setText("($) Costo Final:");
-        getContentPane().add(LblBusquedaVisitante2);
-        LblBusquedaVisitante2.setBounds(530, 180, 170, 22);
-
+        jCostoInicial.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jCostoInicial.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jCostoInicialKeyTyped(evt);
@@ -160,6 +156,12 @@ public class FrmVisualizarReporteVigilantes extends javax.swing.JFrame {
         getContentPane().add(jCostoInicial);
         jCostoInicial.setBounds(280, 220, 170, 30);
 
+        LblBusquedaVisitante2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        LblBusquedaVisitante2.setText("($) Costo Final:");
+        getContentPane().add(LblBusquedaVisitante2);
+        LblBusquedaVisitante2.setBounds(530, 180, 170, 22);
+
+        jCostoFinal.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jCostoFinal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jCostoFinalKeyTyped(evt);
@@ -198,7 +200,7 @@ public class FrmVisualizarReporteVigilantes extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPBusquedaContainer);
-        jPBusquedaContainer.setBounds(240, 170, 840, 130);
+        jPBusquedaContainer.setBounds(250, 150, 840, 130);
 
         LblBusquedaVisitante3.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         LblBusquedaVisitante3.setText("GENERAR REPORTE: Vigilante");

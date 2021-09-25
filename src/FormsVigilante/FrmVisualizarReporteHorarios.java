@@ -104,6 +104,10 @@ public class FrmVisualizarReporteHorarios extends javax.swing.JFrame {
         LblBusquedaVisitante2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         LblBusquedaVisitante2.setText("Fecha Fin:");
 
+        jDateFechaInicio.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+
+        jDateFechaFin.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+
         jbtnReporteG.setBackground(new java.awt.Color(255, 211, 105));
         jbtnReporteG.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jbtnReporteG.setText("Generar reporte");
@@ -203,9 +207,9 @@ public class FrmVisualizarReporteHorarios extends javax.swing.JFrame {
             .addGroup(jPToolStripLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(LblBusquedaVisitante1)
-                .addGap(577, 577, 577)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 554, Short.MAX_VALUE)
                 .addComponent(lblExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(201, Short.MAX_VALUE))
+                .addGap(224, 224, 224))
         );
         jPToolStripLayout.setVerticalGroup(
             jPToolStripLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
