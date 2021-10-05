@@ -228,6 +228,7 @@ public  class VisitanteController {
             tVisitante.addColumn("Edad");        
             String[] datos = new String[6];         
            try{
+            int MayorEdad;
             //Realizar consulta
             String sql = "select V.idVisitante, V.nombres, V.apellidos, V.dui, V.nit, V.mayoriaEdad from Visitante V WHERE idVisitante LIKE CONCAT('%',?,'%')";
             PreparedStatement cmd = cn.prepareStatement(sql);
@@ -239,7 +240,13 @@ public  class VisitanteController {
                 datos[2] = res.getString(3);
                 datos[3] = res.getString(4);
                 datos[4] = res.getString(5);
-                datos[5] = res.getString(6);
+                MayorEdad = res.getInt(6);             
+                if(MayorEdad==1){
+                datos[5]="SI";
+                }
+                else{
+                datos[5]="NO";
+                }    
                 tVisitante.addRow(datos);                      
             }            
         }
@@ -258,6 +265,7 @@ public  class VisitanteController {
         tVisitantesFiltrada.addColumn("Edad");             
         String[] datos =  new String[6];
         try{
+            int MayorEdad;
             //Realizar consulta
             String sql = "select V.idVisitante, V.nombres, V.apellidos, V.dui, V.nit, V.mayoriaEdad from Visitante V WHERE idVisitante=?";
             PreparedStatement cmd = cn.prepareStatement(sql);
@@ -270,7 +278,13 @@ public  class VisitanteController {
                 datos[2] = res.getString(3);
                 datos[3] = res.getString(4);
                 datos[4] = res.getString(5);
-                datos[5] = res.getString(6);
+                MayorEdad = res.getInt(6);                 
+                if(MayorEdad==1){
+                datos[5]="SI";
+                }
+                else{
+                datos[5]="NO";
+                } 
                 tVisitantesFiltrada.addRow(datos);                      
             }        
         }
@@ -279,5 +293,124 @@ public  class VisitanteController {
         }
         return tVisitantesFiltrada; 
     }
+   
+   public DefaultTableModel filtrarDatosTablaNombre(){
+        DefaultTableModel tVisitantesFiltrada = new DefaultTableModel();
+            tVisitantesFiltrada.addColumn("Indentificación");
+            tVisitantesFiltrada.addColumn("Nombre");
+            tVisitantesFiltrada.addColumn("Apellido");
+            tVisitantesFiltrada.addColumn("DUI");
+            tVisitantesFiltrada.addColumn("NIT");
+            tVisitantesFiltrada.addColumn("Edad");             
+            String[] datos =  new String[6];
+            try{
+                int MayorEdad;
+                //Realizar consulta
+                String sql = "select V.idVisitante, V.nombres, V.apellidos, V.dui, V.nit, V.mayoriaEdad from Visitante V WHERE nombres LIKE CONCAT('%',?,'%')";
+                PreparedStatement cmd = cn.prepareStatement(sql);
+                //Lenar los parámetros de la clase, se coloca en el orden de la consulta
+                cmd.setString(1, nombre);
+                ResultSet res = cmd.executeQuery();
+                while(res.next()){
+                    datos[0] = res.getString(1);    
+                    datos[1] = res.getString(2);
+                    datos[2] = res.getString(3);
+                    datos[3] = res.getString(4);
+                    datos[4] = res.getString(5);
+                    MayorEdad = res.getInt(6);                 
+                    if(MayorEdad==1){
+                    datos[5]="SI";
+                    }
+                    else{
+                    datos[5]="NO";
+                    } 
+                    tVisitantesFiltrada.addRow(datos);                      
+                }        
+            }
+            catch(Exception ex){
+                System.out.println(ex.getMessage());            
+            }
+            return tVisitantesFiltrada; 
+        }
+
+      public DefaultTableModel filtrarDatosTablaDUI(){
+        DefaultTableModel tVisitantesFiltrada = new DefaultTableModel();
+            tVisitantesFiltrada.addColumn("Indentificación");
+            tVisitantesFiltrada.addColumn("Nombre");
+            tVisitantesFiltrada.addColumn("Apellido");
+            tVisitantesFiltrada.addColumn("DUI");
+            tVisitantesFiltrada.addColumn("NIT");
+            tVisitantesFiltrada.addColumn("Edad");             
+            String[] datos =  new String[6];
+            try{
+                int MayorEdad;
+                //Realizar consulta
+                String sql = "select V.idVisitante, V.nombres, V.apellidos, V.dui, V.nit, V.mayoriaEdad from Visitante V WHERE dui LIKE CONCAT('%',?,'%')";
+                PreparedStatement cmd = cn.prepareStatement(sql);
+                //Lenar los parámetros de la clase, se coloca en el orden de la consulta
+                cmd.setString(1, DUI);
+                ResultSet res = cmd.executeQuery();
+                while(res.next()){
+                    datos[0] = res.getString(1);    
+                    datos[1] = res.getString(2);
+                    datos[2] = res.getString(3);
+                    datos[3] = res.getString(4);
+                    datos[4] = res.getString(5);
+                    MayorEdad = res.getInt(6);                 
+                    if(MayorEdad==1){
+                    datos[5]="SI";
+                    }
+                    else{
+                    datos[5]="NO";
+                    } 
+                    tVisitantesFiltrada.addRow(datos);                      
+                }        
+            }
+            catch(Exception ex){
+                System.out.println(ex.getMessage());            
+            }
+            return tVisitantesFiltrada; 
+        }
+      
+      public DefaultTableModel filtrarDatosTablaNIT(){
+        DefaultTableModel tVisitantesFiltrada = new DefaultTableModel();
+            tVisitantesFiltrada.addColumn("Indentificación");
+            tVisitantesFiltrada.addColumn("Nombre");
+            tVisitantesFiltrada.addColumn("Apellido");
+            tVisitantesFiltrada.addColumn("DUI");
+            tVisitantesFiltrada.addColumn("NIT");
+            tVisitantesFiltrada.addColumn("Edad");             
+            String[] datos =  new String[6];
+            try{
+                int MayorEdad;
+                //Realizar consulta
+                String sql = "select V.idVisitante, V.nombres, V.apellidos, V.dui, V.nit, V.mayoriaEdad from Visitante V WHERE nit LIKE CONCAT('%',?,'%')";
+                PreparedStatement cmd = cn.prepareStatement(sql);
+                //Lenar los parámetros de la clase, se coloca en el orden de la consulta
+                cmd.setString(1, NIT);
+                ResultSet res = cmd.executeQuery();
+                while(res.next()){
+                    datos[0] = res.getString(1);    
+                    datos[1] = res.getString(2);
+                    datos[2] = res.getString(3);
+                    datos[3] = res.getString(4);
+                    datos[4] = res.getString(5);
+                    MayorEdad = res.getInt(6);                 
+                    if(MayorEdad==1){
+                    datos[5]="SI";
+                    }
+                    else{
+                    datos[5]="NO";
+                    } 
+                    tVisitantesFiltrada.addRow(datos);                      
+                }        
+            }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());            
+        }
+        return tVisitantesFiltrada; 
+    }
 }
- 
+   
+
+

@@ -249,7 +249,7 @@ public class FrmVisualizarEntrada extends javax.swing.JFrame {
         });
 
         LblBusquedaVisitante.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        LblBusquedaVisitante.setText("Busqueda de Visitante:");
+        LblBusquedaVisitante.setText("Busqueda de Entrada(id):");
 
         lblImgBusqueda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblImgBusqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgBuscar.png"))); // NOI18N

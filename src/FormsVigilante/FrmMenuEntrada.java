@@ -35,6 +35,7 @@ public class FrmMenuEntrada extends javax.swing.JFrame {
         jPToolStrip = new javax.swing.JPanel();
         changeThemeBtn = new javax.swing.JButton();
         lblButtonExit = new javax.swing.JLabel();
+        btnRegistroLlamadas = new javax.swing.JButton();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -107,29 +108,48 @@ public class FrmMenuEntrada extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        btnRegistroLlamadas.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnRegistroLlamadas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgLlamadaDark.png"))); // NOI18N
+        btnRegistroLlamadas.setText("Registro de Llamadas");
+        btnRegistroLlamadas.setContentAreaFilled(false);
+        btnRegistroLlamadas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegistroLlamadas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnRegistroLlamadas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnRegistroLlamadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistroLlamadasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(92, 92, 92)
+                .addGap(82, 82, 82)
                 .addComponent(btnRegistrarrEntradas, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(btnVisualizarEntradas, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRegistroLlamadas, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPToolStrip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnVisualizarEntradas, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(228, 228, 228))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPToolStrip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(112, 112, 112)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnRegistrarrEntradas, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVisualizarEntradas, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(173, Short.MAX_VALUE))
+                    .addComponent(btnRegistroLlamadas, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addComponent(btnVisualizarEntradas, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
         );
 
         pack();
@@ -156,6 +176,12 @@ public class FrmMenuEntrada extends javax.swing.JFrame {
         menu.show();
         dispose();
     }//GEN-LAST:event_lblButtonExitMouseClicked
+
+    private void btnRegistroLlamadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroLlamadasActionPerformed
+        FrmRegistroLlamadas RL = new FrmRegistroLlamadas();
+        RL.show();
+        dispose();
+    }//GEN-LAST:event_btnRegistroLlamadasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,6 +221,7 @@ public class FrmMenuEntrada extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrarrEntradas;
+    private javax.swing.JButton btnRegistroLlamadas;
     private javax.swing.JButton btnVisualizarEntradas;
     private javax.swing.JButton changeThemeBtn;
     private javax.swing.JComboBox<String> jComboBox1;

@@ -421,5 +421,37 @@ public class PersonalController {
     public void setSalarioMensual(Float salarioMensual) {
         this.salarioMensual = salarioMensual;
     }
+
+    public boolean consultarPersonal() {
+        
+        boolean bres = false;     
+        try{
+            //Realizar consulta
+            String sql = "SELECT * FROM Personal WHERE idPersonal =?";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            //Lenar los parámetros de la clase, se coloca en el orden de la consulta
+            cmd.setInt(1, idPersonal);
+            ResultSet res = cmd.executeQuery();
+            if (res.next()) {
+                bres=true;
+                idPersonal = res.getInt(1);
+                idTipoPersonal = res.getInt(2);
+                nombres = res.getString(3);
+                apellidos = res.getString(4);
+                telefono = res.getString(5);
+                dui = res.getString(6);
+                correo = res.getString(7);
+                idEstadoPersonal = res.getInt(8);
+                salarioMensual = res.getFloat(9);
+            }
+            //cerrando conexion
+            cmd.close();
+        }
+        catch(Exception ex){
+            System.out.println(ex.toString());
+        }
+        return bres;
+        
+    }
     
 }

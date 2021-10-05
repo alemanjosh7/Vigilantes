@@ -31,7 +31,6 @@ public class FrmMenuResidencia extends javax.swing.JFrame {
 
         btnGestionarResidencias = new javax.swing.JButton();
         btnVisulizarResidencias = new javax.swing.JButton();
-        btnRegistroLlamadas = new javax.swing.JButton();
         jPToolStrip = new javax.swing.JPanel();
         changeThemeBtn = new javax.swing.JButton();
         lblButtonExit = new javax.swing.JLabel();
@@ -61,19 +60,6 @@ public class FrmMenuResidencia extends javax.swing.JFrame {
         btnVisulizarResidencias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVisulizarResidenciasActionPerformed(evt);
-            }
-        });
-
-        btnRegistroLlamadas.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnRegistroLlamadas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgLlamadaDark.png"))); // NOI18N
-        btnRegistroLlamadas.setText("Registro de Llamadas");
-        btnRegistroLlamadas.setContentAreaFilled(false);
-        btnRegistroLlamadas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnRegistroLlamadas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnRegistroLlamadas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnRegistroLlamadas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistroLlamadasActionPerformed(evt);
             }
         });
 
@@ -123,15 +109,11 @@ public class FrmMenuResidencia extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(243, 243, 243)
+                .addGap(74, 74, 74)
+                .addComponent(btnGestionarResidencias, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55)
                 .addComponent(btnVisulizarResidencias, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addComponent(btnGestionarResidencias, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRegistroLlamadas, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPToolStrip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -140,13 +122,11 @@ public class FrmMenuResidencia extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPToolStrip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnGestionarResidencias, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegistroLlamadas, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addComponent(btnVisulizarResidencias, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                    .addComponent(btnVisulizarResidencias, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGestionarResidencias, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(142, 142, 142))
         );
 
         pack();
@@ -163,12 +143,6 @@ public class FrmMenuResidencia extends javax.swing.JFrame {
         VR.show();
         dispose();
     }//GEN-LAST:event_btnVisulizarResidenciasActionPerformed
-
-    private void btnRegistroLlamadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroLlamadasActionPerformed
-        FrmRegistroLlamadas RL = new FrmRegistroLlamadas();
-        RL.show();
-        dispose();
-    }//GEN-LAST:event_btnRegistroLlamadasActionPerformed
 
     private void changeThemeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeThemeBtnActionPerformed
         // TODO add your handling code here:
@@ -218,7 +192,6 @@ public class FrmMenuResidencia extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGestionarResidencias;
-    private javax.swing.JButton btnRegistroLlamadas;
     private javax.swing.JButton btnVisulizarResidencias;
     private javax.swing.JButton changeThemeBtn;
     private javax.swing.JPanel jPToolStrip;

@@ -144,9 +144,9 @@ public class FrmVisualizarPortones extends javax.swing.JFrame {
         jPbtnSBContainerLayout.setVerticalGroup(
             jPbtnSBContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPbtnSBContainerLayout.createSequentialGroup()
-                .addContainerGap(115, Short.MAX_VALUE)
+                .addContainerGap(147, Short.MAX_VALUE)
                 .addComponent(btnGoLogIn)
-                .addGap(82, 82, 82))
+                .addGap(50, 50, 50))
         );
 
         javax.swing.GroupLayout jPSideBarLayout = new javax.swing.GroupLayout(jPSideBar);

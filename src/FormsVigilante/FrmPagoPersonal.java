@@ -6,8 +6,10 @@
 package FormsVigilante;
 
 import Clases.Conexion;
+import ControladorVigilante.HorarioController;
 import ControladorVigilante.PagoController;
 import ControladorVigilante.PersonalController;
+import Modelo.ComboItems;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -15,12 +17,16 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonModel;
+import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.border.BevelBorder;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 /**
  *
@@ -38,13 +44,35 @@ public class FrmPagoPersonal extends javax.swing.JFrame {
     public FrmPagoPersonal(){
         initComponents();
         //Cargamos los combobox.
-     this.cmbRecibePago.setModel(PC.consultarPersonal());
-     this.cmbEncargado.setModel(PC.consultarEncargado());
-     //cargamos la tabla 
-     CargarDatosTablaPago();
-      FrmLogin log = new FrmLogin();
-       lblCargoUsuario.setText(log.cargo);
-       lblNombreUsuario.setText(log.nombres + " " + log.apellidos);
+        this.cmbRecibePago.setModel(PC.consultarPersonal());
+        this.cmbEncargado.setModel(PC.consultarEncargado());
+        
+        cmbRecibePago.addItemListener(new ItemListener() {
+            // Listening if a new items of the combo box has been selected.
+            public void itemStateChanged(ItemEvent event) {
+                PagoController obj = new PagoController();
+
+                int index = 0;
+                index = cmbRecibePago.getSelectedIndex();
+                ComboBoxModel model = cmbRecibePago.getModel();
+                ComboItems me = (ComboItems) model.getElementAt(index);
+
+                if(me.getKey() == 0) return;
+
+                if(obj.consultarSalario(me.getKey())){
+                    TxtCantidadPago.setText( String.valueOf(obj.Salario) );
+                }
+                else{
+                    JOptionPane.showMessageDialog(rootPane, "Error, no se pudo realizar la consulta");
+                }
+            }
+        });
+        
+        //cargamos la tabla 
+        CargarDatosTablaPago();
+        FrmLogin log = new FrmLogin();
+        lblCargoUsuario.setText(log.cargo);
+        lblNombreUsuario.setText(log.nombres + " " + log.apellidos);
     }
 
     //Mostrar los datos de la tabla
@@ -122,6 +150,11 @@ public class FrmPagoPersonal extends javax.swing.JFrame {
         lblEncagadoPago4.setText("Encargado de el Pago:");
 
         cmbRecibePago.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        cmbRecibePago.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmbRecibePagoMouseClicked(evt);
+            }
+        });
         cmbRecibePago.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbRecibePagoActionPerformed(evt);
@@ -238,9 +271,9 @@ public class FrmPagoPersonal extends javax.swing.JFrame {
         jPButtonsLayout.setHorizontalGroup(
             jPButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPButtonsLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
                 .addComponent(btnLimpiar4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(180, 180, 180)
+                .addGap(190, 190, 190)
                 .addComponent(btnRegistrar4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
                 .addComponent(btnModificar4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -251,7 +284,7 @@ public class FrmPagoPersonal extends javax.swing.JFrame {
         jPButtonsLayout.setVerticalGroup(
             jPButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPButtonsLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(34, Short.MAX_VALUE)
                 .addGroup(jPButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrar4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLimpiar4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -278,35 +311,36 @@ public class FrmPagoPersonal extends javax.swing.JFrame {
                         .addComponent(lblPagoPersonal4))
                     .addGroup(jPContenedorPago4Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
+                        .addGroup(jPContenedorPago4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSTablaDatosPago4, javax.swing.GroupLayout.PREFERRED_SIZE, 944, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPContenedorPago4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblFechaPago8)
+                                .addComponent(jFBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPContenedorPago4Layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
                         .addGroup(jPContenedorPago4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPContenedorPago4Layout.createSequentialGroup()
                                 .addGroup(jPContenedorPago4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblEncagadoPago4)
-                                    .addComponent(lblCantidadPagar4)
-                                    .addComponent(TxtCantidadPago, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(67, 67, 67)
+                                    .addComponent(TxtCantidadPago, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblCantidadPagar4))
+                                .addGap(73, 73, 73)
                                 .addGroup(jPContenedorPago4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblFechaPago9)
-                                    .addComponent(jDateFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblRecibePago4)))
-                            .addGroup(jPContenedorPago4Layout.createSequentialGroup()
-                                .addComponent(cmbEncargado, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(67, 67, 67)
-                                .addComponent(cmbRecibePago, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(68, 68, 68)
-                                .addGroup(jPContenedorPago4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblFechaPago8)
-                                    .addComponent(jFBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jPButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSTablaDatosPago4, javax.swing.GroupLayout.PREFERRED_SIZE, 971, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(57, Short.MAX_VALUE))
+                                    .addComponent(lblRecibePago4)
+                                    .addGroup(jPContenedorPago4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jDateFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cmbRecibePago, 0, 350, Short.MAX_VALUE))))
+                            .addComponent(cmbEncargado, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPContenedorPago4Layout.setVerticalGroup(
             jPContenedorPago4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPContenedorPago4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblPagoPersonal4)
-                .addGap(30, 30, 30)
+                .addGap(21, 21, 21)
                 .addGroup(jPContenedorPago4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEncagadoPago4)
                     .addComponent(lblRecibePago4)
@@ -316,7 +350,7 @@ public class FrmPagoPersonal extends javax.swing.JFrame {
                     .addComponent(cmbEncargado, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbRecibePago, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jFBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addGroup(jPContenedorPago4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCantidadPagar4)
                     .addComponent(lblFechaPago9))
@@ -324,9 +358,9 @@ public class FrmPagoPersonal extends javax.swing.JFrame {
                 .addGroup(jPContenedorPago4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(TxtCantidadPago, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                     .addComponent(jDateFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(30, 30, 30)
-                .addComponent(jPButtons, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jSTablaDatosPago4, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
         );
@@ -502,7 +536,7 @@ public class FrmPagoPersonal extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPToolStrip);
-        jPToolStrip.setBounds(280, 0, 1090, 57);
+        jPToolStrip.setBounds(280, 0, 1090, 47);
 
         pack();
         setLocationRelativeTo(null);
@@ -510,13 +544,24 @@ public class FrmPagoPersonal extends javax.swing.JFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         //Verificar que no se manden datos vacios o invalidos.
+
         if (cmbEncargado.getSelectedIndex() == 0 || cmbRecibePago.getSelectedIndex() ==  0 ) {
             JOptionPane.showMessageDialog(this,"Campos vacios, verificar que los campos esten llenos");  
         }
         {
             PC.setCantidadPago(Integer.parseInt(TxtCantidadPago.getText()));
-            PC.convertirEmisor(cmbEncargado.getSelectedItem().toString());
-            PC.convertirReceptor(cmbRecibePago.getSelectedItem().toString());
+            int index = 0;
+
+            index = cmbEncargado.getSelectedIndex();
+            ComboBoxModel model = cmbEncargado.getModel();
+            ComboItems me = (ComboItems) model.getElementAt(index);
+            PC.setIdPersonalEmisor(me.getKey());
+            
+            index = cmbRecibePago.getSelectedIndex();
+            ComboBoxModel model1 = cmbRecibePago.getModel();
+            ComboItems me1 = (ComboItems) model1.getElementAt(index);
+            PC.setIdPersonalReceptor(me1.getKey());
+            
             String date  = ((JTextField) jDateFecha.getDateEditor().getUiComponent()).getText();
             PC.setfechaPago(date);
             //Enviando los datos a SQL
@@ -597,14 +642,24 @@ public class FrmPagoPersonal extends javax.swing.JFrame {
         else{
             // Registrar los datos a la Tabla registro Salida
             PC.setCantidadPago(Integer.parseInt(TxtCantidadPago.getText()));
-            PC.convertirEmisor(cmbEncargado.getSelectedItem().toString());
-            PC.convertirReceptor(cmbRecibePago.getSelectedItem().toString());
+            int index = 0;
+
+            index = cmbEncargado.getSelectedIndex();
+            ComboBoxModel model = cmbEncargado.getModel();
+            ComboItems me = (ComboItems) model.getElementAt(index);
+            PC.setIdPersonalEmisor(me.getKey());
+            
+            index = cmbRecibePago.getSelectedIndex();
+            ComboBoxModel model1 = cmbRecibePago.getModel();
+            ComboItems me1 = (ComboItems) model1.getElementAt(index);
+            PC.setIdPersonalReceptor(me1.getKey());
+            PC.setIdPago(Integer.parseInt(jFBusqueda.getText()));
             String date  = ((JTextField) jDateFecha.getDateEditor().getUiComponent()).getText();
             PC.setfechaPago(date);
             //Enviando los datos a SQL
             if (PC.modificarPago()) {
                 try {
-                    JOptionPane.showMessageDialog(this,"Datos guardados exitosamente");
+                    JOptionPane.showMessageDialog(this,"Datos modificados exitosamente");
                     CargarDatosTablaPago();
                 } catch (Exception ex) {
                   JOptionPane.showMessageDialog(this,"Datos no actualizado");
@@ -629,6 +684,10 @@ public class FrmPagoPersonal extends javax.swing.JFrame {
     private void TxtCantidadPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtCantidadPagoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtCantidadPagoActionPerformed
+
+    private void cmbRecibePagoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbRecibePagoMouseClicked
+       
+    }//GEN-LAST:event_cmbRecibePagoMouseClicked
 //Limpiamos todos los campos 
     public void LimpiarCamposPago(){
         TxtCantidadPago.setText("");

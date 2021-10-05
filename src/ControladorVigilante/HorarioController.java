@@ -366,6 +366,46 @@ public class HorarioController {
     public void setBusquedaIDTurno(Integer busquedaIDTurno) {
         this.busquedaIDTurno = busquedaIDTurno;
     }
+
+    public boolean consultarTurno() {
+        
+        boolean bres = false;     
+        try{
+            //Realizar consulta
+            String sql = "SELECT * FROM Turno WHERE idTurno =?";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            //Lenar los parámetros de la clase, se coloca en el orden de la consulta
+            cmd.setInt(1, idTurno);
+            ResultSet res = cmd.executeQuery();
+            if (res.next()) {
+                bres=true;
+                idTurno = res.getInt(1);
+                idPersonal = res.getInt(2);
+                idPorton = res.getInt(3);
+                horaIngreso = ToHour(res.getString(4));
+                horaSalida = ToHour(res.getString(5));
+                fecha = res.getString(6);
+            }
+            //cerrando conexion
+            cmd.close();
+        }
+        catch(Exception ex){
+            System.out.println(ex.toString());
+        }
+        return bres;
+        
+    }
+
+    private String ToHour(String hour) {
+        
+        String[] HoraSalida = hour.split(" ");        
+        String Thour = HoraSalida[1];
+                
+        Thour = Thour.substring(0, Thour.length()-1);
+        Thour = Thour.substring(0, Thour.length()-1);
+        
+        return Thour;
+    }
     
     
 }

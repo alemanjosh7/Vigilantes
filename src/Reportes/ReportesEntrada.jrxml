@@ -43,7 +43,7 @@ FROM RegistroEntrada RE JOIN Visitante V  ON RE.idVisitante = V.idVisitante JOIN
 				</staticText>
 				<staticText>
 					<reportElement mode="Opaque" x="61" y="12" width="100" height="20" backcolor="#FFCC99" uuid="1cc8c348-ed92-4173-b9b7-a8648f58a841"/>
-					<text><![CDATA[Tipo de Salida:]]></text>
+					<text><![CDATA[Tipo de Entrada:]]></text>
 				</staticText>
 				<staticText>
 					<reportElement mode="Opaque" x="271" y="46" width="183" height="29" forecolor="#FFFFFF" backcolor="#393E46" uuid="a0b373b6-045a-47cd-a0e3-88b0183aa39d"/>

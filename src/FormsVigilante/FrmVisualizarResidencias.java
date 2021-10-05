@@ -624,10 +624,9 @@ public class FrmVisualizarResidencias extends javax.swing.JFrame {
             this.jTResidencia.setModel(R.consultarDatosTabla());
         }
         else{
-            R.setIdResidencia(Integer.parseInt(jFBusquedaResidente.getText()));         
-           if (R.consultarResidencia()) {
-               this.jTResidencia.setModel(R.DatosTablaTecleado());
-           }           
+            R.setNumeroResidencia(Integer.parseInt(jFBusquedaResidente.getText()));         
+            this.jTResidencia.setModel(R.DatosTablaTecleado());
+                      
         }
     }//GEN-LAST:event_jFBusquedaResidenteKeyReleased
 

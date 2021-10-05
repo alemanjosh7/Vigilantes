@@ -663,7 +663,6 @@ public class FrmEntradaVisitante extends javax.swing.JFrame {
             if (rbtTrueEntrada.isSelected()) {
                 entrada = 1;
             }
-            EC.convertirPersonal(nombre, apellido);                          
             EC.setMotivoEntrada(TMotivoVisita.getText());
             EC.setEmergencia(emergencia);
             EC.setPermisoEntrada(entrada);

@@ -141,7 +141,7 @@ public class FrmMenuUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_changeThemeBtnActionPerformed
 
     private void lblButtonExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblButtonExitMouseClicked
-        FrmMenuPrincipal menu = new FrmMenuPrincipal();
+        FrmMenuAdministrador menu = new FrmMenuAdministrador();
         menu.show();
         dispose();
     }//GEN-LAST:event_lblButtonExitMouseClicked

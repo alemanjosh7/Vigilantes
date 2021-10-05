@@ -560,12 +560,12 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
             //Enviando los datos a SQL
             if (SC.guardarSalida()) {
                 JOptionPane.showMessageDialog(this,"Datos guardados exitosamente");
+                LimpiarCampos();
                 CargarDatosTabla();
             }
             else{
                 JOptionPane.showMessageDialog(this,"Datos no guardados");
             }
-            LimpiarCampos();
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
@@ -579,7 +579,6 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
             nombre = lblNombreUsuario.getText();
             apellido = lblApellidoUsuario.getText();
             // Actualizar los datos a la Tabla registro Salida
-            SC.convertirPersonal(nombre, apellido);
             SC.setIdRegistroSalida(Integer.parseInt(jFTidSalida.getText()));
             SC.setIdPorton(Integer.parseInt(cmbPortonSalida.getSelectedItem().toString()));
             SC.convertirVisitante(cmbVisitante.getSelectedItem().toString());
@@ -589,11 +588,12 @@ public class FrmSalidaVisitante extends javax.swing.JFrame {
             if (SC.modificarSalida()) {
                 JOptionPane.showMessageDialog(this,"Datos actualizados exitosamente");
                 CargarDatosTabla();
+                LimpiarCampos();
+
             }
             else{
                 JOptionPane.showMessageDialog(this,"Datos no actualizados");
             }
-            LimpiarCampos();
         }
 
     }//GEN-LAST:event_btnModificarActionPerformed

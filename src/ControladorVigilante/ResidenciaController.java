@@ -325,9 +325,10 @@ public class ResidenciaController {
             String[] datos = new String[6];         
            try{
             //Realizar consulta
-            String sql = "select R.idResidencia, R.numeroResidencia, R.direccionResidencia, R.numTelefono Z.nombreZona, RD.nombres from Residencia R join Zonas Z on R.idZona = Z.idZona  join Residente RD  on R.idResidente = RD.idResidente WHERE idResidencia LIKE CONCAT('%',?,'%')";
+            String sql = "select R.idResidencia, R.numeroResidencia, R.direccionResidencia, Z.nombreZona,  R.numTelefono , RD.nombres from Residencia R join Zonas Z on R.idZona = Z.idZona  join Residente RD  on R.idResidente = RD.idResidente WHERE numeroResidencia  =?";
             PreparedStatement cmd = cn.prepareStatement(sql);
-            cmd.setInt(1, idResidencia);                                
+            //Lenar los parámetros de la clase, se coloca en el orden de la consulta
+            cmd.setInt(1, numeroResidencia);                                
             ResultSet res = cmd.executeQuery();
             while(res.next()){
                 datos[0] = res.getString(1);    
@@ -353,10 +354,10 @@ public class ResidenciaController {
         tResidenteFiltrada.addColumn("Numero de Telefono");
         tResidenteFiltrada.addColumn("Zona");
         tResidenteFiltrada.addColumn("Residente");           
-        String[] datos =  new String[5];
+        String[] datos =  new String[6];
         try{
             //Realizar consulta
-            String sql = "select R.idResidencia, R.numeroResidencia, R.direccionResidencia, Z.nombreZona, RD.nombres from Residencia R join Zonas Z on R.idZona = Z.idZona  join Residente RD  on R.idResidente = RD.idResidente WHERE idResidencia =?";
+            String sql = "select R.idResidencia, R.numeroResidencia, R.direccionResidencia, Z.nombreZona,  R.numTelefono , RD.nombres from Residencia R join Zonas Z on R.idZona = Z.idZona  join Residente RD  on R.idResidente = RD.idResidente WHERE numeroResidencia LIKE CONCAT('%','8','%')";
             PreparedStatement cmd = cn.prepareStatement(sql);
             //Lenar los parámetros de la clase, se coloca en el orden de la consulta
             cmd.setInt(1, idResidente);
@@ -367,6 +368,7 @@ public class ResidenciaController {
                 datos[2] = res.getString(3);
                 datos[3] = res.getString(4);
                 datos[4] = res.getString(5);
+                datos[5] = res.getString(6);
                 tResidenteFiltrada.addRow(datos);                      
             }        
         }

@@ -158,18 +158,17 @@ public class EntradaController {
     public boolean modificarZona(){
         boolean res = false;
         try{
-            String sql = "UPDATE RegistroEntrada SET idTipoES =?, idVisitante =?, idPorton =?, idPersonal =?, residenciaVisita =?, motivoIngreso =?, fechaHora =?, permisoIngreso =?, emergencia =? WHERE idRegistroIngreso =?";//se pasan por referencia por seguridad
+            String sql = "UPDATE RegistroEntrada SET idTipoES =?, idVisitante =?, idPorton =?, residenciaVisita =?, motivoIngreso =?, fechaHora =?, permisoIngreso =?, emergencia =? WHERE idRegistroIngreso =?";//se pasan por referencia por seguridad
             PreparedStatement cmd = cn.prepareStatement(sql);
             cmd.setInt(1,idTipoES);
             cmd.setInt(2, idVisitante);
             cmd.setInt(3, idPorton);
-            cmd.setInt(4, idPersonal);
-            cmd.setInt(5, idResidencia);
-            cmd.setString(6, motivoIngreso);
-            cmd.setString(7, fechaHora);
-            cmd.setInt(8,permisoEntrada);
-            cmd.setInt(9, emergencia);
-            cmd.setInt(10, idRegistroEntrada);
+            cmd.setInt(4, idResidencia);
+            cmd.setString(5, motivoIngreso);
+            cmd.setString(6, fechaHora);
+            cmd.setInt(7,permisoEntrada);
+            cmd.setInt(8, emergencia);
+            cmd.setInt(9, idRegistroEntrada);
             if (!cmd.execute()) {
                 res=true;
             }
@@ -217,7 +216,7 @@ public class EntradaController {
     //Obtener los datos para el combobox de Porton de Salida
     public DefaultComboBoxModel consultarPorton(){
         DefaultComboBoxModel PortonList = new DefaultComboBoxModel();
-        PortonList.addElement("Porton de Salida");
+        PortonList.addElement("Porton de Entrada");
         ResultSet res = this.consultaDatos("SELECT * FROM Porton");
         try{
             while (res.next()) {
@@ -251,7 +250,7 @@ public class EntradaController {
     //Obtener los datos para el combobox de Porton de Salida
     public DefaultComboBoxModel consultarResidencia(){
         DefaultComboBoxModel ResidenciaList = new DefaultComboBoxModel();
-        ResidenciaList.addElement("Porton de Salida");
+        ResidenciaList.addElement("Residencia");
         ResultSet res = this.consultaDatos("SELECT * FROM Residencia");
         try{
             while (res.next()) {

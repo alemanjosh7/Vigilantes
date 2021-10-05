@@ -39,7 +39,16 @@ public class FrmVisualizarVisitante extends javax.swing.JFrame {
         jPBusquedaContainer = new javax.swing.JPanel();
         lblVisitante = new javax.swing.JLabel();
         lblImgBusqueda4 = new javax.swing.JLabel();
+        jFTDUI = new javax.swing.JTextField();
+        lblVisitante1 = new javax.swing.JLabel();
+        lblImgBusqueda5 = new javax.swing.JLabel();
+        jFTBusquedaNIT = new javax.swing.JTextField();
+        lblVisitante2 = new javax.swing.JLabel();
+        lblImgBusqueda6 = new javax.swing.JLabel();
         jFTBusqueda = new javax.swing.JTextField();
+        lblVisitante3 = new javax.swing.JLabel();
+        lblImgBusqueda7 = new javax.swing.JLabel();
+        jFTBusquedaNombre = new javax.swing.JTextField();
         jSPVistiante = new javax.swing.JScrollPane();
         jTVisitante = new javax.swing.JTable();
         jPSideBar = new javax.swing.JPanel();
@@ -61,12 +70,48 @@ public class FrmVisualizarVisitante extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1366, 768));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jMainContainer.setMinimumSize(new java.awt.Dimension(1366, 768));
+
         lblVisitante.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblVisitante.setText("Busqueda de Visitante:");
+        lblVisitante.setText("Busqueda de Visitante por DUI:");
 
         lblImgBusqueda4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblImgBusqueda4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgBuscar.png"))); // NOI18N
         lblImgBusqueda4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jFTDUI.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFTDUI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jFTDUIKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFTDUIKeyTyped(evt);
+            }
+        });
+
+        lblVisitante1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblVisitante1.setText("Busqueda de Visitante por NIT:");
+
+        lblImgBusqueda5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblImgBusqueda5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgBuscar.png"))); // NOI18N
+        lblImgBusqueda5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jFTBusquedaNIT.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFTBusquedaNIT.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jFTBusquedaNITKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFTBusquedaNITKeyTyped(evt);
+            }
+        });
+
+        lblVisitante2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblVisitante2.setText("Busqueda de Visitante:");
+
+        lblImgBusqueda6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblImgBusqueda6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgBuscar.png"))); // NOI18N
+        lblImgBusqueda6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jFTBusqueda.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jFTBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -78,29 +123,84 @@ public class FrmVisualizarVisitante extends javax.swing.JFrame {
             }
         });
 
+        lblVisitante3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblVisitante3.setText("Busqueda de Visitante por Nombre:");
+
+        lblImgBusqueda7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblImgBusqueda7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgBuscar.png"))); // NOI18N
+        lblImgBusqueda7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jFTBusquedaNombre.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jFTBusquedaNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jFTBusquedaNombreKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFTBusquedaNombreKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPBusquedaContainerLayout = new javax.swing.GroupLayout(jPBusquedaContainer);
         jPBusquedaContainer.setLayout(jPBusquedaContainerLayout);
         jPBusquedaContainerLayout.setHorizontalGroup(
             jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(lblImgBusqueda4, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblVisitante)
-                    .addComponent(jFTBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(344, Short.MAX_VALUE))
+                    .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lblImgBusqueda4, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblVisitante)
+                            .addComponent(jFTDUI, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addComponent(lblImgBusqueda5, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblVisitante1)
+                            .addComponent(jFTBusquedaNIT, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblImgBusqueda6, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblVisitante2)
+                            .addComponent(jFTBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(lblImgBusqueda7, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblVisitante3)
+                            .addComponent(jFTBusquedaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         jPBusquedaContainerLayout.setVerticalGroup(
             jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBusquedaContainerLayout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblImgBusqueda7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
+                        .addComponent(lblVisitante3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jFTBusquedaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblImgBusqueda6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
+                        .addComponent(lblVisitante2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jFTBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGroup(jPBusquedaContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblImgBusqueda5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
+                        .addComponent(lblVisitante1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jFTBusquedaNIT, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblImgBusqueda4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPBusquedaContainerLayout.createSequentialGroup()
                         .addComponent(lblVisitante)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFTBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jFTDUI, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -120,30 +220,30 @@ public class FrmVisualizarVisitante extends javax.swing.JFrame {
         jMainContainer.setLayout(jMainContainerLayout);
         jMainContainerLayout.setHorizontalGroup(
             jMainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jMainContainerLayout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
+            .addGroup(jMainContainerLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
                 .addComponent(jPBusquedaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(222, 222, 222))
+                .addContainerGap(339, Short.MAX_VALUE))
             .addGroup(jMainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jMainContainerLayout.createSequentialGroup()
                     .addGap(55, 55, 55)
                     .addComponent(jSPVistiante, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(55, Short.MAX_VALUE)))
+                    .addContainerGap(341, Short.MAX_VALUE)))
         );
         jMainContainerLayout.setVerticalGroup(
             jMainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jMainContainerLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
+            .addGroup(jMainContainerLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
                 .addComponent(jPBusquedaContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(542, Short.MAX_VALUE))
+                .addContainerGap(552, Short.MAX_VALUE))
             .addGroup(jMainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jMainContainerLayout.createSequentialGroup()
-                    .addGap(182, 182, 182)
-                    .addComponent(jSPVistiante, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(25, Short.MAX_VALUE)))
+                    .addGap(239, 239, 239)
+                    .addComponent(jSPVistiante, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(113, Short.MAX_VALUE)))
         );
 
-        getContentPane().add(jMainContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, -1, -1));
+        getContentPane().add(jMainContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 1080, 710));
 
         jPSideBar.setBackground(new java.awt.Color(57, 62, 70));
         jPSideBar.setForeground(new java.awt.Color(57, 62, 70));
@@ -339,6 +439,36 @@ public class FrmVisualizarVisitante extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnGoLogInActionPerformed
 
+    private void jFTDUIKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTDUIKeyReleased
+        // TODO add your handling code here:
+        if (jFTDUI.getText().isEmpty()) {
+            this.jTVisitante.setModel(VV.consultarDatosTabla());
+        }
+        else{
+            VV.setDUI(jFTDUI.getText());
+            this.jTVisitante.setModel(VV.filtrarDatosTablaDUI());
+        }
+    }//GEN-LAST:event_jFTDUIKeyReleased
+
+    private void jFTDUIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTDUIKeyTyped
+
+    }//GEN-LAST:event_jFTDUIKeyTyped
+
+    private void jFTBusquedaNITKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaNITKeyReleased
+        // TODO add your handling code here:
+        if (jFTBusquedaNIT.getText().isEmpty()) {
+            this.jTVisitante.setModel(VV.consultarDatosTabla());
+        }
+        else{
+            VV.setDUI(jFTBusquedaNIT.getText());
+            this.jTVisitante.setModel(VV.filtrarDatosTablaNIT());      
+        }
+    }//GEN-LAST:event_jFTBusquedaNITKeyReleased
+
+    private void jFTBusquedaNITKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaNITKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFTBusquedaNITKeyTyped
+
     private void jFTBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaKeyReleased
         // TODO add your handling code here:
         if (jFTBusqueda.getText().isEmpty()) {
@@ -361,6 +491,27 @@ public class FrmVisualizarVisitante extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jFTBusquedaKeyTyped
 
+    private void jFTBusquedaNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaNombreKeyReleased
+        // TODO add your handling code here:
+        if (jFTBusquedaNombre.getText().isEmpty()) {
+            this.jTVisitante.setModel(VV.consultarDatosTabla());
+        }
+        else{
+            VV.setNombre(jFTBusquedaNombre.getText());
+            this.jTVisitante.setModel(VV.filtrarDatosTablaNombre());
+                     
+        }
+    }//GEN-LAST:event_jFTBusquedaNombreKeyReleased
+
+    private void jFTBusquedaNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFTBusquedaNombreKeyTyped
+        //Solo permitir paso de números
+        if(SoloLetras(evt.getKeyChar())){
+            //no deja que se escriba un letras
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Ingresar letras");
+        }
+    }//GEN-LAST:event_jFTBusquedaNombreKeyTyped
+
 
     
     public boolean SoloNumero(char numero){
@@ -372,9 +523,20 @@ public class FrmVisualizarVisitante extends javax.swing.JFrame {
         }
     }
 
+    
+    public boolean SoloLetras(char letra){
+        if(Character.isLetter(letra) || Character.isISOControl(letra) || Character.isSpaceChar(letra)){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }    
+    
+    
     //Limpiar campos
     public void LimpiarCampos(){
-        jFTBusqueda.setText("");
+        jFTDUI.setText("");
 
     }    
      
@@ -425,6 +587,9 @@ public class FrmVisualizarVisitante extends javax.swing.JFrame {
     private javax.swing.JButton btnGoLogIn;
     private javax.swing.JButton btnTheme;
     private javax.swing.JTextField jFTBusqueda;
+    private javax.swing.JTextField jFTBusquedaNIT;
+    private javax.swing.JTextField jFTBusquedaNombre;
+    private javax.swing.JTextField jFTDUI;
     private javax.swing.JPanel jMainContainer;
     private javax.swing.JPanel jPBusquedaContainer;
     private javax.swing.JPanel jPContainer;
@@ -439,10 +604,16 @@ public class FrmVisualizarVisitante extends javax.swing.JFrame {
     private javax.swing.JLabel lblExitButton;
     private javax.swing.JLabel lblImagen;
     private javax.swing.JLabel lblImgBusqueda4;
+    private javax.swing.JLabel lblImgBusqueda5;
+    private javax.swing.JLabel lblImgBusqueda6;
+    private javax.swing.JLabel lblImgBusqueda7;
     private javax.swing.JLabel lblNombreUsuario;
     private javax.swing.JLabel lblSistemaVigilantes;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JLabel lblVisitante;
+    private javax.swing.JLabel lblVisitante1;
+    private javax.swing.JLabel lblVisitante2;
+    private javax.swing.JLabel lblVisitante3;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -121,14 +121,13 @@ public class SalidaController {
     public boolean modificarSalida(){
         boolean res = false;
         try{
-            String sql = "UPDATE RegistroSalida SET idTipoES =?, idPorton =?, idPersonal =?, idVisitante =?, fechaHora =? WHERE idRegistroSalida =?";//se pasan por referencia por seguridad
+            String sql = "UPDATE RegistroSalida SET idTipoES =?, idPorton =?, idVisitante =?, fechaHora =? WHERE idRegistroSalida =?";//se pasan por referencia por seguridad
             PreparedStatement cmd = cn.prepareStatement(sql);
             cmd.setInt(1,idTipoES);
             cmd.setInt(2, idPorton);
-            cmd.setInt(3, idPersonal);
-            cmd.setInt(4, idVisitante);
-            cmd.setString(5, fechaHora);
-            cmd.setInt(6, idRegistroSalida);
+            cmd.setInt(3, idVisitante);
+            cmd.setString(4, fechaHora);
+            cmd.setInt(5, idRegistroSalida);
             if (!cmd.execute()) {
                 res=true;
             }

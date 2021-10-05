@@ -79,10 +79,10 @@ public class FrmUsuario extends javax.swing.JFrame {
         lblEstadoResidencia1 = new javax.swing.JLabel();
         cmbVigilante = new javax.swing.JComboBox<>();
         lblImgBusqueda4 = new javax.swing.JLabel();
-        jFDidUsuario = new javax.swing.JFormattedTextField();
         lblNumCasa1 = new javax.swing.JLabel();
         jPassword = new javax.swing.JPasswordField();
         jFDNombreUsuario = new javax.swing.JFormattedTextField();
+        jFDidUsuario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1366, 768));
@@ -392,20 +392,14 @@ public class FrmUsuario extends javax.swing.JFrame {
         lblImgBusqueda4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vigilante_Imagenes/imgBuscar.png"))); // NOI18N
         lblImgBusqueda4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jFDidUsuario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        jFDidUsuario.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jFDidUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFDidUsuarioActionPerformed(evt);
-            }
-        });
-
         lblNumCasa1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblNumCasa1.setText("id Usuario:");
 
         jPassword.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
         jFDNombreUsuario.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+
+        jFDidUsuario.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jPGestionResidenciaLayout = new javax.swing.GroupLayout(jPGestionResidencia);
         jPGestionResidencia.setLayout(jPGestionResidenciaLayout);
@@ -475,22 +469,22 @@ public class FrmUsuario extends javax.swing.JFrame {
                             .addComponent(jPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
                             .addComponent(jFDNombreUsuario)))
                     .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPGestionResidenciaLayout.createSequentialGroup()
                             .addComponent(lblNumCasa1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jFDidUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jFDidUsuario))
                         .addComponent(lblImgBusqueda4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPGestionResidenciaLayout.createSequentialGroup()
+                .addGroup(jPGestionResidenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPGestionResidenciaLayout.createSequentialGroup()
                         .addComponent(lblZona)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmbEstado))
-                    .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
+                        .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPGestionResidenciaLayout.createSequentialGroup()
                         .addComponent(lblEstadoResidencia1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmbVigilante, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPGestionResidenciaLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPGestionResidenciaLayout.createSequentialGroup()
                         .addComponent(lblEstadoResidencia)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmbTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -539,10 +533,6 @@ public class FrmUsuario extends javax.swing.JFrame {
     private void cmbVigilanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbVigilanteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbVigilanteActionPerformed
-
-    private void jFDidUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFDidUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFDidUsuarioActionPerformed
 
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
         // TODO add your handling code here:
@@ -741,7 +731,7 @@ public class FrmUsuario extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbTipoUsuario;
     private javax.swing.JComboBox<String> cmbVigilante;
     private javax.swing.JFormattedTextField jFDNombreUsuario;
-    private javax.swing.JFormattedTextField jFDidUsuario;
+    private javax.swing.JTextField jFDidUsuario;
     private javax.swing.JPanel jPBotones;
     private javax.swing.JPanel jPGestionResidencia;
     private javax.swing.JPanel jPImageContainer;

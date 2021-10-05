@@ -516,7 +516,7 @@ public class FrmRegistroLlamadas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblExitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitButtonMouseClicked
-        FrmMenuAdministrador menu = new FrmMenuAdministrador();
+        FrmMenuPrincipal menu = new FrmMenuPrincipal();
         menu.show();
         dispose();
     }//GEN-LAST:event_lblExitButtonMouseClicked
